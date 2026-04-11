@@ -37,7 +37,7 @@ export default function SettingsScreen() {
     0
   );
   const totalStickers = pages.reduce(
-    (sum, p) => sum + p.elements.filter((e) => e.type === 'sticker').length,
+    (sum, p) => sum + p.elements.filter((e) => e.type === 'sticker' || e.type === 'cat-image').length,
     0
   );
 

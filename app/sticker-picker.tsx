@@ -168,10 +168,11 @@ export default function StickerPickerScreen() {
         )}
       </ScrollView>
 
-      {/* Content area */}
+      {/* Content area — key props force remount when numColumns changes */}
       {isCatTab ? (
         /* Cat image sticker grid — 4 columns for larger previews */
         <FlatList
+          key="cat-grid"
           data={CAT_STICKERS}
           numColumns={4}
           keyExtractor={(item) => item.id}
@@ -223,6 +224,7 @@ export default function StickerPickerScreen() {
       ) : (
         /* Emoji sticker grid — 6 columns */
         <FlatList
+          key="emoji-grid"
           data={activeCategory === '__recent' ? recentStickers : currentCategory.stickers}
           numColumns={6}
           keyExtractor={(item, index) => `${activeCategory}-${item}-${index}`}

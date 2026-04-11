@@ -2,6 +2,7 @@ import { View, Text, Pressable } from 'react-native';
 import { Image } from 'expo-image';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { Fonts } from '@/constants/Typography';
+import { CAT_STICKER_MAP } from '@/constants/Stickers';
 import { useTheme } from '@/components/ui/use-theme';
 import type { DiaryPage, BackgroundType } from '@/store/types';
 
@@ -27,7 +28,9 @@ export function PageCard({ page, onPress, onLongPress }: PageCardProps) {
     return `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, '0')}.${String(d.getDate()).padStart(2, '0')}`;
   };
 
-  const stickerElements = page.elements.filter((e) => e.type === 'sticker');
+  const emojiStickerElements = page.elements.filter((e) => e.type === 'sticker');
+  const catStickerElements = page.elements.filter((e) => e.type === 'cat-image');
+  const allStickerElements = [...emojiStickerElements, ...catStickerElements];
   const textElements = page.elements.filter((e) => e.type === 'text');
   const photoElements = page.elements.filter((e) => e.type === 'photo');
 
@@ -65,21 +68,31 @@ export function PageCard({ page, onPress, onLongPress }: PageCardProps) {
             style={{ width: '100%', height: '100%' }}
             contentFit="cover"
           />
-        ) : stickerElements.length > 0 ? (
+        ) : allStickerElements.length > 0 ? (
           <View
             style={{
               flexDirection: 'row',
               flexWrap: 'wrap',
               justifyContent: 'center',
+              alignItems: 'center',
               gap: 4,
               padding: 12,
             }}
           >
-            {stickerElements.slice(0, 6).map((el) => (
-              <Text key={el.id} style={{ fontSize: 28 }}>
-                {el.content}
-              </Text>
-            ))}
+            {allStickerElements.slice(0, 6).map((el) =>
+              el.type === 'cat-image' ? (
+                <Image
+                  key={el.id}
+                  source={CAT_STICKER_MAP.get(el.content)}
+                  style={{ width: 32, height: 32 }}
+                  contentFit="contain"
+                />
+              ) : (
+                <Text key={el.id} style={{ fontSize: 28 }}>
+                  {el.content}
+                </Text>
+              )
+            )}
           </View>
         ) : textElements.length > 0 ? (
           <View style={{ padding: 14 }}>
