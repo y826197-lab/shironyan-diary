@@ -21,14 +21,18 @@ import {
   STICKER_CATEGORIES,
   CAT_STICKERS,
   DECO_TEXT_STICKERS,
+  WASHI_TAPE_STICKERS,
   type CatSticker,
   type DecoTextSticker,
+  type WashiTapeSticker,
 } from '@/constants/Stickers';
+import { WashiTapePreview } from '@/components/editor/washi-tape';
 import { useDiaryStore } from '@/store/useDiaryStore';
 import { useCustomStickerStore, type CustomSticker } from '@/store/useCustomStickerStore';
 
 const CAT_TAB_ID = '__cats';
 const DECO_TAB_ID = '__deco';
+const WASHI_TAB_ID = '__washi';
 const MY_TAB_ID = '__my';
 
 export default function StickerPickerScreen() {
@@ -65,6 +69,7 @@ export default function StickerPickerScreen() {
   const stickerSize = Math.floor((width - 60) / 6);
   const catStickerSize = Math.floor((width - 56) / 4);
   const decoStickerWidth = Math.floor((width - 52) / 2);
+  const washiTapeWidth = Math.floor(width - 64);
   const myStickerSize = Math.floor((width - 56) / 4);
 
   // ── Handlers ──
@@ -126,6 +131,24 @@ export default function StickerPickerScreen() {
     [pageId, addElement, router]
   );
 
+  const handleSelectWashiTape = useCallback(
+    (tape: WashiTapeSticker) => {
+      if (pageId) {
+        addElement(pageId, {
+          type: 'washi-tape',
+          x: 20 + Math.random() * 40,
+          y: 80 + Math.random() * 120,
+          width: tape.wide ? 220 : 180,
+          height: tape.wide ? 32 : 20,
+          rotation: (Math.random() - 0.5) * 0.15,
+          content: tape.id,
+        });
+      }
+      router.back();
+    },
+    [pageId, addElement, router]
+  );
+
   const handleSelectCustomSticker = useCallback(
     (sticker: CustomSticker) => {
       if (pageId) {
@@ -170,6 +193,7 @@ export default function StickerPickerScreen() {
 
   const isCatTab = activeCategory === CAT_TAB_ID;
   const isDecoTab = activeCategory === DECO_TAB_ID;
+  const isWashiTab = activeCategory === WASHI_TAB_ID;
   const isMyTab = activeCategory === MY_TAB_ID;
 
   // ── Tab pill ──
@@ -280,6 +304,36 @@ export default function StickerPickerScreen() {
             </Animated.View>
           ))}
           {DECO_TEXT_STICKERS.length === 0 && <EmptyState message="デコ文字がありません" theme={theme} />}
+        </ScrollView>
+      );
+    }
+
+    // ──────────────────────────────────
+    // Washi tape (masking tape) tab
+    // ──────────────────────────────────
+    if (isWashiTab) {
+      return (
+        <ScrollView
+          contentContainerStyle={{ paddingHorizontal: 16, paddingTop: 16, paddingBottom: 40, gap: 10 }}
+          showsVerticalScrollIndicator={false}
+        >
+          {WASHI_TAPE_STICKERS.map((tape, index) => (
+            <Animated.View key={tape.id} entering={FadeIn.delay(index * 40).duration(300)}>
+              <Pressable
+                onPress={() => handleSelectWashiTape(tape)}
+                style={({ pressed }) => ({
+                  width: washiTapeWidth,
+                  height: tape.wide ? 36 : 24,
+                  borderRadius: 3,
+                  overflow: 'hidden',
+                  opacity: pressed ? 0.75 : 1,
+                  transform: [{ scale: pressed ? 1.02 : 1 }],
+                })}
+              >
+                <WashiTapePreview tape={tape} width={washiTapeWidth} height={tape.wide ? 36 : 24} />
+              </Pressable>
+            </Animated.View>
+          ))}
         </ScrollView>
       );
     }
@@ -461,6 +515,7 @@ export default function StickerPickerScreen() {
       >
         {renderTab(CAT_TAB_ID, '🐱', 'ネコ', isCatTab ? '#FF8FAB' : undefined)}
         {renderTab(DECO_TAB_ID, '🔤', 'デコ文字', isDecoTab ? '#E91E63' : undefined)}
+        {renderTab(WASHI_TAB_ID, '🎀', 'マステ', isWashiTab ? '#FF8A65' : undefined)}
         {renderTab(MY_TAB_ID, '📁', 'マイ', isMyTab ? '#7C4DFF' : undefined)}
         {recentStickers.length > 0 && renderTab('__recent', '🕐', '最近')}
         {STICKER_CATEGORIES.map((category) => renderTab(category.id, category.icon, category.name))}

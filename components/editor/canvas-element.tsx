@@ -9,7 +9,8 @@ import Animated, {
 import { Image } from 'expo-image';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { Fonts } from '@/constants/Typography';
-import { CAT_STICKER_MAP, DECO_TEXT_MAP } from '@/constants/Stickers';
+import { CAT_STICKER_MAP, DECO_TEXT_MAP, WASHI_TAPE_MAP } from '@/constants/Stickers';
+import { WashiTapeView } from '@/components/editor/washi-tape';
 import type { CanvasElement } from '@/store/types';
 
 interface CanvasElementProps {
@@ -160,6 +161,17 @@ export function CanvasElementView({
               {decoData.text}
             </Text>
           </View>
+        );
+      }
+      case 'washi-tape': {
+        const tapeData = WASHI_TAPE_MAP.get(element.content);
+        if (!tapeData) return null;
+        return (
+          <WashiTapeView
+            tape={tapeData}
+            width={element.width}
+            height={element.height}
+          />
         );
       }
       case 'custom-image':

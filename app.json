@@ -16,7 +16,8 @@
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.okanka.jidiary"
     },
     "web": {
       "bundler": "metro",
@@ -37,6 +38,13 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "owner": "okanka",
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "ecb8a65f-3fd1-4fea-a83a-a8e0c3d8070d"
+      }
     }
   }
 }

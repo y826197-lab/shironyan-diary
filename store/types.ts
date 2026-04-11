@@ -1,11 +1,14 @@
 import type { ThemeKey } from '@/constants/Colors';
 
-export type BackgroundType = 'plain' | 'lined' | 'grid' | 'dots' | 'floral';
+export type BackgroundType =
+  | 'plain' | 'lined' | 'grid' | 'dots' | 'floral'
+  | 'frame-simple' | 'frame-floral' | 'frame-ribbon' | 'frame-dots'
+  | 'frame-double' | 'frame-rounded' | 'frame-hearts' | 'frame-lace';
 export type PenType = 'pen' | 'marker' | 'highlighter' | 'crayon' | 'neon';
 
 export interface CanvasElement {
   id: string;
-  type: 'photo' | 'sticker' | 'text' | 'cat-image' | 'deco-text' | 'custom-image';
+  type: 'photo' | 'sticker' | 'text' | 'cat-image' | 'deco-text' | 'custom-image' | 'washi-tape';
   x: number;
   y: number;
   width: number;

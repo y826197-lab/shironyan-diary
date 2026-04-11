@@ -12,6 +12,14 @@ const BG_COLORS: Record<BackgroundType, string> = {
   grid: '#F5FAFF',
   dots: '#F0FFF5',
   floral: '#FFF0F8',
+  'frame-simple': '#FFFBFD',
+  'frame-floral': '#FFF0F8',
+  'frame-ribbon': '#FFF5F9',
+  'frame-dots': '#FFF9FC',
+  'frame-double': '#FFFBFD',
+  'frame-rounded': '#FFF9FC',
+  'frame-hearts': '#FFF0F5',
+  'frame-lace': '#FFF5F9',
 };
 
 interface PageCardProps {

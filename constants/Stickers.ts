@@ -41,16 +41,36 @@ export const CAT_STICKER_MAP = new Map<string, ImageSource>(
   CAT_STICKERS.map((s) => [s.id, s.source])
 );
 
+// Washi tape (masking tape) sticker definitions
+export interface WashiTapeSticker {
+  id: string;
+  label: string;
+  color: string;
+  secondaryColor: string;
+  pattern: 'stripe' | 'dots' | 'check' | 'floral' | 'stars' | 'polka' | 'gingham' | 'lace' | 'solid' | 'zigzag';
+  wide: boolean; // true = wide tape, false = thin tape
+}
+
+export const WASHI_TAPE_STICKERS: WashiTapeSticker[] = [
+  { id: 'wt_pink_stripe', label: 'ピンクストライプ', color: '#F9A8C9', secondaryColor: '#FFFFFF', pattern: 'stripe', wide: true },
+  { id: 'wt_lavender_dots', label: 'ラベンダードット', color: '#C9A8F9', secondaryColor: '#FFFFFF', pattern: 'dots', wide: true },
+  { id: 'wt_mint_check', label: 'ミントチェック', color: '#8ED8BE', secondaryColor: '#FFFFFF', pattern: 'check', wide: false },
+  { id: 'wt_yellow_floral', label: 'イエロー花柄', color: '#F9D88A', secondaryColor: '#FF9800', pattern: 'floral', wide: true },
+  { id: 'wt_blue_stars', label: 'ブルー星柄', color: '#90CAF9', secondaryColor: '#42A5F5', pattern: 'stars', wide: false },
+  { id: 'wt_orange_polka', label: 'オレンジ水玉', color: '#FFCC80', secondaryColor: '#FF9800', pattern: 'polka', wide: true },
+  { id: 'wt_red_gingham', label: 'レッドギンガム', color: '#EF9A9A', secondaryColor: '#FFFFFF', pattern: 'gingham', wide: false },
+  { id: 'wt_pink_lace', label: 'ピンクレース', color: '#F48FB1', secondaryColor: '#FCE4EC', pattern: 'lace', wide: true },
+  { id: 'wt_mint_solid', label: 'ミント無地', color: '#A5D6A7', secondaryColor: '#C8E6C9', pattern: 'solid', wide: false },
+  { id: 'wt_purple_zigzag', label: 'パープルジグザグ', color: '#CE93D8', secondaryColor: '#F3E5F5', pattern: 'zigzag', wide: true },
+  { id: 'wt_blue_stripe', label: 'ブルーストライプ', color: '#81D4FA', secondaryColor: '#FFFFFF', pattern: 'stripe', wide: false },
+  { id: 'wt_pink_polka', label: 'ピンク水玉', color: '#F48FB1', secondaryColor: '#FFFFFF', pattern: 'polka', wide: false },
+];
+
+export const WASHI_TAPE_MAP = new Map<string, WashiTapeSticker>(
+  WASHI_TAPE_STICKERS.map((s) => [s.id, s])
+);
+
 export const STICKER_CATEGORIES: StickerCategory[] = [
-  {
-    id: 'flowers',
-    name: '花',
-    icon: '🌸',
-    stickers: [
-      '🌸', '🌷', '🌹', '🌺', '🌻', '🌼', '💐', '🏵️',
-      '🌿', '🍀', '🍃', '🌱', '🪻', '🪷', '💮', '🌾',
-    ],
-  },
   {
     id: 'hearts',
     name: 'ハート',
