@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "fastshot-app",
-    "slug": "fastshot-app",
+    "name": "Jidiary",
+    "slug": "jidiary",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
