@@ -1,4 +1,13 @@
-import { View, Text, ScrollView, Pressable, Alert, Platform, useWindowDimensions } from 'react-native';
+import {
+  View,
+  Text,
+  ScrollView,
+  Pressable,
+  TouchableOpacity,
+  Modal,
+  Alert,
+  useWindowDimensions,
+} from 'react-native';
 import { useRouter, useLocalSearchParams } from 'expo-router';
 import { useState, useCallback, useMemo } from 'react';
 import Animated, { FadeIn } from 'react-native-reanimated';
@@ -22,27 +31,6 @@ const CAT_TAB_ID = '__cats';
 const DECO_TAB_ID = '__deco';
 const MY_TAB_ID = '__my';
 
-/**
- * Cross-platform delete confirmation.
- * On web, window.confirm is used directly for guaranteed reliability.
- * On native, Alert.alert is used.
- */
-function confirmDelete(onConfirm: () => void) {
-  if (Platform.OS === 'web') {
-    const yes = window.confirm('このカスタムステッカーを削除しますか？');
-    if (yes) onConfirm();
-  } else {
-    Alert.alert(
-      'ステッカーを削除',
-      'このカスタムステッカーを削除しますか？',
-      [
-        { text: 'いいえ', style: 'cancel' },
-        { text: 'はい', style: 'destructive', onPress: onConfirm },
-      ]
-    );
-  }
-}
-
 export default function StickerPickerScreen() {
   const router = useRouter();
   const theme = useTheme();
@@ -54,6 +42,11 @@ export default function StickerPickerScreen() {
   const addCustomSticker = useCustomStickerStore((s) => s.addSticker);
   const removeCustomSticker = useCustomStickerStore((s) => s.removeSticker);
   const [activeCategory, setActiveCategory] = useState(CAT_TAB_ID);
+
+  // ── Delete confirmation state ──
+  // We use a custom in-app Modal instead of Alert.alert / window.confirm
+  // because both can be silently suppressed inside formSheet on web.
+  const [deleteTarget, setDeleteTarget] = useState<CustomSticker | null>(null);
 
   const currentCategory = STICKER_CATEGORIES.find((c) => c.id === activeCategory) || STICKER_CATEGORIES[0];
 
@@ -73,6 +66,8 @@ export default function StickerPickerScreen() {
   const catStickerSize = Math.floor((width - 56) / 4);
   const decoStickerWidth = Math.floor((width - 52) / 2);
   const myStickerSize = Math.floor((width - 56) / 4);
+
+  // ── Handlers ──
 
   const handleSelectSticker = useCallback(
     (sticker: string) => {
@@ -166,16 +161,20 @@ export default function StickerPickerScreen() {
     }
   }, [addCustomSticker]);
 
+  const handleConfirmDelete = useCallback(() => {
+    if (deleteTarget) {
+      removeCustomSticker(deleteTarget.id);
+    }
+    setDeleteTarget(null);
+  }, [deleteTarget, removeCustomSticker]);
+
   const isCatTab = activeCategory === CAT_TAB_ID;
   const isDecoTab = activeCategory === DECO_TAB_ID;
   const isMyTab = activeCategory === MY_TAB_ID;
 
-  const renderTab = (
-    id: string,
-    icon: string,
-    label: string,
-    accentColor?: string,
-  ) => {
+  // ── Tab pill ──
+
+  const renderTab = (id: string, icon: string, label: string, accentColor?: string) => {
     const isActive = activeCategory === id;
     const activeBg = accentColor || theme.primaryLight;
     const activeBorder = accentColor ? accentColor + '90' : theme.primary;
@@ -209,6 +208,8 @@ export default function StickerPickerScreen() {
       </Pressable>
     );
   };
+
+  // ── Grid content ──
 
   const renderGrid = () => {
     if (isCatTab) {
@@ -272,14 +273,7 @@ export default function StickerPickerScreen() {
                   transform: [{ scale: pressed ? 1.04 : 1 }],
                 })}
               >
-                <Text
-                  style={{
-                    fontFamily: Fonts.bold,
-                    fontSize: 17,
-                    color: item.color,
-                    letterSpacing: 1,
-                  }}
-                >
+                <Text style={{ fontFamily: Fonts.bold, fontSize: 17, color: item.color, letterSpacing: 1 }}>
                   {item.text}
                 </Text>
               </Pressable>
@@ -290,71 +284,111 @@ export default function StickerPickerScreen() {
       );
     }
 
-    // =============================
+    // ──────────────────────────────────
     // My custom stickers tab
-    // =============================
-    // Uses ScrollView (not FlatList) to avoid virtualization touch quirks.
-    // Each card is a simple flex column: [× button row] then [image area].
-    // No overlays, no absolute-positioned interactive elements, no nested Pressables.
-    // This guarantees touch events fire on all platforms.
+    // ──────────────────────────────────
     if (isMyTab) {
       return (
         <ScrollView
           contentContainerStyle={{
-            paddingHorizontal: 16,
-            paddingTop: 16,
-            paddingBottom: 40,
+            // Extra padding so absolute-positioned × buttons (top: -8, right: -8)
+            // fall within the scrollable content area and are not clipped.
+            paddingHorizontal: 24,
+            paddingTop: 24,
+            paddingBottom: 48,
             flexDirection: 'row',
             flexWrap: 'wrap',
-            gap: 10,
+            gap: 14,
           }}
           showsVerticalScrollIndicator={false}
         >
           {/* Add button */}
-          <Animated.View entering={FadeIn.duration(200)}>
-            <Pressable
-              onPress={handlePickCustomSticker}
-              style={({ pressed }) => ({
-                width: myStickerSize,
-                height: myStickerSize,
-                alignItems: 'center',
-                justifyContent: 'center',
-                borderRadius: 16,
-                borderCurve: 'continuous',
-                backgroundColor: pressed ? theme.primaryLight : theme.background,
-                borderWidth: 2,
-                borderColor: theme.primary,
-                borderStyle: 'dashed',
-                gap: 4,
-                opacity: pressed ? 0.7 : 1,
-              })}
-            >
-              <Ionicons name="add-circle" size={28} color={theme.primary} />
-              <Text
-                style={{
-                  fontFamily: Fonts.bold,
-                  fontSize: 10,
-                  color: theme.primary,
-                }}
-              >
-                追加
-              </Text>
-            </Pressable>
-          </Animated.View>
+          <Pressable
+            onPress={handlePickCustomSticker}
+            style={({ pressed }) => ({
+              width: myStickerSize,
+              height: myStickerSize,
+              alignItems: 'center',
+              justifyContent: 'center',
+              borderRadius: 16,
+              borderCurve: 'continuous',
+              backgroundColor: pressed ? theme.primaryLight : theme.background,
+              borderWidth: 2,
+              borderColor: theme.primary,
+              borderStyle: 'dashed',
+              gap: 4,
+              opacity: pressed ? 0.7 : 1,
+            })}
+          >
+            <Ionicons name="add-circle" size={28} color={theme.primary} />
+            <Text style={{ fontFamily: Fonts.bold, fontSize: 10, color: theme.primary }}>
+              追加
+            </Text>
+          </Pressable>
 
           {/* Custom sticker cards */}
-          {customStickers.map((sticker, index) => (
-            <CustomStickerCard
+          {customStickers.map((sticker) => (
+            <View
               key={sticker.id}
-              sticker={sticker}
-              size={myStickerSize}
-              index={index}
-              theme={theme}
-              onSelect={() => handleSelectCustomSticker(sticker)}
-              onDelete={() => {
-                confirmDelete(() => removeCustomSticker(sticker.id));
+              style={{
+                width: myStickerSize,
+                height: myStickerSize,
+                // overflow visible so the × button at top:-8, right:-8 is not clipped
+                overflow: 'visible',
               }}
-            />
+            >
+              {/* Sticker image — tap to select */}
+              <Pressable
+                onPress={() => handleSelectCustomSticker(sticker)}
+                style={({ pressed }) => ({
+                  width: myStickerSize,
+                  height: myStickerSize,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  borderRadius: 16,
+                  borderCurve: 'continuous',
+                  backgroundColor: pressed ? '#FFF0F5' : '#FAFAFA',
+                  borderWidth: 1.5,
+                  borderColor: pressed ? theme.primary : '#F0E8EE',
+                  transform: [{ scale: pressed ? 1.05 : 1 }],
+                })}
+              >
+                <Image
+                  source={{ uri: sticker.uri }}
+                  style={{ width: myStickerSize - 16, height: myStickerSize - 16, borderRadius: 8 }}
+                  contentFit="contain"
+                  transition={200}
+                  recyclingKey={sticker.id}
+                />
+              </Pressable>
+
+              {/* ×  Delete button — TouchableOpacity, absolute positioned OUTSIDE the card.
+                  Uses react-native TouchableOpacity (not gesture-handler) to guarantee
+                  touch events are not intercepted by GestureHandlerRootView.
+                  zIndex 9999 ensures it's above everything. */}
+              <TouchableOpacity
+                activeOpacity={0.6}
+                onPress={() => setDeleteTarget(sticker)}
+                hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+                style={{
+                  position: 'absolute',
+                  top: -8,
+                  right: -8,
+                  zIndex: 9999,
+                  width: 28,
+                  height: 28,
+                  borderRadius: 14,
+                  backgroundColor: '#F28B82',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  borderWidth: 2.5,
+                  borderColor: '#FFF',
+                  boxShadow: '0 2px 6px rgba(0,0,0,0.25)',
+                }}
+              >
+                <Ionicons name="close" size={14} color="#FFF" />
+              </TouchableOpacity>
+            </View>
           ))}
         </ScrollView>
       );
@@ -387,8 +421,9 @@ export default function StickerPickerScreen() {
             </Animated.View>
           )
         )}
-        {(activeCategory === '__recent' ? recentStickers : currentCategory.stickers).length ===
-          0 && <EmptyState message="ステッカーがありません" theme={theme} />}
+        {(activeCategory === '__recent' ? recentStickers : currentCategory.stickers).length === 0 && (
+          <EmptyState message="ステッカーがありません" theme={theme} />
+        )}
       </ScrollView>
     );
   };
@@ -427,121 +462,119 @@ export default function StickerPickerScreen() {
         {renderTab(CAT_TAB_ID, '🐱', 'ネコ', isCatTab ? '#FF8FAB' : undefined)}
         {renderTab(DECO_TAB_ID, '🔤', 'デコ文字', isDecoTab ? '#E91E63' : undefined)}
         {renderTab(MY_TAB_ID, '📁', 'マイ', isMyTab ? '#7C4DFF' : undefined)}
-
         {recentStickers.length > 0 && renderTab('__recent', '🕐', '最近')}
-
-        {STICKER_CATEGORIES.map((category) =>
-          renderTab(category.id, category.icon, category.name)
-        )}
+        {STICKER_CATEGORIES.map((category) => renderTab(category.id, category.icon, category.name))}
       </ScrollView>
 
       {/* Content grid */}
       {renderGrid()}
-    </View>
-  );
-}
 
-// =====================================================
-// Custom sticker card — extracted as a separate component
-// to isolate touch handling and avoid closure issues.
-//
-// Layout is a simple flex column (NO overlays, NO absolute
-// positioning for interactive elements):
-//
-//   ┌──────────────────┐
-//   │            [× ]  │  ← Row 1: delete button, right-aligned
-//   │   ┌──────────┐   │
-//   │   │  IMAGE   │   │  ← Row 2: tappable image area
-//   │   └──────────┘   │
-//   └──────────────────┘
-//
-// Both the × button and the image area are independent
-// sibling Pressables — no nesting, no overlays.
-// =====================================================
-function CustomStickerCard({
-  sticker,
-  size,
-  index,
-  theme,
-  onSelect,
-  onDelete,
-}: {
-  sticker: CustomSticker;
-  size: number;
-  index: number;
-  theme: ReturnType<typeof import('@/components/ui/use-theme').useTheme>;
-  onSelect: () => void;
-  onDelete: () => void;
-}) {
-  return (
-    <Animated.View entering={FadeIn.delay(index * 30).duration(300)}>
-      <View
-        style={{
-          width: size,
-          height: size,
-          borderRadius: 16,
-          borderCurve: 'continuous',
-          backgroundColor: '#FAFAFA',
-          borderWidth: 1.5,
-          borderColor: '#F0E8EE',
-        }}
+      {/* ──────────────────────────────────────────────────
+          Custom in-app delete confirmation dialog.
+          Rendered as a React Native <Modal> at the root of
+          this component — completely independent of the
+          formSheet, ScrollView, and GestureHandler hierarchy.
+          This is guaranteed to receive touch events.
+          ────────────────────────────────────────────────── */}
+      <Modal
+        visible={deleteTarget !== null}
+        transparent
+        animationType="fade"
+        onRequestClose={() => setDeleteTarget(null)}
       >
-        {/* Row 1: Delete × button — right-aligned, own touch target */}
-        <View
+        <Pressable
+          onPress={() => setDeleteTarget(null)}
           style={{
-            flexDirection: 'row',
-            justifyContent: 'flex-end',
-            paddingTop: 3,
-            paddingRight: 3,
-            zIndex: 10,
+            flex: 1,
+            justifyContent: 'center',
+            alignItems: 'center',
+            backgroundColor: 'rgba(92, 74, 110, 0.45)',
           }}
         >
           <Pressable
-            onPress={onDelete}
-            hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
-            style={({ pressed }) => ({
-              width: 24,
-              height: 24,
-              borderRadius: 12,
-              backgroundColor: pressed ? '#D32F2F' : '#F28B82',
-              alignItems: 'center',
-              justifyContent: 'center',
-              borderWidth: 2,
-              borderColor: '#FFF',
-              boxShadow: '0 1px 3px rgba(0,0,0,0.2)',
-              transform: [{ scale: pressed ? 0.9 : 1 }],
-            })}
-          >
-            <Ionicons name="close" size={12} color="#FFF" />
-          </Pressable>
-        </View>
-
-        {/* Row 2: Sticker image — tappable to select, fills remaining space */}
-        <Pressable
-          onPress={onSelect}
-          style={({ pressed }) => ({
-            flex: 1,
-            alignItems: 'center',
-            justifyContent: 'center',
-            marginTop: -4,
-            opacity: pressed ? 0.7 : 1,
-            transform: [{ scale: pressed ? 1.05 : 1 }],
-          })}
-        >
-          <Image
-            source={{ uri: sticker.uri }}
-            style={{
-              width: size - 20,
-              height: size - 42,
-              borderRadius: 8,
+            onPress={() => {
+              /* stop propagation — tapping inside dialog shouldn't dismiss */
             }}
-            contentFit="contain"
-            transition={200}
-            recyclingKey={sticker.id}
-          />
+            style={{
+              backgroundColor: '#FFFFFF',
+              borderRadius: 24,
+              borderCurve: 'continuous',
+              paddingVertical: 28,
+              paddingHorizontal: 24,
+              width: 280,
+              alignItems: 'center',
+              gap: 18,
+              boxShadow: '0 8px 32px rgba(0,0,0,0.18)',
+            }}
+          >
+            {/* Icon */}
+            <View
+              style={{
+                width: 56,
+                height: 56,
+                borderRadius: 28,
+                backgroundColor: '#FDE8E6',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <Ionicons name="trash-outline" size={28} color="#E57373" />
+            </View>
+
+            {/* Message */}
+            <Text
+              style={{
+                fontFamily: Fonts.bold,
+                fontSize: 16,
+                color: '#5C4A6E',
+                textAlign: 'center',
+              }}
+            >
+              このステッカーを削除しますか？
+            </Text>
+
+            {/* Buttons */}
+            <View style={{ flexDirection: 'row', gap: 12, width: '100%' }}>
+              {/* いいえ */}
+              <TouchableOpacity
+                activeOpacity={0.7}
+                onPress={() => setDeleteTarget(null)}
+                style={{
+                  flex: 1,
+                  paddingVertical: 14,
+                  borderRadius: 14,
+                  borderCurve: 'continuous',
+                  backgroundColor: '#F5F0F8',
+                  alignItems: 'center',
+                }}
+              >
+                <Text style={{ fontFamily: Fonts.medium, fontSize: 14, color: '#8B7A9E' }}>
+                  いいえ
+                </Text>
+              </TouchableOpacity>
+
+              {/* はい */}
+              <TouchableOpacity
+                activeOpacity={0.7}
+                onPress={handleConfirmDelete}
+                style={{
+                  flex: 1,
+                  paddingVertical: 14,
+                  borderRadius: 14,
+                  borderCurve: 'continuous',
+                  backgroundColor: '#F28B82',
+                  alignItems: 'center',
+                }}
+              >
+                <Text style={{ fontFamily: Fonts.bold, fontSize: 14, color: '#FFFFFF' }}>
+                  はい
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </Pressable>
         </Pressable>
-      </View>
-    </Animated.View>
+      </Modal>
+    </View>
   );
 }
 
