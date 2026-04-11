@@ -8,6 +8,8 @@ export default function TabLayout() {
   const insets = useSafeAreaInsets();
   const theme = useTheme();
 
+  const tabBarHeight = Math.max(56, 56 + insets.bottom);
+
   return (
     <Tabs
       screenOptions={{
@@ -22,9 +24,14 @@ export default function TabLayout() {
           backgroundColor: theme.surface,
           borderTopColor: theme.borderLight,
           borderTopWidth: 1,
-          paddingBottom: insets.bottom,
-          height: 56 + insets.bottom,
-          boxShadow: `0 -2px 12px ${theme.shadow}`,
+          paddingBottom: insets.bottom || 4,
+          paddingTop: 4,
+          height: tabBarHeight,
+          minHeight: 56,
+          boxShadow: '0 -2px 12px rgba(249, 168, 201, 0.15)',
+        },
+        tabBarIconStyle: {
+          marginTop: 2,
         },
       }}
     >

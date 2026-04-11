@@ -1,4 +1,13 @@
-import { View, Text, FlatList, TextInput, Pressable, Alert, useWindowDimensions } from 'react-native';
+import {
+  View,
+  Text,
+  FlatList,
+  TextInput,
+  Pressable,
+  TouchableOpacity,
+  Modal,
+  useWindowDimensions,
+} from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
 import { useState, useMemo, useCallback } from 'react';
@@ -21,6 +30,9 @@ export default function PagesScreen() {
   const deletePage = useDiaryStore((s) => s.deletePage);
   const [searchQuery, setSearchQuery] = useState('');
 
+  // Delete confirmation state — uses custom Modal instead of Alert.alert
+  const [deleteTarget, setDeleteTarget] = useState<DiaryPage | null>(null);
+
   const filteredPages = useMemo(() => {
     if (!searchQuery.trim()) return pages;
     const q = searchQuery.toLowerCase();
@@ -42,23 +54,12 @@ export default function PagesScreen() {
     router.push(`/editor/${id}`);
   }, [createPage, router]);
 
-  const handleDeletePage = useCallback(
-    (page: DiaryPage) => {
-      Alert.alert(
-        'ページを削除',
-        `「${page.title || '無題のページ'}」を削除しますか？\nこの操作は取り消せません。`,
-        [
-          { text: 'キャンセル', style: 'cancel' },
-          {
-            text: '削除',
-            style: 'destructive',
-            onPress: () => deletePage(page.id),
-          },
-        ]
-      );
-    },
-    [deletePage]
-  );
+  const handleConfirmDelete = useCallback(() => {
+    if (deleteTarget) {
+      deletePage(deleteTarget.id);
+    }
+    setDeleteTarget(null);
+  }, [deleteTarget, deletePage]);
 
   const numColumns = width > 600 ? 3 : 2;
   const cardGap = 14;
@@ -71,14 +72,40 @@ export default function PagesScreen() {
         entering={FadeInDown.delay(index * 50).springify()}
         style={{ width: cardWidth }}
       >
-        <PageCard
-          page={item}
-          onPress={() => router.push(`/editor/${item.id}`)}
-          onLongPress={() => handleDeletePage(item)}
-        />
+        {/* Card wrapper with overflow visible for the × button */}
+        <View style={{ overflow: 'visible' }}>
+          <PageCard
+            page={item}
+            onPress={() => router.push(`/editor/${item.id}`)}
+          />
+
+          {/* Delete × button — TouchableOpacity, absolute at top-right of card */}
+          <TouchableOpacity
+            activeOpacity={0.6}
+            onPress={() => setDeleteTarget(item)}
+            hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+            style={{
+              position: 'absolute',
+              top: -6,
+              right: -6,
+              zIndex: 9999,
+              width: 28,
+              height: 28,
+              borderRadius: 14,
+              backgroundColor: '#F28B82',
+              alignItems: 'center',
+              justifyContent: 'center',
+              borderWidth: 2.5,
+              borderColor: '#FFF',
+              boxShadow: '0 2px 6px rgba(0,0,0,0.25)',
+            }}
+          >
+            <Ionicons name="close" size={14} color="#FFF" />
+          </TouchableOpacity>
+        </View>
       </Animated.View>
     ),
-    [cardWidth, router, handleDeletePage]
+    [cardWidth, router]
   );
 
   return (
@@ -199,8 +226,8 @@ export default function PagesScreen() {
             numColumns={numColumns}
             key={numColumns}
             contentContainerStyle={{
-              paddingHorizontal: 20,
-              paddingTop: 8,
+              paddingHorizontal: 24,
+              paddingTop: 14,
               paddingBottom: 100,
               gap: cardGap,
             }}
@@ -231,6 +258,120 @@ export default function PagesScreen() {
           <Ionicons name="add" size={30} color="#FFF" />
         </Pressable>
       </View>
+
+      {/* ── Delete Confirmation Modal ── */}
+      <Modal
+        visible={deleteTarget !== null}
+        transparent
+        animationType="fade"
+        onRequestClose={() => setDeleteTarget(null)}
+      >
+        <Pressable
+          onPress={() => setDeleteTarget(null)}
+          style={{
+            flex: 1,
+            justifyContent: 'center',
+            alignItems: 'center',
+            backgroundColor: 'rgba(92, 74, 110, 0.45)',
+          }}
+        >
+          <Pressable
+            onPress={() => {
+              /* prevent dismiss when tapping dialog body */
+            }}
+            style={{
+              backgroundColor: '#FFFFFF',
+              borderRadius: 24,
+              borderCurve: 'continuous',
+              paddingVertical: 28,
+              paddingHorizontal: 24,
+              width: 300,
+              alignItems: 'center',
+              gap: 16,
+              boxShadow: '0 8px 32px rgba(0,0,0,0.18)',
+            }}
+          >
+            {/* Icon */}
+            <View
+              style={{
+                width: 56,
+                height: 56,
+                borderRadius: 28,
+                backgroundColor: '#FDE8E6',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <Ionicons name="trash-outline" size={28} color="#E57373" />
+            </View>
+
+            {/* Title */}
+            <Text
+              style={{
+                fontFamily: Fonts.bold,
+                fontSize: 17,
+                color: '#5C4A6E',
+                textAlign: 'center',
+              }}
+            >
+              日記を削除
+            </Text>
+
+            {/* Message */}
+            <Text
+              style={{
+                fontFamily: Fonts.regular,
+                fontSize: 13,
+                color: '#8B7A9E',
+                textAlign: 'center',
+                lineHeight: 20,
+              }}
+            >
+              「{deleteTarget?.title || '無題のページ'}」を削除しますか？{'\n'}
+              削除すると元に戻せません。
+            </Text>
+
+            {/* Buttons */}
+            <View style={{ flexDirection: 'row', gap: 12, width: '100%', marginTop: 4 }}>
+              {/* いいえ */}
+              <TouchableOpacity
+                activeOpacity={0.7}
+                onPress={() => setDeleteTarget(null)}
+                style={{
+                  flex: 1,
+                  paddingVertical: 14,
+                  borderRadius: 14,
+                  borderCurve: 'continuous',
+                  backgroundColor: '#F5F0F8',
+                  alignItems: 'center',
+                }}
+              >
+                <Text style={{ fontFamily: Fonts.medium, fontSize: 14, color: '#8B7A9E' }}>
+                  いいえ
+                </Text>
+              </TouchableOpacity>
+
+              {/* はい */}
+              <TouchableOpacity
+                activeOpacity={0.7}
+                onPress={handleConfirmDelete}
+                style={{
+                  flex: 1,
+                  paddingVertical: 14,
+                  borderRadius: 14,
+                  borderCurve: 'continuous',
+                  backgroundColor: '#F28B82',
+                  alignItems: 'center',
+                }}
+              >
+                <Text style={{ fontFamily: Fonts.bold, fontSize: 14, color: '#FFFFFF' }}>
+                  はい
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </Pressable>
+        </Pressable>
+      </Modal>
     </GradientBackground>
   );
 }
