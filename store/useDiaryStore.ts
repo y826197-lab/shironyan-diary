@@ -26,6 +26,7 @@ interface DiaryState {
   clearStrokes: (pageId: string) => void;
   getPagesByDate: (date: string) => DiaryPage[];
   getDatesWithEntries: () => Set<string>;
+  replaceAllPages: (pages: DiaryPage[]) => void;
 }
 
 export const useDiaryStore = create<DiaryState>()(
@@ -161,6 +162,19 @@ export const useDiaryStore = create<DiaryState>()(
 
       getDatesWithEntries: () => {
         return new Set(get().pages.map((p) => p.date));
+      },
+
+      replaceAllPages: (newPages: DiaryPage[]) => {
+        // Clean up all existing persisted images first
+        const existing = get().pages;
+        for (const page of existing) {
+          for (const el of page.elements) {
+            if (el.type === 'photo' || el.type === 'custom-image') {
+              deletePersistedImage(el.content).catch(() => {});
+            }
+          }
+        }
+        set({ pages: newPages });
       },
     }),
     {

@@ -1,5 +1,6 @@
-import { View, Text, ScrollView, Pressable, Alert } from 'react-native';
+import { View, Text, ScrollView, Pressable, Alert, ActivityIndicator } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useState, useCallback } from 'react';
 import Animated, { FadeInDown } from 'react-native-reanimated';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { Fonts } from '@/constants/Typography';
@@ -9,6 +10,7 @@ import { GradientBackground } from '@/components/ui/gradient-background';
 import { CuteCard } from '@/components/ui/cute-card';
 import { useAppStore } from '@/store/useAppStore';
 import { useDiaryStore } from '@/store/useDiaryStore';
+import { exportBackup, importBackup } from '@/utils/backup';
 
 const THEME_OPTIONS: { key: ThemeKey; label: string; emoji: string }[] = [
   { key: 'pink', label: 'ピンク', emoji: '🌸' },
@@ -29,7 +31,12 @@ export default function SettingsScreen() {
   const setTheme = useAppStore((s) => s.setTheme);
   const setFontScale = useAppStore((s) => s.setFontScale);
   const preferences = useAppStore((s) => s.preferences);
+  const customTitle = useAppStore((s) => s.customTitle);
   const pages = useDiaryStore((s) => s.pages);
+
+  const [isExporting, setIsExporting] = useState(false);
+  const [isImporting, setIsImporting] = useState(false);
+  const [progressMessage, setProgressMessage] = useState('');
 
   const totalStrokes = pages.reduce((sum, p) => sum + p.strokes.length, 0);
   const totalPhotos = pages.reduce(
@@ -47,9 +54,9 @@ export default function SettingsScreen() {
       'データをクリア',
       'すべての日記データを削除しますか？\nこの操作は取り消せません。',
       [
-        { text: 'キャンセル', style: 'cancel' },
+        { text: 'いいえ', style: 'cancel' },
         {
-          text: '削除',
+          text: 'はい',
           style: 'destructive',
           onPress: () => {
             pages.forEach((p) => useDiaryStore.getState().deletePage(p.id));
@@ -58,6 +65,57 @@ export default function SettingsScreen() {
       ]
     );
   };
+
+  const handleExport = useCallback(async () => {
+    if (isExporting) return;
+    setIsExporting(true);
+    setProgressMessage('');
+    try {
+      await exportBackup((msg) => setProgressMessage(msg));
+      Alert.alert('エクスポート完了', 'バックアップデータを書き出しました。');
+    } catch (error) {
+      const message = error instanceof Error ? error.message : '不明なエラーが発生しました';
+      Alert.alert('エクスポート失敗', message);
+    } finally {
+      setIsExporting(false);
+      setProgressMessage('');
+    }
+  }, [isExporting]);
+
+  const handleImport = useCallback(async () => {
+    if (isImporting) return;
+
+    // Show confirmation dialog before proceeding
+    Alert.alert(
+      'データを読み込む',
+      '現在のデータを上書きします。よろしいですか？',
+      [
+        { text: 'いいえ', style: 'cancel' },
+        {
+          text: 'はい',
+          style: 'destructive',
+          onPress: async () => {
+            setIsImporting(true);
+            setProgressMessage('');
+            try {
+              const success = await importBackup((msg) => setProgressMessage(msg));
+              if (success) {
+                Alert.alert('インポート完了', 'バックアップデータを正常に復元しました。');
+              }
+            } catch (error) {
+              const message = error instanceof Error ? error.message : '不明なエラーが発生しました';
+              Alert.alert('インポート失敗', message);
+            } finally {
+              setIsImporting(false);
+              setProgressMessage('');
+            }
+          },
+        },
+      ]
+    );
+  }, [isImporting]);
+
+  const isBusy = isExporting || isImporting;
 
   return (
     <GradientBackground>
@@ -239,8 +297,155 @@ export default function SettingsScreen() {
           </CuteCard>
         </Animated.View>
 
-        {/* Data Management */}
+        {/* Export / Import */}
         <Animated.View entering={FadeInDown.delay(500).springify()} style={{ gap: 12 }}>
+          <Text
+            style={{
+              fontFamily: Fonts.bold,
+              fontSize: 15,
+              color: theme.text,
+              paddingLeft: 4,
+            }}
+          >
+            💾 データのバックアップ
+          </Text>
+          <CuteCard>
+            <View style={{ gap: 4 }}>
+              {/* Export button */}
+              <Pressable
+                onPress={handleExport}
+                disabled={isBusy}
+                style={({ pressed }) => ({
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  gap: 12,
+                  paddingVertical: 12,
+                  opacity: isBusy ? 0.5 : pressed ? 0.7 : 1,
+                })}
+              >
+                <View
+                  style={{
+                    width: 36,
+                    height: 36,
+                    borderRadius: 18,
+                    backgroundColor: '#E8F5E9',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                >
+                  {isExporting ? (
+                    <ActivityIndicator size="small" color="#66BB6A" />
+                  ) : (
+                    <Ionicons name="cloud-upload-outline" size={18} color="#66BB6A" />
+                  )}
+                </View>
+                <View style={{ flex: 1 }}>
+                  <Text
+                    style={{
+                      fontFamily: Fonts.medium,
+                      fontSize: 14,
+                      color: theme.text,
+                    }}
+                  >
+                    データを書き出す
+                  </Text>
+                  <Text
+                    style={{
+                      fontFamily: Fonts.regular,
+                      fontSize: 11,
+                      color: theme.textMuted,
+                    }}
+                  >
+                    日記・写真・ステッカーをJSONファイルに保存
+                  </Text>
+                </View>
+                <Ionicons name="chevron-forward" size={16} color={theme.textMuted} />
+              </Pressable>
+
+              {/* Divider */}
+              <View style={{ height: 1, backgroundColor: theme.borderLight, marginHorizontal: 4 }} />
+
+              {/* Import button */}
+              <Pressable
+                onPress={handleImport}
+                disabled={isBusy}
+                style={({ pressed }) => ({
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  gap: 12,
+                  paddingVertical: 12,
+                  opacity: isBusy ? 0.5 : pressed ? 0.7 : 1,
+                })}
+              >
+                <View
+                  style={{
+                    width: 36,
+                    height: 36,
+                    borderRadius: 18,
+                    backgroundColor: '#E3F2FD',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                >
+                  {isImporting ? (
+                    <ActivityIndicator size="small" color="#42A5F5" />
+                  ) : (
+                    <Ionicons name="cloud-download-outline" size={18} color="#42A5F5" />
+                  )}
+                </View>
+                <View style={{ flex: 1 }}>
+                  <Text
+                    style={{
+                      fontFamily: Fonts.medium,
+                      fontSize: 14,
+                      color: theme.text,
+                    }}
+                  >
+                    データを読み込む
+                  </Text>
+                  <Text
+                    style={{
+                      fontFamily: Fonts.regular,
+                      fontSize: 11,
+                      color: theme.textMuted,
+                    }}
+                  >
+                    バックアップJSONファイルからデータを復元
+                  </Text>
+                </View>
+                <Ionicons name="chevron-forward" size={16} color={theme.textMuted} />
+              </Pressable>
+
+              {/* Progress message */}
+              {progressMessage ? (
+                <View
+                  style={{
+                    paddingVertical: 8,
+                    paddingHorizontal: 12,
+                    backgroundColor: theme.primaryLight,
+                    borderRadius: 10,
+                    borderCurve: 'continuous',
+                    marginTop: 4,
+                  }}
+                >
+                  <Text
+                    style={{
+                      fontFamily: Fonts.medium,
+                      fontSize: 12,
+                      color: theme.primary,
+                      textAlign: 'center',
+                    }}
+                  >
+                    {progressMessage}
+                  </Text>
+                </View>
+              ) : null}
+            </View>
+          </CuteCard>
+        </Animated.View>
+
+        {/* Data Management */}
+        <Animated.View entering={FadeInDown.delay(600).springify()} style={{ gap: 12 }}>
           <Text
             style={{
               fontFamily: Fonts.bold,
@@ -300,7 +505,7 @@ export default function SettingsScreen() {
         </Animated.View>
 
         {/* About */}
-        <Animated.View entering={FadeInDown.delay(600).springify()} style={{ gap: 12 }}>
+        <Animated.View entering={FadeInDown.delay(700).springify()} style={{ gap: 12 }}>
           <Text
             style={{
               fontFamily: Fonts.bold,
@@ -322,7 +527,7 @@ export default function SettingsScreen() {
                   letterSpacing: 2,
                 }}
               >
-                ひびのき
+                {customTitle}
               </Text>
               <Text
                 style={{

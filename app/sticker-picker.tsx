@@ -153,15 +153,15 @@ export default function StickerPickerScreen() {
   }, [addCustomSticker]);
 
   // Delete custom sticker with confirmation
-  const handleLongPressCustomSticker = useCallback(
+  const handleDeleteCustomSticker = useCallback(
     (sticker: CustomSticker) => {
       Alert.alert(
         'ステッカーを削除',
         'このカスタムステッカーを削除しますか？',
         [
-          { text: 'キャンセル', style: 'cancel' },
+          { text: 'いいえ', style: 'cancel' },
           {
-            text: '削除',
+            text: 'はい',
             style: 'destructive',
             onPress: () => removeCustomSticker(sticker.id),
           },
@@ -320,7 +320,8 @@ export default function StickerPickerScreen() {
           keyExtractor={(item, index) =>
             '_isAddButton' in item ? '__add' : (item as CustomSticker).id ?? `item-${index}`
           }
-          contentContainerStyle={{ paddingHorizontal: 16, paddingTop: 16, paddingBottom: 40, gap: 10 }}
+          style={{ overflow: 'visible' }}
+          contentContainerStyle={{ paddingHorizontal: 20, paddingTop: 20, paddingBottom: 40, gap: 10 }}
           columnWrapperStyle={{ gap: 10, justifyContent: 'flex-start' }}
           renderItem={({ item, index }) => {
             // Add button
@@ -369,7 +370,7 @@ export default function StickerPickerScreen() {
                 <View style={{ width: myStickerSize, height: myStickerSize }}>
                   <Pressable
                     onPress={() => handleSelectCustomSticker(sticker)}
-                    onLongPress={() => handleLongPressCustomSticker(sticker)}
+                    onLongPress={() => handleDeleteCustomSticker(sticker)}
                     style={({ pressed }) => ({
                       width: myStickerSize,
                       height: myStickerSize,
@@ -396,7 +397,7 @@ export default function StickerPickerScreen() {
 
                   {/* Delete × button */}
                   <Pressable
-                    onPress={() => handleLongPressCustomSticker(sticker)}
+                    onPress={() => handleDeleteCustomSticker(sticker)}
                     hitSlop={6}
                     style={({ pressed }) => ({
                       position: 'absolute',

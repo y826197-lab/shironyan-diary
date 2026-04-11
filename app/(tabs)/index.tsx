@@ -1,7 +1,7 @@
-import { View, Text, ScrollView, Pressable } from 'react-native';
+import { View, Text, ScrollView, Pressable, Modal, TextInput, KeyboardAvoidingView, Platform } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
-import { useState, useCallback, useMemo } from 'react';
+import { useState, useCallback, useMemo, useRef } from 'react';
 import Animated, { FadeInDown, FadeInUp } from 'react-native-reanimated';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { Fonts } from '@/constants/Typography';
@@ -10,6 +10,7 @@ import { GradientBackground } from '@/components/ui/gradient-background';
 import { CuteCard } from '@/components/ui/cute-card';
 import { MonthCalendar } from '@/components/calendar/month-calendar';
 import { useDiaryStore } from '@/store/useDiaryStore';
+import { useAppStore } from '@/store/useAppStore';
 
 const MONTH_NAMES = [
   '1月', '2月', '3月', '4月', '5月', '6月',
@@ -29,6 +30,8 @@ export default function CalendarScreen() {
   const theme = useTheme();
   const pages = useDiaryStore((s) => s.pages);
   const createPage = useDiaryStore((s) => s.createPage);
+  const customTitle = useAppStore((s) => s.customTitle);
+  const setCustomTitle = useAppStore((s) => s.setCustomTitle);
 
   const now = new Date();
   const [year, setYear] = useState(now.getFullYear());
@@ -36,6 +39,11 @@ export default function CalendarScreen() {
   const [selectedDate, setSelectedDate] = useState<string | null>(
     now.toISOString().split('T')[0]
   );
+
+  // Title editing state
+  const [titleModalVisible, setTitleModalVisible] = useState(false);
+  const [titleInput, setTitleInput] = useState(customTitle);
+  const titleInputRef = useRef<TextInput>(null);
 
   const datesWithEntries = useMemo(() => new Set(pages.map((p) => p.date)), [pages]);
 
@@ -73,6 +81,19 @@ export default function CalendarScreen() {
     return `${d.getMonth() + 1}月${d.getDate()}日`;
   };
 
+  const handleTitlePress = useCallback(() => {
+    setTitleInput(customTitle);
+    setTitleModalVisible(true);
+    // Focus input after modal opens
+    setTimeout(() => titleInputRef.current?.focus(), 150);
+  }, [customTitle]);
+
+  const handleSaveTitle = useCallback(() => {
+    const trimmed = titleInput.trim();
+    setCustomTitle(trimmed || 'ひびのき');
+    setTitleModalVisible(false);
+  }, [titleInput, setCustomTitle]);
+
   const isThisMonth = year === now.getFullYear() && month === now.getMonth();
 
   return (
@@ -87,22 +108,37 @@ export default function CalendarScreen() {
         }}
         showsVerticalScrollIndicator={false}
       >
-        {/* Header */}
+        {/* Header — tappable to edit title */}
         <Animated.View
           entering={FadeInDown.delay(100).springify()}
           style={{ alignItems: 'center', gap: 2 }}
         >
           <Text style={{ fontSize: 28, lineHeight: 36 }}>🌸</Text>
-          <Text
-            style={{
-              fontFamily: Fonts.bold,
-              fontSize: 26,
-              color: theme.text,
-              letterSpacing: 3,
-            }}
+          <Pressable
+            onPress={handleTitlePress}
+            style={({ pressed }) => ({
+              flexDirection: 'row',
+              alignItems: 'center',
+              gap: 6,
+              paddingHorizontal: 12,
+              paddingVertical: 4,
+              borderRadius: 12,
+              borderCurve: 'continuous',
+              backgroundColor: pressed ? theme.primaryLight : 'transparent',
+            })}
           >
-            ひびのき
-          </Text>
+            <Text
+              style={{
+                fontFamily: Fonts.bold,
+                fontSize: 26,
+                color: theme.text,
+                letterSpacing: 3,
+              }}
+            >
+              {customTitle}
+            </Text>
+            <Ionicons name="pencil" size={14} color={theme.textMuted} style={{ marginTop: 2 }} />
+          </Pressable>
           <Text
             style={{
               fontFamily: Fonts.regular,
@@ -391,6 +427,148 @@ export default function CalendarScreen() {
           )}
         </Animated.View>
       </ScrollView>
+
+      {/* Title Edit Modal */}
+      <Modal
+        visible={titleModalVisible}
+        transparent
+        animationType="fade"
+        onRequestClose={() => setTitleModalVisible(false)}
+      >
+        <KeyboardAvoidingView
+          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+          style={{ flex: 1 }}
+        >
+          <Pressable
+            onPress={() => setTitleModalVisible(false)}
+            style={{
+              flex: 1,
+              justifyContent: 'center',
+              alignItems: 'center',
+              backgroundColor: 'rgba(92, 74, 110, 0.4)',
+            }}
+          >
+            <Pressable
+              onPress={(e) => e.stopPropagation()}
+              style={{
+                backgroundColor: theme.surface,
+                borderRadius: 24,
+                borderCurve: 'continuous',
+                padding: 28,
+                width: 300,
+                gap: 20,
+                boxShadow: `0 8px 32px rgba(0,0,0,0.18)`,
+              }}
+            >
+              {/* Modal header */}
+              <View style={{ alignItems: 'center', gap: 8 }}>
+                <Text style={{ fontSize: 32 }}>✏️</Text>
+                <Text
+                  style={{
+                    fontFamily: Fonts.bold,
+                    fontSize: 17,
+                    color: theme.text,
+                  }}
+                >
+                  タイトルを編集
+                </Text>
+              </View>
+
+              {/* Text input */}
+              <TextInput
+                ref={titleInputRef}
+                value={titleInput}
+                onChangeText={setTitleInput}
+                placeholder="ひびのき"
+                placeholderTextColor={theme.textMuted}
+                maxLength={20}
+                selectTextOnFocus
+                autoFocus
+                onSubmitEditing={handleSaveTitle}
+                returnKeyType="done"
+                style={{
+                  fontFamily: Fonts.bold,
+                  fontSize: 20,
+                  color: theme.text,
+                  textAlign: 'center',
+                  letterSpacing: 2,
+                  paddingVertical: 14,
+                  paddingHorizontal: 16,
+                  backgroundColor: theme.background,
+                  borderRadius: 16,
+                  borderCurve: 'continuous',
+                  borderWidth: 2,
+                  borderColor: theme.primaryLight,
+                }}
+              />
+
+              {/* Character count */}
+              <Text
+                style={{
+                  fontFamily: Fonts.regular,
+                  fontSize: 11,
+                  color: theme.textMuted,
+                  textAlign: 'right',
+                  marginTop: -14,
+                }}
+              >
+                {titleInput.length}/20
+              </Text>
+
+              {/* Action buttons */}
+              <View style={{ flexDirection: 'row', gap: 10 }}>
+                <Pressable
+                  onPress={() => setTitleModalVisible(false)}
+                  style={({ pressed }) => ({
+                    flex: 1,
+                    paddingVertical: 14,
+                    borderRadius: 14,
+                    borderCurve: 'continuous',
+                    backgroundColor: theme.background,
+                    borderWidth: 1,
+                    borderColor: theme.borderLight,
+                    alignItems: 'center',
+                    opacity: pressed ? 0.7 : 1,
+                  })}
+                >
+                  <Text
+                    style={{
+                      fontFamily: Fonts.medium,
+                      fontSize: 14,
+                      color: theme.textSecondary,
+                    }}
+                  >
+                    キャンセル
+                  </Text>
+                </Pressable>
+                <Pressable
+                  onPress={handleSaveTitle}
+                  style={({ pressed }) => ({
+                    flex: 1,
+                    paddingVertical: 14,
+                    borderRadius: 14,
+                    borderCurve: 'continuous',
+                    backgroundColor: theme.primary,
+                    alignItems: 'center',
+                    opacity: pressed ? 0.85 : 1,
+                    transform: [{ scale: pressed ? 0.97 : 1 }],
+                  })}
+                >
+                  <Text
+                    style={{
+                      fontFamily: Fonts.bold,
+                      fontSize: 14,
+                      color: '#FFF',
+                    }}
+                  >
+                    保存
+                  </Text>
+                </Pressable>
+              </View>
+            </Pressable>
+          </Pressable>
+        </KeyboardAvoidingView>
+      </Modal>
     </GradientBackground>
   );
 }

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": 1775909102728,
+  "generatedAt": 1775911516476,
   "entries": {
     "Index@app/index.tsx:5": {
       "element": {
@@ -711,2292 +711,6 @@
         {
           "origin": "dynamic",
           "resolvable": false
-        }
-      ]
-    },
-    "CalendarScreen@app/(tabs)/index.tsx:80": {
-      "element": {
-        "file": "app/(tabs)/index.tsx",
-        "line": 80
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/index.tsx",
-          "properties": {
-            "flex": {
-              "line": 81,
-              "col": 23,
-              "endCol": 24,
-              "raw": "1"
-            }
-          }
-        }
-      ]
-    },
-    "CalendarScreen@app/(tabs)/index.tsx:91": {
-      "element": {
-        "file": "app/(tabs)/index.tsx",
-        "line": 91
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/index.tsx",
-          "properties": {
-            "alignItems": {
-              "line": 93,
-              "col": 31,
-              "endCol": 39,
-              "raw": "'center'"
-            },
-            "gap": {
-              "line": 93,
-              "col": 46,
-              "endCol": 47,
-              "raw": "2"
-            }
-          }
-        }
-      ]
-    },
-    "CalendarScreen@app/(tabs)/index.tsx:95": {
-      "element": {
-        "file": "app/(tabs)/index.tsx",
-        "line": 95
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/index.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 95,
-              "col": 35,
-              "endCol": 37,
-              "raw": "28"
-            },
-            "lineHeight": {
-              "line": 95,
-              "col": 51,
-              "endCol": 53,
-              "raw": "36"
-            }
-          }
-        }
-      ]
-    },
-    "CalendarScreen@app/(tabs)/index.tsx:96": {
-      "element": {
-        "file": "app/(tabs)/index.tsx",
-        "line": 96
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/index.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 99,
-              "col": 24,
-              "endCol": 26,
-              "raw": "26"
-            },
-            "letterSpacing": {
-              "line": 101,
-              "col": 29,
-              "endCol": 30,
-              "raw": "3"
-            }
-          }
-        }
-      ]
-    },
-    "CalendarScreen@app/(tabs)/index.tsx:106": {
-      "element": {
-        "file": "app/(tabs)/index.tsx",
-        "line": 106
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/index.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 109,
-              "col": 24,
-              "endCol": 26,
-              "raw": "11"
-            },
-            "letterSpacing": {
-              "line": 111,
-              "col": 29,
-              "endCol": 30,
-              "raw": "2"
-            },
-            "marginTop": {
-              "line": 112,
-              "col": 25,
-              "endCol": 26,
-              "raw": "2"
-            }
-          }
-        }
-      ]
-    },
-    "CalendarScreen@app/(tabs)/index.tsx:123": {
-      "element": {
-        "file": "app/(tabs)/index.tsx",
-        "line": 123
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/index.tsx",
-          "properties": {
-            "flexDirection": {
-              "line": 125,
-              "col": 31,
-              "endCol": 36,
-              "raw": "'row'"
-            },
-            "alignItems": {
-              "line": 126,
-              "col": 28,
-              "endCol": 36,
-              "raw": "'center'"
-            },
-            "justifyContent": {
-              "line": 127,
-              "col": 32,
-              "endCol": 47,
-              "raw": "'space-between'"
-            },
-            "marginBottom": {
-              "line": 128,
-              "col": 30,
-              "endCol": 32,
-              "raw": "16"
-            }
-          }
-        }
-      ]
-    },
-    "CalendarScreen@app/(tabs)/index.tsx:131": {
-      "element": {
-        "file": "app/(tabs)/index.tsx",
-        "line": 131
-      },
-      "styles": [
-        {
-          "origin": "dynamic",
-          "resolvable": false
-        }
-      ]
-    },
-    "CalendarScreen@app/(tabs)/index.tsx:147": {
-      "element": {
-        "file": "app/(tabs)/index.tsx",
-        "line": 147
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/index.tsx",
-          "properties": {
-            "alignItems": {
-              "line": 147,
-              "col": 41,
-              "endCol": 49,
-              "raw": "'center'"
-            }
-          }
-        }
-      ]
-    },
-    "CalendarScreen@app/(tabs)/index.tsx:148": {
-      "element": {
-        "file": "app/(tabs)/index.tsx",
-        "line": 148
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/index.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 151,
-              "col": 30,
-              "endCol": 32,
-              "raw": "18"
-            }
-          }
-        }
-      ]
-    },
-    "CalendarScreen@app/(tabs)/index.tsx:158": {
-      "element": {
-        "file": "app/(tabs)/index.tsx",
-        "line": 158
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/index.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 161,
-              "col": 32,
-              "endCol": 34,
-              "raw": "10"
-            },
-            "marginTop": {
-              "line": 163,
-              "col": 33,
-              "endCol": 34,
-              "raw": "2"
-            }
-          }
-        }
-      ]
-    },
-    "CalendarScreen@app/(tabs)/index.tsx:171": {
-      "element": {
-        "file": "app/(tabs)/index.tsx",
-        "line": 171
-      },
-      "styles": [
-        {
-          "origin": "dynamic",
-          "resolvable": false
-        }
-      ]
-    },
-    "CalendarScreen@app/(tabs)/index.tsx:197": {
-      "element": {
-        "file": "app/(tabs)/index.tsx",
-        "line": 197
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/index.tsx",
-          "properties": {
-            "flexDirection": {
-              "line": 199,
-              "col": 31,
-              "endCol": 36,
-              "raw": "'row'"
-            },
-            "justifyContent": {
-              "line": 200,
-              "col": 32,
-              "endCol": 40,
-              "raw": "'center'"
-            },
-            "gap": {
-              "line": 201,
-              "col": 21,
-              "endCol": 23,
-              "raw": "20"
-            },
-            "marginTop": {
-              "line": 202,
-              "col": 27,
-              "endCol": 29,
-              "raw": "12"
-            },
-            "paddingTop": {
-              "line": 203,
-              "col": 28,
-              "endCol": 30,
-              "raw": "12"
-            },
-            "borderTopWidth": {
-              "line": 204,
-              "col": 32,
-              "endCol": 33,
-              "raw": "1"
-            }
-          }
-        }
-      ]
-    },
-    "CalendarScreen@app/(tabs)/index.tsx:208": {
-      "element": {
-        "file": "app/(tabs)/index.tsx",
-        "line": 208
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/index.tsx",
-          "properties": {
-            "alignItems": {
-              "line": 208,
-              "col": 41,
-              "endCol": 49,
-              "raw": "'center'"
-            }
-          }
-        }
-      ]
-    },
-    "CalendarScreen@app/(tabs)/index.tsx:209": {
-      "element": {
-        "file": "app/(tabs)/index.tsx",
-        "line": 209
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/index.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 212,
-              "col": 30,
-              "endCol": 32,
-              "raw": "18"
-            }
-          }
-        }
-      ]
-    },
-    "CalendarScreen@app/(tabs)/index.tsx:219": {
-      "element": {
-        "file": "app/(tabs)/index.tsx",
-        "line": 219
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/index.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 219,
-              "col": 68,
-              "endCol": 70,
-              "raw": "10"
-            }
-          }
-        }
-      ]
-    },
-    "CalendarScreen@app/(tabs)/index.tsx:223": {
-      "element": {
-        "file": "app/(tabs)/index.tsx",
-        "line": 223
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/index.tsx",
-          "properties": {
-            "width": {
-              "line": 223,
-              "col": 36,
-              "endCol": 37,
-              "raw": "1"
-            },
-            "height": {
-              "line": 223,
-              "col": 47,
-              "endCol": 49,
-              "raw": "28"
-            }
-          }
-        }
-      ]
-    },
-    "CalendarScreen@app/(tabs)/index.tsx:224": {
-      "element": {
-        "file": "app/(tabs)/index.tsx",
-        "line": 224
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/index.tsx",
-          "properties": {
-            "alignItems": {
-              "line": 224,
-              "col": 41,
-              "endCol": 49,
-              "raw": "'center'"
-            }
-          }
-        }
-      ]
-    },
-    "CalendarScreen@app/(tabs)/index.tsx:225": {
-      "element": {
-        "file": "app/(tabs)/index.tsx",
-        "line": 225
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/index.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 228,
-              "col": 30,
-              "endCol": 32,
-              "raw": "18"
-            }
-          }
-        }
-      ]
-    },
-    "CalendarScreen@app/(tabs)/index.tsx:235": {
-      "element": {
-        "file": "app/(tabs)/index.tsx",
-        "line": 235
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/index.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 235,
-              "col": 68,
-              "endCol": 70,
-              "raw": "10"
-            }
-          }
-        }
-      ]
-    },
-    "CalendarScreen@app/(tabs)/index.tsx:244": {
-      "element": {
-        "file": "app/(tabs)/index.tsx",
-        "line": 244
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/index.tsx",
-          "properties": {
-            "gap": {
-              "line": 244,
-              "col": 82,
-              "endCol": 84,
-              "raw": "12"
-            }
-          }
-        }
-      ]
-    },
-    "CalendarScreen@app/(tabs)/index.tsx:245": {
-      "element": {
-        "file": "app/(tabs)/index.tsx",
-        "line": 245
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/index.tsx",
-          "properties": {
-            "flexDirection": {
-              "line": 247,
-              "col": 29,
-              "endCol": 34,
-              "raw": "'row'"
-            },
-            "alignItems": {
-              "line": 248,
-              "col": 26,
-              "endCol": 34,
-              "raw": "'center'"
-            },
-            "justifyContent": {
-              "line": 249,
-              "col": 30,
-              "endCol": 45,
-              "raw": "'space-between'"
-            }
-          }
-        }
-      ]
-    },
-    "CalendarScreen@app/(tabs)/index.tsx:252": {
-      "element": {
-        "file": "app/(tabs)/index.tsx",
-        "line": 252
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/index.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 255,
-              "col": 26,
-              "endCol": 28,
-              "raw": "16"
-            }
-          }
-        }
-      ]
-    },
-    "CalendarScreen@app/(tabs)/index.tsx:261": {
-      "element": {
-        "file": "app/(tabs)/index.tsx",
-        "line": 261
-      },
-      "styles": [
-        {
-          "origin": "dynamic",
-          "resolvable": false
-        }
-      ]
-    },
-    "CalendarScreen@app/(tabs)/index.tsx:277": {
-      "element": {
-        "file": "app/(tabs)/index.tsx",
-        "line": 277
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/index.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 280,
-              "col": 28,
-              "endCol": 30,
-              "raw": "13"
-            },
-            "color": {
-              "line": 281,
-              "col": 25,
-              "endCol": 31,
-              "raw": "'#FFF'"
-            }
-          }
-        }
-      ]
-    },
-    "CalendarScreen@app/(tabs)/index.tsx:291": {
-      "element": {
-        "file": "app/(tabs)/index.tsx",
-        "line": 291
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/index.tsx",
-          "properties": {
-            "alignItems": {
-              "line": 291,
-              "col": 41,
-              "endCol": 49,
-              "raw": "'center'"
-            },
-            "paddingVertical": {
-              "line": 291,
-              "col": 68,
-              "endCol": 70,
-              "raw": "28"
-            },
-            "gap": {
-              "line": 291,
-              "col": 77,
-              "endCol": 79,
-              "raw": "12"
-            }
-          }
-        }
-      ]
-    },
-    "CalendarScreen@app/(tabs)/index.tsx:292": {
-      "element": {
-        "file": "app/(tabs)/index.tsx",
-        "line": 292
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/index.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 292,
-              "col": 41,
-              "endCol": 43,
-              "raw": "44"
-            }
-          }
-        }
-      ]
-    },
-    "CalendarScreen@app/(tabs)/index.tsx:293": {
-      "element": {
-        "file": "app/(tabs)/index.tsx",
-        "line": 293
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/index.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 296,
-              "col": 30,
-              "endCol": 32,
-              "raw": "14"
-            },
-            "textAlign": {
-              "line": 298,
-              "col": 31,
-              "endCol": 39,
-              "raw": "'center'"
-            },
-            "lineHeight": {
-              "line": 299,
-              "col": 32,
-              "endCol": 34,
-              "raw": "22"
-            }
-          }
-        }
-      ]
-    },
-    "CalendarScreen@app/(tabs)/index.tsx:315": {
-      "element": {
-        "file": "app/(tabs)/index.tsx",
-        "line": 315
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/index.tsx",
-          "properties": {
-            "flexDirection": {
-              "line": 315,
-              "col": 48,
-              "endCol": 53,
-              "raw": "'row'"
-            },
-            "gap": {
-              "line": 315,
-              "col": 60,
-              "endCol": 62,
-              "raw": "12"
-            },
-            "alignItems": {
-              "line": 315,
-              "col": 76,
-              "endCol": 84,
-              "raw": "'center'"
-            }
-          }
-        }
-      ]
-    },
-    "CalendarScreen@app/(tabs)/index.tsx:317": {
-      "element": {
-        "file": "app/(tabs)/index.tsx",
-        "line": 317
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/index.tsx",
-          "properties": {
-            "width": {
-              "line": 319,
-              "col": 31,
-              "endCol": 33,
-              "raw": "56"
-            },
-            "height": {
-              "line": 320,
-              "col": 32,
-              "endCol": 34,
-              "raw": "56"
-            },
-            "borderRadius": {
-              "line": 321,
-              "col": 38,
-              "endCol": 40,
-              "raw": "14"
-            },
-            "borderCurve": {
-              "line": 322,
-              "col": 37,
-              "endCol": 49,
-              "raw": "'continuous'"
-            },
-            "alignItems": {
-              "line": 324,
-              "col": 36,
-              "endCol": 44,
-              "raw": "'center'"
-            },
-            "justifyContent": {
-              "line": 325,
-              "col": 40,
-              "endCol": 48,
-              "raw": "'center'"
-            }
-          }
-        }
-      ]
-    },
-    "CalendarScreen@app/(tabs)/index.tsx:329": {
-      "element": {
-        "file": "app/(tabs)/index.tsx",
-        "line": 329
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/index.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 329,
-              "col": 49,
-              "endCol": 51,
-              "raw": "28"
-            }
-          }
-        }
-      ]
-    },
-    "CalendarScreen@app/(tabs)/index.tsx:339": {
-      "element": {
-        "file": "app/(tabs)/index.tsx",
-        "line": 339
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/index.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 339,
-              "col": 49,
-              "endCol": 51,
-              "raw": "28"
-            }
-          }
-        }
-      ]
-    },
-    "CalendarScreen@app/(tabs)/index.tsx:343": {
-      "element": {
-        "file": "app/(tabs)/index.tsx",
-        "line": 343
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/index.tsx",
-          "properties": {
-            "flex": {
-              "line": 343,
-              "col": 41,
-              "endCol": 42,
-              "raw": "1"
-            },
-            "gap": {
-              "line": 343,
-              "col": 49,
-              "endCol": 50,
-              "raw": "4"
-            }
-          }
-        }
-      ]
-    },
-    "CalendarScreen@app/(tabs)/index.tsx:344": {
-      "element": {
-        "file": "app/(tabs)/index.tsx",
-        "line": 344
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/index.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 347,
-              "col": 36,
-              "endCol": 38,
-              "raw": "15"
-            }
-          }
-        }
-      ]
-    },
-    "CalendarScreen@app/(tabs)/index.tsx:354": {
-      "element": {
-        "file": "app/(tabs)/index.tsx",
-        "line": 354
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/index.tsx",
-          "properties": {
-            "flexDirection": {
-              "line": 354,
-              "col": 52,
-              "endCol": 57,
-              "raw": "'row'"
-            },
-            "alignItems": {
-              "line": 354,
-              "col": 71,
-              "endCol": 79,
-              "raw": "'center'"
-            },
-            "gap": {
-              "line": 354,
-              "col": 86,
-              "endCol": 87,
-              "raw": "8"
-            }
-          }
-        }
-      ]
-    },
-    "CalendarScreen@app/(tabs)/index.tsx:356": {
-      "element": {
-        "file": "app/(tabs)/index.tsx",
-        "line": 356
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/index.tsx",
-          "properties": {
-            "flexDirection": {
-              "line": 356,
-              "col": 56,
-              "endCol": 61,
-              "raw": "'row'"
-            },
-            "alignItems": {
-              "line": 356,
-              "col": 75,
-              "endCol": 83,
-              "raw": "'center'"
-            },
-            "gap": {
-              "line": 356,
-              "col": 90,
-              "endCol": 91,
-              "raw": "3"
-            }
-          }
-        }
-      ]
-    },
-    "CalendarScreen@app/(tabs)/index.tsx:358": {
-      "element": {
-        "file": "app/(tabs)/index.tsx",
-        "line": 358
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/index.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 361,
-              "col": 42,
-              "endCol": 44,
-              "raw": "11"
-            }
-          }
-        }
-      ]
-    },
-    "CalendarScreen@app/(tabs)/index.tsx:370": {
-      "element": {
-        "file": "app/(tabs)/index.tsx",
-        "line": 370
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/index.tsx",
-          "properties": {
-            "flexDirection": {
-              "line": 370,
-              "col": 56,
-              "endCol": 61,
-              "raw": "'row'"
-            },
-            "alignItems": {
-              "line": 370,
-              "col": 75,
-              "endCol": 83,
-              "raw": "'center'"
-            },
-            "gap": {
-              "line": 370,
-              "col": 90,
-              "endCol": 91,
-              "raw": "3"
-            }
-          }
-        }
-      ]
-    },
-    "CalendarScreen@app/(tabs)/index.tsx:372": {
-      "element": {
-        "file": "app/(tabs)/index.tsx",
-        "line": 372
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/index.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 375,
-              "col": 42,
-              "endCol": 44,
-              "raw": "11"
-            }
-          }
-        }
-      ]
-    },
-    "SettingsScreen@app/(tabs)/settings.tsx:64": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 64
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "flex": {
-              "line": 65,
-              "col": 23,
-              "endCol": 24,
-              "raw": "1"
-            }
-          }
-        }
-      ]
-    },
-    "SettingsScreen@app/(tabs)/settings.tsx:75": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 75
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "alignItems": {
-              "line": 77,
-              "col": 31,
-              "endCol": 39,
-              "raw": "'center'"
-            },
-            "gap": {
-              "line": 77,
-              "col": 46,
-              "endCol": 47,
-              "raw": "4"
-            }
-          }
-        }
-      ]
-    },
-    "SettingsScreen@app/(tabs)/settings.tsx:79": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 79
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 79,
-              "col": 35,
-              "endCol": 37,
-              "raw": "32"
-            }
-          }
-        }
-      ]
-    },
-    "SettingsScreen@app/(tabs)/settings.tsx:80": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 80
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 83,
-              "col": 24,
-              "endCol": 26,
-              "raw": "22"
-            }
-          }
-        }
-      ]
-    },
-    "SettingsScreen@app/(tabs)/settings.tsx:92": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 92
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "gap": {
-              "line": 92,
-              "col": 82,
-              "endCol": 84,
-              "raw": "12"
-            }
-          }
-        }
-      ]
-    },
-    "SettingsScreen@app/(tabs)/settings.tsx:93": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 93
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 96,
-              "col": 24,
-              "endCol": 26,
-              "raw": "15"
-            },
-            "paddingLeft": {
-              "line": 98,
-              "col": 27,
-              "endCol": 28,
-              "raw": "4"
-            }
-          }
-        }
-      ]
-    },
-    "SettingsScreen@app/(tabs)/settings.tsx:104": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 104
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "flexDirection": {
-              "line": 104,
-              "col": 42,
-              "endCol": 47,
-              "raw": "'row'"
-            },
-            "gap": {
-              "line": 104,
-              "col": 54,
-              "endCol": 56,
-              "raw": "10"
-            }
-          }
-        }
-      ]
-    },
-    "SettingsScreen@app/(tabs)/settings.tsx:109": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 109
-      },
-      "styles": [
-        {
-          "origin": "dynamic",
-          "resolvable": false
-        }
-      ]
-    },
-    "SettingsScreen@app/(tabs)/settings.tsx:127": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 127
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "width": {
-              "line": 129,
-              "col": 31,
-              "endCol": 33,
-              "raw": "36"
-            },
-            "height": {
-              "line": 130,
-              "col": 32,
-              "endCol": 34,
-              "raw": "36"
-            },
-            "borderRadius": {
-              "line": 131,
-              "col": 38,
-              "endCol": 40,
-              "raw": "18"
-            },
-            "borderColor": {
-              "line": 134,
-              "col": 37,
-              "endCol": 43,
-              "raw": "'#FFF'"
-            },
-            "alignItems": {
-              "line": 138,
-              "col": 36,
-              "endCol": 44,
-              "raw": "'center'"
-            },
-            "justifyContent": {
-              "line": 139,
-              "col": 40,
-              "endCol": 48,
-              "raw": "'center'"
-            }
-          }
-        }
-      ]
-    },
-    "SettingsScreen@app/(tabs)/settings.tsx:146": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 146
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 149,
-              "col": 34,
-              "endCol": 36,
-              "raw": "12"
-            }
-          }
-        }
-      ]
-    },
-    "SettingsScreen@app/(tabs)/settings.tsx:163": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 163
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "gap": {
-              "line": 163,
-              "col": 82,
-              "endCol": 84,
-              "raw": "12"
-            }
-          }
-        }
-      ]
-    },
-    "SettingsScreen@app/(tabs)/settings.tsx:164": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 164
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 167,
-              "col": 24,
-              "endCol": 26,
-              "raw": "15"
-            },
-            "paddingLeft": {
-              "line": 169,
-              "col": 27,
-              "endCol": 28,
-              "raw": "4"
-            }
-          }
-        }
-      ]
-    },
-    "SettingsScreen@app/(tabs)/settings.tsx:175": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 175
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "flexDirection": {
-              "line": 175,
-              "col": 42,
-              "endCol": 47,
-              "raw": "'row'"
-            },
-            "gap": {
-              "line": 175,
-              "col": 54,
-              "endCol": 56,
-              "raw": "10"
-            }
-          }
-        }
-      ]
-    },
-    "SettingsScreen@app/(tabs)/settings.tsx:179": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 179
-      },
-      "styles": [
-        {
-          "origin": "dynamic",
-          "resolvable": false
-        }
-      ]
-    },
-    "SettingsScreen@app/(tabs)/settings.tsx:203": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 203
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 206,
-              "col": 34,
-              "endCol": 36,
-              "raw": "12"
-            },
-            "marginTop": {
-              "line": 208,
-              "col": 35,
-              "endCol": 36,
-              "raw": "4"
-            }
-          }
-        }
-      ]
-    },
-    "SettingsScreen@app/(tabs)/settings.tsx:221": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 221
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "gap": {
-              "line": 221,
-              "col": 82,
-              "endCol": 84,
-              "raw": "12"
-            }
-          }
-        }
-      ]
-    },
-    "SettingsScreen@app/(tabs)/settings.tsx:222": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 222
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 225,
-              "col": 24,
-              "endCol": 26,
-              "raw": "15"
-            },
-            "paddingLeft": {
-              "line": 227,
-              "col": 27,
-              "endCol": 28,
-              "raw": "4"
-            }
-          }
-        }
-      ]
-    },
-    "SettingsScreen@app/(tabs)/settings.tsx:233": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 233
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "flexDirection": {
-              "line": 233,
-              "col": 42,
-              "endCol": 47,
-              "raw": "'row'"
-            },
-            "flexWrap": {
-              "line": 233,
-              "col": 59,
-              "endCol": 65,
-              "raw": "'wrap'"
-            },
-            "gap": {
-              "line": 233,
-              "col": 72,
-              "endCol": 74,
-              "raw": "12"
-            }
-          }
-        }
-      ]
-    },
-    "SettingsScreen@app/(tabs)/settings.tsx:243": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 243
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "gap": {
-              "line": 243,
-              "col": 82,
-              "endCol": 84,
-              "raw": "12"
-            }
-          }
-        }
-      ]
-    },
-    "SettingsScreen@app/(tabs)/settings.tsx:244": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 244
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 247,
-              "col": 24,
-              "endCol": 26,
-              "raw": "15"
-            },
-            "paddingLeft": {
-              "line": 249,
-              "col": 27,
-              "endCol": 28,
-              "raw": "4"
-            }
-          }
-        }
-      ]
-    },
-    "SettingsScreen@app/(tabs)/settings.tsx:255": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 255
-      },
-      "styles": [
-        {
-          "origin": "dynamic",
-          "resolvable": false
-        }
-      ]
-    },
-    "SettingsScreen@app/(tabs)/settings.tsx:265": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 265
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "width": {
-              "line": 267,
-              "col": 25,
-              "endCol": 27,
-              "raw": "36"
-            },
-            "height": {
-              "line": 268,
-              "col": 26,
-              "endCol": 28,
-              "raw": "36"
-            },
-            "borderRadius": {
-              "line": 269,
-              "col": 32,
-              "endCol": 34,
-              "raw": "18"
-            },
-            "backgroundColor": {
-              "line": 270,
-              "col": 35,
-              "endCol": 44,
-              "raw": "'#FDE8E6'"
-            },
-            "alignItems": {
-              "line": 271,
-              "col": 30,
-              "endCol": 38,
-              "raw": "'center'"
-            },
-            "justifyContent": {
-              "line": 272,
-              "col": 34,
-              "endCol": 42,
-              "raw": "'center'"
-            }
-          }
-        }
-      ]
-    },
-    "SettingsScreen@app/(tabs)/settings.tsx:277": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 277
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "flex": {
-              "line": 277,
-              "col": 35,
-              "endCol": 36,
-              "raw": "1"
-            }
-          }
-        }
-      ]
-    },
-    "SettingsScreen@app/(tabs)/settings.tsx:278": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 278
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 281,
-              "col": 30,
-              "endCol": 32,
-              "raw": "14"
-            },
-            "color": {
-              "line": 282,
-              "col": 27,
-              "endCol": 36,
-              "raw": "'#E57373'"
-            }
-          }
-        }
-      ]
-    },
-    "SettingsScreen@app/(tabs)/settings.tsx:287": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 287
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 290,
-              "col": 30,
-              "endCol": 32,
-              "raw": "11"
-            }
-          }
-        }
-      ]
-    },
-    "SettingsScreen@app/(tabs)/settings.tsx:303": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 303
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "gap": {
-              "line": 303,
-              "col": 82,
-              "endCol": 84,
-              "raw": "12"
-            }
-          }
-        }
-      ]
-    },
-    "SettingsScreen@app/(tabs)/settings.tsx:304": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 304
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 307,
-              "col": 24,
-              "endCol": 26,
-              "raw": "15"
-            },
-            "paddingLeft": {
-              "line": 309,
-              "col": 27,
-              "endCol": 28,
-              "raw": "4"
-            }
-          }
-        }
-      ]
-    },
-    "SettingsScreen@app/(tabs)/settings.tsx:315": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 315
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "alignItems": {
-              "line": 315,
-              "col": 39,
-              "endCol": 47,
-              "raw": "'center'"
-            },
-            "gap": {
-              "line": 315,
-              "col": 54,
-              "endCol": 55,
-              "raw": "8"
-            },
-            "paddingVertical": {
-              "line": 315,
-              "col": 74,
-              "endCol": 76,
-              "raw": "12"
-            }
-          }
-        }
-      ]
-    },
-    "SettingsScreen@app/(tabs)/settings.tsx:316": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 316
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 316,
-              "col": 39,
-              "endCol": 41,
-              "raw": "40"
-            }
-          }
-        }
-      ]
-    },
-    "SettingsScreen@app/(tabs)/settings.tsx:317": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 317
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 320,
-              "col": 28,
-              "endCol": 30,
-              "raw": "20"
-            },
-            "letterSpacing": {
-              "line": 322,
-              "col": 33,
-              "endCol": 34,
-              "raw": "2"
-            }
-          }
-        }
-      ]
-    },
-    "SettingsScreen@app/(tabs)/settings.tsx:327": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 327
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 330,
-              "col": 28,
-              "endCol": 30,
-              "raw": "11"
-            },
-            "letterSpacing": {
-              "line": 332,
-              "col": 33,
-              "endCol": 34,
-              "raw": "2"
-            }
-          }
-        }
-      ]
-    },
-    "SettingsScreen@app/(tabs)/settings.tsx:337": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 337
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "height": {
-              "line": 339,
-              "col": 26,
-              "endCol": 27,
-              "raw": "1"
-            },
-            "width": {
-              "line": 340,
-              "col": 25,
-              "endCol": 27,
-              "raw": "60"
-            },
-            "marginVertical": {
-              "line": 342,
-              "col": 34,
-              "endCol": 35,
-              "raw": "6"
-            }
-          }
-        }
-      ]
-    },
-    "SettingsScreen@app/(tabs)/settings.tsx:345": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 345
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 348,
-              "col": 28,
-              "endCol": 30,
-              "raw": "12"
-            },
-            "textAlign": {
-              "line": 350,
-              "col": 29,
-              "endCol": 37,
-              "raw": "'center'"
-            },
-            "lineHeight": {
-              "line": 351,
-              "col": 30,
-              "endCol": 32,
-              "raw": "20"
-            }
-          }
-        }
-      ]
-    },
-    "StatBubble@app/(tabs)/settings.tsx:378": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 378
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "flex": {
-              "line": 380,
-              "col": 14,
-              "endCol": 15,
-              "raw": "1"
-            },
-            "minWidth": {
-              "line": 381,
-              "col": 18,
-              "endCol": 23,
-              "raw": "'40%'"
-            },
-            "alignItems": {
-              "line": 382,
-              "col": 20,
-              "endCol": 28,
-              "raw": "'center'"
-            },
-            "paddingVertical": {
-              "line": 383,
-              "col": 25,
-              "endCol": 27,
-              "raw": "14"
-            },
-            "borderRadius": {
-              "line": 384,
-              "col": 22,
-              "endCol": 24,
-              "raw": "16"
-            },
-            "borderCurve": {
-              "line": 385,
-              "col": 21,
-              "endCol": 33,
-              "raw": "'continuous'"
-            },
-            "gap": {
-              "line": 387,
-              "col": 13,
-              "endCol": 14,
-              "raw": "4"
-            }
-          }
-        }
-      ]
-    },
-    "StatBubble@app/(tabs)/settings.tsx:390": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 390
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 390,
-              "col": 31,
-              "endCol": 33,
-              "raw": "20"
-            }
-          }
-        }
-      ]
-    },
-    "StatBubble@app/(tabs)/settings.tsx:391": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 391
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 394,
-              "col": 20,
-              "endCol": 22,
-              "raw": "20"
-            }
-          }
-        }
-      ]
-    },
-    "StatBubble@app/(tabs)/settings.tsx:401": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 401
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 404,
-              "col": 20,
-              "endCol": 22,
-              "raw": "11"
-            }
-          }
-        }
-      ]
-    },
-    "renderTab@app/sticker-picker.tsx:189": {
-      "element": {
-        "file": "app/sticker-picker.tsx",
-        "line": 189
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/sticker-picker.tsx",
-          "properties": {
-            "flexDirection": {
-              "line": 193,
-              "col": 25,
-              "endCol": 30,
-              "raw": "'row'"
-            },
-            "alignItems": {
-              "line": 194,
-              "col": 22,
-              "endCol": 30,
-              "raw": "'center'"
-            },
-            "gap": {
-              "line": 195,
-              "col": 15,
-              "endCol": 16,
-              "raw": "5"
-            },
-            "paddingHorizontal": {
-              "line": 196,
-              "col": 29,
-              "endCol": 31,
-              "raw": "14"
-            },
-            "paddingVertical": {
-              "line": 197,
-              "col": 27,
-              "endCol": 28,
-              "raw": "8"
-            },
-            "borderRadius": {
-              "line": 198,
-              "col": 24,
-              "endCol": 26,
-              "raw": "20"
-            },
-            "borderCurve": {
-              "line": 199,
-              "col": 23,
-              "endCol": 35,
-              "raw": "'continuous'"
-            }
-          }
-        }
-      ]
-    },
-    "renderTab@app/sticker-picker.tsx:205": {
-      "element": {
-        "file": "app/sticker-picker.tsx",
-        "line": 205
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/sticker-picker.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 205,
-              "col": 33,
-              "endCol": 35,
-              "raw": "16"
-            }
-          }
-        }
-      ]
-    },
-    "renderTab@app/sticker-picker.tsx:206": {
-      "element": {
-        "file": "app/sticker-picker.tsx",
-        "line": 206
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/sticker-picker.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 209,
-              "col": 22,
-              "endCol": 24,
-              "raw": "12"
-            }
-          }
-        }
-      ]
-    },
-    "renderGrid@app/sticker-picker.tsx:233": {
-      "element": {
-        "file": "app/sticker-picker.tsx",
-        "line": 233
-      },
-      "styles": [
-        {
-          "origin": "dynamic",
-          "resolvable": false
-        }
-      ]
-    },
-    "renderGrid@app/sticker-picker.tsx:277": {
-      "element": {
-        "file": "app/sticker-picker.tsx",
-        "line": 277
-      },
-      "styles": [
-        {
-          "origin": "dynamic",
-          "resolvable": false
-        }
-      ]
-    },
-    "renderGrid@app/sticker-picker.tsx:292": {
-      "element": {
-        "file": "app/sticker-picker.tsx",
-        "line": 292
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/sticker-picker.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 295,
-              "col": 30,
-              "endCol": 32,
-              "raw": "17"
-            },
-            "letterSpacing": {
-              "line": 297,
-              "col": 35,
-              "endCol": 36,
-              "raw": "1"
-            }
-          }
-        }
-      ]
-    },
-    "renderGrid@app/sticker-picker.tsx:330": {
-      "element": {
-        "file": "app/sticker-picker.tsx",
-        "line": 330
-      },
-      "styles": [
-        {
-          "origin": "dynamic",
-          "resolvable": false
-        }
-      ]
-    },
-    "renderGrid@app/sticker-picker.tsx:348": {
-      "element": {
-        "file": "app/sticker-picker.tsx",
-        "line": 348
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/sticker-picker.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 351,
-              "col": 34,
-              "endCol": 36,
-              "raw": "10"
-            }
-          }
-        }
-      ]
-    },
-    "renderGrid@app/sticker-picker.tsx:370": {
-      "element": {
-        "file": "app/sticker-picker.tsx",
-        "line": 370
-      },
-      "styles": [
-        {
-          "origin": "dynamic",
-          "resolvable": false
-        }
-      ]
-    },
-    "renderGrid@app/sticker-picker.tsx:398": {
-      "element": {
-        "file": "app/sticker-picker.tsx",
-        "line": 398
-      },
-      "styles": [
-        {
-          "origin": "dynamic",
-          "resolvable": false
-        }
-      ]
-    },
-    "renderGrid@app/sticker-picker.tsx:440": {
-      "element": {
-        "file": "app/sticker-picker.tsx",
-        "line": 440
-      },
-      "styles": [
-        {
-          "origin": "dynamic",
-          "resolvable": false
-        }
-      ]
-    },
-    "renderGrid@app/sticker-picker.tsx:453": {
-      "element": {
-        "file": "app/sticker-picker.tsx",
-        "line": 453
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/sticker-picker.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 453,
-              "col": 39,
-              "endCol": 41,
-              "raw": "32"
-            }
-          }
-        }
-      ]
-    },
-    "StickerPickerScreen@app/sticker-picker.tsx:465": {
-      "element": {
-        "file": "app/sticker-picker.tsx",
-        "line": 465
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/sticker-picker.tsx",
-          "properties": {
-            "flex": {
-              "line": 467,
-              "col": 14,
-              "endCol": 15,
-              "raw": "1"
-            },
-            "borderTopLeftRadius": {
-              "line": 469,
-              "col": 29,
-              "endCol": 31,
-              "raw": "20"
-            },
-            "borderTopRightRadius": {
-              "line": 470,
-              "col": 30,
-              "endCol": 32,
-              "raw": "20"
-            },
-            "borderCurve": {
-              "line": 471,
-              "col": 21,
-              "endCol": 33,
-              "raw": "'continuous'"
-            }
-          }
-        }
-      ]
-    },
-    "StickerPickerScreen@app/sticker-picker.tsx:475": {
-      "element": {
-        "file": "app/sticker-picker.tsx",
-        "line": 475
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/sticker-picker.tsx",
-          "properties": {
-            "paddingHorizontal": {
-              "line": 475,
-              "col": 40,
-              "endCol": 42,
-              "raw": "20"
-            },
-            "paddingTop": {
-              "line": 475,
-              "col": 56,
-              "endCol": 58,
-              "raw": "16"
-            },
-            "paddingBottom": {
-              "line": 475,
-              "col": 75,
-              "endCol": 77,
-              "raw": "12"
-            }
-          }
-        }
-      ]
-    },
-    "StickerPickerScreen@app/sticker-picker.tsx:476": {
-      "element": {
-        "file": "app/sticker-picker.tsx",
-        "line": 476
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/sticker-picker.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 479,
-              "col": 22,
-              "endCol": 24,
-              "raw": "18"
-            },
-            "textAlign": {
-              "line": 481,
-              "col": 23,
-              "endCol": 31,
-              "raw": "'center'"
-            }
-          }
-        }
-      ]
-    },
-    "StickerPickerScreen@app/sticker-picker.tsx:489": {
-      "element": {
-        "file": "app/sticker-picker.tsx",
-        "line": 489
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/sticker-picker.tsx",
-          "properties": {
-            "maxHeight": {
-              "line": 492,
-              "col": 28,
-              "endCol": 30,
-              "raw": "48"
-            },
-            "flexGrow": {
-              "line": 492,
-              "col": 42,
-              "endCol": 43,
-              "raw": "0"
-            }
-          }
-        }
-      ]
-    },
-    "EmptyState@app/sticker-picker.tsx:520": {
-      "element": {
-        "file": "app/sticker-picker.tsx",
-        "line": 520
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/sticker-picker.tsx",
-          "properties": {
-            "alignItems": {
-              "line": 520,
-              "col": 31,
-              "endCol": 39,
-              "raw": "'center'"
-            },
-            "paddingTop": {
-              "line": 520,
-              "col": 53,
-              "endCol": 55,
-              "raw": "40"
-            }
-          }
-        }
-      ]
-    },
-    "EmptyState@app/sticker-picker.tsx:521": {
-      "element": {
-        "file": "app/sticker-picker.tsx",
-        "line": 521
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/sticker-picker.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 521,
-              "col": 58,
-              "endCol": 60,
-              "raw": "14"
-            }
-          }
         }
       ]
     },
@@ -6463,6 +4177,3108 @@
         {
           "origin": "dynamic",
           "resolvable": false
+        }
+      ]
+    },
+    "renderTab@app/sticker-picker.tsx:189": {
+      "element": {
+        "file": "app/sticker-picker.tsx",
+        "line": 189
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/sticker-picker.tsx",
+          "properties": {
+            "flexDirection": {
+              "line": 193,
+              "col": 25,
+              "endCol": 30,
+              "raw": "'row'"
+            },
+            "alignItems": {
+              "line": 194,
+              "col": 22,
+              "endCol": 30,
+              "raw": "'center'"
+            },
+            "gap": {
+              "line": 195,
+              "col": 15,
+              "endCol": 16,
+              "raw": "5"
+            },
+            "paddingHorizontal": {
+              "line": 196,
+              "col": 29,
+              "endCol": 31,
+              "raw": "14"
+            },
+            "paddingVertical": {
+              "line": 197,
+              "col": 27,
+              "endCol": 28,
+              "raw": "8"
+            },
+            "borderRadius": {
+              "line": 198,
+              "col": 24,
+              "endCol": 26,
+              "raw": "20"
+            },
+            "borderCurve": {
+              "line": 199,
+              "col": 23,
+              "endCol": 35,
+              "raw": "'continuous'"
+            }
+          }
+        }
+      ]
+    },
+    "renderTab@app/sticker-picker.tsx:205": {
+      "element": {
+        "file": "app/sticker-picker.tsx",
+        "line": 205
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/sticker-picker.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 205,
+              "col": 33,
+              "endCol": 35,
+              "raw": "16"
+            }
+          }
+        }
+      ]
+    },
+    "renderTab@app/sticker-picker.tsx:206": {
+      "element": {
+        "file": "app/sticker-picker.tsx",
+        "line": 206
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/sticker-picker.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 209,
+              "col": 22,
+              "endCol": 24,
+              "raw": "12"
+            }
+          }
+        }
+      ]
+    },
+    "renderGrid@app/sticker-picker.tsx:233": {
+      "element": {
+        "file": "app/sticker-picker.tsx",
+        "line": 233
+      },
+      "styles": [
+        {
+          "origin": "dynamic",
+          "resolvable": false
+        }
+      ]
+    },
+    "renderGrid@app/sticker-picker.tsx:277": {
+      "element": {
+        "file": "app/sticker-picker.tsx",
+        "line": 277
+      },
+      "styles": [
+        {
+          "origin": "dynamic",
+          "resolvable": false
+        }
+      ]
+    },
+    "renderGrid@app/sticker-picker.tsx:292": {
+      "element": {
+        "file": "app/sticker-picker.tsx",
+        "line": 292
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/sticker-picker.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 295,
+              "col": 30,
+              "endCol": 32,
+              "raw": "17"
+            },
+            "letterSpacing": {
+              "line": 297,
+              "col": 35,
+              "endCol": 36,
+              "raw": "1"
+            }
+          }
+        }
+      ]
+    },
+    "renderGrid@app/sticker-picker.tsx:316": {
+      "element": {
+        "file": "app/sticker-picker.tsx",
+        "line": 316
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/sticker-picker.tsx",
+          "properties": {
+            "overflow": {
+              "line": 323,
+              "col": 29,
+              "endCol": 38,
+              "raw": "'visible'"
+            }
+          }
+        }
+      ]
+    },
+    "renderGrid@app/sticker-picker.tsx:331": {
+      "element": {
+        "file": "app/sticker-picker.tsx",
+        "line": 331
+      },
+      "styles": [
+        {
+          "origin": "dynamic",
+          "resolvable": false
+        }
+      ]
+    },
+    "renderGrid@app/sticker-picker.tsx:349": {
+      "element": {
+        "file": "app/sticker-picker.tsx",
+        "line": 349
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/sticker-picker.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 352,
+              "col": 34,
+              "endCol": 36,
+              "raw": "10"
+            }
+          }
+        }
+      ]
+    },
+    "renderGrid@app/sticker-picker.tsx:371": {
+      "element": {
+        "file": "app/sticker-picker.tsx",
+        "line": 371
+      },
+      "styles": [
+        {
+          "origin": "dynamic",
+          "resolvable": false
+        }
+      ]
+    },
+    "renderGrid@app/sticker-picker.tsx:399": {
+      "element": {
+        "file": "app/sticker-picker.tsx",
+        "line": 399
+      },
+      "styles": [
+        {
+          "origin": "dynamic",
+          "resolvable": false
+        }
+      ]
+    },
+    "renderGrid@app/sticker-picker.tsx:441": {
+      "element": {
+        "file": "app/sticker-picker.tsx",
+        "line": 441
+      },
+      "styles": [
+        {
+          "origin": "dynamic",
+          "resolvable": false
+        }
+      ]
+    },
+    "renderGrid@app/sticker-picker.tsx:454": {
+      "element": {
+        "file": "app/sticker-picker.tsx",
+        "line": 454
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/sticker-picker.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 454,
+              "col": 39,
+              "endCol": 41,
+              "raw": "32"
+            }
+          }
+        }
+      ]
+    },
+    "StickerPickerScreen@app/sticker-picker.tsx:466": {
+      "element": {
+        "file": "app/sticker-picker.tsx",
+        "line": 466
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/sticker-picker.tsx",
+          "properties": {
+            "flex": {
+              "line": 468,
+              "col": 14,
+              "endCol": 15,
+              "raw": "1"
+            },
+            "borderTopLeftRadius": {
+              "line": 470,
+              "col": 29,
+              "endCol": 31,
+              "raw": "20"
+            },
+            "borderTopRightRadius": {
+              "line": 471,
+              "col": 30,
+              "endCol": 32,
+              "raw": "20"
+            },
+            "borderCurve": {
+              "line": 472,
+              "col": 21,
+              "endCol": 33,
+              "raw": "'continuous'"
+            }
+          }
+        }
+      ]
+    },
+    "StickerPickerScreen@app/sticker-picker.tsx:476": {
+      "element": {
+        "file": "app/sticker-picker.tsx",
+        "line": 476
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/sticker-picker.tsx",
+          "properties": {
+            "paddingHorizontal": {
+              "line": 476,
+              "col": 40,
+              "endCol": 42,
+              "raw": "20"
+            },
+            "paddingTop": {
+              "line": 476,
+              "col": 56,
+              "endCol": 58,
+              "raw": "16"
+            },
+            "paddingBottom": {
+              "line": 476,
+              "col": 75,
+              "endCol": 77,
+              "raw": "12"
+            }
+          }
+        }
+      ]
+    },
+    "StickerPickerScreen@app/sticker-picker.tsx:477": {
+      "element": {
+        "file": "app/sticker-picker.tsx",
+        "line": 477
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/sticker-picker.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 480,
+              "col": 22,
+              "endCol": 24,
+              "raw": "18"
+            },
+            "textAlign": {
+              "line": 482,
+              "col": 23,
+              "endCol": 31,
+              "raw": "'center'"
+            }
+          }
+        }
+      ]
+    },
+    "StickerPickerScreen@app/sticker-picker.tsx:490": {
+      "element": {
+        "file": "app/sticker-picker.tsx",
+        "line": 490
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/sticker-picker.tsx",
+          "properties": {
+            "maxHeight": {
+              "line": 493,
+              "col": 28,
+              "endCol": 30,
+              "raw": "48"
+            },
+            "flexGrow": {
+              "line": 493,
+              "col": 42,
+              "endCol": 43,
+              "raw": "0"
+            }
+          }
+        }
+      ]
+    },
+    "EmptyState@app/sticker-picker.tsx:521": {
+      "element": {
+        "file": "app/sticker-picker.tsx",
+        "line": 521
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/sticker-picker.tsx",
+          "properties": {
+            "alignItems": {
+              "line": 521,
+              "col": 31,
+              "endCol": 39,
+              "raw": "'center'"
+            },
+            "paddingTop": {
+              "line": 521,
+              "col": 53,
+              "endCol": 55,
+              "raw": "40"
+            }
+          }
+        }
+      ]
+    },
+    "EmptyState@app/sticker-picker.tsx:522": {
+      "element": {
+        "file": "app/sticker-picker.tsx",
+        "line": 522
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/sticker-picker.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 522,
+              "col": 58,
+              "endCol": 60,
+              "raw": "14"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:122": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 122
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "flex": {
+              "line": 123,
+              "col": 23,
+              "endCol": 24,
+              "raw": "1"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:133": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 133
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "alignItems": {
+              "line": 135,
+              "col": 31,
+              "endCol": 39,
+              "raw": "'center'"
+            },
+            "gap": {
+              "line": 135,
+              "col": 46,
+              "endCol": 47,
+              "raw": "4"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:137": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 137
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 137,
+              "col": 35,
+              "endCol": 37,
+              "raw": "32"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:138": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 138
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 141,
+              "col": 24,
+              "endCol": 26,
+              "raw": "22"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:150": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 150
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "gap": {
+              "line": 150,
+              "col": 82,
+              "endCol": 84,
+              "raw": "12"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:151": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 151
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 154,
+              "col": 24,
+              "endCol": 26,
+              "raw": "15"
+            },
+            "paddingLeft": {
+              "line": 156,
+              "col": 27,
+              "endCol": 28,
+              "raw": "4"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:162": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 162
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "flexDirection": {
+              "line": 162,
+              "col": 42,
+              "endCol": 47,
+              "raw": "'row'"
+            },
+            "gap": {
+              "line": 162,
+              "col": 54,
+              "endCol": 56,
+              "raw": "10"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:167": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 167
+      },
+      "styles": [
+        {
+          "origin": "dynamic",
+          "resolvable": false
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:185": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 185
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "width": {
+              "line": 187,
+              "col": 31,
+              "endCol": 33,
+              "raw": "36"
+            },
+            "height": {
+              "line": 188,
+              "col": 32,
+              "endCol": 34,
+              "raw": "36"
+            },
+            "borderRadius": {
+              "line": 189,
+              "col": 38,
+              "endCol": 40,
+              "raw": "18"
+            },
+            "borderColor": {
+              "line": 192,
+              "col": 37,
+              "endCol": 43,
+              "raw": "'#FFF'"
+            },
+            "alignItems": {
+              "line": 196,
+              "col": 36,
+              "endCol": 44,
+              "raw": "'center'"
+            },
+            "justifyContent": {
+              "line": 197,
+              "col": 40,
+              "endCol": 48,
+              "raw": "'center'"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:204": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 204
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 207,
+              "col": 34,
+              "endCol": 36,
+              "raw": "12"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:221": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 221
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "gap": {
+              "line": 221,
+              "col": 82,
+              "endCol": 84,
+              "raw": "12"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:222": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 222
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 225,
+              "col": 24,
+              "endCol": 26,
+              "raw": "15"
+            },
+            "paddingLeft": {
+              "line": 227,
+              "col": 27,
+              "endCol": 28,
+              "raw": "4"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:233": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 233
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "flexDirection": {
+              "line": 233,
+              "col": 42,
+              "endCol": 47,
+              "raw": "'row'"
+            },
+            "gap": {
+              "line": 233,
+              "col": 54,
+              "endCol": 56,
+              "raw": "10"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:237": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 237
+      },
+      "styles": [
+        {
+          "origin": "dynamic",
+          "resolvable": false
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:261": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 261
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 264,
+              "col": 34,
+              "endCol": 36,
+              "raw": "12"
+            },
+            "marginTop": {
+              "line": 266,
+              "col": 35,
+              "endCol": 36,
+              "raw": "4"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:279": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 279
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "gap": {
+              "line": 279,
+              "col": 82,
+              "endCol": 84,
+              "raw": "12"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:280": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 280
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 283,
+              "col": 24,
+              "endCol": 26,
+              "raw": "15"
+            },
+            "paddingLeft": {
+              "line": 285,
+              "col": 27,
+              "endCol": 28,
+              "raw": "4"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:291": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 291
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "flexDirection": {
+              "line": 291,
+              "col": 42,
+              "endCol": 47,
+              "raw": "'row'"
+            },
+            "flexWrap": {
+              "line": 291,
+              "col": 59,
+              "endCol": 65,
+              "raw": "'wrap'"
+            },
+            "gap": {
+              "line": 291,
+              "col": 72,
+              "endCol": 74,
+              "raw": "12"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:301": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 301
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "gap": {
+              "line": 301,
+              "col": 82,
+              "endCol": 84,
+              "raw": "12"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:302": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 302
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 305,
+              "col": 24,
+              "endCol": 26,
+              "raw": "15"
+            },
+            "paddingLeft": {
+              "line": 307,
+              "col": 27,
+              "endCol": 28,
+              "raw": "4"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:313": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 313
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "gap": {
+              "line": 313,
+              "col": 32,
+              "endCol": 33,
+              "raw": "4"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:315": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 315
+      },
+      "styles": [
+        {
+          "origin": "dynamic",
+          "resolvable": false
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:326": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 326
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "width": {
+              "line": 328,
+              "col": 27,
+              "endCol": 29,
+              "raw": "36"
+            },
+            "height": {
+              "line": 329,
+              "col": 28,
+              "endCol": 30,
+              "raw": "36"
+            },
+            "borderRadius": {
+              "line": 330,
+              "col": 34,
+              "endCol": 36,
+              "raw": "18"
+            },
+            "backgroundColor": {
+              "line": 331,
+              "col": 37,
+              "endCol": 46,
+              "raw": "'#E8F5E9'"
+            },
+            "alignItems": {
+              "line": 332,
+              "col": 32,
+              "endCol": 40,
+              "raw": "'center'"
+            },
+            "justifyContent": {
+              "line": 333,
+              "col": 36,
+              "endCol": 44,
+              "raw": "'center'"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:342": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 342
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "flex": {
+              "line": 342,
+              "col": 37,
+              "endCol": 38,
+              "raw": "1"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:343": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 343
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 346,
+              "col": 32,
+              "endCol": 34,
+              "raw": "14"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:352": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 352
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 355,
+              "col": 32,
+              "endCol": 34,
+              "raw": "11"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:366": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 366
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "height": {
+              "line": 366,
+              "col": 37,
+              "endCol": 38,
+              "raw": "1"
+            },
+            "marginHorizontal": {
+              "line": 366,
+              "col": 94,
+              "endCol": 95,
+              "raw": "4"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:369": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 369
+      },
+      "styles": [
+        {
+          "origin": "dynamic",
+          "resolvable": false
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:380": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 380
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "width": {
+              "line": 382,
+              "col": 27,
+              "endCol": 29,
+              "raw": "36"
+            },
+            "height": {
+              "line": 383,
+              "col": 28,
+              "endCol": 30,
+              "raw": "36"
+            },
+            "borderRadius": {
+              "line": 384,
+              "col": 34,
+              "endCol": 36,
+              "raw": "18"
+            },
+            "backgroundColor": {
+              "line": 385,
+              "col": 37,
+              "endCol": 46,
+              "raw": "'#E3F2FD'"
+            },
+            "alignItems": {
+              "line": 386,
+              "col": 32,
+              "endCol": 40,
+              "raw": "'center'"
+            },
+            "justifyContent": {
+              "line": 387,
+              "col": 36,
+              "endCol": 44,
+              "raw": "'center'"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:396": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 396
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "flex": {
+              "line": 396,
+              "col": 37,
+              "endCol": 38,
+              "raw": "1"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:397": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 397
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 400,
+              "col": 32,
+              "endCol": 34,
+              "raw": "14"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:406": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 406
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 409,
+              "col": 32,
+              "endCol": 34,
+              "raw": "11"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:421": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 421
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "paddingVertical": {
+              "line": 423,
+              "col": 37,
+              "endCol": 38,
+              "raw": "8"
+            },
+            "paddingHorizontal": {
+              "line": 424,
+              "col": 39,
+              "endCol": 41,
+              "raw": "12"
+            },
+            "borderRadius": {
+              "line": 426,
+              "col": 34,
+              "endCol": 36,
+              "raw": "10"
+            },
+            "borderCurve": {
+              "line": 427,
+              "col": 33,
+              "endCol": 45,
+              "raw": "'continuous'"
+            },
+            "marginTop": {
+              "line": 428,
+              "col": 31,
+              "endCol": 32,
+              "raw": "4"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:431": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 431
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 434,
+              "col": 32,
+              "endCol": 34,
+              "raw": "12"
+            },
+            "textAlign": {
+              "line": 436,
+              "col": 33,
+              "endCol": 41,
+              "raw": "'center'"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:448": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 448
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "gap": {
+              "line": 448,
+              "col": 82,
+              "endCol": 84,
+              "raw": "12"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:449": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 449
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 452,
+              "col": 24,
+              "endCol": 26,
+              "raw": "15"
+            },
+            "paddingLeft": {
+              "line": 454,
+              "col": 27,
+              "endCol": 28,
+              "raw": "4"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:460": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 460
+      },
+      "styles": [
+        {
+          "origin": "dynamic",
+          "resolvable": false
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:470": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 470
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "width": {
+              "line": 472,
+              "col": 25,
+              "endCol": 27,
+              "raw": "36"
+            },
+            "height": {
+              "line": 473,
+              "col": 26,
+              "endCol": 28,
+              "raw": "36"
+            },
+            "borderRadius": {
+              "line": 474,
+              "col": 32,
+              "endCol": 34,
+              "raw": "18"
+            },
+            "backgroundColor": {
+              "line": 475,
+              "col": 35,
+              "endCol": 44,
+              "raw": "'#FDE8E6'"
+            },
+            "alignItems": {
+              "line": 476,
+              "col": 30,
+              "endCol": 38,
+              "raw": "'center'"
+            },
+            "justifyContent": {
+              "line": 477,
+              "col": 34,
+              "endCol": 42,
+              "raw": "'center'"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:482": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 482
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "flex": {
+              "line": 482,
+              "col": 35,
+              "endCol": 36,
+              "raw": "1"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:483": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 483
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 486,
+              "col": 30,
+              "endCol": 32,
+              "raw": "14"
+            },
+            "color": {
+              "line": 487,
+              "col": 27,
+              "endCol": 36,
+              "raw": "'#E57373'"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:492": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 492
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 495,
+              "col": 30,
+              "endCol": 32,
+              "raw": "11"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:508": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 508
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "gap": {
+              "line": 508,
+              "col": 82,
+              "endCol": 84,
+              "raw": "12"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:509": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 509
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 512,
+              "col": 24,
+              "endCol": 26,
+              "raw": "15"
+            },
+            "paddingLeft": {
+              "line": 514,
+              "col": 27,
+              "endCol": 28,
+              "raw": "4"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:520": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 520
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "alignItems": {
+              "line": 520,
+              "col": 39,
+              "endCol": 47,
+              "raw": "'center'"
+            },
+            "gap": {
+              "line": 520,
+              "col": 54,
+              "endCol": 55,
+              "raw": "8"
+            },
+            "paddingVertical": {
+              "line": 520,
+              "col": 74,
+              "endCol": 76,
+              "raw": "12"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:521": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 521
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 521,
+              "col": 39,
+              "endCol": 41,
+              "raw": "40"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:522": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 522
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 525,
+              "col": 28,
+              "endCol": 30,
+              "raw": "20"
+            },
+            "letterSpacing": {
+              "line": 527,
+              "col": 33,
+              "endCol": 34,
+              "raw": "2"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:532": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 532
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 535,
+              "col": 28,
+              "endCol": 30,
+              "raw": "11"
+            },
+            "letterSpacing": {
+              "line": 537,
+              "col": 33,
+              "endCol": 34,
+              "raw": "2"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:542": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 542
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "height": {
+              "line": 544,
+              "col": 26,
+              "endCol": 27,
+              "raw": "1"
+            },
+            "width": {
+              "line": 545,
+              "col": 25,
+              "endCol": 27,
+              "raw": "60"
+            },
+            "marginVertical": {
+              "line": 547,
+              "col": 34,
+              "endCol": 35,
+              "raw": "6"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:550": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 550
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 553,
+              "col": 28,
+              "endCol": 30,
+              "raw": "12"
+            },
+            "textAlign": {
+              "line": 555,
+              "col": 29,
+              "endCol": 37,
+              "raw": "'center'"
+            },
+            "lineHeight": {
+              "line": 556,
+              "col": 30,
+              "endCol": 32,
+              "raw": "20"
+            }
+          }
+        }
+      ]
+    },
+    "StatBubble@app/(tabs)/settings.tsx:583": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 583
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "flex": {
+              "line": 585,
+              "col": 14,
+              "endCol": 15,
+              "raw": "1"
+            },
+            "minWidth": {
+              "line": 586,
+              "col": 18,
+              "endCol": 23,
+              "raw": "'40%'"
+            },
+            "alignItems": {
+              "line": 587,
+              "col": 20,
+              "endCol": 28,
+              "raw": "'center'"
+            },
+            "paddingVertical": {
+              "line": 588,
+              "col": 25,
+              "endCol": 27,
+              "raw": "14"
+            },
+            "borderRadius": {
+              "line": 589,
+              "col": 22,
+              "endCol": 24,
+              "raw": "16"
+            },
+            "borderCurve": {
+              "line": 590,
+              "col": 21,
+              "endCol": 33,
+              "raw": "'continuous'"
+            },
+            "gap": {
+              "line": 592,
+              "col": 13,
+              "endCol": 14,
+              "raw": "4"
+            }
+          }
+        }
+      ]
+    },
+    "StatBubble@app/(tabs)/settings.tsx:595": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 595
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 595,
+              "col": 31,
+              "endCol": 33,
+              "raw": "20"
+            }
+          }
+        }
+      ]
+    },
+    "StatBubble@app/(tabs)/settings.tsx:596": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 596
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 599,
+              "col": 20,
+              "endCol": 22,
+              "raw": "20"
+            }
+          }
+        }
+      ]
+    },
+    "StatBubble@app/(tabs)/settings.tsx:606": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 606
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 609,
+              "col": 20,
+              "endCol": 22,
+              "raw": "11"
+            }
+          }
+        }
+      ]
+    },
+    "CalendarScreen@app/(tabs)/index.tsx:101": {
+      "element": {
+        "file": "app/(tabs)/index.tsx",
+        "line": 101
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/index.tsx",
+          "properties": {
+            "flex": {
+              "line": 102,
+              "col": 23,
+              "endCol": 24,
+              "raw": "1"
+            }
+          }
+        }
+      ]
+    },
+    "CalendarScreen@app/(tabs)/index.tsx:112": {
+      "element": {
+        "file": "app/(tabs)/index.tsx",
+        "line": 112
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/index.tsx",
+          "properties": {
+            "alignItems": {
+              "line": 114,
+              "col": 31,
+              "endCol": 39,
+              "raw": "'center'"
+            },
+            "gap": {
+              "line": 114,
+              "col": 46,
+              "endCol": 47,
+              "raw": "2"
+            }
+          }
+        }
+      ]
+    },
+    "CalendarScreen@app/(tabs)/index.tsx:116": {
+      "element": {
+        "file": "app/(tabs)/index.tsx",
+        "line": 116
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/index.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 116,
+              "col": 35,
+              "endCol": 37,
+              "raw": "28"
+            },
+            "lineHeight": {
+              "line": 116,
+              "col": 51,
+              "endCol": 53,
+              "raw": "36"
+            }
+          }
+        }
+      ]
+    },
+    "CalendarScreen@app/(tabs)/index.tsx:117": {
+      "element": {
+        "file": "app/(tabs)/index.tsx",
+        "line": 117
+      },
+      "styles": [
+        {
+          "origin": "dynamic",
+          "resolvable": false
+        }
+      ]
+    },
+    "CalendarScreen@app/(tabs)/index.tsx:130": {
+      "element": {
+        "file": "app/(tabs)/index.tsx",
+        "line": 130
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/index.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 133,
+              "col": 26,
+              "endCol": 28,
+              "raw": "26"
+            },
+            "letterSpacing": {
+              "line": 135,
+              "col": 31,
+              "endCol": 32,
+              "raw": "3"
+            }
+          }
+        }
+      ]
+    },
+    "CalendarScreen@app/(tabs)/index.tsx:140": {
+      "element": {
+        "file": "app/(tabs)/index.tsx",
+        "line": 140
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/index.tsx",
+          "properties": {
+            "marginTop": {
+              "line": 140,
+              "col": 90,
+              "endCol": 91,
+              "raw": "2"
+            }
+          }
+        }
+      ]
+    },
+    "CalendarScreen@app/(tabs)/index.tsx:142": {
+      "element": {
+        "file": "app/(tabs)/index.tsx",
+        "line": 142
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/index.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 145,
+              "col": 24,
+              "endCol": 26,
+              "raw": "11"
+            },
+            "letterSpacing": {
+              "line": 147,
+              "col": 29,
+              "endCol": 30,
+              "raw": "2"
+            },
+            "marginTop": {
+              "line": 148,
+              "col": 25,
+              "endCol": 26,
+              "raw": "2"
+            }
+          }
+        }
+      ]
+    },
+    "CalendarScreen@app/(tabs)/index.tsx:159": {
+      "element": {
+        "file": "app/(tabs)/index.tsx",
+        "line": 159
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/index.tsx",
+          "properties": {
+            "flexDirection": {
+              "line": 161,
+              "col": 31,
+              "endCol": 36,
+              "raw": "'row'"
+            },
+            "alignItems": {
+              "line": 162,
+              "col": 28,
+              "endCol": 36,
+              "raw": "'center'"
+            },
+            "justifyContent": {
+              "line": 163,
+              "col": 32,
+              "endCol": 47,
+              "raw": "'space-between'"
+            },
+            "marginBottom": {
+              "line": 164,
+              "col": 30,
+              "endCol": 32,
+              "raw": "16"
+            }
+          }
+        }
+      ]
+    },
+    "CalendarScreen@app/(tabs)/index.tsx:167": {
+      "element": {
+        "file": "app/(tabs)/index.tsx",
+        "line": 167
+      },
+      "styles": [
+        {
+          "origin": "dynamic",
+          "resolvable": false
+        }
+      ]
+    },
+    "CalendarScreen@app/(tabs)/index.tsx:183": {
+      "element": {
+        "file": "app/(tabs)/index.tsx",
+        "line": 183
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/index.tsx",
+          "properties": {
+            "alignItems": {
+              "line": 183,
+              "col": 41,
+              "endCol": 49,
+              "raw": "'center'"
+            }
+          }
+        }
+      ]
+    },
+    "CalendarScreen@app/(tabs)/index.tsx:184": {
+      "element": {
+        "file": "app/(tabs)/index.tsx",
+        "line": 184
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/index.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 187,
+              "col": 30,
+              "endCol": 32,
+              "raw": "18"
+            }
+          }
+        }
+      ]
+    },
+    "CalendarScreen@app/(tabs)/index.tsx:194": {
+      "element": {
+        "file": "app/(tabs)/index.tsx",
+        "line": 194
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/index.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 197,
+              "col": 32,
+              "endCol": 34,
+              "raw": "10"
+            },
+            "marginTop": {
+              "line": 199,
+              "col": 33,
+              "endCol": 34,
+              "raw": "2"
+            }
+          }
+        }
+      ]
+    },
+    "CalendarScreen@app/(tabs)/index.tsx:207": {
+      "element": {
+        "file": "app/(tabs)/index.tsx",
+        "line": 207
+      },
+      "styles": [
+        {
+          "origin": "dynamic",
+          "resolvable": false
+        }
+      ]
+    },
+    "CalendarScreen@app/(tabs)/index.tsx:233": {
+      "element": {
+        "file": "app/(tabs)/index.tsx",
+        "line": 233
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/index.tsx",
+          "properties": {
+            "flexDirection": {
+              "line": 235,
+              "col": 31,
+              "endCol": 36,
+              "raw": "'row'"
+            },
+            "justifyContent": {
+              "line": 236,
+              "col": 32,
+              "endCol": 40,
+              "raw": "'center'"
+            },
+            "gap": {
+              "line": 237,
+              "col": 21,
+              "endCol": 23,
+              "raw": "20"
+            },
+            "marginTop": {
+              "line": 238,
+              "col": 27,
+              "endCol": 29,
+              "raw": "12"
+            },
+            "paddingTop": {
+              "line": 239,
+              "col": 28,
+              "endCol": 30,
+              "raw": "12"
+            },
+            "borderTopWidth": {
+              "line": 240,
+              "col": 32,
+              "endCol": 33,
+              "raw": "1"
+            }
+          }
+        }
+      ]
+    },
+    "CalendarScreen@app/(tabs)/index.tsx:244": {
+      "element": {
+        "file": "app/(tabs)/index.tsx",
+        "line": 244
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/index.tsx",
+          "properties": {
+            "alignItems": {
+              "line": 244,
+              "col": 41,
+              "endCol": 49,
+              "raw": "'center'"
+            }
+          }
+        }
+      ]
+    },
+    "CalendarScreen@app/(tabs)/index.tsx:245": {
+      "element": {
+        "file": "app/(tabs)/index.tsx",
+        "line": 245
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/index.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 248,
+              "col": 30,
+              "endCol": 32,
+              "raw": "18"
+            }
+          }
+        }
+      ]
+    },
+    "CalendarScreen@app/(tabs)/index.tsx:255": {
+      "element": {
+        "file": "app/(tabs)/index.tsx",
+        "line": 255
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/index.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 255,
+              "col": 68,
+              "endCol": 70,
+              "raw": "10"
+            }
+          }
+        }
+      ]
+    },
+    "CalendarScreen@app/(tabs)/index.tsx:259": {
+      "element": {
+        "file": "app/(tabs)/index.tsx",
+        "line": 259
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/index.tsx",
+          "properties": {
+            "width": {
+              "line": 259,
+              "col": 36,
+              "endCol": 37,
+              "raw": "1"
+            },
+            "height": {
+              "line": 259,
+              "col": 47,
+              "endCol": 49,
+              "raw": "28"
+            }
+          }
+        }
+      ]
+    },
+    "CalendarScreen@app/(tabs)/index.tsx:260": {
+      "element": {
+        "file": "app/(tabs)/index.tsx",
+        "line": 260
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/index.tsx",
+          "properties": {
+            "alignItems": {
+              "line": 260,
+              "col": 41,
+              "endCol": 49,
+              "raw": "'center'"
+            }
+          }
+        }
+      ]
+    },
+    "CalendarScreen@app/(tabs)/index.tsx:261": {
+      "element": {
+        "file": "app/(tabs)/index.tsx",
+        "line": 261
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/index.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 264,
+              "col": 30,
+              "endCol": 32,
+              "raw": "18"
+            }
+          }
+        }
+      ]
+    },
+    "CalendarScreen@app/(tabs)/index.tsx:271": {
+      "element": {
+        "file": "app/(tabs)/index.tsx",
+        "line": 271
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/index.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 271,
+              "col": 68,
+              "endCol": 70,
+              "raw": "10"
+            }
+          }
+        }
+      ]
+    },
+    "CalendarScreen@app/(tabs)/index.tsx:280": {
+      "element": {
+        "file": "app/(tabs)/index.tsx",
+        "line": 280
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/index.tsx",
+          "properties": {
+            "gap": {
+              "line": 280,
+              "col": 82,
+              "endCol": 84,
+              "raw": "12"
+            }
+          }
+        }
+      ]
+    },
+    "CalendarScreen@app/(tabs)/index.tsx:281": {
+      "element": {
+        "file": "app/(tabs)/index.tsx",
+        "line": 281
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/index.tsx",
+          "properties": {
+            "flexDirection": {
+              "line": 283,
+              "col": 29,
+              "endCol": 34,
+              "raw": "'row'"
+            },
+            "alignItems": {
+              "line": 284,
+              "col": 26,
+              "endCol": 34,
+              "raw": "'center'"
+            },
+            "justifyContent": {
+              "line": 285,
+              "col": 30,
+              "endCol": 45,
+              "raw": "'space-between'"
+            }
+          }
+        }
+      ]
+    },
+    "CalendarScreen@app/(tabs)/index.tsx:288": {
+      "element": {
+        "file": "app/(tabs)/index.tsx",
+        "line": 288
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/index.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 291,
+              "col": 26,
+              "endCol": 28,
+              "raw": "16"
+            }
+          }
+        }
+      ]
+    },
+    "CalendarScreen@app/(tabs)/index.tsx:297": {
+      "element": {
+        "file": "app/(tabs)/index.tsx",
+        "line": 297
+      },
+      "styles": [
+        {
+          "origin": "dynamic",
+          "resolvable": false
+        }
+      ]
+    },
+    "CalendarScreen@app/(tabs)/index.tsx:313": {
+      "element": {
+        "file": "app/(tabs)/index.tsx",
+        "line": 313
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/index.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 316,
+              "col": 28,
+              "endCol": 30,
+              "raw": "13"
+            },
+            "color": {
+              "line": 317,
+              "col": 25,
+              "endCol": 31,
+              "raw": "'#FFF'"
+            }
+          }
+        }
+      ]
+    },
+    "CalendarScreen@app/(tabs)/index.tsx:327": {
+      "element": {
+        "file": "app/(tabs)/index.tsx",
+        "line": 327
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/index.tsx",
+          "properties": {
+            "alignItems": {
+              "line": 327,
+              "col": 41,
+              "endCol": 49,
+              "raw": "'center'"
+            },
+            "paddingVertical": {
+              "line": 327,
+              "col": 68,
+              "endCol": 70,
+              "raw": "28"
+            },
+            "gap": {
+              "line": 327,
+              "col": 77,
+              "endCol": 79,
+              "raw": "12"
+            }
+          }
+        }
+      ]
+    },
+    "CalendarScreen@app/(tabs)/index.tsx:328": {
+      "element": {
+        "file": "app/(tabs)/index.tsx",
+        "line": 328
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/index.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 328,
+              "col": 41,
+              "endCol": 43,
+              "raw": "44"
+            }
+          }
+        }
+      ]
+    },
+    "CalendarScreen@app/(tabs)/index.tsx:329": {
+      "element": {
+        "file": "app/(tabs)/index.tsx",
+        "line": 329
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/index.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 332,
+              "col": 30,
+              "endCol": 32,
+              "raw": "14"
+            },
+            "textAlign": {
+              "line": 334,
+              "col": 31,
+              "endCol": 39,
+              "raw": "'center'"
+            },
+            "lineHeight": {
+              "line": 335,
+              "col": 32,
+              "endCol": 34,
+              "raw": "22"
+            }
+          }
+        }
+      ]
+    },
+    "CalendarScreen@app/(tabs)/index.tsx:351": {
+      "element": {
+        "file": "app/(tabs)/index.tsx",
+        "line": 351
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/index.tsx",
+          "properties": {
+            "flexDirection": {
+              "line": 351,
+              "col": 48,
+              "endCol": 53,
+              "raw": "'row'"
+            },
+            "gap": {
+              "line": 351,
+              "col": 60,
+              "endCol": 62,
+              "raw": "12"
+            },
+            "alignItems": {
+              "line": 351,
+              "col": 76,
+              "endCol": 84,
+              "raw": "'center'"
+            }
+          }
+        }
+      ]
+    },
+    "CalendarScreen@app/(tabs)/index.tsx:353": {
+      "element": {
+        "file": "app/(tabs)/index.tsx",
+        "line": 353
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/index.tsx",
+          "properties": {
+            "width": {
+              "line": 355,
+              "col": 31,
+              "endCol": 33,
+              "raw": "56"
+            },
+            "height": {
+              "line": 356,
+              "col": 32,
+              "endCol": 34,
+              "raw": "56"
+            },
+            "borderRadius": {
+              "line": 357,
+              "col": 38,
+              "endCol": 40,
+              "raw": "14"
+            },
+            "borderCurve": {
+              "line": 358,
+              "col": 37,
+              "endCol": 49,
+              "raw": "'continuous'"
+            },
+            "alignItems": {
+              "line": 360,
+              "col": 36,
+              "endCol": 44,
+              "raw": "'center'"
+            },
+            "justifyContent": {
+              "line": 361,
+              "col": 40,
+              "endCol": 48,
+              "raw": "'center'"
+            }
+          }
+        }
+      ]
+    },
+    "CalendarScreen@app/(tabs)/index.tsx:365": {
+      "element": {
+        "file": "app/(tabs)/index.tsx",
+        "line": 365
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/index.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 365,
+              "col": 49,
+              "endCol": 51,
+              "raw": "28"
+            }
+          }
+        }
+      ]
+    },
+    "CalendarScreen@app/(tabs)/index.tsx:375": {
+      "element": {
+        "file": "app/(tabs)/index.tsx",
+        "line": 375
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/index.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 375,
+              "col": 49,
+              "endCol": 51,
+              "raw": "28"
+            }
+          }
+        }
+      ]
+    },
+    "CalendarScreen@app/(tabs)/index.tsx:379": {
+      "element": {
+        "file": "app/(tabs)/index.tsx",
+        "line": 379
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/index.tsx",
+          "properties": {
+            "flex": {
+              "line": 379,
+              "col": 41,
+              "endCol": 42,
+              "raw": "1"
+            },
+            "gap": {
+              "line": 379,
+              "col": 49,
+              "endCol": 50,
+              "raw": "4"
+            }
+          }
+        }
+      ]
+    },
+    "CalendarScreen@app/(tabs)/index.tsx:380": {
+      "element": {
+        "file": "app/(tabs)/index.tsx",
+        "line": 380
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/index.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 383,
+              "col": 36,
+              "endCol": 38,
+              "raw": "15"
+            }
+          }
+        }
+      ]
+    },
+    "CalendarScreen@app/(tabs)/index.tsx:390": {
+      "element": {
+        "file": "app/(tabs)/index.tsx",
+        "line": 390
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/index.tsx",
+          "properties": {
+            "flexDirection": {
+              "line": 390,
+              "col": 52,
+              "endCol": 57,
+              "raw": "'row'"
+            },
+            "alignItems": {
+              "line": 390,
+              "col": 71,
+              "endCol": 79,
+              "raw": "'center'"
+            },
+            "gap": {
+              "line": 390,
+              "col": 86,
+              "endCol": 87,
+              "raw": "8"
+            }
+          }
+        }
+      ]
+    },
+    "CalendarScreen@app/(tabs)/index.tsx:392": {
+      "element": {
+        "file": "app/(tabs)/index.tsx",
+        "line": 392
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/index.tsx",
+          "properties": {
+            "flexDirection": {
+              "line": 392,
+              "col": 56,
+              "endCol": 61,
+              "raw": "'row'"
+            },
+            "alignItems": {
+              "line": 392,
+              "col": 75,
+              "endCol": 83,
+              "raw": "'center'"
+            },
+            "gap": {
+              "line": 392,
+              "col": 90,
+              "endCol": 91,
+              "raw": "3"
+            }
+          }
+        }
+      ]
+    },
+    "CalendarScreen@app/(tabs)/index.tsx:394": {
+      "element": {
+        "file": "app/(tabs)/index.tsx",
+        "line": 394
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/index.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 397,
+              "col": 42,
+              "endCol": 44,
+              "raw": "11"
+            }
+          }
+        }
+      ]
+    },
+    "CalendarScreen@app/(tabs)/index.tsx:406": {
+      "element": {
+        "file": "app/(tabs)/index.tsx",
+        "line": 406
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/index.tsx",
+          "properties": {
+            "flexDirection": {
+              "line": 406,
+              "col": 56,
+              "endCol": 61,
+              "raw": "'row'"
+            },
+            "alignItems": {
+              "line": 406,
+              "col": 75,
+              "endCol": 83,
+              "raw": "'center'"
+            },
+            "gap": {
+              "line": 406,
+              "col": 90,
+              "endCol": 91,
+              "raw": "3"
+            }
+          }
+        }
+      ]
+    },
+    "CalendarScreen@app/(tabs)/index.tsx:408": {
+      "element": {
+        "file": "app/(tabs)/index.tsx",
+        "line": 408
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/index.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 411,
+              "col": 42,
+              "endCol": 44,
+              "raw": "11"
+            }
+          }
+        }
+      ]
+    },
+    "CalendarScreen@app/(tabs)/index.tsx:438": {
+      "element": {
+        "file": "app/(tabs)/index.tsx",
+        "line": 438
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/index.tsx",
+          "properties": {
+            "flex": {
+              "line": 440,
+              "col": 25,
+              "endCol": 26,
+              "raw": "1"
+            }
+          }
+        }
+      ]
+    },
+    "CalendarScreen@app/(tabs)/index.tsx:442": {
+      "element": {
+        "file": "app/(tabs)/index.tsx",
+        "line": 442
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/index.tsx",
+          "properties": {
+            "flex": {
+              "line": 445,
+              "col": 20,
+              "endCol": 21,
+              "raw": "1"
+            },
+            "justifyContent": {
+              "line": 446,
+              "col": 30,
+              "endCol": 38,
+              "raw": "'center'"
+            },
+            "alignItems": {
+              "line": 447,
+              "col": 26,
+              "endCol": 34,
+              "raw": "'center'"
+            },
+            "backgroundColor": {
+              "line": 448,
+              "col": 31,
+              "endCol": 55,
+              "raw": "'rgba(92, 74, 110, 0.4)'"
+            }
+          }
+        }
+      ]
+    },
+    "CalendarScreen@app/(tabs)/index.tsx:451": {
+      "element": {
+        "file": "app/(tabs)/index.tsx",
+        "line": 451
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/index.tsx",
+          "properties": {
+            "borderRadius": {
+              "line": 455,
+              "col": 30,
+              "endCol": 32,
+              "raw": "24"
+            },
+            "borderCurve": {
+              "line": 456,
+              "col": 29,
+              "endCol": 41,
+              "raw": "'continuous'"
+            },
+            "padding": {
+              "line": 457,
+              "col": 25,
+              "endCol": 27,
+              "raw": "28"
+            },
+            "width": {
+              "line": 458,
+              "col": 23,
+              "endCol": 26,
+              "raw": "300"
+            },
+            "gap": {
+              "line": 459,
+              "col": 21,
+              "endCol": 23,
+              "raw": "20"
+            }
+          }
+        }
+      ]
+    },
+    "CalendarScreen@app/(tabs)/index.tsx:464": {
+      "element": {
+        "file": "app/(tabs)/index.tsx",
+        "line": 464
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/index.tsx",
+          "properties": {
+            "alignItems": {
+              "line": 464,
+              "col": 41,
+              "endCol": 49,
+              "raw": "'center'"
+            },
+            "gap": {
+              "line": 464,
+              "col": 56,
+              "endCol": 57,
+              "raw": "8"
+            }
+          }
+        }
+      ]
+    },
+    "CalendarScreen@app/(tabs)/index.tsx:465": {
+      "element": {
+        "file": "app/(tabs)/index.tsx",
+        "line": 465
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/index.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 465,
+              "col": 41,
+              "endCol": 43,
+              "raw": "32"
+            }
+          }
+        }
+      ]
+    },
+    "CalendarScreen@app/(tabs)/index.tsx:466": {
+      "element": {
+        "file": "app/(tabs)/index.tsx",
+        "line": 466
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/index.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 469,
+              "col": 30,
+              "endCol": 32,
+              "raw": "17"
+            }
+          }
+        }
+      ]
+    },
+    "CalendarScreen@app/(tabs)/index.tsx:478": {
+      "element": {
+        "file": "app/(tabs)/index.tsx",
+        "line": 478
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/index.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 491,
+              "col": 28,
+              "endCol": 30,
+              "raw": "20"
+            },
+            "textAlign": {
+              "line": 493,
+              "col": 29,
+              "endCol": 37,
+              "raw": "'center'"
+            },
+            "letterSpacing": {
+              "line": 494,
+              "col": 33,
+              "endCol": 34,
+              "raw": "2"
+            },
+            "paddingVertical": {
+              "line": 495,
+              "col": 35,
+              "endCol": 37,
+              "raw": "14"
+            },
+            "paddingHorizontal": {
+              "line": 496,
+              "col": 37,
+              "endCol": 39,
+              "raw": "16"
+            },
+            "borderRadius": {
+              "line": 498,
+              "col": 32,
+              "endCol": 34,
+              "raw": "16"
+            },
+            "borderCurve": {
+              "line": 499,
+              "col": 31,
+              "endCol": 43,
+              "raw": "'continuous'"
+            },
+            "borderWidth": {
+              "line": 500,
+              "col": 31,
+              "endCol": 32,
+              "raw": "2"
+            }
+          }
+        }
+      ]
+    },
+    "CalendarScreen@app/(tabs)/index.tsx:506": {
+      "element": {
+        "file": "app/(tabs)/index.tsx",
+        "line": 506
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/index.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 509,
+              "col": 28,
+              "endCol": 30,
+              "raw": "11"
+            },
+            "textAlign": {
+              "line": 511,
+              "col": 29,
+              "endCol": 36,
+              "raw": "'right'"
+            },
+            "marginTop": {
+              "line": 512,
+              "col": 29,
+              "endCol": 32,
+              "raw": "-14"
+            }
+          }
+        }
+      ]
+    },
+    "CalendarScreen@app/(tabs)/index.tsx:519": {
+      "element": {
+        "file": "app/(tabs)/index.tsx",
+        "line": 519
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/index.tsx",
+          "properties": {
+            "flexDirection": {
+              "line": 519,
+              "col": 44,
+              "endCol": 49,
+              "raw": "'row'"
+            },
+            "gap": {
+              "line": 519,
+              "col": 56,
+              "endCol": 58,
+              "raw": "10"
+            }
+          }
+        }
+      ]
+    },
+    "CalendarScreen@app/(tabs)/index.tsx:520": {
+      "element": {
+        "file": "app/(tabs)/index.tsx",
+        "line": 520
+      },
+      "styles": [
+        {
+          "origin": "dynamic",
+          "resolvable": false
+        }
+      ]
+    },
+    "CalendarScreen@app/(tabs)/index.tsx:534": {
+      "element": {
+        "file": "app/(tabs)/index.tsx",
+        "line": 534
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/index.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 537,
+              "col": 32,
+              "endCol": 34,
+              "raw": "14"
+            }
+          }
+        }
+      ]
+    },
+    "CalendarScreen@app/(tabs)/index.tsx:544": {
+      "element": {
+        "file": "app/(tabs)/index.tsx",
+        "line": 544
+      },
+      "styles": [
+        {
+          "origin": "dynamic",
+          "resolvable": false
+        }
+      ]
+    },
+    "CalendarScreen@app/(tabs)/index.tsx:557": {
+      "element": {
+        "file": "app/(tabs)/index.tsx",
+        "line": 557
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/index.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 560,
+              "col": 32,
+              "endCol": 34,
+              "raw": "14"
+            },
+            "color": {
+              "line": 561,
+              "col": 29,
+              "endCol": 35,
+              "raw": "'#FFF'"
+            }
+          }
         }
       ]
     }

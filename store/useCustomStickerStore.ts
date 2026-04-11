@@ -13,6 +13,7 @@ interface CustomStickerState {
   stickers: CustomSticker[];
   addSticker: (uri: string) => void;
   removeSticker: (id: string) => void;
+  replaceAllStickers: (stickers: CustomSticker[]) => void;
 }
 
 function generateId(): string {
@@ -43,6 +44,15 @@ export const useCustomStickerStore = create<CustomStickerState>()(
         set((state) => ({
           stickers: state.stickers.filter((s) => s.id !== id),
         }));
+      },
+
+      replaceAllStickers: (newStickers: CustomSticker[]) => {
+        // Clean up existing persisted images
+        const existing = get().stickers;
+        for (const s of existing) {
+          deletePersistedImage(s.uri).catch(() => {});
+        }
+        set({ stickers: newStickers });
       },
     }),
     {
