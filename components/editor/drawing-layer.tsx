@@ -1,6 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
-import Svg, { Path, Circle } from 'react-native-svg';
+import Svg, { Path, Circle, G } from 'react-native-svg';
 import type { DrawingStroke, PenType } from '@/store/types';
 
 interface StrokeLike {
@@ -37,64 +37,154 @@ function pointsToSvgPath(points: { x: number; y: number }[]): string {
   return path;
 }
 
-function getStrokeProps(penType: PenType, size: number) {
+// Generate offset path for crayon texture by shifting points
+function offsetPoints(
+  points: { x: number; y: number }[],
+  dx: number,
+  dy: number,
+): { x: number; y: number }[] {
+  return points.map((p) => ({ x: p.x + dx, y: p.y + dy }));
+}
+
+function getStrokeProps(penType: string, size: number) {
   switch (penType) {
     case 'pen':
-      return { strokeWidth: size, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const, strokeDasharray: '' };
+      return { strokeWidth: size, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const };
     case 'marker':
-      return { strokeWidth: size * 2.5, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const, strokeDasharray: '' };
+      return { strokeWidth: size * 2.5, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const };
     case 'highlighter':
-      return { strokeWidth: size * 3, strokeLinecap: 'butt' as const, strokeLinejoin: 'round' as const, strokeDasharray: '' };
+      return { strokeWidth: size * 3, strokeLinecap: 'butt' as const, strokeLinejoin: 'round' as const };
     case 'crayon':
-      return { strokeWidth: size * 1.5, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const, strokeDasharray: `${size * 0.5} ${size * 0.3}` };
-    case 'sparkle':
-      return { strokeWidth: size * 0.8, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const, strokeDasharray: `${size * 0.2} ${size * 0.8}` };
+      return { strokeWidth: size * 2, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const };
+    case 'neon':
+    case 'sparkle': // backward compat with old saved strokes
+      return { strokeWidth: size * 1.2, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const };
     default:
-      return { strokeWidth: size, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const, strokeDasharray: '' };
+      return { strokeWidth: size, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const };
   }
 }
 
 function renderStroke(stroke: DrawingStroke | StrokeLike, key: string) {
-  const { strokeWidth, strokeLinecap, strokeLinejoin, strokeDasharray } = getStrokeProps(stroke.penType, stroke.size);
+  const { strokeWidth, strokeLinecap, strokeLinejoin } = getStrokeProps(stroke.penType, stroke.size);
+  const svgPath = pointsToSvgPath(stroke.points);
 
-  if (stroke.penType === 'sparkle') {
+  // Neon pen — multi-layer glow effect (also handle legacy 'sparkle' data from storage)
+  if (stroke.penType === 'neon' || (stroke.penType as string) === 'sparkle') {
     return (
-      <React.Fragment key={key}>
+      <G key={key}>
+        {/* Outer glow — wide, very faint */}
         <Path
-          d={pointsToSvgPath(stroke.points)}
+          d={svgPath}
           stroke={stroke.color}
-          strokeWidth={strokeWidth}
+          strokeWidth={strokeWidth * 4}
           strokeLinecap={strokeLinecap}
           strokeLinejoin={strokeLinejoin}
-          strokeDasharray={strokeDasharray}
           fill="none"
-          opacity={stroke.opacity}
+          opacity={stroke.opacity * 0.1}
         />
+        {/* Mid glow */}
+        <Path
+          d={svgPath}
+          stroke={stroke.color}
+          strokeWidth={strokeWidth * 2.5}
+          strokeLinecap={strokeLinecap}
+          strokeLinejoin={strokeLinejoin}
+          fill="none"
+          opacity={stroke.opacity * 0.2}
+        />
+        {/* Inner glow */}
+        <Path
+          d={svgPath}
+          stroke={stroke.color}
+          strokeWidth={strokeWidth * 1.5}
+          strokeLinecap={strokeLinecap}
+          strokeLinejoin={strokeLinejoin}
+          fill="none"
+          opacity={stroke.opacity * 0.4}
+        />
+        {/* Bright core — white-tinted for the "neon tube" center */}
+        <Path
+          d={svgPath}
+          stroke="#FFFFFF"
+          strokeWidth={strokeWidth * 0.5}
+          strokeLinecap={strokeLinecap}
+          strokeLinejoin={strokeLinejoin}
+          fill="none"
+          opacity={stroke.opacity * 0.7}
+        />
+        {/* Scattered glow dots along the path for sparkle effect */}
         {stroke.points
-          .filter((_, i) => i % 4 === 0)
+          .filter((_, i) => i % 6 === 0)
           .map((p, i) => (
             <Circle
-              key={`${key}-dot-${i}`}
+              key={`${key}-glow-${i}`}
               cx={p.x}
               cy={p.y}
-              r={stroke.size * 0.4}
+              r={stroke.size * 0.8}
               fill={stroke.color}
-              opacity={stroke.opacity * 0.6}
+              opacity={stroke.opacity * 0.15}
             />
           ))}
-      </React.Fragment>
+      </G>
     );
   }
 
+  // Crayon pen — rough textured multi-layer strokes
+  if (stroke.penType === 'crayon') {
+    // Seeded offsets for consistent rough look
+    const offsets = [
+      { dx: 0, dy: 0, op: 0.7 },
+      { dx: 1.2, dy: 0.6, op: 0.35 },
+      { dx: -0.9, dy: 0.8, op: 0.3 },
+      { dx: 0.5, dy: -1.0, op: 0.25 },
+    ];
+    // Dash pattern simulates waxy, grainy crayon texture
+    const crayonDash = `${stroke.size * 1.5} ${stroke.size * 0.3} ${stroke.size * 0.4} ${stroke.size * 0.2}`;
+    return (
+      <G key={key}>
+        {offsets.map((o, i) => (
+          <Path
+            key={`${key}-c-${i}`}
+            d={pointsToSvgPath(offsetPoints(stroke.points, o.dx, o.dy))}
+            stroke={stroke.color}
+            strokeWidth={strokeWidth - i * 0.5}
+            strokeLinecap={strokeLinecap}
+            strokeLinejoin={strokeLinejoin}
+            strokeDasharray={i === 0 ? '' : crayonDash}
+            fill="none"
+            opacity={stroke.opacity * o.op}
+          />
+        ))}
+        {/* Edge grain — tiny dots along the path edges for texture */}
+        {stroke.points
+          .filter((_, i) => i % 3 === 0)
+          .map((p, i) => {
+            const jitterX = ((i * 7) % 5 - 2) * 0.8;
+            const jitterY = ((i * 11) % 5 - 2) * 0.6;
+            return (
+              <Circle
+                key={`${key}-grain-${i}`}
+                cx={p.x + jitterX + (strokeWidth / 2) * (i % 2 === 0 ? 1 : -1)}
+                cy={p.y + jitterY}
+                r={stroke.size * 0.15}
+                fill={stroke.color}
+                opacity={stroke.opacity * 0.2}
+              />
+            );
+          })}
+      </G>
+    );
+  }
+
+  // Default rendering for pen, marker, highlighter
   return (
     <Path
       key={key}
-      d={pointsToSvgPath(stroke.points)}
+      d={svgPath}
       stroke={stroke.color}
       strokeWidth={strokeWidth}
       strokeLinecap={strokeLinecap}
       strokeLinejoin={strokeLinejoin}
-      strokeDasharray={strokeDasharray}
       fill="none"
       opacity={stroke.opacity}
     />

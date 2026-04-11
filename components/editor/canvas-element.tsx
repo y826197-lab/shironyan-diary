@@ -9,7 +9,7 @@ import Animated, {
 import { Image } from 'expo-image';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { Fonts } from '@/constants/Typography';
-import { CAT_STICKER_MAP } from '@/constants/Stickers';
+import { CAT_STICKER_MAP, DECO_TEXT_MAP } from '@/constants/Stickers';
 import type { CanvasElement } from '@/store/types';
 
 interface CanvasElementProps {
@@ -128,6 +128,61 @@ export function CanvasElementView({
           </View>
         );
       }
+      case 'deco-text': {
+        const decoData = DECO_TEXT_MAP.get(element.content);
+        if (!decoData) return null;
+        return (
+          <View
+            style={{
+              width: element.width,
+              height: element.height,
+              borderRadius: 14,
+              borderCurve: 'continuous',
+              backgroundColor: decoData.bgColor,
+              borderWidth: 2,
+              borderColor: decoData.color + '40',
+              alignItems: 'center',
+              justifyContent: 'center',
+              paddingHorizontal: 8,
+              boxShadow: `0 2px 8px ${decoData.color}20`,
+            }}
+          >
+            <Text
+              style={{
+                fontFamily: Fonts.bold,
+                fontSize: Math.min(element.width, element.height) * 0.28,
+                color: decoData.color,
+                textAlign: 'center',
+              }}
+              numberOfLines={1}
+              adjustsFontSizeToFit
+            >
+              {decoData.text}
+            </Text>
+          </View>
+        );
+      }
+      case 'custom-image':
+        return (
+          <View
+            style={{
+              width: element.width,
+              height: element.height,
+              borderRadius: 10,
+              borderCurve: 'continuous',
+              overflow: 'hidden',
+            }}
+          >
+            <Image
+              source={{ uri: element.content }}
+              style={{
+                width: element.width,
+                height: element.height,
+              }}
+              contentFit="contain"
+            />
+          </View>
+        );
       case 'sticker':
         return (
           <Text

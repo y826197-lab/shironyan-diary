@@ -1,11 +1,11 @@
 import type { ThemeKey } from '@/constants/Colors';
 
 export type BackgroundType = 'plain' | 'lined' | 'grid' | 'dots' | 'floral';
-export type PenType = 'pen' | 'marker' | 'highlighter' | 'crayon' | 'sparkle';
+export type PenType = 'pen' | 'marker' | 'highlighter' | 'crayon' | 'neon';
 
 export interface CanvasElement {
   id: string;
-  type: 'photo' | 'sticker' | 'text' | 'cat-image';
+  type: 'photo' | 'sticker' | 'text' | 'cat-image' | 'deco-text' | 'custom-image';
   x: number;
   y: number;
   width: number;

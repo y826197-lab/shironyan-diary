@@ -328,7 +328,10 @@ export default function CalendarScreen() {
                       {page.elements.length > 0 ? (
                         <Text style={{ fontSize: 28 }}>
                           {page.elements.find((e) => e.type === 'sticker')?.content
-                            || (page.elements.some((e) => e.type === 'cat-image') ? '🐱' : '📄')}
+                            || (page.elements.some((e) => e.type === 'cat-image') ? '🐱'
+                            : page.elements.some((e) => e.type === 'deco-text') ? '🔤'
+                            : page.elements.some((e) => e.type === 'custom-image') ? '🖼️'
+                            : '📄')}
                         </Text>
                       ) : page.strokes.length > 0 ? (
                         <Ionicons name="brush" size={24} color={theme.primary} />

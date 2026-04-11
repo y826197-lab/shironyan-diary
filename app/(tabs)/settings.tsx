@@ -36,8 +36,9 @@ export default function SettingsScreen() {
     (sum, p) => sum + p.elements.filter((e) => e.type === 'photo').length,
     0
   );
+  const stickerTypes = new Set(['sticker', 'cat-image', 'deco-text', 'custom-image']);
   const totalStickers = pages.reduce(
-    (sum, p) => sum + p.elements.filter((e) => e.type === 'sticker' || e.type === 'cat-image').length,
+    (sum, p) => sum + p.elements.filter((e) => stickerTypes.has(e.type)).length,
     0
   );
 

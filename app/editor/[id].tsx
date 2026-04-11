@@ -124,20 +124,28 @@ export default function EditorScreen() {
     if (id) removeLastStroke(id);
   }, [id, removeLastStroke]);
 
+  const getOpacityForPen = useCallback((type: PenType) => {
+    switch (type) {
+      case 'highlighter': return 0.35;
+      case 'marker': return 0.7;
+      case 'neon': return 0.9;
+      default: return 1;
+    }
+  }, []);
+
   const finishStroke = useCallback((pts: { x: number; y: number }[]) => {
     if (id && pts.length > 1) {
-      const opacity = penType === 'highlighter' ? 0.35 : penType === 'marker' ? 0.7 : 1;
       addStroke(id, {
         penType,
         color: drawColor,
         size: drawSize,
         points: pts,
-        opacity,
+        opacity: getOpacityForPen(penType),
       });
     }
     pointsRef.current = [];
     setCurrentPoints([]);
-  }, [id, penType, drawColor, drawSize, addStroke]);
+  }, [id, penType, drawColor, drawSize, addStroke, getOpacityForPen]);
 
   // Drawing gesture using ref to avoid stale closure
   const drawGesture = Gesture.Pan()
@@ -376,7 +384,7 @@ export default function EditorScreen() {
                       color: drawColor,
                       size: drawSize,
                       penType,
-                      opacity: penType === 'highlighter' ? 0.35 : penType === 'marker' ? 0.7 : 1,
+                      opacity: getOpacityForPen(penType),
                     }
                   : null
               }

@@ -2,7 +2,7 @@ import { View, Text, Pressable } from 'react-native';
 import { Image } from 'expo-image';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { Fonts } from '@/constants/Typography';
-import { CAT_STICKER_MAP } from '@/constants/Stickers';
+import { CAT_STICKER_MAP, DECO_TEXT_MAP } from '@/constants/Stickers';
 import { useTheme } from '@/components/ui/use-theme';
 import type { DiaryPage, BackgroundType } from '@/store/types';
 
@@ -28,9 +28,8 @@ export function PageCard({ page, onPress, onLongPress }: PageCardProps) {
     return `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, '0')}.${String(d.getDate()).padStart(2, '0')}`;
   };
 
-  const emojiStickerElements = page.elements.filter((e) => e.type === 'sticker');
-  const catStickerElements = page.elements.filter((e) => e.type === 'cat-image');
-  const allStickerElements = [...emojiStickerElements, ...catStickerElements];
+  const stickerTypes = new Set(['sticker', 'cat-image', 'deco-text', 'custom-image']);
+  const allStickerElements = page.elements.filter((e) => stickerTypes.has(e.type));
   const textElements = page.elements.filter((e) => e.type === 'text');
   const photoElements = page.elements.filter((e) => e.type === 'photo');
 
@@ -79,20 +78,53 @@ export function PageCard({ page, onPress, onLongPress }: PageCardProps) {
               padding: 12,
             }}
           >
-            {allStickerElements.slice(0, 6).map((el) =>
-              el.type === 'cat-image' ? (
-                <Image
-                  key={el.id}
-                  source={CAT_STICKER_MAP.get(el.content)}
-                  style={{ width: 32, height: 32 }}
-                  contentFit="contain"
-                />
-              ) : (
+            {allStickerElements.slice(0, 6).map((el) => {
+              if (el.type === 'cat-image') {
+                return (
+                  <Image
+                    key={el.id}
+                    source={CAT_STICKER_MAP.get(el.content)}
+                    style={{ width: 32, height: 32 }}
+                    contentFit="contain"
+                  />
+                );
+              }
+              if (el.type === 'custom-image') {
+                return (
+                  <Image
+                    key={el.id}
+                    source={{ uri: el.content }}
+                    style={{ width: 32, height: 32 }}
+                    contentFit="contain"
+                  />
+                );
+              }
+              if (el.type === 'deco-text') {
+                const deco = DECO_TEXT_MAP.get(el.content);
+                return (
+                  <Text
+                    key={el.id}
+                    style={{
+                      fontFamily: Fonts.bold,
+                      fontSize: 11,
+                      color: deco?.color || '#E91E63',
+                      backgroundColor: deco?.bgColor || '#FCE4EC',
+                      paddingHorizontal: 6,
+                      paddingVertical: 2,
+                      borderRadius: 6,
+                      overflow: 'hidden',
+                    }}
+                  >
+                    {deco?.text || el.content}
+                  </Text>
+                );
+              }
+              return (
                 <Text key={el.id} style={{ fontSize: 28 }}>
                   {el.content}
                 </Text>
-              )
-            )}
+              );
+            })}
           </View>
         ) : textElements.length > 0 ? (
           <View style={{ padding: 14 }}>

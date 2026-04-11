@@ -11,8 +11,8 @@ const PEN_TYPES: { type: PenType; label: string; icon: string }[] = [
   { type: 'pen', label: 'ペン', icon: '✒️' },
   { type: 'marker', label: 'マーカー', icon: '🖊️' },
   { type: 'highlighter', label: '蛍光ペン', icon: '🖍️' },
-  { type: 'crayon', label: 'クレヨン', icon: '🖌️' },
-  { type: 'sparkle', label: 'キラキラ', icon: '✨' },
+  { type: 'crayon', label: 'クレヨン', icon: '🖍️' },
+  { type: 'neon', label: 'ネオン', icon: '💡' },
 ];
 
 const BRUSH_SIZES = [2, 4, 6, 8, 12];
