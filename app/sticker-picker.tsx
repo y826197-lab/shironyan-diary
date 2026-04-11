@@ -1,7 +1,7 @@
-import { View, Text, ScrollView, Pressable, FlatList, Alert, useWindowDimensions } from 'react-native';
+import { View, Text, ScrollView, Pressable, Alert, Platform, useWindowDimensions } from 'react-native';
 import { useRouter, useLocalSearchParams } from 'expo-router';
 import { useState, useCallback, useMemo } from 'react';
-import Animated, { FadeIn, ZoomOut } from 'react-native-reanimated';
+import Animated, { FadeIn } from 'react-native-reanimated';
 import { Image } from 'expo-image';
 import * as ImagePicker from 'expo-image-picker';
 import Ionicons from '@expo/vector-icons/Ionicons';
@@ -22,6 +22,27 @@ const CAT_TAB_ID = '__cats';
 const DECO_TAB_ID = '__deco';
 const MY_TAB_ID = '__my';
 
+/**
+ * Cross-platform delete confirmation.
+ * On web, window.confirm is used directly for guaranteed reliability.
+ * On native, Alert.alert is used.
+ */
+function confirmDelete(onConfirm: () => void) {
+  if (Platform.OS === 'web') {
+    const yes = window.confirm('このカスタムステッカーを削除しますか？');
+    if (yes) onConfirm();
+  } else {
+    Alert.alert(
+      'ステッカーを削除',
+      'このカスタムステッカーを削除しますか？',
+      [
+        { text: 'いいえ', style: 'cancel' },
+        { text: 'はい', style: 'destructive', onPress: onConfirm },
+      ]
+    );
+  }
+}
+
 export default function StickerPickerScreen() {
   const router = useRouter();
   const theme = useTheme();
@@ -36,7 +57,6 @@ export default function StickerPickerScreen() {
 
   const currentCategory = STICKER_CATEGORIES.find((c) => c.id === activeCategory) || STICKER_CATEGORIES[0];
 
-  // Gather recently used stickers from all pages
   const recentStickers = useMemo(() => {
     const all: string[] = [];
     for (const page of pages) {
@@ -54,7 +74,6 @@ export default function StickerPickerScreen() {
   const decoStickerWidth = Math.floor((width - 52) / 2);
   const myStickerSize = Math.floor((width - 56) / 4);
 
-  // Emoji sticker handler
   const handleSelectSticker = useCallback(
     (sticker: string) => {
       if (pageId) {
@@ -73,7 +92,6 @@ export default function StickerPickerScreen() {
     [pageId, addElement, router]
   );
 
-  // Cat sticker handler
   const handleSelectCatSticker = useCallback(
     (cat: CatSticker) => {
       if (pageId) {
@@ -92,7 +110,6 @@ export default function StickerPickerScreen() {
     [pageId, addElement, router]
   );
 
-  // Deco text sticker handler
   const handleSelectDecoSticker = useCallback(
     (deco: DecoTextSticker) => {
       if (pageId) {
@@ -114,7 +131,6 @@ export default function StickerPickerScreen() {
     [pageId, addElement, router]
   );
 
-  // Custom sticker handler
   const handleSelectCustomSticker = useCallback(
     (sticker: CustomSticker) => {
       if (pageId) {
@@ -133,7 +149,6 @@ export default function StickerPickerScreen() {
     [pageId, addElement, router]
   );
 
-  // Image picker for custom stickers
   const handlePickCustomSticker = useCallback(async () => {
     try {
       const result = await ImagePicker.launchImageLibraryAsync({
@@ -143,7 +158,6 @@ export default function StickerPickerScreen() {
         aspect: [1, 1],
       });
       if (!result.canceled && result.assets[0]) {
-        // Copy image to persistent storage so it survives app restarts
         const permanentUri = await persistImage(result.assets[0].uri);
         addCustomSticker(permanentUri);
       }
@@ -152,30 +166,10 @@ export default function StickerPickerScreen() {
     }
   }, [addCustomSticker]);
 
-  // Delete custom sticker with confirmation
-  const handleDeleteCustomSticker = useCallback(
-    (sticker: CustomSticker) => {
-      Alert.alert(
-        'ステッカーを削除',
-        'このカスタムステッカーを削除しますか？',
-        [
-          { text: 'いいえ', style: 'cancel' },
-          {
-            text: 'はい',
-            style: 'destructive',
-            onPress: () => removeCustomSticker(sticker.id),
-          },
-        ]
-      );
-    },
-    [removeCustomSticker]
-  );
-
   const isCatTab = activeCategory === CAT_TAB_ID;
   const isDecoTab = activeCategory === DECO_TAB_ID;
   const isMyTab = activeCategory === MY_TAB_ID;
 
-  // Reusable tab pill
   const renderTab = (
     id: string,
     icon: string,
@@ -216,20 +210,15 @@ export default function StickerPickerScreen() {
     );
   };
 
-  // Render the active grid content
   const renderGrid = () => {
-    // Cat image stickers — 4 columns
     if (isCatTab) {
       return (
-        <FlatList
-          key="cat-grid"
-          data={CAT_STICKERS}
-          numColumns={4}
-          keyExtractor={(item) => item.id}
-          contentContainerStyle={{ paddingHorizontal: 16, paddingTop: 16, paddingBottom: 40, gap: 10 }}
-          columnWrapperStyle={{ gap: 10, justifyContent: 'flex-start' }}
-          renderItem={({ item, index }) => (
-            <Animated.View entering={FadeIn.delay(index * 30).duration(300)}>
+        <ScrollView
+          contentContainerStyle={{ paddingHorizontal: 16, paddingTop: 16, paddingBottom: 40, flexDirection: 'row', flexWrap: 'wrap', gap: 10 }}
+          showsVerticalScrollIndicator={false}
+        >
+          {CAT_STICKERS.map((item, index) => (
+            <Animated.View key={item.id} entering={FadeIn.delay(index * 30).duration(300)}>
               <Pressable
                 onPress={() => handleSelectCatSticker(item)}
                 style={({ pressed }) => ({
@@ -254,26 +243,20 @@ export default function StickerPickerScreen() {
                 />
               </Pressable>
             </Animated.View>
-          )}
-          ListEmptyComponent={
-            <EmptyState message="ネコステッカーがありません" theme={theme} />
-          }
-        />
+          ))}
+          {CAT_STICKERS.length === 0 && <EmptyState message="ネコステッカーがありません" theme={theme} />}
+        </ScrollView>
       );
     }
 
-    // Deco text stickers — 2 columns, styled text pills
     if (isDecoTab) {
       return (
-        <FlatList
-          key="deco-grid"
-          data={DECO_TEXT_STICKERS}
-          numColumns={2}
-          keyExtractor={(item) => item.id}
-          contentContainerStyle={{ paddingHorizontal: 16, paddingTop: 16, paddingBottom: 40, gap: 10 }}
-          columnWrapperStyle={{ gap: 10 }}
-          renderItem={({ item, index }) => (
-            <Animated.View entering={FadeIn.delay(index * 40).duration(300)}>
+        <ScrollView
+          contentContainerStyle={{ paddingHorizontal: 16, paddingTop: 16, paddingBottom: 40, flexDirection: 'row', flexWrap: 'wrap', gap: 10 }}
+          showsVerticalScrollIndicator={false}
+        >
+          {DECO_TEXT_STICKERS.map((item, index) => (
+            <Animated.View key={item.id} entering={FadeIn.delay(index * 40).duration(300)}>
               <Pressable
                 onPress={() => handleSelectDecoSticker(item)}
                 style={({ pressed }) => ({
@@ -301,164 +284,112 @@ export default function StickerPickerScreen() {
                 </Text>
               </Pressable>
             </Animated.View>
-          )}
-          ListEmptyComponent={
-            <EmptyState message="デコ文字がありません" theme={theme} />
-          }
-        />
+          ))}
+          {DECO_TEXT_STICKERS.length === 0 && <EmptyState message="デコ文字がありません" theme={theme} />}
+        </ScrollView>
       );
     }
 
-    // My custom stickers — 4 columns with add button
+    // =============================
+    // My custom stickers tab
+    // =============================
+    // Uses ScrollView (not FlatList) to avoid virtualization touch quirks.
+    // Each card is a simple flex column: [× button row] then [image area].
+    // No overlays, no absolute-positioned interactive elements, no nested Pressables.
+    // This guarantees touch events fire on all platforms.
     if (isMyTab) {
-      const dataWithAdd = [{ _isAddButton: true as const }, ...customStickers];
       return (
-        <FlatList
-          key="my-grid"
-          data={dataWithAdd}
-          numColumns={4}
-          keyExtractor={(item, index) =>
-            '_isAddButton' in item ? '__add' : (item as CustomSticker).id ?? `item-${index}`
-          }
-          style={{ overflow: 'visible' }}
-          contentContainerStyle={{ paddingHorizontal: 20, paddingTop: 20, paddingBottom: 40, gap: 10 }}
-          columnWrapperStyle={{ gap: 10, justifyContent: 'flex-start' }}
-          renderItem={({ item, index }) => {
-            // Add button
-            if ('_isAddButton' in item) {
-              return (
-                <Animated.View entering={FadeIn.duration(200)}>
-                  <Pressable
-                    onPress={handlePickCustomSticker}
-                    style={({ pressed }) => ({
-                      width: myStickerSize,
-                      height: myStickerSize,
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      borderRadius: 16,
-                      borderCurve: 'continuous',
-                      backgroundColor: pressed ? theme.primaryLight : theme.background,
-                      borderWidth: 2,
-                      borderColor: theme.primary,
-                      borderStyle: 'dashed',
-                      gap: 4,
-                      opacity: pressed ? 0.7 : 1,
-                    })}
-                  >
-                    <Ionicons name="add-circle" size={28} color={theme.primary} />
-                    <Text
-                      style={{
-                        fontFamily: Fonts.bold,
-                        fontSize: 10,
-                        color: theme.primary,
-                      }}
-                    >
-                      追加
-                    </Text>
-                  </Pressable>
-                </Animated.View>
-              );
-            }
-
-            // Custom sticker with delete button
-            const sticker = item as CustomSticker;
-            return (
-              <Animated.View
-                entering={FadeIn.delay(index * 30).duration(300)}
-                exiting={ZoomOut.duration(200)}
-              >
-                <View style={{ width: myStickerSize, height: myStickerSize }}>
-                  <Pressable
-                    onPress={() => handleSelectCustomSticker(sticker)}
-                    onLongPress={() => handleDeleteCustomSticker(sticker)}
-                    style={({ pressed }) => ({
-                      width: myStickerSize,
-                      height: myStickerSize,
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      borderRadius: 16,
-                      borderCurve: 'continuous',
-                      backgroundColor: pressed ? '#FFF0F5' : '#FAFAFA',
-                      borderWidth: 1.5,
-                      borderColor: pressed ? theme.primary : '#F0E8EE',
-                      transform: [{ scale: pressed ? 1.08 : 1 }],
-                      overflow: 'hidden',
-                    })}
-                  >
-                    <Image
-                      source={{ uri: sticker.uri }}
-                      style={{ width: myStickerSize - 12, height: myStickerSize - 12 }}
-                      contentFit="contain"
-                      transition={200}
-                      recyclingKey={sticker.id}
-                      placeholder={undefined}
-                    />
-                  </Pressable>
-
-                  {/* Delete × button */}
-                  <Pressable
-                    onPress={() => handleDeleteCustomSticker(sticker)}
-                    hitSlop={6}
-                    style={({ pressed }) => ({
-                      position: 'absolute',
-                      top: -6,
-                      right: -6,
-                      width: 22,
-                      height: 22,
-                      borderRadius: 11,
-                      backgroundColor: pressed ? '#D32F2F' : '#F28B82',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      zIndex: 10,
-                      boxShadow: '0 1px 3px rgba(0,0,0,0.18)',
-                      borderWidth: 2,
-                      borderColor: '#FFF',
-                      transform: [{ scale: pressed ? 0.9 : 1 }],
-                    })}
-                  >
-                    <Ionicons name="close" size={12} color="#FFF" />
-                  </Pressable>
-                </View>
-              </Animated.View>
-            );
+        <ScrollView
+          contentContainerStyle={{
+            paddingHorizontal: 16,
+            paddingTop: 16,
+            paddingBottom: 40,
+            flexDirection: 'row',
+            flexWrap: 'wrap',
+            gap: 10,
           }}
-          ListEmptyComponent={null}
-        />
-      );
-    }
-
-    // Emoji sticker grid — 6 columns (default for emoji categories + recent)
-    return (
-      <FlatList
-        key="emoji-grid"
-        data={activeCategory === '__recent' ? recentStickers : currentCategory.stickers}
-        numColumns={6}
-        keyExtractor={(item, index) => `${activeCategory}-${item}-${index}`}
-        contentContainerStyle={{ paddingHorizontal: 20, paddingTop: 16, paddingBottom: 40 }}
-        columnWrapperStyle={{ justifyContent: 'flex-start' }}
-        renderItem={({ item, index }) => (
-          <Animated.View entering={FadeIn.delay(index * 20)}>
+          showsVerticalScrollIndicator={false}
+        >
+          {/* Add button */}
+          <Animated.View entering={FadeIn.duration(200)}>
             <Pressable
-              onPress={() => handleSelectSticker(item)}
+              onPress={handlePickCustomSticker}
               style={({ pressed }) => ({
-                width: stickerSize,
-                height: stickerSize,
+                width: myStickerSize,
+                height: myStickerSize,
                 alignItems: 'center',
                 justifyContent: 'center',
-                borderRadius: 14,
+                borderRadius: 16,
                 borderCurve: 'continuous',
-                backgroundColor: pressed ? theme.primaryLight : 'transparent',
-                transform: [{ scale: pressed ? 1.3 : 1 }],
+                backgroundColor: pressed ? theme.primaryLight : theme.background,
+                borderWidth: 2,
+                borderColor: theme.primary,
+                borderStyle: 'dashed',
+                gap: 4,
+                opacity: pressed ? 0.7 : 1,
               })}
             >
-              <Text style={{ fontSize: 32 }}>{item}</Text>
+              <Ionicons name="add-circle" size={28} color={theme.primary} />
+              <Text
+                style={{
+                  fontFamily: Fonts.bold,
+                  fontSize: 10,
+                  color: theme.primary,
+                }}
+              >
+                追加
+              </Text>
             </Pressable>
           </Animated.View>
+
+          {/* Custom sticker cards */}
+          {customStickers.map((sticker, index) => (
+            <CustomStickerCard
+              key={sticker.id}
+              sticker={sticker}
+              size={myStickerSize}
+              index={index}
+              theme={theme}
+              onSelect={() => handleSelectCustomSticker(sticker)}
+              onDelete={() => {
+                confirmDelete(() => removeCustomSticker(sticker.id));
+              }}
+            />
+          ))}
+        </ScrollView>
+      );
+    }
+
+    // Emoji sticker grid
+    return (
+      <ScrollView
+        contentContainerStyle={{ paddingHorizontal: 20, paddingTop: 16, paddingBottom: 40, flexDirection: 'row', flexWrap: 'wrap' }}
+        showsVerticalScrollIndicator={false}
+      >
+        {(activeCategory === '__recent' ? recentStickers : currentCategory.stickers).map(
+          (item, index) => (
+            <Animated.View key={`${activeCategory}-${item}-${index}`} entering={FadeIn.delay(index * 20)}>
+              <Pressable
+                onPress={() => handleSelectSticker(item)}
+                style={({ pressed }) => ({
+                  width: stickerSize,
+                  height: stickerSize,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  borderRadius: 14,
+                  borderCurve: 'continuous',
+                  backgroundColor: pressed ? theme.primaryLight : 'transparent',
+                  transform: [{ scale: pressed ? 1.3 : 1 }],
+                })}
+              >
+                <Text style={{ fontSize: 32 }}>{item}</Text>
+              </Pressable>
+            </Animated.View>
+          )
         )}
-        ListEmptyComponent={
-          <EmptyState message="ステッカーがありません" theme={theme} />
-        }
-      />
+        {(activeCategory === '__recent' ? recentStickers : currentCategory.stickers).length ===
+          0 && <EmptyState message="ステッカーがありません" theme={theme} />}
+      </ScrollView>
     );
   };
 
@@ -510,6 +441,110 @@ export default function StickerPickerScreen() {
   );
 }
 
+// =====================================================
+// Custom sticker card — extracted as a separate component
+// to isolate touch handling and avoid closure issues.
+//
+// Layout is a simple flex column (NO overlays, NO absolute
+// positioning for interactive elements):
+//
+//   ┌──────────────────┐
+//   │            [× ]  │  ← Row 1: delete button, right-aligned
+//   │   ┌──────────┐   │
+//   │   │  IMAGE   │   │  ← Row 2: tappable image area
+//   │   └──────────┘   │
+//   └──────────────────┘
+//
+// Both the × button and the image area are independent
+// sibling Pressables — no nesting, no overlays.
+// =====================================================
+function CustomStickerCard({
+  sticker,
+  size,
+  index,
+  theme,
+  onSelect,
+  onDelete,
+}: {
+  sticker: CustomSticker;
+  size: number;
+  index: number;
+  theme: ReturnType<typeof import('@/components/ui/use-theme').useTheme>;
+  onSelect: () => void;
+  onDelete: () => void;
+}) {
+  return (
+    <Animated.View entering={FadeIn.delay(index * 30).duration(300)}>
+      <View
+        style={{
+          width: size,
+          height: size,
+          borderRadius: 16,
+          borderCurve: 'continuous',
+          backgroundColor: '#FAFAFA',
+          borderWidth: 1.5,
+          borderColor: '#F0E8EE',
+        }}
+      >
+        {/* Row 1: Delete × button — right-aligned, own touch target */}
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'flex-end',
+            paddingTop: 3,
+            paddingRight: 3,
+            zIndex: 10,
+          }}
+        >
+          <Pressable
+            onPress={onDelete}
+            hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+            style={({ pressed }) => ({
+              width: 24,
+              height: 24,
+              borderRadius: 12,
+              backgroundColor: pressed ? '#D32F2F' : '#F28B82',
+              alignItems: 'center',
+              justifyContent: 'center',
+              borderWidth: 2,
+              borderColor: '#FFF',
+              boxShadow: '0 1px 3px rgba(0,0,0,0.2)',
+              transform: [{ scale: pressed ? 0.9 : 1 }],
+            })}
+          >
+            <Ionicons name="close" size={12} color="#FFF" />
+          </Pressable>
+        </View>
+
+        {/* Row 2: Sticker image — tappable to select, fills remaining space */}
+        <Pressable
+          onPress={onSelect}
+          style={({ pressed }) => ({
+            flex: 1,
+            alignItems: 'center',
+            justifyContent: 'center',
+            marginTop: -4,
+            opacity: pressed ? 0.7 : 1,
+            transform: [{ scale: pressed ? 1.05 : 1 }],
+          })}
+        >
+          <Image
+            source={{ uri: sticker.uri }}
+            style={{
+              width: size - 20,
+              height: size - 42,
+              borderRadius: 8,
+            }}
+            contentFit="contain"
+            transition={200}
+            recyclingKey={sticker.id}
+          />
+        </Pressable>
+      </View>
+    </Animated.View>
+  );
+}
+
 function EmptyState({
   message,
   theme,
@@ -518,7 +553,7 @@ function EmptyState({
   theme: ReturnType<typeof import('@/components/ui/use-theme').useTheme>;
 }) {
   return (
-    <View style={{ alignItems: 'center', paddingTop: 40 }}>
+    <View style={{ alignItems: 'center', paddingTop: 40, width: '100%' }}>
       <Text style={{ fontFamily: Fonts.regular, fontSize: 14, color: theme.textMuted }}>
         {message}
       </Text>
