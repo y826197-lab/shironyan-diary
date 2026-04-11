@@ -1,8 +1,45 @@
-/**
- * Base entity types for the app store.
- *
- * The skeleton phase will extend this file with app-specific entity
- * interfaces derived from the development plan's data model.
- */
+import type { ThemeKey } from '@/constants/Colors';
 
-export interface Preferences {}
+export type BackgroundType = 'plain' | 'lined' | 'grid' | 'dots' | 'floral';
+export type PenType = 'pen' | 'marker' | 'highlighter' | 'crayon' | 'sparkle';
+
+export interface CanvasElement {
+  id: string;
+  type: 'photo' | 'sticker' | 'text' | 'cat-image';
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  rotation: number;
+  content: string;
+  fontSize?: number;
+  fontColor?: string;
+  imageSource?: number;
+  zIndex: number;
+}
+
+export interface DrawingStroke {
+  id: string;
+  penType: PenType;
+  color: string;
+  size: number;
+  points: { x: number; y: number }[];
+  opacity: number;
+}
+
+export interface DiaryPage {
+  id: string;
+  title: string;
+  date: string;
+  type: 'calendar' | 'free';
+  background: BackgroundType;
+  elements: CanvasElement[];
+  strokes: DrawingStroke[];
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface Preferences {
+  themeKey: ThemeKey;
+  fontScale: number;
+}
