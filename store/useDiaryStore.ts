@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import type { DiaryPage, CanvasElement, DrawingStroke, BackgroundType } from './types';
+import { deletePersistedImage } from '@/utils/image-storage';
 
 function generateId(): string {
   return Date.now().toString(36) + Math.random().toString(36).slice(2, 9);
@@ -51,6 +52,15 @@ export const useDiaryStore = create<DiaryState>()(
       },
 
       deletePage: (id) => {
+        // Clean up persisted image files for all photo/custom-image elements
+        const page = get().pages.find((p) => p.id === id);
+        if (page) {
+          for (const el of page.elements) {
+            if (el.type === 'photo' || el.type === 'custom-image') {
+              deletePersistedImage(el.content).catch(() => {});
+            }
+          }
+        }
         set((state) => ({ pages: state.pages.filter((p) => p.id !== id) }));
       },
 
@@ -91,6 +101,12 @@ export const useDiaryStore = create<DiaryState>()(
       },
 
       removeElement: (pageId, elementId) => {
+        // Clean up persisted image file if this is a photo/custom-image element
+        const page = get().pages.find((p) => p.id === pageId);
+        const element = page?.elements.find((e) => e.id === elementId);
+        if (element && (element.type === 'photo' || element.type === 'custom-image')) {
+          deletePersistedImage(element.content).catch(() => {});
+        }
         set((state) => ({
           pages: state.pages.map((p) => {
             if (p.id !== pageId) return p;

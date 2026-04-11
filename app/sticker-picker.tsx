@@ -7,6 +7,7 @@ import * as ImagePicker from 'expo-image-picker';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { Fonts } from '@/constants/Typography';
 import { useTheme } from '@/components/ui/use-theme';
+import { persistImage } from '@/utils/image-storage';
 import {
   STICKER_CATEGORIES,
   CAT_STICKERS,
@@ -142,7 +143,9 @@ export default function StickerPickerScreen() {
         aspect: [1, 1],
       });
       if (!result.canceled && result.assets[0]) {
-        addCustomSticker(result.assets[0].uri);
+        // Copy image to persistent storage so it survives app restarts
+        const permanentUri = await persistImage(result.assets[0].uri);
+        addCustomSticker(permanentUri);
       }
     } catch {
       Alert.alert('エラー', '画像の読み込みに失敗しました');

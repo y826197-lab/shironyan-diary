@@ -9,6 +9,7 @@ import * as ImagePicker from 'expo-image-picker';
 import { Fonts } from '@/constants/Typography';
 import { useTheme } from '@/components/ui/use-theme';
 import { useDiaryStore } from '@/store/useDiaryStore';
+import { persistImage } from '@/utils/image-storage';
 import { CanvasElementView } from '@/components/editor/canvas-element';
 import { CanvasBackground } from '@/components/editor/canvas-background';
 import { DrawingLayer } from '@/components/editor/drawing-layer';
@@ -78,6 +79,9 @@ export default function EditorScreen() {
         const photoWidth = 180;
         const photoHeight = photoWidth / aspectRatio;
 
+        // Copy image to persistent storage so it survives app restarts
+        const permanentUri = await persistImage(asset.uri);
+
         addElement(id, {
           type: 'photo',
           x: 60 + Math.random() * 60,
@@ -85,7 +89,7 @@ export default function EditorScreen() {
           width: photoWidth,
           height: photoHeight,
           rotation: (Math.random() - 0.5) * 0.15,
-          content: asset.uri,
+          content: permanentUri,
         });
       }
     } catch {

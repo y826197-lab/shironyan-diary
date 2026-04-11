@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { deletePersistedImage } from '@/utils/image-storage';
 
 export interface CustomSticker {
   id: string;
@@ -20,7 +21,7 @@ function generateId(): string {
 
 export const useCustomStickerStore = create<CustomStickerState>()(
   persist(
-    (set) => ({
+    (set, get) => ({
       stickers: [],
 
       addSticker: (uri: string) => {
@@ -35,6 +36,10 @@ export const useCustomStickerStore = create<CustomStickerState>()(
       },
 
       removeSticker: (id: string) => {
+        const sticker = get().stickers.find((s) => s.id === id);
+        if (sticker) {
+          deletePersistedImage(sticker.uri).catch(() => {});
+        }
         set((state) => ({
           stickers: state.stickers.filter((s) => s.id !== id),
         }));
