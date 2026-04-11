@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": 1775908171429,
+  "generatedAt": 1775909102728,
   "entries": {
     "Index@app/index.tsx:5": {
       "element": {
@@ -34,33 +34,225 @@
         }
       ]
     },
-    "DrawingLayer@components/editor/drawing-layer.tsx:198": {
+    "BackgroundPickerScreen@app/background-picker.tsx:95": {
       "element": {
-        "file": "components/editor/drawing-layer.tsx",
-        "line": 198
+        "file": "app/background-picker.tsx",
+        "line": 95
       },
       "styles": [
         {
           "origin": "inline",
-          "file": "components/editor/drawing-layer.tsx",
+          "file": "app/background-picker.tsx",
           "properties": {
-            "position": {
-              "line": 200,
-              "col": 18,
-              "endCol": 28,
-              "raw": "'absolute'"
-            },
-            "top": {
-              "line": 201,
-              "col": 13,
-              "endCol": 14,
-              "raw": "0"
-            },
-            "left": {
-              "line": 202,
+            "flex": {
+              "line": 97,
               "col": 14,
               "endCol": 15,
-              "raw": "0"
+              "raw": "1"
+            },
+            "borderTopLeftRadius": {
+              "line": 99,
+              "col": 29,
+              "endCol": 31,
+              "raw": "20"
+            },
+            "borderTopRightRadius": {
+              "line": 100,
+              "col": 30,
+              "endCol": 32,
+              "raw": "20"
+            },
+            "borderCurve": {
+              "line": 101,
+              "col": 21,
+              "endCol": 33,
+              "raw": "'continuous'"
+            },
+            "padding": {
+              "line": 102,
+              "col": 17,
+              "endCol": 19,
+              "raw": "20"
+            },
+            "gap": {
+              "line": 103,
+              "col": 13,
+              "endCol": 15,
+              "raw": "16"
+            }
+          }
+        }
+      ]
+    },
+    "BackgroundPickerScreen@app/background-picker.tsx:106": {
+      "element": {
+        "file": "app/background-picker.tsx",
+        "line": 106
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/background-picker.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 109,
+              "col": 20,
+              "endCol": 22,
+              "raw": "18"
+            },
+            "textAlign": {
+              "line": 111,
+              "col": 21,
+              "endCol": 29,
+              "raw": "'center'"
+            }
+          }
+        }
+      ]
+    },
+    "BackgroundPickerScreen@app/background-picker.tsx:117": {
+      "element": {
+        "file": "app/background-picker.tsx",
+        "line": 117
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/background-picker.tsx",
+          "properties": {
+            "gap": {
+              "line": 117,
+              "col": 26,
+              "endCol": 28,
+              "raw": "10"
+            }
+          }
+        }
+      ]
+    },
+    "BackgroundPickerScreen@app/background-picker.tsx:122": {
+      "element": {
+        "file": "app/background-picker.tsx",
+        "line": 122
+      },
+      "styles": [
+        {
+          "origin": "dynamic",
+          "resolvable": false
+        }
+      ]
+    },
+    "BackgroundPickerScreen@app/background-picker.tsx:139": {
+      "element": {
+        "file": "app/background-picker.tsx",
+        "line": 139
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/background-picker.tsx",
+          "properties": {
+            "width": {
+              "line": 141,
+              "col": 27,
+              "endCol": 29,
+              "raw": "48"
+            },
+            "height": {
+              "line": 142,
+              "col": 28,
+              "endCol": 30,
+              "raw": "48"
+            },
+            "borderRadius": {
+              "line": 143,
+              "col": 34,
+              "endCol": 36,
+              "raw": "10"
+            },
+            "borderCurve": {
+              "line": 144,
+              "col": 33,
+              "endCol": 45,
+              "raw": "'continuous'"
+            },
+            "backgroundColor": {
+              "line": 145,
+              "col": 37,
+              "endCol": 46,
+              "raw": "'#FFFFFF'"
+            },
+            "overflow": {
+              "line": 146,
+              "col": 30,
+              "endCol": 38,
+              "raw": "'hidden'"
+            },
+            "borderWidth": {
+              "line": 147,
+              "col": 33,
+              "endCol": 34,
+              "raw": "1"
+            }
+          }
+        }
+      ]
+    },
+    "BackgroundPickerScreen@app/background-picker.tsx:153": {
+      "element": {
+        "file": "app/background-picker.tsx",
+        "line": 153
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/background-picker.tsx",
+          "properties": {
+            "flex": {
+              "line": 153,
+              "col": 37,
+              "endCol": 38,
+              "raw": "1"
+            }
+          }
+        }
+      ]
+    },
+    "BackgroundPickerScreen@app/background-picker.tsx:154": {
+      "element": {
+        "file": "app/background-picker.tsx",
+        "line": 154
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/background-picker.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 157,
+              "col": 32,
+              "endCol": 34,
+              "raw": "15"
+            }
+          }
+        }
+      ]
+    },
+    "BackgroundPickerScreen@app/background-picker.tsx:163": {
+      "element": {
+        "file": "app/background-picker.tsx",
+        "line": 163
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/background-picker.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 166,
+              "col": 32,
+              "endCol": 34,
+              "raw": "12"
             }
           }
         }
@@ -519,1162 +711,6 @@
         {
           "origin": "dynamic",
           "resolvable": false
-        }
-      ]
-    },
-    "BackgroundPickerScreen@app/background-picker.tsx:95": {
-      "element": {
-        "file": "app/background-picker.tsx",
-        "line": 95
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/background-picker.tsx",
-          "properties": {
-            "flex": {
-              "line": 97,
-              "col": 14,
-              "endCol": 15,
-              "raw": "1"
-            },
-            "borderTopLeftRadius": {
-              "line": 99,
-              "col": 29,
-              "endCol": 31,
-              "raw": "20"
-            },
-            "borderTopRightRadius": {
-              "line": 100,
-              "col": 30,
-              "endCol": 32,
-              "raw": "20"
-            },
-            "borderCurve": {
-              "line": 101,
-              "col": 21,
-              "endCol": 33,
-              "raw": "'continuous'"
-            },
-            "padding": {
-              "line": 102,
-              "col": 17,
-              "endCol": 19,
-              "raw": "20"
-            },
-            "gap": {
-              "line": 103,
-              "col": 13,
-              "endCol": 15,
-              "raw": "16"
-            }
-          }
-        }
-      ]
-    },
-    "BackgroundPickerScreen@app/background-picker.tsx:106": {
-      "element": {
-        "file": "app/background-picker.tsx",
-        "line": 106
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/background-picker.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 109,
-              "col": 20,
-              "endCol": 22,
-              "raw": "18"
-            },
-            "textAlign": {
-              "line": 111,
-              "col": 21,
-              "endCol": 29,
-              "raw": "'center'"
-            }
-          }
-        }
-      ]
-    },
-    "BackgroundPickerScreen@app/background-picker.tsx:117": {
-      "element": {
-        "file": "app/background-picker.tsx",
-        "line": 117
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/background-picker.tsx",
-          "properties": {
-            "gap": {
-              "line": 117,
-              "col": 26,
-              "endCol": 28,
-              "raw": "10"
-            }
-          }
-        }
-      ]
-    },
-    "BackgroundPickerScreen@app/background-picker.tsx:122": {
-      "element": {
-        "file": "app/background-picker.tsx",
-        "line": 122
-      },
-      "styles": [
-        {
-          "origin": "dynamic",
-          "resolvable": false
-        }
-      ]
-    },
-    "BackgroundPickerScreen@app/background-picker.tsx:139": {
-      "element": {
-        "file": "app/background-picker.tsx",
-        "line": 139
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/background-picker.tsx",
-          "properties": {
-            "width": {
-              "line": 141,
-              "col": 27,
-              "endCol": 29,
-              "raw": "48"
-            },
-            "height": {
-              "line": 142,
-              "col": 28,
-              "endCol": 30,
-              "raw": "48"
-            },
-            "borderRadius": {
-              "line": 143,
-              "col": 34,
-              "endCol": 36,
-              "raw": "10"
-            },
-            "borderCurve": {
-              "line": 144,
-              "col": 33,
-              "endCol": 45,
-              "raw": "'continuous'"
-            },
-            "backgroundColor": {
-              "line": 145,
-              "col": 37,
-              "endCol": 46,
-              "raw": "'#FFFFFF'"
-            },
-            "overflow": {
-              "line": 146,
-              "col": 30,
-              "endCol": 38,
-              "raw": "'hidden'"
-            },
-            "borderWidth": {
-              "line": 147,
-              "col": 33,
-              "endCol": 34,
-              "raw": "1"
-            }
-          }
-        }
-      ]
-    },
-    "BackgroundPickerScreen@app/background-picker.tsx:153": {
-      "element": {
-        "file": "app/background-picker.tsx",
-        "line": 153
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/background-picker.tsx",
-          "properties": {
-            "flex": {
-              "line": 153,
-              "col": 37,
-              "endCol": 38,
-              "raw": "1"
-            }
-          }
-        }
-      ]
-    },
-    "BackgroundPickerScreen@app/background-picker.tsx:154": {
-      "element": {
-        "file": "app/background-picker.tsx",
-        "line": 154
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/background-picker.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 157,
-              "col": 32,
-              "endCol": 34,
-              "raw": "15"
-            }
-          }
-        }
-      ]
-    },
-    "BackgroundPickerScreen@app/background-picker.tsx:163": {
-      "element": {
-        "file": "app/background-picker.tsx",
-        "line": 163
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/background-picker.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 166,
-              "col": 32,
-              "endCol": 34,
-              "raw": "12"
-            }
-          }
-        }
-      ]
-    },
-    "SettingsScreen@app/(tabs)/settings.tsx:64": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 64
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "flex": {
-              "line": 65,
-              "col": 23,
-              "endCol": 24,
-              "raw": "1"
-            }
-          }
-        }
-      ]
-    },
-    "SettingsScreen@app/(tabs)/settings.tsx:75": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 75
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "alignItems": {
-              "line": 77,
-              "col": 31,
-              "endCol": 39,
-              "raw": "'center'"
-            },
-            "gap": {
-              "line": 77,
-              "col": 46,
-              "endCol": 47,
-              "raw": "4"
-            }
-          }
-        }
-      ]
-    },
-    "SettingsScreen@app/(tabs)/settings.tsx:79": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 79
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 79,
-              "col": 35,
-              "endCol": 37,
-              "raw": "32"
-            }
-          }
-        }
-      ]
-    },
-    "SettingsScreen@app/(tabs)/settings.tsx:80": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 80
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 83,
-              "col": 24,
-              "endCol": 26,
-              "raw": "22"
-            }
-          }
-        }
-      ]
-    },
-    "SettingsScreen@app/(tabs)/settings.tsx:92": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 92
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "gap": {
-              "line": 92,
-              "col": 82,
-              "endCol": 84,
-              "raw": "12"
-            }
-          }
-        }
-      ]
-    },
-    "SettingsScreen@app/(tabs)/settings.tsx:93": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 93
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 96,
-              "col": 24,
-              "endCol": 26,
-              "raw": "15"
-            },
-            "paddingLeft": {
-              "line": 98,
-              "col": 27,
-              "endCol": 28,
-              "raw": "4"
-            }
-          }
-        }
-      ]
-    },
-    "SettingsScreen@app/(tabs)/settings.tsx:104": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 104
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "flexDirection": {
-              "line": 104,
-              "col": 42,
-              "endCol": 47,
-              "raw": "'row'"
-            },
-            "gap": {
-              "line": 104,
-              "col": 54,
-              "endCol": 56,
-              "raw": "10"
-            }
-          }
-        }
-      ]
-    },
-    "SettingsScreen@app/(tabs)/settings.tsx:109": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 109
-      },
-      "styles": [
-        {
-          "origin": "dynamic",
-          "resolvable": false
-        }
-      ]
-    },
-    "SettingsScreen@app/(tabs)/settings.tsx:127": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 127
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "width": {
-              "line": 129,
-              "col": 31,
-              "endCol": 33,
-              "raw": "36"
-            },
-            "height": {
-              "line": 130,
-              "col": 32,
-              "endCol": 34,
-              "raw": "36"
-            },
-            "borderRadius": {
-              "line": 131,
-              "col": 38,
-              "endCol": 40,
-              "raw": "18"
-            },
-            "borderColor": {
-              "line": 134,
-              "col": 37,
-              "endCol": 43,
-              "raw": "'#FFF'"
-            },
-            "alignItems": {
-              "line": 138,
-              "col": 36,
-              "endCol": 44,
-              "raw": "'center'"
-            },
-            "justifyContent": {
-              "line": 139,
-              "col": 40,
-              "endCol": 48,
-              "raw": "'center'"
-            }
-          }
-        }
-      ]
-    },
-    "SettingsScreen@app/(tabs)/settings.tsx:146": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 146
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 149,
-              "col": 34,
-              "endCol": 36,
-              "raw": "12"
-            }
-          }
-        }
-      ]
-    },
-    "SettingsScreen@app/(tabs)/settings.tsx:163": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 163
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "gap": {
-              "line": 163,
-              "col": 82,
-              "endCol": 84,
-              "raw": "12"
-            }
-          }
-        }
-      ]
-    },
-    "SettingsScreen@app/(tabs)/settings.tsx:164": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 164
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 167,
-              "col": 24,
-              "endCol": 26,
-              "raw": "15"
-            },
-            "paddingLeft": {
-              "line": 169,
-              "col": 27,
-              "endCol": 28,
-              "raw": "4"
-            }
-          }
-        }
-      ]
-    },
-    "SettingsScreen@app/(tabs)/settings.tsx:175": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 175
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "flexDirection": {
-              "line": 175,
-              "col": 42,
-              "endCol": 47,
-              "raw": "'row'"
-            },
-            "gap": {
-              "line": 175,
-              "col": 54,
-              "endCol": 56,
-              "raw": "10"
-            }
-          }
-        }
-      ]
-    },
-    "SettingsScreen@app/(tabs)/settings.tsx:179": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 179
-      },
-      "styles": [
-        {
-          "origin": "dynamic",
-          "resolvable": false
-        }
-      ]
-    },
-    "SettingsScreen@app/(tabs)/settings.tsx:203": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 203
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 206,
-              "col": 34,
-              "endCol": 36,
-              "raw": "12"
-            },
-            "marginTop": {
-              "line": 208,
-              "col": 35,
-              "endCol": 36,
-              "raw": "4"
-            }
-          }
-        }
-      ]
-    },
-    "SettingsScreen@app/(tabs)/settings.tsx:221": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 221
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "gap": {
-              "line": 221,
-              "col": 82,
-              "endCol": 84,
-              "raw": "12"
-            }
-          }
-        }
-      ]
-    },
-    "SettingsScreen@app/(tabs)/settings.tsx:222": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 222
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 225,
-              "col": 24,
-              "endCol": 26,
-              "raw": "15"
-            },
-            "paddingLeft": {
-              "line": 227,
-              "col": 27,
-              "endCol": 28,
-              "raw": "4"
-            }
-          }
-        }
-      ]
-    },
-    "SettingsScreen@app/(tabs)/settings.tsx:233": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 233
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "flexDirection": {
-              "line": 233,
-              "col": 42,
-              "endCol": 47,
-              "raw": "'row'"
-            },
-            "flexWrap": {
-              "line": 233,
-              "col": 59,
-              "endCol": 65,
-              "raw": "'wrap'"
-            },
-            "gap": {
-              "line": 233,
-              "col": 72,
-              "endCol": 74,
-              "raw": "12"
-            }
-          }
-        }
-      ]
-    },
-    "SettingsScreen@app/(tabs)/settings.tsx:243": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 243
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "gap": {
-              "line": 243,
-              "col": 82,
-              "endCol": 84,
-              "raw": "12"
-            }
-          }
-        }
-      ]
-    },
-    "SettingsScreen@app/(tabs)/settings.tsx:244": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 244
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 247,
-              "col": 24,
-              "endCol": 26,
-              "raw": "15"
-            },
-            "paddingLeft": {
-              "line": 249,
-              "col": 27,
-              "endCol": 28,
-              "raw": "4"
-            }
-          }
-        }
-      ]
-    },
-    "SettingsScreen@app/(tabs)/settings.tsx:255": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 255
-      },
-      "styles": [
-        {
-          "origin": "dynamic",
-          "resolvable": false
-        }
-      ]
-    },
-    "SettingsScreen@app/(tabs)/settings.tsx:265": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 265
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "width": {
-              "line": 267,
-              "col": 25,
-              "endCol": 27,
-              "raw": "36"
-            },
-            "height": {
-              "line": 268,
-              "col": 26,
-              "endCol": 28,
-              "raw": "36"
-            },
-            "borderRadius": {
-              "line": 269,
-              "col": 32,
-              "endCol": 34,
-              "raw": "18"
-            },
-            "backgroundColor": {
-              "line": 270,
-              "col": 35,
-              "endCol": 44,
-              "raw": "'#FDE8E6'"
-            },
-            "alignItems": {
-              "line": 271,
-              "col": 30,
-              "endCol": 38,
-              "raw": "'center'"
-            },
-            "justifyContent": {
-              "line": 272,
-              "col": 34,
-              "endCol": 42,
-              "raw": "'center'"
-            }
-          }
-        }
-      ]
-    },
-    "SettingsScreen@app/(tabs)/settings.tsx:277": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 277
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "flex": {
-              "line": 277,
-              "col": 35,
-              "endCol": 36,
-              "raw": "1"
-            }
-          }
-        }
-      ]
-    },
-    "SettingsScreen@app/(tabs)/settings.tsx:278": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 278
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 281,
-              "col": 30,
-              "endCol": 32,
-              "raw": "14"
-            },
-            "color": {
-              "line": 282,
-              "col": 27,
-              "endCol": 36,
-              "raw": "'#E57373'"
-            }
-          }
-        }
-      ]
-    },
-    "SettingsScreen@app/(tabs)/settings.tsx:287": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 287
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 290,
-              "col": 30,
-              "endCol": 32,
-              "raw": "11"
-            }
-          }
-        }
-      ]
-    },
-    "SettingsScreen@app/(tabs)/settings.tsx:303": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 303
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "gap": {
-              "line": 303,
-              "col": 82,
-              "endCol": 84,
-              "raw": "12"
-            }
-          }
-        }
-      ]
-    },
-    "SettingsScreen@app/(tabs)/settings.tsx:304": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 304
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 307,
-              "col": 24,
-              "endCol": 26,
-              "raw": "15"
-            },
-            "paddingLeft": {
-              "line": 309,
-              "col": 27,
-              "endCol": 28,
-              "raw": "4"
-            }
-          }
-        }
-      ]
-    },
-    "SettingsScreen@app/(tabs)/settings.tsx:315": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 315
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "alignItems": {
-              "line": 315,
-              "col": 39,
-              "endCol": 47,
-              "raw": "'center'"
-            },
-            "gap": {
-              "line": 315,
-              "col": 54,
-              "endCol": 55,
-              "raw": "8"
-            },
-            "paddingVertical": {
-              "line": 315,
-              "col": 74,
-              "endCol": 76,
-              "raw": "12"
-            }
-          }
-        }
-      ]
-    },
-    "SettingsScreen@app/(tabs)/settings.tsx:316": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 316
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 316,
-              "col": 39,
-              "endCol": 41,
-              "raw": "40"
-            }
-          }
-        }
-      ]
-    },
-    "SettingsScreen@app/(tabs)/settings.tsx:317": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 317
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 320,
-              "col": 28,
-              "endCol": 30,
-              "raw": "20"
-            },
-            "letterSpacing": {
-              "line": 322,
-              "col": 33,
-              "endCol": 34,
-              "raw": "2"
-            }
-          }
-        }
-      ]
-    },
-    "SettingsScreen@app/(tabs)/settings.tsx:327": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 327
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 330,
-              "col": 28,
-              "endCol": 30,
-              "raw": "11"
-            },
-            "letterSpacing": {
-              "line": 332,
-              "col": 33,
-              "endCol": 34,
-              "raw": "2"
-            }
-          }
-        }
-      ]
-    },
-    "SettingsScreen@app/(tabs)/settings.tsx:337": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 337
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "height": {
-              "line": 339,
-              "col": 26,
-              "endCol": 27,
-              "raw": "1"
-            },
-            "width": {
-              "line": 340,
-              "col": 25,
-              "endCol": 27,
-              "raw": "60"
-            },
-            "marginVertical": {
-              "line": 342,
-              "col": 34,
-              "endCol": 35,
-              "raw": "6"
-            }
-          }
-        }
-      ]
-    },
-    "SettingsScreen@app/(tabs)/settings.tsx:345": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 345
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 348,
-              "col": 28,
-              "endCol": 30,
-              "raw": "12"
-            },
-            "textAlign": {
-              "line": 350,
-              "col": 29,
-              "endCol": 37,
-              "raw": "'center'"
-            },
-            "lineHeight": {
-              "line": 351,
-              "col": 30,
-              "endCol": 32,
-              "raw": "20"
-            }
-          }
-        }
-      ]
-    },
-    "StatBubble@app/(tabs)/settings.tsx:378": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 378
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "flex": {
-              "line": 380,
-              "col": 14,
-              "endCol": 15,
-              "raw": "1"
-            },
-            "minWidth": {
-              "line": 381,
-              "col": 18,
-              "endCol": 23,
-              "raw": "'40%'"
-            },
-            "alignItems": {
-              "line": 382,
-              "col": 20,
-              "endCol": 28,
-              "raw": "'center'"
-            },
-            "paddingVertical": {
-              "line": 383,
-              "col": 25,
-              "endCol": 27,
-              "raw": "14"
-            },
-            "borderRadius": {
-              "line": 384,
-              "col": 22,
-              "endCol": 24,
-              "raw": "16"
-            },
-            "borderCurve": {
-              "line": 385,
-              "col": 21,
-              "endCol": 33,
-              "raw": "'continuous'"
-            },
-            "gap": {
-              "line": 387,
-              "col": 13,
-              "endCol": 14,
-              "raw": "4"
-            }
-          }
-        }
-      ]
-    },
-    "StatBubble@app/(tabs)/settings.tsx:390": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 390
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 390,
-              "col": 31,
-              "endCol": 33,
-              "raw": "20"
-            }
-          }
-        }
-      ]
-    },
-    "StatBubble@app/(tabs)/settings.tsx:391": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 391
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 394,
-              "col": 20,
-              "endCol": 22,
-              "raw": "20"
-            }
-          }
-        }
-      ]
-    },
-    "StatBubble@app/(tabs)/settings.tsx:401": {
-      "element": {
-        "file": "app/(tabs)/settings.tsx",
-        "line": 401
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/(tabs)/settings.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 404,
-              "col": 20,
-              "endCol": 22,
-              "raw": "11"
-            }
-          }
         }
       ]
     },
@@ -2630,6 +1666,938 @@
         }
       ]
     },
+    "SettingsScreen@app/(tabs)/settings.tsx:64": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 64
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "flex": {
+              "line": 65,
+              "col": 23,
+              "endCol": 24,
+              "raw": "1"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:75": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 75
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "alignItems": {
+              "line": 77,
+              "col": 31,
+              "endCol": 39,
+              "raw": "'center'"
+            },
+            "gap": {
+              "line": 77,
+              "col": 46,
+              "endCol": 47,
+              "raw": "4"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:79": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 79
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 79,
+              "col": 35,
+              "endCol": 37,
+              "raw": "32"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:80": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 80
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 83,
+              "col": 24,
+              "endCol": 26,
+              "raw": "22"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:92": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 92
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "gap": {
+              "line": 92,
+              "col": 82,
+              "endCol": 84,
+              "raw": "12"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:93": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 93
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 96,
+              "col": 24,
+              "endCol": 26,
+              "raw": "15"
+            },
+            "paddingLeft": {
+              "line": 98,
+              "col": 27,
+              "endCol": 28,
+              "raw": "4"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:104": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 104
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "flexDirection": {
+              "line": 104,
+              "col": 42,
+              "endCol": 47,
+              "raw": "'row'"
+            },
+            "gap": {
+              "line": 104,
+              "col": 54,
+              "endCol": 56,
+              "raw": "10"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:109": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 109
+      },
+      "styles": [
+        {
+          "origin": "dynamic",
+          "resolvable": false
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:127": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 127
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "width": {
+              "line": 129,
+              "col": 31,
+              "endCol": 33,
+              "raw": "36"
+            },
+            "height": {
+              "line": 130,
+              "col": 32,
+              "endCol": 34,
+              "raw": "36"
+            },
+            "borderRadius": {
+              "line": 131,
+              "col": 38,
+              "endCol": 40,
+              "raw": "18"
+            },
+            "borderColor": {
+              "line": 134,
+              "col": 37,
+              "endCol": 43,
+              "raw": "'#FFF'"
+            },
+            "alignItems": {
+              "line": 138,
+              "col": 36,
+              "endCol": 44,
+              "raw": "'center'"
+            },
+            "justifyContent": {
+              "line": 139,
+              "col": 40,
+              "endCol": 48,
+              "raw": "'center'"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:146": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 146
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 149,
+              "col": 34,
+              "endCol": 36,
+              "raw": "12"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:163": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 163
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "gap": {
+              "line": 163,
+              "col": 82,
+              "endCol": 84,
+              "raw": "12"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:164": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 164
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 167,
+              "col": 24,
+              "endCol": 26,
+              "raw": "15"
+            },
+            "paddingLeft": {
+              "line": 169,
+              "col": 27,
+              "endCol": 28,
+              "raw": "4"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:175": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 175
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "flexDirection": {
+              "line": 175,
+              "col": 42,
+              "endCol": 47,
+              "raw": "'row'"
+            },
+            "gap": {
+              "line": 175,
+              "col": 54,
+              "endCol": 56,
+              "raw": "10"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:179": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 179
+      },
+      "styles": [
+        {
+          "origin": "dynamic",
+          "resolvable": false
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:203": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 203
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 206,
+              "col": 34,
+              "endCol": 36,
+              "raw": "12"
+            },
+            "marginTop": {
+              "line": 208,
+              "col": 35,
+              "endCol": 36,
+              "raw": "4"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:221": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 221
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "gap": {
+              "line": 221,
+              "col": 82,
+              "endCol": 84,
+              "raw": "12"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:222": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 222
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 225,
+              "col": 24,
+              "endCol": 26,
+              "raw": "15"
+            },
+            "paddingLeft": {
+              "line": 227,
+              "col": 27,
+              "endCol": 28,
+              "raw": "4"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:233": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 233
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "flexDirection": {
+              "line": 233,
+              "col": 42,
+              "endCol": 47,
+              "raw": "'row'"
+            },
+            "flexWrap": {
+              "line": 233,
+              "col": 59,
+              "endCol": 65,
+              "raw": "'wrap'"
+            },
+            "gap": {
+              "line": 233,
+              "col": 72,
+              "endCol": 74,
+              "raw": "12"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:243": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 243
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "gap": {
+              "line": 243,
+              "col": 82,
+              "endCol": 84,
+              "raw": "12"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:244": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 244
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 247,
+              "col": 24,
+              "endCol": 26,
+              "raw": "15"
+            },
+            "paddingLeft": {
+              "line": 249,
+              "col": 27,
+              "endCol": 28,
+              "raw": "4"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:255": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 255
+      },
+      "styles": [
+        {
+          "origin": "dynamic",
+          "resolvable": false
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:265": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 265
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "width": {
+              "line": 267,
+              "col": 25,
+              "endCol": 27,
+              "raw": "36"
+            },
+            "height": {
+              "line": 268,
+              "col": 26,
+              "endCol": 28,
+              "raw": "36"
+            },
+            "borderRadius": {
+              "line": 269,
+              "col": 32,
+              "endCol": 34,
+              "raw": "18"
+            },
+            "backgroundColor": {
+              "line": 270,
+              "col": 35,
+              "endCol": 44,
+              "raw": "'#FDE8E6'"
+            },
+            "alignItems": {
+              "line": 271,
+              "col": 30,
+              "endCol": 38,
+              "raw": "'center'"
+            },
+            "justifyContent": {
+              "line": 272,
+              "col": 34,
+              "endCol": 42,
+              "raw": "'center'"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:277": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 277
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "flex": {
+              "line": 277,
+              "col": 35,
+              "endCol": 36,
+              "raw": "1"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:278": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 278
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 281,
+              "col": 30,
+              "endCol": 32,
+              "raw": "14"
+            },
+            "color": {
+              "line": 282,
+              "col": 27,
+              "endCol": 36,
+              "raw": "'#E57373'"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:287": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 287
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 290,
+              "col": 30,
+              "endCol": 32,
+              "raw": "11"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:303": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 303
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "gap": {
+              "line": 303,
+              "col": 82,
+              "endCol": 84,
+              "raw": "12"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:304": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 304
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 307,
+              "col": 24,
+              "endCol": 26,
+              "raw": "15"
+            },
+            "paddingLeft": {
+              "line": 309,
+              "col": 27,
+              "endCol": 28,
+              "raw": "4"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:315": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 315
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "alignItems": {
+              "line": 315,
+              "col": 39,
+              "endCol": 47,
+              "raw": "'center'"
+            },
+            "gap": {
+              "line": 315,
+              "col": 54,
+              "endCol": 55,
+              "raw": "8"
+            },
+            "paddingVertical": {
+              "line": 315,
+              "col": 74,
+              "endCol": 76,
+              "raw": "12"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:316": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 316
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 316,
+              "col": 39,
+              "endCol": 41,
+              "raw": "40"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:317": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 317
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 320,
+              "col": 28,
+              "endCol": 30,
+              "raw": "20"
+            },
+            "letterSpacing": {
+              "line": 322,
+              "col": 33,
+              "endCol": 34,
+              "raw": "2"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:327": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 327
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 330,
+              "col": 28,
+              "endCol": 30,
+              "raw": "11"
+            },
+            "letterSpacing": {
+              "line": 332,
+              "col": 33,
+              "endCol": 34,
+              "raw": "2"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:337": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 337
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "height": {
+              "line": 339,
+              "col": 26,
+              "endCol": 27,
+              "raw": "1"
+            },
+            "width": {
+              "line": 340,
+              "col": 25,
+              "endCol": 27,
+              "raw": "60"
+            },
+            "marginVertical": {
+              "line": 342,
+              "col": 34,
+              "endCol": 35,
+              "raw": "6"
+            }
+          }
+        }
+      ]
+    },
+    "SettingsScreen@app/(tabs)/settings.tsx:345": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 345
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 348,
+              "col": 28,
+              "endCol": 30,
+              "raw": "12"
+            },
+            "textAlign": {
+              "line": 350,
+              "col": 29,
+              "endCol": 37,
+              "raw": "'center'"
+            },
+            "lineHeight": {
+              "line": 351,
+              "col": 30,
+              "endCol": 32,
+              "raw": "20"
+            }
+          }
+        }
+      ]
+    },
+    "StatBubble@app/(tabs)/settings.tsx:378": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 378
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "flex": {
+              "line": 380,
+              "col": 14,
+              "endCol": 15,
+              "raw": "1"
+            },
+            "minWidth": {
+              "line": 381,
+              "col": 18,
+              "endCol": 23,
+              "raw": "'40%'"
+            },
+            "alignItems": {
+              "line": 382,
+              "col": 20,
+              "endCol": 28,
+              "raw": "'center'"
+            },
+            "paddingVertical": {
+              "line": 383,
+              "col": 25,
+              "endCol": 27,
+              "raw": "14"
+            },
+            "borderRadius": {
+              "line": 384,
+              "col": 22,
+              "endCol": 24,
+              "raw": "16"
+            },
+            "borderCurve": {
+              "line": 385,
+              "col": 21,
+              "endCol": 33,
+              "raw": "'continuous'"
+            },
+            "gap": {
+              "line": 387,
+              "col": 13,
+              "endCol": 14,
+              "raw": "4"
+            }
+          }
+        }
+      ]
+    },
+    "StatBubble@app/(tabs)/settings.tsx:390": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 390
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 390,
+              "col": 31,
+              "endCol": 33,
+              "raw": "20"
+            }
+          }
+        }
+      ]
+    },
+    "StatBubble@app/(tabs)/settings.tsx:391": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 391
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 394,
+              "col": 20,
+              "endCol": 22,
+              "raw": "20"
+            }
+          }
+        }
+      ]
+    },
+    "StatBubble@app/(tabs)/settings.tsx:401": {
+      "element": {
+        "file": "app/(tabs)/settings.tsx",
+        "line": 401
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/(tabs)/settings.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 404,
+              "col": 20,
+              "endCol": 22,
+              "raw": "11"
+            }
+          }
+        }
+      ]
+    },
     "renderTab@app/sticker-picker.tsx:189": {
       "element": {
         "file": "app/sticker-picker.tsx",
@@ -2808,10 +2776,10 @@
         }
       ]
     },
-    "renderGrid@app/sticker-picker.tsx:366": {
+    "renderGrid@app/sticker-picker.tsx:370": {
       "element": {
         "file": "app/sticker-picker.tsx",
-        "line": 366
+        "line": 370
       },
       "styles": [
         {
@@ -2820,10 +2788,10 @@
         }
       ]
     },
-    "renderGrid@app/sticker-picker.tsx:409": {
+    "renderGrid@app/sticker-picker.tsx:398": {
       "element": {
         "file": "app/sticker-picker.tsx",
-        "line": 409
+        "line": 398
       },
       "styles": [
         {
@@ -2832,10 +2800,22 @@
         }
       ]
     },
-    "renderGrid@app/sticker-picker.tsx:422": {
+    "renderGrid@app/sticker-picker.tsx:440": {
       "element": {
         "file": "app/sticker-picker.tsx",
-        "line": 422
+        "line": 440
+      },
+      "styles": [
+        {
+          "origin": "dynamic",
+          "resolvable": false
+        }
+      ]
+    },
+    "renderGrid@app/sticker-picker.tsx:453": {
+      "element": {
+        "file": "app/sticker-picker.tsx",
+        "line": 453
       },
       "styles": [
         {
@@ -2843,7 +2823,7 @@
           "file": "app/sticker-picker.tsx",
           "properties": {
             "fontSize": {
-              "line": 422,
+              "line": 453,
               "col": 39,
               "endCol": 41,
               "raw": "32"
@@ -2852,10 +2832,10 @@
         }
       ]
     },
-    "StickerPickerScreen@app/sticker-picker.tsx:434": {
+    "StickerPickerScreen@app/sticker-picker.tsx:465": {
       "element": {
         "file": "app/sticker-picker.tsx",
-        "line": 434
+        "line": 465
       },
       "styles": [
         {
@@ -2863,25 +2843,25 @@
           "file": "app/sticker-picker.tsx",
           "properties": {
             "flex": {
-              "line": 436,
+              "line": 467,
               "col": 14,
               "endCol": 15,
               "raw": "1"
             },
             "borderTopLeftRadius": {
-              "line": 438,
+              "line": 469,
               "col": 29,
               "endCol": 31,
               "raw": "20"
             },
             "borderTopRightRadius": {
-              "line": 439,
+              "line": 470,
               "col": 30,
               "endCol": 32,
               "raw": "20"
             },
             "borderCurve": {
-              "line": 440,
+              "line": 471,
               "col": 21,
               "endCol": 33,
               "raw": "'continuous'"
@@ -2890,10 +2870,10 @@
         }
       ]
     },
-    "StickerPickerScreen@app/sticker-picker.tsx:444": {
+    "StickerPickerScreen@app/sticker-picker.tsx:475": {
       "element": {
         "file": "app/sticker-picker.tsx",
-        "line": 444
+        "line": 475
       },
       "styles": [
         {
@@ -2901,19 +2881,19 @@
           "file": "app/sticker-picker.tsx",
           "properties": {
             "paddingHorizontal": {
-              "line": 444,
+              "line": 475,
               "col": 40,
               "endCol": 42,
               "raw": "20"
             },
             "paddingTop": {
-              "line": 444,
+              "line": 475,
               "col": 56,
               "endCol": 58,
               "raw": "16"
             },
             "paddingBottom": {
-              "line": 444,
+              "line": 475,
               "col": 75,
               "endCol": 77,
               "raw": "12"
@@ -2922,10 +2902,10 @@
         }
       ]
     },
-    "StickerPickerScreen@app/sticker-picker.tsx:445": {
+    "StickerPickerScreen@app/sticker-picker.tsx:476": {
       "element": {
         "file": "app/sticker-picker.tsx",
-        "line": 445
+        "line": 476
       },
       "styles": [
         {
@@ -2933,13 +2913,13 @@
           "file": "app/sticker-picker.tsx",
           "properties": {
             "fontSize": {
-              "line": 448,
+              "line": 479,
               "col": 22,
               "endCol": 24,
               "raw": "18"
             },
             "textAlign": {
-              "line": 450,
+              "line": 481,
               "col": 23,
               "endCol": 31,
               "raw": "'center'"
@@ -2948,33 +2928,7 @@
         }
       ]
     },
-    "StickerPickerScreen@app/sticker-picker.tsx:458": {
-      "element": {
-        "file": "app/sticker-picker.tsx",
-        "line": 458
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/sticker-picker.tsx",
-          "properties": {
-            "maxHeight": {
-              "line": 461,
-              "col": 28,
-              "endCol": 30,
-              "raw": "48"
-            },
-            "flexGrow": {
-              "line": 461,
-              "col": 42,
-              "endCol": 43,
-              "raw": "0"
-            }
-          }
-        }
-      ]
-    },
-    "EmptyState@app/sticker-picker.tsx:489": {
+    "StickerPickerScreen@app/sticker-picker.tsx:489": {
       "element": {
         "file": "app/sticker-picker.tsx",
         "line": 489
@@ -2984,14 +2938,40 @@
           "origin": "inline",
           "file": "app/sticker-picker.tsx",
           "properties": {
+            "maxHeight": {
+              "line": 492,
+              "col": 28,
+              "endCol": 30,
+              "raw": "48"
+            },
+            "flexGrow": {
+              "line": 492,
+              "col": 42,
+              "endCol": 43,
+              "raw": "0"
+            }
+          }
+        }
+      ]
+    },
+    "EmptyState@app/sticker-picker.tsx:520": {
+      "element": {
+        "file": "app/sticker-picker.tsx",
+        "line": 520
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/sticker-picker.tsx",
+          "properties": {
             "alignItems": {
-              "line": 489,
+              "line": 520,
               "col": 31,
               "endCol": 39,
               "raw": "'center'"
             },
             "paddingTop": {
-              "line": 489,
+              "line": 520,
               "col": 53,
               "endCol": 55,
               "raw": "40"
@@ -3000,10 +2980,10 @@
         }
       ]
     },
-    "EmptyState@app/sticker-picker.tsx:490": {
+    "EmptyState@app/sticker-picker.tsx:521": {
       "element": {
         "file": "app/sticker-picker.tsx",
-        "line": 490
+        "line": 521
       },
       "styles": [
         {
@@ -3011,7 +2991,7 @@
           "file": "app/sticker-picker.tsx",
           "properties": {
             "fontSize": {
-              "line": 490,
+              "line": 521,
               "col": 58,
               "endCol": 60,
               "raw": "14"
@@ -4494,42 +4474,6 @@
         }
       ]
     },
-    "CuteCard@components/ui/cute-card.tsx:33": {
-      "element": {
-        "file": "components/ui/cute-card.tsx",
-        "line": 33
-      },
-      "styles": [
-        {
-          "origin": "dynamic",
-          "resolvable": false
-        },
-        {
-          "origin": "dynamic",
-          "resolvable": false
-        },
-        {
-          "origin": "dynamic",
-          "resolvable": false
-        }
-      ]
-    },
-    "CuteCard@components/ui/cute-card.tsx:44": {
-      "element": {
-        "file": "components/ui/cute-card.tsx",
-        "line": 44
-      },
-      "styles": [
-        {
-          "origin": "dynamic",
-          "resolvable": false
-        },
-        {
-          "origin": "dynamic",
-          "resolvable": false
-        }
-      ]
-    },
     "MonthCalendar@components/calendar/month-calendar.tsx:64": {
       "element": {
         "file": "components/calendar/month-calendar.tsx",
@@ -4826,415 +4770,197 @@
         }
       ]
     },
-    "Toolbar@components/editor/toolbar.tsx:70": {
+    "CuteCard@components/ui/cute-card.tsx:33": {
       "element": {
-        "file": "components/editor/toolbar.tsx",
-        "line": 70
+        "file": "components/ui/cute-card.tsx",
+        "line": 33
       },
       "styles": [
         {
-          "origin": "inline",
-          "file": "components/editor/toolbar.tsx",
-          "properties": {
-            "borderTopLeftRadius": {
-              "line": 75,
-              "col": 33,
-              "endCol": 35,
-              "raw": "20"
-            },
-            "borderTopRightRadius": {
-              "line": 76,
-              "col": 34,
-              "endCol": 36,
-              "raw": "20"
-            },
-            "borderCurve": {
-              "line": 77,
-              "col": 25,
-              "endCol": 37,
-              "raw": "'continuous'"
-            },
-            "paddingHorizontal": {
-              "line": 78,
-              "col": 31,
-              "endCol": 33,
-              "raw": "16"
-            },
-            "paddingTop": {
-              "line": 79,
-              "col": 24,
-              "endCol": 26,
-              "raw": "16"
-            },
-            "paddingBottom": {
-              "line": 80,
-              "col": 27,
-              "endCol": 28,
-              "raw": "8"
-            },
-            "gap": {
-              "line": 81,
-              "col": 17,
-              "endCol": 19,
-              "raw": "12"
-            }
-          }
-        }
-      ]
-    },
-    "Toolbar@components/editor/toolbar.tsx:87": {
-      "element": {
-        "file": "components/editor/toolbar.tsx",
-        "line": 87
-      },
-      "styles": [
+          "origin": "dynamic",
+          "resolvable": false
+        },
         {
-          "origin": "inline",
-          "file": "components/editor/toolbar.tsx",
-          "properties": {
-            "flexDirection": {
-              "line": 87,
-              "col": 42,
-              "endCol": 47,
-              "raw": "'row'"
-            },
-            "gap": {
-              "line": 87,
-              "col": 54,
-              "endCol": 55,
-              "raw": "8"
-            }
-          }
-        }
-      ]
-    },
-    "Toolbar@components/editor/toolbar.tsx:91": {
-      "element": {
-        "file": "components/editor/toolbar.tsx",
-        "line": 91
-      },
-      "styles": [
+          "origin": "dynamic",
+          "resolvable": false
+        },
         {
           "origin": "dynamic",
           "resolvable": false
         }
       ]
     },
-    "Toolbar@components/editor/toolbar.tsx:108": {
+    "CuteCard@components/ui/cute-card.tsx:44": {
       "element": {
-        "file": "components/editor/toolbar.tsx",
-        "line": 108
+        "file": "components/ui/cute-card.tsx",
+        "line": 44
       },
       "styles": [
         {
-          "origin": "inline",
-          "file": "components/editor/toolbar.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 108,
-              "col": 45,
-              "endCol": 47,
-              "raw": "16"
-            }
-          }
-        }
-      ]
-    },
-    "Toolbar@components/editor/toolbar.tsx:109": {
-      "element": {
-        "file": "components/editor/toolbar.tsx",
-        "line": 109
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "components/editor/toolbar.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 112,
-              "col": 34,
-              "endCol": 36,
-              "raw": "12"
-            }
-          }
-        }
-      ]
-    },
-    "Toolbar@components/editor/toolbar.tsx:125": {
-      "element": {
-        "file": "components/editor/toolbar.tsx",
-        "line": 125
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "components/editor/toolbar.tsx",
-          "properties": {
-            "flexDirection": {
-              "line": 127,
-              "col": 29,
-              "endCol": 34,
-              "raw": "'row'"
-            },
-            "alignItems": {
-              "line": 128,
-              "col": 26,
-              "endCol": 34,
-              "raw": "'center'"
-            },
-            "gap": {
-              "line": 129,
-              "col": 19,
-              "endCol": 21,
-              "raw": "12"
-            },
-            "justifyContent": {
-              "line": 130,
-              "col": 30,
-              "endCol": 38,
-              "raw": "'center'"
-            }
-          }
-        }
-      ]
-    },
-    "Toolbar@components/editor/toolbar.tsx:133": {
-      "element": {
-        "file": "components/editor/toolbar.tsx",
-        "line": 133
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "components/editor/toolbar.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 136,
-              "col": 26,
-              "endCol": 28,
-              "raw": "11"
-            }
-          }
-        }
-      ]
-    },
-    "Toolbar@components/editor/toolbar.tsx:145": {
-      "element": {
-        "file": "components/editor/toolbar.tsx",
-        "line": 145
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "components/editor/toolbar.tsx",
-          "properties": {
-            "width": {
-              "line": 149,
-              "col": 27,
-              "endCol": 29,
-              "raw": "36"
-            },
-            "height": {
-              "line": 150,
-              "col": 28,
-              "endCol": 30,
-              "raw": "36"
-            },
-            "borderRadius": {
-              "line": 151,
-              "col": 34,
-              "endCol": 36,
-              "raw": "18"
-            },
-            "alignItems": {
-              "line": 153,
-              "col": 32,
-              "endCol": 40,
-              "raw": "'center'"
-            },
-            "justifyContent": {
-              "line": 154,
-              "col": 36,
-              "endCol": 44,
-              "raw": "'center'"
-            }
-          }
-        }
-      ]
-    },
-    "Toolbar@components/editor/toolbar.tsx:178": {
-      "element": {
-        "file": "components/editor/toolbar.tsx",
-        "line": 178
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "components/editor/toolbar.tsx",
-          "properties": {
-            "flexDirection": {
-              "line": 180,
-              "col": 25,
-              "endCol": 30,
-              "raw": "'row'"
-            },
-            "alignItems": {
-              "line": 181,
-              "col": 22,
-              "endCol": 30,
-              "raw": "'center'"
-            },
-            "paddingVertical": {
-              "line": 183,
-              "col": 27,
-              "endCol": 28,
-              "raw": "8"
-            },
-            "paddingHorizontal": {
-              "line": 184,
-              "col": 29,
-              "endCol": 30,
-              "raw": "8"
-            },
-            "gap": {
-              "line": 185,
-              "col": 15,
-              "endCol": 16,
-              "raw": "4"
-            }
-          }
-        }
-      ]
-    },
-    "Toolbar@components/editor/toolbar.tsx:226": {
-      "element": {
-        "file": "components/editor/toolbar.tsx",
-        "line": 226
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "components/editor/toolbar.tsx",
-          "properties": {
-            "flex": {
-              "line": 226,
-              "col": 29,
-              "endCol": 30,
-              "raw": "1"
-            }
-          }
-        }
-      ]
-    },
-    "ToolButton@components/editor/toolbar.tsx:257": {
-      "element": {
-        "file": "components/editor/toolbar.tsx",
-        "line": 257
-      },
-      "styles": [
+          "origin": "dynamic",
+          "resolvable": false
+        },
         {
           "origin": "dynamic",
           "resolvable": false
         }
       ]
     },
-    "ToolButton@components/editor/toolbar.tsx:270": {
+    "LinedBackground@components/editor/canvas-background.tsx:45": {
       "element": {
-        "file": "components/editor/toolbar.tsx",
-        "line": 270
+        "file": "components/editor/canvas-background.tsx",
+        "line": 45
       },
       "styles": [
         {
           "origin": "inline",
-          "file": "components/editor/toolbar.tsx",
+          "file": "components/editor/canvas-background.tsx",
           "properties": {
             "position": {
-              "line": 270,
-              "col": 31,
-              "endCol": 41,
-              "raw": "'relative'"
-            }
-          }
-        }
-      ]
-    },
-    "ToolButton@components/editor/toolbar.tsx:277": {
-      "element": {
-        "file": "components/editor/toolbar.tsx",
-        "line": 277
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "components/editor/toolbar.tsx",
-          "properties": {
-            "position": {
-              "line": 279,
-              "col": 24,
-              "endCol": 34,
+              "line": 45,
+              "col": 29,
+              "endCol": 39,
               "raw": "'absolute'"
             },
             "top": {
-              "line": 280,
-              "col": 19,
-              "endCol": 21,
-              "raw": "-3"
+              "line": 45,
+              "col": 46,
+              "endCol": 47,
+              "raw": "0"
             },
-            "right": {
-              "line": 281,
-              "col": 21,
-              "endCol": 23,
-              "raw": "-5"
-            },
-            "width": {
-              "line": 282,
-              "col": 21,
-              "endCol": 23,
-              "raw": "10"
-            },
-            "height": {
-              "line": 283,
-              "col": 22,
-              "endCol": 24,
-              "raw": "10"
-            },
-            "borderRadius": {
-              "line": 284,
-              "col": 28,
-              "endCol": 29,
-              "raw": "5"
-            },
-            "borderWidth": {
-              "line": 286,
-              "col": 27,
-              "endCol": 30,
-              "raw": "1.5"
+            "left": {
+              "line": 45,
+              "col": 55,
+              "endCol": 56,
+              "raw": "0"
             }
           }
         }
       ]
     },
-    "ToolButton@components/editor/toolbar.tsx:292": {
+    "GridBackground@components/editor/canvas-background.tsx:71": {
       "element": {
-        "file": "components/editor/toolbar.tsx",
-        "line": 292
+        "file": "components/editor/canvas-background.tsx",
+        "line": 71
       },
       "styles": [
         {
           "origin": "inline",
-          "file": "components/editor/toolbar.tsx",
+          "file": "components/editor/canvas-background.tsx",
           "properties": {
-            "fontSize": {
-              "line": 295,
-              "col": 20,
-              "endCol": 22,
-              "raw": "10"
+            "position": {
+              "line": 71,
+              "col": 29,
+              "endCol": 39,
+              "raw": "'absolute'"
             },
-            "marginTop": {
-              "line": 297,
-              "col": 21,
-              "endCol": 22,
-              "raw": "2"
+            "top": {
+              "line": 71,
+              "col": 46,
+              "endCol": 47,
+              "raw": "0"
+            },
+            "left": {
+              "line": 71,
+              "col": 55,
+              "endCol": 56,
+              "raw": "0"
+            }
+          }
+        }
+      ]
+    },
+    "DotsBackground@components/editor/canvas-background.tsx:88": {
+      "element": {
+        "file": "components/editor/canvas-background.tsx",
+        "line": 88
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "components/editor/canvas-background.tsx",
+          "properties": {
+            "position": {
+              "line": 88,
+              "col": 29,
+              "endCol": 39,
+              "raw": "'absolute'"
+            },
+            "top": {
+              "line": 88,
+              "col": 46,
+              "endCol": 47,
+              "raw": "0"
+            },
+            "left": {
+              "line": 88,
+              "col": 55,
+              "endCol": 56,
+              "raw": "0"
+            }
+          }
+        }
+      ]
+    },
+    "FloralBackground@components/editor/canvas-background.tsx:122": {
+      "element": {
+        "file": "components/editor/canvas-background.tsx",
+        "line": 122
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "components/editor/canvas-background.tsx",
+          "properties": {
+            "position": {
+              "line": 122,
+              "col": 29,
+              "endCol": 39,
+              "raw": "'absolute'"
+            },
+            "top": {
+              "line": 122,
+              "col": 46,
+              "endCol": 47,
+              "raw": "0"
+            },
+            "left": {
+              "line": 122,
+              "col": 55,
+              "endCol": 56,
+              "raw": "0"
+            }
+          }
+        }
+      ]
+    },
+    "DrawingLayer@components/editor/drawing-layer.tsx:198": {
+      "element": {
+        "file": "components/editor/drawing-layer.tsx",
+        "line": 198
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "components/editor/drawing-layer.tsx",
+          "properties": {
+            "position": {
+              "line": 200,
+              "col": 18,
+              "endCol": 28,
+              "raw": "'absolute'"
+            },
+            "top": {
+              "line": 201,
+              "col": 13,
+              "endCol": 14,
+              "raw": "0"
+            },
+            "left": {
+              "line": 202,
+              "col": 14,
+              "endCol": 15,
+              "raw": "0"
             }
           }
         }
@@ -5724,129 +5450,415 @@
         }
       ]
     },
-    "LinedBackground@components/editor/canvas-background.tsx:45": {
+    "Toolbar@components/editor/toolbar.tsx:70": {
       "element": {
-        "file": "components/editor/canvas-background.tsx",
-        "line": 45
+        "file": "components/editor/toolbar.tsx",
+        "line": 70
       },
       "styles": [
         {
           "origin": "inline",
-          "file": "components/editor/canvas-background.tsx",
+          "file": "components/editor/toolbar.tsx",
           "properties": {
-            "position": {
-              "line": 45,
-              "col": 29,
-              "endCol": 39,
-              "raw": "'absolute'"
+            "borderTopLeftRadius": {
+              "line": 75,
+              "col": 33,
+              "endCol": 35,
+              "raw": "20"
             },
-            "top": {
-              "line": 45,
-              "col": 46,
-              "endCol": 47,
-              "raw": "0"
+            "borderTopRightRadius": {
+              "line": 76,
+              "col": 34,
+              "endCol": 36,
+              "raw": "20"
             },
-            "left": {
-              "line": 45,
-              "col": 55,
-              "endCol": 56,
-              "raw": "0"
+            "borderCurve": {
+              "line": 77,
+              "col": 25,
+              "endCol": 37,
+              "raw": "'continuous'"
+            },
+            "paddingHorizontal": {
+              "line": 78,
+              "col": 31,
+              "endCol": 33,
+              "raw": "16"
+            },
+            "paddingTop": {
+              "line": 79,
+              "col": 24,
+              "endCol": 26,
+              "raw": "16"
+            },
+            "paddingBottom": {
+              "line": 80,
+              "col": 27,
+              "endCol": 28,
+              "raw": "8"
+            },
+            "gap": {
+              "line": 81,
+              "col": 17,
+              "endCol": 19,
+              "raw": "12"
             }
           }
         }
       ]
     },
-    "GridBackground@components/editor/canvas-background.tsx:71": {
+    "Toolbar@components/editor/toolbar.tsx:87": {
       "element": {
-        "file": "components/editor/canvas-background.tsx",
-        "line": 71
+        "file": "components/editor/toolbar.tsx",
+        "line": 87
       },
       "styles": [
         {
           "origin": "inline",
-          "file": "components/editor/canvas-background.tsx",
+          "file": "components/editor/toolbar.tsx",
           "properties": {
-            "position": {
-              "line": 71,
-              "col": 29,
-              "endCol": 39,
-              "raw": "'absolute'"
-            },
-            "top": {
-              "line": 71,
-              "col": 46,
+            "flexDirection": {
+              "line": 87,
+              "col": 42,
               "endCol": 47,
-              "raw": "0"
+              "raw": "'row'"
             },
-            "left": {
-              "line": 71,
-              "col": 55,
-              "endCol": 56,
-              "raw": "0"
+            "gap": {
+              "line": 87,
+              "col": 54,
+              "endCol": 55,
+              "raw": "8"
             }
           }
         }
       ]
     },
-    "DotsBackground@components/editor/canvas-background.tsx:88": {
+    "Toolbar@components/editor/toolbar.tsx:91": {
       "element": {
-        "file": "components/editor/canvas-background.tsx",
-        "line": 88
+        "file": "components/editor/toolbar.tsx",
+        "line": 91
+      },
+      "styles": [
+        {
+          "origin": "dynamic",
+          "resolvable": false
+        }
+      ]
+    },
+    "Toolbar@components/editor/toolbar.tsx:108": {
+      "element": {
+        "file": "components/editor/toolbar.tsx",
+        "line": 108
       },
       "styles": [
         {
           "origin": "inline",
-          "file": "components/editor/canvas-background.tsx",
+          "file": "components/editor/toolbar.tsx",
           "properties": {
-            "position": {
-              "line": 88,
-              "col": 29,
-              "endCol": 39,
-              "raw": "'absolute'"
-            },
-            "top": {
-              "line": 88,
-              "col": 46,
+            "fontSize": {
+              "line": 108,
+              "col": 45,
               "endCol": 47,
-              "raw": "0"
-            },
-            "left": {
-              "line": 88,
-              "col": 55,
-              "endCol": 56,
-              "raw": "0"
+              "raw": "16"
             }
           }
         }
       ]
     },
-    "FloralBackground@components/editor/canvas-background.tsx:122": {
+    "Toolbar@components/editor/toolbar.tsx:109": {
       "element": {
-        "file": "components/editor/canvas-background.tsx",
-        "line": 122
+        "file": "components/editor/toolbar.tsx",
+        "line": 109
       },
       "styles": [
         {
           "origin": "inline",
-          "file": "components/editor/canvas-background.tsx",
+          "file": "components/editor/toolbar.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 112,
+              "col": 34,
+              "endCol": 36,
+              "raw": "12"
+            }
+          }
+        }
+      ]
+    },
+    "Toolbar@components/editor/toolbar.tsx:125": {
+      "element": {
+        "file": "components/editor/toolbar.tsx",
+        "line": 125
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "components/editor/toolbar.tsx",
+          "properties": {
+            "flexDirection": {
+              "line": 127,
+              "col": 29,
+              "endCol": 34,
+              "raw": "'row'"
+            },
+            "alignItems": {
+              "line": 128,
+              "col": 26,
+              "endCol": 34,
+              "raw": "'center'"
+            },
+            "gap": {
+              "line": 129,
+              "col": 19,
+              "endCol": 21,
+              "raw": "12"
+            },
+            "justifyContent": {
+              "line": 130,
+              "col": 30,
+              "endCol": 38,
+              "raw": "'center'"
+            }
+          }
+        }
+      ]
+    },
+    "Toolbar@components/editor/toolbar.tsx:133": {
+      "element": {
+        "file": "components/editor/toolbar.tsx",
+        "line": 133
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "components/editor/toolbar.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 136,
+              "col": 26,
+              "endCol": 28,
+              "raw": "11"
+            }
+          }
+        }
+      ]
+    },
+    "Toolbar@components/editor/toolbar.tsx:145": {
+      "element": {
+        "file": "components/editor/toolbar.tsx",
+        "line": 145
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "components/editor/toolbar.tsx",
+          "properties": {
+            "width": {
+              "line": 149,
+              "col": 27,
+              "endCol": 29,
+              "raw": "36"
+            },
+            "height": {
+              "line": 150,
+              "col": 28,
+              "endCol": 30,
+              "raw": "36"
+            },
+            "borderRadius": {
+              "line": 151,
+              "col": 34,
+              "endCol": 36,
+              "raw": "18"
+            },
+            "alignItems": {
+              "line": 153,
+              "col": 32,
+              "endCol": 40,
+              "raw": "'center'"
+            },
+            "justifyContent": {
+              "line": 154,
+              "col": 36,
+              "endCol": 44,
+              "raw": "'center'"
+            }
+          }
+        }
+      ]
+    },
+    "Toolbar@components/editor/toolbar.tsx:178": {
+      "element": {
+        "file": "components/editor/toolbar.tsx",
+        "line": 178
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "components/editor/toolbar.tsx",
+          "properties": {
+            "flexDirection": {
+              "line": 180,
+              "col": 25,
+              "endCol": 30,
+              "raw": "'row'"
+            },
+            "alignItems": {
+              "line": 181,
+              "col": 22,
+              "endCol": 30,
+              "raw": "'center'"
+            },
+            "paddingVertical": {
+              "line": 183,
+              "col": 27,
+              "endCol": 28,
+              "raw": "8"
+            },
+            "paddingHorizontal": {
+              "line": 184,
+              "col": 29,
+              "endCol": 30,
+              "raw": "8"
+            },
+            "gap": {
+              "line": 185,
+              "col": 15,
+              "endCol": 16,
+              "raw": "4"
+            }
+          }
+        }
+      ]
+    },
+    "Toolbar@components/editor/toolbar.tsx:226": {
+      "element": {
+        "file": "components/editor/toolbar.tsx",
+        "line": 226
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "components/editor/toolbar.tsx",
+          "properties": {
+            "flex": {
+              "line": 226,
+              "col": 29,
+              "endCol": 30,
+              "raw": "1"
+            }
+          }
+        }
+      ]
+    },
+    "ToolButton@components/editor/toolbar.tsx:257": {
+      "element": {
+        "file": "components/editor/toolbar.tsx",
+        "line": 257
+      },
+      "styles": [
+        {
+          "origin": "dynamic",
+          "resolvable": false
+        }
+      ]
+    },
+    "ToolButton@components/editor/toolbar.tsx:270": {
+      "element": {
+        "file": "components/editor/toolbar.tsx",
+        "line": 270
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "components/editor/toolbar.tsx",
           "properties": {
             "position": {
-              "line": 122,
-              "col": 29,
-              "endCol": 39,
+              "line": 270,
+              "col": 31,
+              "endCol": 41,
+              "raw": "'relative'"
+            }
+          }
+        }
+      ]
+    },
+    "ToolButton@components/editor/toolbar.tsx:277": {
+      "element": {
+        "file": "components/editor/toolbar.tsx",
+        "line": 277
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "components/editor/toolbar.tsx",
+          "properties": {
+            "position": {
+              "line": 279,
+              "col": 24,
+              "endCol": 34,
               "raw": "'absolute'"
             },
             "top": {
-              "line": 122,
-              "col": 46,
-              "endCol": 47,
-              "raw": "0"
+              "line": 280,
+              "col": 19,
+              "endCol": 21,
+              "raw": "-3"
             },
-            "left": {
-              "line": 122,
-              "col": 55,
-              "endCol": 56,
-              "raw": "0"
+            "right": {
+              "line": 281,
+              "col": 21,
+              "endCol": 23,
+              "raw": "-5"
+            },
+            "width": {
+              "line": 282,
+              "col": 21,
+              "endCol": 23,
+              "raw": "10"
+            },
+            "height": {
+              "line": 283,
+              "col": 22,
+              "endCol": 24,
+              "raw": "10"
+            },
+            "borderRadius": {
+              "line": 284,
+              "col": 28,
+              "endCol": 29,
+              "raw": "5"
+            },
+            "borderWidth": {
+              "line": 286,
+              "col": 27,
+              "endCol": 30,
+              "raw": "1.5"
+            }
+          }
+        }
+      ]
+    },
+    "ToolButton@components/editor/toolbar.tsx:292": {
+      "element": {
+        "file": "components/editor/toolbar.tsx",
+        "line": 292
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "components/editor/toolbar.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 295,
+              "col": 20,
+              "endCol": 22,
+              "raw": "10"
+            },
+            "marginTop": {
+              "line": 297,
+              "col": 21,
+              "endCol": 22,
+              "raw": "2"
             }
           }
         }

@@ -1,7 +1,7 @@
 import { View, Text, ScrollView, Pressable, FlatList, Alert, useWindowDimensions } from 'react-native';
 import { useRouter, useLocalSearchParams } from 'expo-router';
 import { useState, useCallback, useMemo } from 'react';
-import Animated, { FadeIn } from 'react-native-reanimated';
+import Animated, { FadeIn, ZoomOut } from 'react-native-reanimated';
 import { Image } from 'expo-image';
 import * as ImagePicker from 'expo-image-picker';
 import Ionicons from '@expo/vector-icons/Ionicons';
@@ -359,34 +359,65 @@ export default function StickerPickerScreen() {
               );
             }
 
-            // Custom sticker
+            // Custom sticker with delete button
             const sticker = item as CustomSticker;
             return (
-              <Animated.View entering={FadeIn.delay(index * 30).duration(300)}>
-                <Pressable
-                  onPress={() => handleSelectCustomSticker(sticker)}
-                  onLongPress={() => handleLongPressCustomSticker(sticker)}
-                  style={({ pressed }) => ({
-                    width: myStickerSize,
-                    height: myStickerSize,
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    borderRadius: 16,
-                    borderCurve: 'continuous',
-                    backgroundColor: pressed ? '#FFF0F5' : '#FAFAFA',
-                    borderWidth: 1.5,
-                    borderColor: pressed ? theme.primary : '#F0E8EE',
-                    transform: [{ scale: pressed ? 1.08 : 1 }],
-                    overflow: 'hidden',
-                  })}
-                >
-                  <Image
-                    source={{ uri: sticker.uri }}
-                    style={{ width: myStickerSize - 12, height: myStickerSize - 12 }}
-                    contentFit="contain"
-                    transition={200}
-                  />
-                </Pressable>
+              <Animated.View
+                entering={FadeIn.delay(index * 30).duration(300)}
+                exiting={ZoomOut.duration(200)}
+              >
+                <View style={{ width: myStickerSize, height: myStickerSize }}>
+                  <Pressable
+                    onPress={() => handleSelectCustomSticker(sticker)}
+                    onLongPress={() => handleLongPressCustomSticker(sticker)}
+                    style={({ pressed }) => ({
+                      width: myStickerSize,
+                      height: myStickerSize,
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      borderRadius: 16,
+                      borderCurve: 'continuous',
+                      backgroundColor: pressed ? '#FFF0F5' : '#FAFAFA',
+                      borderWidth: 1.5,
+                      borderColor: pressed ? theme.primary : '#F0E8EE',
+                      transform: [{ scale: pressed ? 1.08 : 1 }],
+                      overflow: 'hidden',
+                    })}
+                  >
+                    <Image
+                      source={{ uri: sticker.uri }}
+                      style={{ width: myStickerSize - 12, height: myStickerSize - 12 }}
+                      contentFit="contain"
+                      transition={200}
+                      recyclingKey={sticker.id}
+                      placeholder={undefined}
+                    />
+                  </Pressable>
+
+                  {/* Delete × button */}
+                  <Pressable
+                    onPress={() => handleLongPressCustomSticker(sticker)}
+                    hitSlop={6}
+                    style={({ pressed }) => ({
+                      position: 'absolute',
+                      top: -6,
+                      right: -6,
+                      width: 22,
+                      height: 22,
+                      borderRadius: 11,
+                      backgroundColor: pressed ? '#D32F2F' : '#F28B82',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      zIndex: 10,
+                      boxShadow: '0 1px 3px rgba(0,0,0,0.18)',
+                      borderWidth: 2,
+                      borderColor: '#FFF',
+                      transform: [{ scale: pressed ? 0.9 : 1 }],
+                    })}
+                  >
+                    <Ionicons name="close" size={12} color="#FFF" />
+                  </Pressable>
+                </View>
               </Animated.View>
             );
           }}

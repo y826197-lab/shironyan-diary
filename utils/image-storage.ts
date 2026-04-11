@@ -37,18 +37,49 @@ function getExtension(uri: string): string {
 }
 
 /**
+ * On web, blob/object URLs don't survive page reloads.
+ * Convert them to base64 data URIs that can be stored in AsyncStorage.
+ */
+async function convertBlobToDataUri(blobUrl: string): Promise<string> {
+  // Already a data URI — nothing to do
+  if (blobUrl.startsWith('data:')) {
+    return blobUrl;
+  }
+
+  const response = await fetch(blobUrl);
+  const blob = await response.blob();
+  return new Promise<string>((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      if (typeof reader.result === 'string') {
+        resolve(reader.result);
+      } else {
+        reject(new Error('FileReader did not return a string'));
+      }
+    };
+    reader.onerror = () => reject(reader.error);
+    reader.readAsDataURL(blob);
+  });
+}
+
+/**
  * Copy an image from a temporary URI (e.g. from expo-image-picker)
  * to a persistent location in the app's document directory.
  *
- * On web, image URIs are already persistent (blob/object URLs or data URIs)
- * so we return them as-is.
+ * On web, blob URLs are converted to base64 data URIs for persistence.
+ * On native, images are copied to the app's document directory.
  *
  * Returns the persistent URI that should be stored.
  */
 export async function persistImage(tempUri: string): Promise<string> {
-  // On web, URIs from image picker are blob/data URIs that work fine
+  // On web, blob URLs don't survive page reloads — convert to data URI
   if (Platform.OS === 'web') {
-    return tempUri;
+    try {
+      return await convertBlobToDataUri(tempUri);
+    } catch {
+      // Fallback to original URI if conversion fails
+      return tempUri;
+    }
   }
 
   // If the URI is already in our persistent directory, skip copy
@@ -56,14 +87,46 @@ export async function persistImage(tempUri: string): Promise<string> {
     return tempUri;
   }
 
-  const dir = getImageDirectory();
-  const filename = generateFilename(tempUri);
-  const sourceFile = new File(tempUri);
-  const destFile = new File(dir, filename);
+  try {
+    const dir = getImageDirectory();
+    const filename = generateFilename(tempUri);
+    const sourceFile = new File(tempUri);
+    const destFile = new File(dir, filename);
 
-  sourceFile.copy(destFile);
+    sourceFile.copy(destFile);
 
-  return destFile.uri;
+    // Verify the copy succeeded
+    if (!destFile.exists) {
+      throw new Error('File copy verification failed');
+    }
+
+    return destFile.uri;
+  } catch {
+    // Return original URI as fallback so the image is at least usable this session
+    return tempUri;
+  }
+}
+
+/**
+ * Check whether a persisted image still exists on disk.
+ * Always returns true on web (data URIs are inline).
+ */
+export function isPersistedImageValid(uri: string): boolean {
+  if (Platform.OS === 'web') {
+    return uri.startsWith('data:') || uri.startsWith('blob:') || uri.startsWith('http');
+  }
+
+  if (!uri.includes(`/${IMAGE_DIR}/`)) {
+    // Not a persisted image — assume external URI is valid
+    return true;
+  }
+
+  try {
+    const file = new File(uri);
+    return file.exists;
+  } catch {
+    return false;
+  }
 }
 
 /**
