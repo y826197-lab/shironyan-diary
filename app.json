@@ -37,8 +37,7 @@
       ]
     ],
     "experiments": {
-      "typedRoutes": true,
-      "baseUrl": "/83b174f1-1739-4970-801f-08cd7eb362ee/dev-preview/"
+      "typedRoutes": true
     },
     "owner": "okanka",
     "extra": {

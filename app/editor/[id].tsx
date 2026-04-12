@@ -174,14 +174,9 @@ export default function EditorScreen() {
       runOnJS(finishStroke)(pts);
     });
 
-  // Tap to deselect
-  const tapGesture = Gesture.Tap()
-    .enabled(toolMode === 'select')
-    .onEnd(() => {
-      runOnJS(setSelectedElementId)(null);
-    });
-
-  const composed = Gesture.Exclusive(drawGesture, tapGesture);
+  const handleDeselectAll = useCallback(() => {
+    setSelectedElementId(null);
+  }, []);
 
   const canvasAnimatedStyle = useAnimatedStyle(() => ({
     transform: [
@@ -363,7 +358,7 @@ export default function EditorScreen() {
         showsVerticalScrollIndicator={false}
         scrollEnabled={toolMode === 'select'}
       >
-        <GestureDetector gesture={composed}>
+        <GestureDetector gesture={drawGesture}>
           <Animated.View
             style={[
               {
@@ -395,6 +390,20 @@ export default function EditorScreen() {
               width={canvasWidth}
               height={canvasHeight}
             />
+
+            {/* Tap empty space to deselect */}
+            {toolMode === 'select' && (
+              <Pressable
+                style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                }}
+                onPress={handleDeselectAll}
+              />
+            )}
 
             {/* Canvas elements */}
             {page.elements.map((element) => (

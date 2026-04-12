@@ -328,27 +328,24 @@ export function CanvasElementView({
                 <Ionicons name="close" size={14} color="#FFF" />
               </Pressable>
 
-              {/* Corner handles */}
-              {[
-                { top: -5, left: -5 },
-                { top: -5, right: -5 },
-                { bottom: -5, left: -5 },
-                { bottom: -5, right: -5 },
-              ].map((pos, i) => (
-                <View
-                  key={i}
-                  style={{
-                    position: 'absolute',
-                    ...pos,
-                    width: 10,
-                    height: 10,
-                    borderRadius: 5,
-                    backgroundColor: '#F9A8C9',
-                    borderWidth: 2,
-                    borderColor: '#FFF',
-                  }}
-                />
-              ))}
+              {/* Resize / Rotate handle */}
+              <View
+                style={{
+                  position: 'absolute',
+                  bottom: -12,
+                  right: -12,
+                  width: 26,
+                  height: 26,
+                  borderRadius: 13,
+                  backgroundColor: '#F9A8C9',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  zIndex: 100,
+                  boxShadow: '0 2px 4px rgba(0,0,0,0.15)',
+                }}
+              >
+                <Ionicons name="resize-outline" size={14} color="#FFF" />
+              </View>
             </View>
           )}
         </Pressable>
