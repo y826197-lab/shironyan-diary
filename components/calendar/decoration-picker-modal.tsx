@@ -20,9 +20,10 @@ export function DecorationPickerModal({
   const theme = useTheme();
   const { width } = useWindowDimensions();
 
-  const numColumns = 4;
+  // 5 columns so more stickers are visible at once
+  const numColumns = 5;
   const hPad = 16;
-  const gap = 10;
+  const gap = 8;
   const itemSize = Math.floor((width - hPad * 2 - gap * (numColumns - 1)) / numColumns);
 
   return (
@@ -40,6 +41,7 @@ export function DecorationPickerModal({
           backgroundColor: 'rgba(92, 74, 110, 0.45)',
         }}
       >
+        {/* Stop backdrop tap from closing when touching the sheet itself */}
         <Pressable onPress={(e) => e.stopPropagation()}>
           <Animated.View
             entering={SlideInDown.springify().damping(22).stiffness(220)}
@@ -48,12 +50,12 @@ export function DecorationPickerModal({
               borderTopLeftRadius: 28,
               borderTopRightRadius: 28,
               borderCurve: 'continuous',
-              maxHeight: '88%',
+              maxHeight: '85%',
               paddingBottom: 40,
               boxShadow: '0 -4px 24px rgba(92,74,110,0.18)',
             }}
           >
-            {/* Grab handle */}
+            {/* Drag handle */}
             <View
               style={{
                 width: 36,
@@ -65,7 +67,7 @@ export function DecorationPickerModal({
               }}
             />
 
-            {/* Header */}
+            {/* Header row */}
             <View
               style={{
                 flexDirection: 'row',
@@ -106,7 +108,7 @@ export function DecorationPickerModal({
               </Pressable>
             </View>
 
-            {/* "アイテム" tab pill */}
+            {/* アイテム tab — single active tab pill */}
             <View
               style={{
                 paddingHorizontal: hPad,
@@ -144,13 +146,13 @@ export function DecorationPickerModal({
                       letterSpacing: 0.5,
                     }}
                   >
-                    🐱 アイテム
+                    アイテム
                   </Text>
                 </View>
               </View>
             </View>
 
-            {/* Cat sticker grid */}
+            {/* Sticker grid — transparent bg, no labels */}
             <ScrollView
               contentContainerStyle={{
                 paddingHorizontal: hPad,
@@ -164,7 +166,7 @@ export function DecorationPickerModal({
               {DECO_CAT_STICKERS.map((item, index) => (
                 <Animated.View
                   key={item.id}
-                  entering={FadeIn.delay(index * 28).duration(280)}
+                  entering={FadeIn.delay(index * 22).duration(260)}
                 >
                   <Pressable
                     onPress={() => {
@@ -176,38 +178,21 @@ export function DecorationPickerModal({
                       height: itemSize,
                       alignItems: 'center',
                       justifyContent: 'center',
-                      borderRadius: 16,
-                      borderCurve: 'continuous',
-                      backgroundColor: pressed ? '#FFF0F5' : '#FAFAFA',
-                      borderWidth: 1.5,
-                      borderColor: pressed ? '#F9A8C9' : '#F0E8EE',
-                      transform: [{ scale: pressed ? 1.08 : 1 }],
-                      overflow: 'hidden',
-                      boxShadow: pressed
-                        ? '0 4px 12px rgba(249,168,201,0.35)'
-                        : '0 2px 6px rgba(0,0,0,0.06)',
+                      // Transparent background — image only
+                      backgroundColor: 'transparent',
+                      // Subtle scale feedback on press; no border in normal state
+                      transform: [{ scale: pressed ? 1.15 : 1 }],
+                      opacity: pressed ? 0.85 : 1,
                     })}
                   >
                     <Image
                       source={item.source}
-                      style={{ width: itemSize - 8, height: itemSize - 8 }}
+                      style={{ width: itemSize, height: itemSize }}
                       contentFit="contain"
-                      transition={200}
+                      transition={180}
                     />
                   </Pressable>
-                  {/* Label under each cat */}
-                  <Text
-                    style={{
-                      fontFamily: Fonts.regular,
-                      fontSize: 9,
-                      color: theme.textMuted,
-                      textAlign: 'center',
-                      marginTop: 3,
-                    }}
-                    numberOfLines={1}
-                  >
-                    {item.label}
-                  </Text>
+                  {/* NO label text — image only */}
                 </Animated.View>
               ))}
             </ScrollView>

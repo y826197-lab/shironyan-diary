@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": 1776185913041,
+  "generatedAt": 1776186343788,
   "entries": {
     "Index@app/index.tsx:5": {
       "element": {
@@ -8546,50 +8546,6 @@
         }
       ]
     },
-    "DecorationItem@components/calendar/decoration-item.tsx:115": {
-      "element": {
-        "file": "components/calendar/decoration-item.tsx",
-        "line": 115
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "components/calendar/decoration-item.tsx",
-          "properties": {
-            "position": {
-              "line": 118,
-              "col": 18,
-              "endCol": 28,
-              "raw": "'absolute'"
-            },
-            "left": {
-              "line": 119,
-              "col": 14,
-              "endCol": 15,
-              "raw": "0"
-            },
-            "top": {
-              "line": 120,
-              "col": 13,
-              "endCol": 14,
-              "raw": "0"
-            },
-            "zIndex": {
-              "line": 124,
-              "col": 16,
-              "endCol": 19,
-              "raw": "200"
-            },
-            "boxShadow": {
-              "line": 125,
-              "col": 19,
-              "endCol": 48,
-              "raw": "'0 3px 12px rgba(0,0,0,0.15)'"
-            }
-          }
-        }
-      ]
-    },
     "Toolbar@components/editor/toolbar.tsx:79": {
       "element": {
         "file": "components/editor/toolbar.tsx",
@@ -9435,462 +9391,6 @@
               "col": 60,
               "endCol": 62,
               "raw": "10"
-            }
-          }
-        }
-      ]
-    },
-    "DecorationPickerModal@components/calendar/decoration-picker-modal.tsx:35": {
-      "element": {
-        "file": "components/calendar/decoration-picker-modal.tsx",
-        "line": 35
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "components/calendar/decoration-picker-modal.tsx",
-          "properties": {
-            "flex": {
-              "line": 38,
-              "col": 16,
-              "endCol": 17,
-              "raw": "1"
-            },
-            "justifyContent": {
-              "line": 39,
-              "col": 26,
-              "endCol": 36,
-              "raw": "'flex-end'"
-            },
-            "backgroundColor": {
-              "line": 40,
-              "col": 27,
-              "endCol": 52,
-              "raw": "'rgba(92, 74, 110, 0.45)'"
-            }
-          }
-        }
-      ]
-    },
-    "DecorationPickerModal@components/calendar/decoration-picker-modal.tsx:44": {
-      "element": {
-        "file": "components/calendar/decoration-picker-modal.tsx",
-        "line": 44
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "components/calendar/decoration-picker-modal.tsx",
-          "properties": {
-            "borderTopLeftRadius": {
-              "line": 48,
-              "col": 35,
-              "endCol": 37,
-              "raw": "28"
-            },
-            "borderTopRightRadius": {
-              "line": 49,
-              "col": 36,
-              "endCol": 38,
-              "raw": "28"
-            },
-            "borderCurve": {
-              "line": 50,
-              "col": 27,
-              "endCol": 39,
-              "raw": "'continuous'"
-            },
-            "maxHeight": {
-              "line": 51,
-              "col": 25,
-              "endCol": 30,
-              "raw": "'88%'"
-            },
-            "paddingBottom": {
-              "line": 52,
-              "col": 29,
-              "endCol": 31,
-              "raw": "40"
-            },
-            "boxShadow": {
-              "line": 53,
-              "col": 25,
-              "endCol": 59,
-              "raw": "'0 -4px 24px rgba(92,74,110,0.18)'"
-            }
-          }
-        }
-      ]
-    },
-    "DecorationPickerModal@components/calendar/decoration-picker-modal.tsx:57": {
-      "element": {
-        "file": "components/calendar/decoration-picker-modal.tsx",
-        "line": 57
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "components/calendar/decoration-picker-modal.tsx",
-          "properties": {
-            "width": {
-              "line": 59,
-              "col": 23,
-              "endCol": 25,
-              "raw": "36"
-            },
-            "height": {
-              "line": 60,
-              "col": 24,
-              "endCol": 25,
-              "raw": "4"
-            },
-            "borderRadius": {
-              "line": 62,
-              "col": 30,
-              "endCol": 31,
-              "raw": "2"
-            },
-            "alignSelf": {
-              "line": 63,
-              "col": 27,
-              "endCol": 35,
-              "raw": "'center'"
-            },
-            "marginTop": {
-              "line": 64,
-              "col": 27,
-              "endCol": 29,
-              "raw": "12"
-            }
-          }
-        }
-      ]
-    },
-    "DecorationPickerModal@components/calendar/decoration-picker-modal.tsx:69": {
-      "element": {
-        "file": "components/calendar/decoration-picker-modal.tsx",
-        "line": 69
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "components/calendar/decoration-picker-modal.tsx",
-          "properties": {
-            "flexDirection": {
-              "line": 71,
-              "col": 31,
-              "endCol": 36,
-              "raw": "'row'"
-            },
-            "alignItems": {
-              "line": 72,
-              "col": 28,
-              "endCol": 36,
-              "raw": "'center'"
-            },
-            "justifyContent": {
-              "line": 73,
-              "col": 32,
-              "endCol": 47,
-              "raw": "'space-between'"
-            },
-            "paddingHorizontal": {
-              "line": 74,
-              "col": 35,
-              "endCol": 37,
-              "raw": "20"
-            },
-            "paddingTop": {
-              "line": 75,
-              "col": 28,
-              "endCol": 30,
-              "raw": "14"
-            },
-            "paddingBottom": {
-              "line": 76,
-              "col": 31,
-              "endCol": 32,
-              "raw": "4"
-            }
-          }
-        }
-      ]
-    },
-    "DecorationPickerModal@components/calendar/decoration-picker-modal.tsx:79": {
-      "element": {
-        "file": "components/calendar/decoration-picker-modal.tsx",
-        "line": 79
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "components/calendar/decoration-picker-modal.tsx",
-          "properties": {
-            "flexDirection": {
-              "line": 79,
-              "col": 44,
-              "endCol": 49,
-              "raw": "'row'"
-            },
-            "alignItems": {
-              "line": 79,
-              "col": 63,
-              "endCol": 71,
-              "raw": "'center'"
-            },
-            "gap": {
-              "line": 79,
-              "col": 78,
-              "endCol": 79,
-              "raw": "8"
-            }
-          }
-        }
-      ]
-    },
-    "DecorationPickerModal@components/calendar/decoration-picker-modal.tsx:80": {
-      "element": {
-        "file": "components/calendar/decoration-picker-modal.tsx",
-        "line": 80
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "components/calendar/decoration-picker-modal.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 80,
-              "col": 41,
-              "endCol": 43,
-              "raw": "22"
-            }
-          }
-        }
-      ]
-    },
-    "DecorationPickerModal@components/calendar/decoration-picker-modal.tsx:81": {
-      "element": {
-        "file": "components/calendar/decoration-picker-modal.tsx",
-        "line": 81
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "components/calendar/decoration-picker-modal.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 84,
-              "col": 30,
-              "endCol": 32,
-              "raw": "18"
-            },
-            "letterSpacing": {
-              "line": 86,
-              "col": 35,
-              "endCol": 38,
-              "raw": "0.5"
-            }
-          }
-        }
-      ]
-    },
-    "DecorationPickerModal@components/calendar/decoration-picker-modal.tsx:92": {
-      "element": {
-        "file": "components/calendar/decoration-picker-modal.tsx",
-        "line": 92
-      },
-      "styles": [
-        {
-          "origin": "dynamic",
-          "resolvable": false
-        }
-      ]
-    },
-    "DecorationPickerModal@components/calendar/decoration-picker-modal.tsx:110": {
-      "element": {
-        "file": "components/calendar/decoration-picker-modal.tsx",
-        "line": 110
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "components/calendar/decoration-picker-modal.tsx",
-          "properties": {
-            "paddingTop": {
-              "line": 113,
-              "col": 28,
-              "endCol": 30,
-              "raw": "10"
-            },
-            "paddingBottom": {
-              "line": 114,
-              "col": 31,
-              "endCol": 33,
-              "raw": "12"
-            }
-          }
-        }
-      ]
-    },
-    "DecorationPickerModal@components/calendar/decoration-picker-modal.tsx:117": {
-      "element": {
-        "file": "components/calendar/decoration-picker-modal.tsx",
-        "line": 117
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "components/calendar/decoration-picker-modal.tsx",
-          "properties": {
-            "flexDirection": {
-              "line": 119,
-              "col": 33,
-              "endCol": 38,
-              "raw": "'row'"
-            },
-            "borderRadius": {
-              "line": 121,
-              "col": 32,
-              "endCol": 34,
-              "raw": "14"
-            },
-            "borderCurve": {
-              "line": 122,
-              "col": 31,
-              "endCol": 43,
-              "raw": "'continuous'"
-            },
-            "padding": {
-              "line": 123,
-              "col": 27,
-              "endCol": 28,
-              "raw": "3"
-            },
-            "alignSelf": {
-              "line": 124,
-              "col": 29,
-              "endCol": 41,
-              "raw": "'flex-start'"
-            }
-          }
-        }
-      ]
-    },
-    "DecorationPickerModal@components/calendar/decoration-picker-modal.tsx:127": {
-      "element": {
-        "file": "components/calendar/decoration-picker-modal.tsx",
-        "line": 127
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "components/calendar/decoration-picker-modal.tsx",
-          "properties": {
-            "paddingHorizontal": {
-              "line": 129,
-              "col": 39,
-              "endCol": 41,
-              "raw": "18"
-            },
-            "paddingVertical": {
-              "line": 130,
-              "col": 37,
-              "endCol": 38,
-              "raw": "7"
-            },
-            "borderRadius": {
-              "line": 132,
-              "col": 34,
-              "endCol": 36,
-              "raw": "12"
-            },
-            "borderCurve": {
-              "line": 133,
-              "col": 33,
-              "endCol": 45,
-              "raw": "'continuous'"
-            },
-            "borderWidth": {
-              "line": 134,
-              "col": 33,
-              "endCol": 36,
-              "raw": "1.5"
-            },
-            "boxShadow": {
-              "line": 136,
-              "col": 31,
-              "endCol": 65,
-              "raw": "'0 1px 4px rgba(249,168,201,0.25)'"
-            }
-          }
-        }
-      ]
-    },
-    "DecorationPickerModal@components/calendar/decoration-picker-modal.tsx:139": {
-      "element": {
-        "file": "components/calendar/decoration-picker-modal.tsx",
-        "line": 139
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "components/calendar/decoration-picker-modal.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 142,
-              "col": 32,
-              "endCol": 34,
-              "raw": "13"
-            },
-            "letterSpacing": {
-              "line": 144,
-              "col": 37,
-              "endCol": 40,
-              "raw": "0.5"
-            }
-          }
-        }
-      ]
-    },
-    "DecorationPickerModal@components/calendar/decoration-picker-modal.tsx:169": {
-      "element": {
-        "file": "components/calendar/decoration-picker-modal.tsx",
-        "line": 169
-      },
-      "styles": [
-        {
-          "origin": "dynamic",
-          "resolvable": false
-        }
-      ]
-    },
-    "DecorationPickerModal@components/calendar/decoration-picker-modal.tsx:199": {
-      "element": {
-        "file": "components/calendar/decoration-picker-modal.tsx",
-        "line": 199
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "components/calendar/decoration-picker-modal.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 202,
-              "col": 32,
-              "endCol": 33,
-              "raw": "9"
-            },
-            "textAlign": {
-              "line": 204,
-              "col": 33,
-              "endCol": 41,
-              "raw": "'center'"
-            },
-            "marginTop": {
-              "line": 205,
-              "col": 33,
-              "endCol": 34,
-              "raw": "3"
             }
           }
         }
@@ -11017,6 +10517,474 @@
               "col": 43,
               "endCol": 47,
               "raw": "0.88"
+            }
+          }
+        }
+      ]
+    },
+    "DecorationPickerModal@components/calendar/decoration-picker-modal.tsx:36": {
+      "element": {
+        "file": "components/calendar/decoration-picker-modal.tsx",
+        "line": 36
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "components/calendar/decoration-picker-modal.tsx",
+          "properties": {
+            "flex": {
+              "line": 39,
+              "col": 16,
+              "endCol": 17,
+              "raw": "1"
+            },
+            "justifyContent": {
+              "line": 40,
+              "col": 26,
+              "endCol": 36,
+              "raw": "'flex-end'"
+            },
+            "backgroundColor": {
+              "line": 41,
+              "col": 27,
+              "endCol": 52,
+              "raw": "'rgba(92, 74, 110, 0.45)'"
+            }
+          }
+        }
+      ]
+    },
+    "DecorationPickerModal@components/calendar/decoration-picker-modal.tsx:46": {
+      "element": {
+        "file": "components/calendar/decoration-picker-modal.tsx",
+        "line": 46
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "components/calendar/decoration-picker-modal.tsx",
+          "properties": {
+            "borderTopLeftRadius": {
+              "line": 50,
+              "col": 35,
+              "endCol": 37,
+              "raw": "28"
+            },
+            "borderTopRightRadius": {
+              "line": 51,
+              "col": 36,
+              "endCol": 38,
+              "raw": "28"
+            },
+            "borderCurve": {
+              "line": 52,
+              "col": 27,
+              "endCol": 39,
+              "raw": "'continuous'"
+            },
+            "maxHeight": {
+              "line": 53,
+              "col": 25,
+              "endCol": 30,
+              "raw": "'85%'"
+            },
+            "paddingBottom": {
+              "line": 54,
+              "col": 29,
+              "endCol": 31,
+              "raw": "40"
+            },
+            "boxShadow": {
+              "line": 55,
+              "col": 25,
+              "endCol": 59,
+              "raw": "'0 -4px 24px rgba(92,74,110,0.18)'"
+            }
+          }
+        }
+      ]
+    },
+    "DecorationPickerModal@components/calendar/decoration-picker-modal.tsx:59": {
+      "element": {
+        "file": "components/calendar/decoration-picker-modal.tsx",
+        "line": 59
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "components/calendar/decoration-picker-modal.tsx",
+          "properties": {
+            "width": {
+              "line": 61,
+              "col": 23,
+              "endCol": 25,
+              "raw": "36"
+            },
+            "height": {
+              "line": 62,
+              "col": 24,
+              "endCol": 25,
+              "raw": "4"
+            },
+            "borderRadius": {
+              "line": 64,
+              "col": 30,
+              "endCol": 31,
+              "raw": "2"
+            },
+            "alignSelf": {
+              "line": 65,
+              "col": 27,
+              "endCol": 35,
+              "raw": "'center'"
+            },
+            "marginTop": {
+              "line": 66,
+              "col": 27,
+              "endCol": 29,
+              "raw": "12"
+            }
+          }
+        }
+      ]
+    },
+    "DecorationPickerModal@components/calendar/decoration-picker-modal.tsx:71": {
+      "element": {
+        "file": "components/calendar/decoration-picker-modal.tsx",
+        "line": 71
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "components/calendar/decoration-picker-modal.tsx",
+          "properties": {
+            "flexDirection": {
+              "line": 73,
+              "col": 31,
+              "endCol": 36,
+              "raw": "'row'"
+            },
+            "alignItems": {
+              "line": 74,
+              "col": 28,
+              "endCol": 36,
+              "raw": "'center'"
+            },
+            "justifyContent": {
+              "line": 75,
+              "col": 32,
+              "endCol": 47,
+              "raw": "'space-between'"
+            },
+            "paddingHorizontal": {
+              "line": 76,
+              "col": 35,
+              "endCol": 37,
+              "raw": "20"
+            },
+            "paddingTop": {
+              "line": 77,
+              "col": 28,
+              "endCol": 30,
+              "raw": "14"
+            },
+            "paddingBottom": {
+              "line": 78,
+              "col": 31,
+              "endCol": 32,
+              "raw": "4"
+            }
+          }
+        }
+      ]
+    },
+    "DecorationPickerModal@components/calendar/decoration-picker-modal.tsx:81": {
+      "element": {
+        "file": "components/calendar/decoration-picker-modal.tsx",
+        "line": 81
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "components/calendar/decoration-picker-modal.tsx",
+          "properties": {
+            "flexDirection": {
+              "line": 81,
+              "col": 44,
+              "endCol": 49,
+              "raw": "'row'"
+            },
+            "alignItems": {
+              "line": 81,
+              "col": 63,
+              "endCol": 71,
+              "raw": "'center'"
+            },
+            "gap": {
+              "line": 81,
+              "col": 78,
+              "endCol": 79,
+              "raw": "8"
+            }
+          }
+        }
+      ]
+    },
+    "DecorationPickerModal@components/calendar/decoration-picker-modal.tsx:82": {
+      "element": {
+        "file": "components/calendar/decoration-picker-modal.tsx",
+        "line": 82
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "components/calendar/decoration-picker-modal.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 82,
+              "col": 41,
+              "endCol": 43,
+              "raw": "22"
+            }
+          }
+        }
+      ]
+    },
+    "DecorationPickerModal@components/calendar/decoration-picker-modal.tsx:83": {
+      "element": {
+        "file": "components/calendar/decoration-picker-modal.tsx",
+        "line": 83
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "components/calendar/decoration-picker-modal.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 86,
+              "col": 30,
+              "endCol": 32,
+              "raw": "18"
+            },
+            "letterSpacing": {
+              "line": 88,
+              "col": 35,
+              "endCol": 38,
+              "raw": "0.5"
+            }
+          }
+        }
+      ]
+    },
+    "DecorationPickerModal@components/calendar/decoration-picker-modal.tsx:94": {
+      "element": {
+        "file": "components/calendar/decoration-picker-modal.tsx",
+        "line": 94
+      },
+      "styles": [
+        {
+          "origin": "dynamic",
+          "resolvable": false
+        }
+      ]
+    },
+    "DecorationPickerModal@components/calendar/decoration-picker-modal.tsx:112": {
+      "element": {
+        "file": "components/calendar/decoration-picker-modal.tsx",
+        "line": 112
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "components/calendar/decoration-picker-modal.tsx",
+          "properties": {
+            "paddingTop": {
+              "line": 115,
+              "col": 28,
+              "endCol": 30,
+              "raw": "10"
+            },
+            "paddingBottom": {
+              "line": 116,
+              "col": 31,
+              "endCol": 33,
+              "raw": "12"
+            }
+          }
+        }
+      ]
+    },
+    "DecorationPickerModal@components/calendar/decoration-picker-modal.tsx:119": {
+      "element": {
+        "file": "components/calendar/decoration-picker-modal.tsx",
+        "line": 119
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "components/calendar/decoration-picker-modal.tsx",
+          "properties": {
+            "flexDirection": {
+              "line": 121,
+              "col": 33,
+              "endCol": 38,
+              "raw": "'row'"
+            },
+            "borderRadius": {
+              "line": 123,
+              "col": 32,
+              "endCol": 34,
+              "raw": "14"
+            },
+            "borderCurve": {
+              "line": 124,
+              "col": 31,
+              "endCol": 43,
+              "raw": "'continuous'"
+            },
+            "padding": {
+              "line": 125,
+              "col": 27,
+              "endCol": 28,
+              "raw": "3"
+            },
+            "alignSelf": {
+              "line": 126,
+              "col": 29,
+              "endCol": 41,
+              "raw": "'flex-start'"
+            }
+          }
+        }
+      ]
+    },
+    "DecorationPickerModal@components/calendar/decoration-picker-modal.tsx:129": {
+      "element": {
+        "file": "components/calendar/decoration-picker-modal.tsx",
+        "line": 129
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "components/calendar/decoration-picker-modal.tsx",
+          "properties": {
+            "paddingHorizontal": {
+              "line": 131,
+              "col": 39,
+              "endCol": 41,
+              "raw": "18"
+            },
+            "paddingVertical": {
+              "line": 132,
+              "col": 37,
+              "endCol": 38,
+              "raw": "7"
+            },
+            "borderRadius": {
+              "line": 134,
+              "col": 34,
+              "endCol": 36,
+              "raw": "12"
+            },
+            "borderCurve": {
+              "line": 135,
+              "col": 33,
+              "endCol": 45,
+              "raw": "'continuous'"
+            },
+            "borderWidth": {
+              "line": 136,
+              "col": 33,
+              "endCol": 36,
+              "raw": "1.5"
+            },
+            "boxShadow": {
+              "line": 138,
+              "col": 31,
+              "endCol": 65,
+              "raw": "'0 1px 4px rgba(249,168,201,0.25)'"
+            }
+          }
+        }
+      ]
+    },
+    "DecorationPickerModal@components/calendar/decoration-picker-modal.tsx:141": {
+      "element": {
+        "file": "components/calendar/decoration-picker-modal.tsx",
+        "line": 141
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "components/calendar/decoration-picker-modal.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 144,
+              "col": 32,
+              "endCol": 34,
+              "raw": "13"
+            },
+            "letterSpacing": {
+              "line": 146,
+              "col": 37,
+              "endCol": 40,
+              "raw": "0.5"
+            }
+          }
+        }
+      ]
+    },
+    "DecorationPickerModal@components/calendar/decoration-picker-modal.tsx:171": {
+      "element": {
+        "file": "components/calendar/decoration-picker-modal.tsx",
+        "line": 171
+      },
+      "styles": [
+        {
+          "origin": "dynamic",
+          "resolvable": false
+        }
+      ]
+    },
+    "DecorationItem@components/calendar/decoration-item.tsx:115": {
+      "element": {
+        "file": "components/calendar/decoration-item.tsx",
+        "line": 115
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "components/calendar/decoration-item.tsx",
+          "properties": {
+            "position": {
+              "line": 118,
+              "col": 18,
+              "endCol": 28,
+              "raw": "'absolute'"
+            },
+            "left": {
+              "line": 119,
+              "col": 14,
+              "endCol": 15,
+              "raw": "0"
+            },
+            "top": {
+              "line": 120,
+              "col": 13,
+              "endCol": 14,
+              "raw": "0"
+            },
+            "zIndex": {
+              "line": 124,
+              "col": 16,
+              "endCol": 19,
+              "raw": "200"
+            },
+            "backgroundColor": {
+              "line": 126,
+              "col": 25,
+              "endCol": 38,
+              "raw": "'transparent'"
             }
           }
         }

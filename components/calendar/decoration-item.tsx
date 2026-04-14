@@ -122,7 +122,8 @@ export function DecorationItem({
         height: size,
         transform: [{ translateX: panX }, { translateY: panY }],
         zIndex: 200,
-        boxShadow: '0 3px 12px rgba(0,0,0,0.15)',
+        // Fully transparent — the PNG image handles its own alpha channel
+        backgroundColor: 'transparent',
       }}
     >
       <Image
