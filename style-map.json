@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": 1776186343788,
+  "generatedAt": 1776187342595,
   "entries": {
     "Index@app/index.tsx:5": {
       "element": {
@@ -3965,690 +3965,6 @@
               "col": 76,
               "endCol": 85,
               "raw": "'#FFFFFF'"
-            }
-          }
-        }
-      ]
-    },
-    "EditorScreen@app/editor/[id].tsx:222": {
-      "element": {
-        "file": "app/editor/[id].tsx",
-        "line": 222
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/editor/[id].tsx",
-          "properties": {
-            "flex": {
-              "line": 224,
-              "col": 16,
-              "endCol": 17,
-              "raw": "1"
-            },
-            "alignItems": {
-              "line": 225,
-              "col": 22,
-              "endCol": 30,
-              "raw": "'center'"
-            },
-            "justifyContent": {
-              "line": 226,
-              "col": 26,
-              "endCol": 34,
-              "raw": "'center'"
-            }
-          }
-        }
-      ]
-    },
-    "EditorScreen@app/editor/[id].tsx:230": {
-      "element": {
-        "file": "app/editor/[id].tsx",
-        "line": 230
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/editor/[id].tsx",
-          "properties": {
-            "fontSize": {
-              "line": 230,
-              "col": 33,
-              "endCol": 35,
-              "raw": "48"
-            }
-          }
-        }
-      ]
-    },
-    "EditorScreen@app/editor/[id].tsx:231": {
-      "element": {
-        "file": "app/editor/[id].tsx",
-        "line": 231
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/editor/[id].tsx",
-          "properties": {
-            "fontSize": {
-              "line": 234,
-              "col": 22,
-              "endCol": 24,
-              "raw": "16"
-            },
-            "marginTop": {
-              "line": 236,
-              "col": 23,
-              "endCol": 25,
-              "raw": "12"
-            }
-          }
-        }
-      ]
-    },
-    "EditorScreen@app/editor/[id].tsx:241": {
-      "element": {
-        "file": "app/editor/[id].tsx",
-        "line": 241
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/editor/[id].tsx",
-          "properties": {
-            "marginTop": {
-              "line": 244,
-              "col": 23,
-              "endCol": 25,
-              "raw": "20"
-            },
-            "paddingHorizontal": {
-              "line": 245,
-              "col": 31,
-              "endCol": 33,
-              "raw": "24"
-            },
-            "paddingVertical": {
-              "line": 246,
-              "col": 29,
-              "endCol": 31,
-              "raw": "12"
-            },
-            "borderRadius": {
-              "line": 247,
-              "col": 26,
-              "endCol": 28,
-              "raw": "20"
-            }
-          }
-        }
-      ]
-    },
-    "EditorScreen@app/editor/[id].tsx:251": {
-      "element": {
-        "file": "app/editor/[id].tsx",
-        "line": 251
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/editor/[id].tsx",
-          "properties": {
-            "fontSize": {
-              "line": 251,
-              "col": 59,
-              "endCol": 61,
-              "raw": "14"
-            },
-            "color": {
-              "line": 251,
-              "col": 70,
-              "endCol": 76,
-              "raw": "'#FFF'"
-            }
-          }
-        }
-      ]
-    },
-    "EditorScreen@app/editor/[id].tsx:265": {
-      "element": {
-        "file": "app/editor/[id].tsx",
-        "line": 265
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/editor/[id].tsx",
-          "properties": {
-            "flex": {
-              "line": 265,
-              "col": 25,
-              "endCol": 26,
-              "raw": "1"
-            }
-          }
-        }
-      ]
-    },
-    "EditorScreen@app/editor/[id].tsx:267": {
-      "element": {
-        "file": "app/editor/[id].tsx",
-        "line": 267
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/editor/[id].tsx",
-          "properties": {
-            "paddingHorizontal": {
-              "line": 270,
-              "col": 29,
-              "endCol": 31,
-              "raw": "16"
-            },
-            "paddingBottom": {
-              "line": 271,
-              "col": 25,
-              "endCol": 27,
-              "raw": "10"
-            },
-            "zIndex": {
-              "line": 274,
-              "col": 18,
-              "endCol": 20,
-              "raw": "10"
-            }
-          }
-        }
-      ]
-    },
-    "EditorScreen@app/editor/[id].tsx:277": {
-      "element": {
-        "file": "app/editor/[id].tsx",
-        "line": 277
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/editor/[id].tsx",
-          "properties": {
-            "flexDirection": {
-              "line": 279,
-              "col": 27,
-              "endCol": 32,
-              "raw": "'row'"
-            },
-            "alignItems": {
-              "line": 280,
-              "col": 24,
-              "endCol": 32,
-              "raw": "'center'"
-            },
-            "justifyContent": {
-              "line": 281,
-              "col": 28,
-              "endCol": 43,
-              "raw": "'space-between'"
-            }
-          }
-        }
-      ]
-    },
-    "EditorScreen@app/editor/[id].tsx:285": {
-      "element": {
-        "file": "app/editor/[id].tsx",
-        "line": 285
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/editor/[id].tsx",
-          "properties": {
-            "width": {
-              "line": 289,
-              "col": 21,
-              "endCol": 23,
-              "raw": "36"
-            },
-            "height": {
-              "line": 290,
-              "col": 22,
-              "endCol": 24,
-              "raw": "36"
-            },
-            "borderRadius": {
-              "line": 291,
-              "col": 28,
-              "endCol": 30,
-              "raw": "18"
-            },
-            "alignItems": {
-              "line": 293,
-              "col": 26,
-              "endCol": 34,
-              "raw": "'center'"
-            },
-            "justifyContent": {
-              "line": 294,
-              "col": 30,
-              "endCol": 38,
-              "raw": "'center'"
-            }
-          }
-        }
-      ]
-    },
-    "EditorScreen@app/editor/[id].tsx:301": {
-      "element": {
-        "file": "app/editor/[id].tsx",
-        "line": 301
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/editor/[id].tsx",
-          "properties": {
-            "fontSize": {
-              "line": 304,
-              "col": 24,
-              "endCol": 26,
-              "raw": "13"
-            }
-          }
-        }
-      ]
-    },
-    "EditorScreen@app/editor/[id].tsx:312": {
-      "element": {
-        "file": "app/editor/[id].tsx",
-        "line": 312
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/editor/[id].tsx",
-          "properties": {
-            "flexDirection": {
-              "line": 312,
-              "col": 40,
-              "endCol": 45,
-              "raw": "'row'"
-            },
-            "gap": {
-              "line": 312,
-              "col": 52,
-              "endCol": 53,
-              "raw": "8"
-            }
-          }
-        }
-      ]
-    },
-    "EditorScreen@app/editor/[id].tsx:313": {
-      "element": {
-        "file": "app/editor/[id].tsx",
-        "line": 313
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/editor/[id].tsx",
-          "properties": {
-            "width": {
-              "line": 317,
-              "col": 23,
-              "endCol": 25,
-              "raw": "36"
-            },
-            "height": {
-              "line": 318,
-              "col": 24,
-              "endCol": 26,
-              "raw": "36"
-            },
-            "borderRadius": {
-              "line": 319,
-              "col": 30,
-              "endCol": 32,
-              "raw": "18"
-            },
-            "alignItems": {
-              "line": 321,
-              "col": 28,
-              "endCol": 36,
-              "raw": "'center'"
-            },
-            "justifyContent": {
-              "line": 322,
-              "col": 32,
-              "endCol": 40,
-              "raw": "'center'"
-            }
-          }
-        }
-      ]
-    },
-    "EditorScreen@app/editor/[id].tsx:328": {
-      "element": {
-        "file": "app/editor/[id].tsx",
-        "line": 328
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/editor/[id].tsx",
-          "properties": {
-            "paddingHorizontal": {
-              "line": 332,
-              "col": 35,
-              "endCol": 37,
-              "raw": "16"
-            },
-            "height": {
-              "line": 333,
-              "col": 24,
-              "endCol": 26,
-              "raw": "36"
-            },
-            "borderRadius": {
-              "line": 334,
-              "col": 30,
-              "endCol": 32,
-              "raw": "18"
-            },
-            "alignItems": {
-              "line": 336,
-              "col": 28,
-              "endCol": 36,
-              "raw": "'center'"
-            },
-            "justifyContent": {
-              "line": 337,
-              "col": 32,
-              "endCol": 40,
-              "raw": "'center'"
-            }
-          }
-        }
-      ]
-    },
-    "EditorScreen@app/editor/[id].tsx:340": {
-      "element": {
-        "file": "app/editor/[id].tsx",
-        "line": 340
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/editor/[id].tsx",
-          "properties": {
-            "fontSize": {
-              "line": 340,
-              "col": 63,
-              "endCol": 65,
-              "raw": "13"
-            },
-            "color": {
-              "line": 340,
-              "col": 74,
-              "endCol": 80,
-              "raw": "'#FFF'"
-            }
-          }
-        }
-      ]
-    },
-    "EditorScreen@app/editor/[id].tsx:349": {
-      "element": {
-        "file": "app/editor/[id].tsx",
-        "line": 349
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/editor/[id].tsx",
-          "properties": {
-            "fontSize": {
-              "line": 363,
-              "col": 24,
-              "endCol": 26,
-              "raw": "18"
-            },
-            "marginTop": {
-              "line": 365,
-              "col": 25,
-              "endCol": 26,
-              "raw": "8"
-            },
-            "padding": {
-              "line": 366,
-              "col": 23,
-              "endCol": 24,
-              "raw": "4"
-            },
-            "borderBottomWidth": {
-              "line": 367,
-              "col": 33,
-              "endCol": 36,
-              "raw": "1.5"
-            }
-          }
-        }
-      ]
-    },
-    "EditorScreen@app/editor/[id].tsx:372": {
-      "element": {
-        "file": "app/editor/[id].tsx",
-        "line": 372
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/editor/[id].tsx",
-          "properties": {
-            "marginTop": {
-              "line": 372,
-              "col": 79,
-              "endCol": 80,
-              "raw": "8"
-            }
-          }
-        }
-      ]
-    },
-    "EditorScreen@app/editor/[id].tsx:373": {
-      "element": {
-        "file": "app/editor/[id].tsx",
-        "line": 373
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/editor/[id].tsx",
-          "properties": {
-            "fontSize": {
-              "line": 376,
-              "col": 26,
-              "endCol": 28,
-              "raw": "18"
-            }
-          }
-        }
-      ]
-    },
-    "EditorScreen@app/editor/[id].tsx:387": {
-      "element": {
-        "file": "app/editor/[id].tsx",
-        "line": 387
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/editor/[id].tsx",
-          "properties": {
-            "flex": {
-              "line": 388,
-              "col": 23,
-              "endCol": 24,
-              "raw": "1"
-            }
-          }
-        }
-      ]
-    },
-    "EditorScreen@app/editor/[id].tsx:394": {
-      "element": {
-        "file": "app/editor/[id].tsx",
-        "line": 394
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/editor/[id].tsx",
-          "properties": {
-            "backgroundColor": {
-              "line": 399,
-              "col": 33,
-              "endCol": 42,
-              "raw": "'#FFFFFF'"
-            },
-            "overflow": {
-              "line": 400,
-              "col": 26,
-              "endCol": 34,
-              "raw": "'hidden'"
-            }
-          }
-        },
-        {
-          "origin": "dynamic",
-          "resolvable": false
-        }
-      ]
-    },
-    "EditorScreen@app/editor/[id].tsx:435": {
-      "element": {
-        "file": "app/editor/[id].tsx",
-        "line": 435
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/editor/[id].tsx",
-          "properties": {
-            "position": {
-              "line": 437,
-              "col": 28,
-              "endCol": 38,
-              "raw": "'absolute'"
-            },
-            "top": {
-              "line": 438,
-              "col": 23,
-              "endCol": 24,
-              "raw": "0"
-            },
-            "left": {
-              "line": 439,
-              "col": 24,
-              "endCol": 25,
-              "raw": "0"
-            },
-            "right": {
-              "line": 440,
-              "col": 25,
-              "endCol": 26,
-              "raw": "0"
-            },
-            "bottom": {
-              "line": 441,
-              "col": 26,
-              "endCol": 27,
-              "raw": "0"
-            }
-          }
-        }
-      ]
-    },
-    "EditorScreen@app/editor/[id].tsx:465": {
-      "element": {
-        "file": "app/editor/[id].tsx",
-        "line": 465
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/editor/[id].tsx",
-          "properties": {
-            "position": {
-              "line": 467,
-              "col": 28,
-              "endCol": 38,
-              "raw": "'absolute'"
-            },
-            "top": {
-              "line": 468,
-              "col": 23,
-              "endCol": 24,
-              "raw": "8"
-            },
-            "left": {
-              "line": 469,
-              "col": 24,
-              "endCol": 25,
-              "raw": "8"
-            },
-            "paddingHorizontal": {
-              "line": 473,
-              "col": 37,
-              "endCol": 39,
-              "raw": "10"
-            },
-            "paddingVertical": {
-              "line": 474,
-              "col": 35,
-              "endCol": 36,
-              "raw": "4"
-            },
-            "borderRadius": {
-              "line": 475,
-              "col": 32,
-              "endCol": 34,
-              "raw": "12"
-            },
-            "borderCurve": {
-              "line": 476,
-              "col": 31,
-              "endCol": 43,
-              "raw": "'continuous'"
-            }
-          }
-        }
-      ]
-    },
-    "EditorScreen@app/editor/[id].tsx:480": {
-      "element": {
-        "file": "app/editor/[id].tsx",
-        "line": 480
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "app/editor/[id].tsx",
-          "properties": {
-            "fontSize": {
-              "line": 480,
-              "col": 67,
-              "endCol": 69,
-              "raw": "11"
-            },
-            "color": {
-              "line": 480,
-              "col": 78,
-              "endCol": 84,
-              "raw": "'#FFF'"
             }
           }
         }
@@ -10522,430 +9838,6 @@
         }
       ]
     },
-    "DecorationPickerModal@components/calendar/decoration-picker-modal.tsx:36": {
-      "element": {
-        "file": "components/calendar/decoration-picker-modal.tsx",
-        "line": 36
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "components/calendar/decoration-picker-modal.tsx",
-          "properties": {
-            "flex": {
-              "line": 39,
-              "col": 16,
-              "endCol": 17,
-              "raw": "1"
-            },
-            "justifyContent": {
-              "line": 40,
-              "col": 26,
-              "endCol": 36,
-              "raw": "'flex-end'"
-            },
-            "backgroundColor": {
-              "line": 41,
-              "col": 27,
-              "endCol": 52,
-              "raw": "'rgba(92, 74, 110, 0.45)'"
-            }
-          }
-        }
-      ]
-    },
-    "DecorationPickerModal@components/calendar/decoration-picker-modal.tsx:46": {
-      "element": {
-        "file": "components/calendar/decoration-picker-modal.tsx",
-        "line": 46
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "components/calendar/decoration-picker-modal.tsx",
-          "properties": {
-            "borderTopLeftRadius": {
-              "line": 50,
-              "col": 35,
-              "endCol": 37,
-              "raw": "28"
-            },
-            "borderTopRightRadius": {
-              "line": 51,
-              "col": 36,
-              "endCol": 38,
-              "raw": "28"
-            },
-            "borderCurve": {
-              "line": 52,
-              "col": 27,
-              "endCol": 39,
-              "raw": "'continuous'"
-            },
-            "maxHeight": {
-              "line": 53,
-              "col": 25,
-              "endCol": 30,
-              "raw": "'85%'"
-            },
-            "paddingBottom": {
-              "line": 54,
-              "col": 29,
-              "endCol": 31,
-              "raw": "40"
-            },
-            "boxShadow": {
-              "line": 55,
-              "col": 25,
-              "endCol": 59,
-              "raw": "'0 -4px 24px rgba(92,74,110,0.18)'"
-            }
-          }
-        }
-      ]
-    },
-    "DecorationPickerModal@components/calendar/decoration-picker-modal.tsx:59": {
-      "element": {
-        "file": "components/calendar/decoration-picker-modal.tsx",
-        "line": 59
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "components/calendar/decoration-picker-modal.tsx",
-          "properties": {
-            "width": {
-              "line": 61,
-              "col": 23,
-              "endCol": 25,
-              "raw": "36"
-            },
-            "height": {
-              "line": 62,
-              "col": 24,
-              "endCol": 25,
-              "raw": "4"
-            },
-            "borderRadius": {
-              "line": 64,
-              "col": 30,
-              "endCol": 31,
-              "raw": "2"
-            },
-            "alignSelf": {
-              "line": 65,
-              "col": 27,
-              "endCol": 35,
-              "raw": "'center'"
-            },
-            "marginTop": {
-              "line": 66,
-              "col": 27,
-              "endCol": 29,
-              "raw": "12"
-            }
-          }
-        }
-      ]
-    },
-    "DecorationPickerModal@components/calendar/decoration-picker-modal.tsx:71": {
-      "element": {
-        "file": "components/calendar/decoration-picker-modal.tsx",
-        "line": 71
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "components/calendar/decoration-picker-modal.tsx",
-          "properties": {
-            "flexDirection": {
-              "line": 73,
-              "col": 31,
-              "endCol": 36,
-              "raw": "'row'"
-            },
-            "alignItems": {
-              "line": 74,
-              "col": 28,
-              "endCol": 36,
-              "raw": "'center'"
-            },
-            "justifyContent": {
-              "line": 75,
-              "col": 32,
-              "endCol": 47,
-              "raw": "'space-between'"
-            },
-            "paddingHorizontal": {
-              "line": 76,
-              "col": 35,
-              "endCol": 37,
-              "raw": "20"
-            },
-            "paddingTop": {
-              "line": 77,
-              "col": 28,
-              "endCol": 30,
-              "raw": "14"
-            },
-            "paddingBottom": {
-              "line": 78,
-              "col": 31,
-              "endCol": 32,
-              "raw": "4"
-            }
-          }
-        }
-      ]
-    },
-    "DecorationPickerModal@components/calendar/decoration-picker-modal.tsx:81": {
-      "element": {
-        "file": "components/calendar/decoration-picker-modal.tsx",
-        "line": 81
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "components/calendar/decoration-picker-modal.tsx",
-          "properties": {
-            "flexDirection": {
-              "line": 81,
-              "col": 44,
-              "endCol": 49,
-              "raw": "'row'"
-            },
-            "alignItems": {
-              "line": 81,
-              "col": 63,
-              "endCol": 71,
-              "raw": "'center'"
-            },
-            "gap": {
-              "line": 81,
-              "col": 78,
-              "endCol": 79,
-              "raw": "8"
-            }
-          }
-        }
-      ]
-    },
-    "DecorationPickerModal@components/calendar/decoration-picker-modal.tsx:82": {
-      "element": {
-        "file": "components/calendar/decoration-picker-modal.tsx",
-        "line": 82
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "components/calendar/decoration-picker-modal.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 82,
-              "col": 41,
-              "endCol": 43,
-              "raw": "22"
-            }
-          }
-        }
-      ]
-    },
-    "DecorationPickerModal@components/calendar/decoration-picker-modal.tsx:83": {
-      "element": {
-        "file": "components/calendar/decoration-picker-modal.tsx",
-        "line": 83
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "components/calendar/decoration-picker-modal.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 86,
-              "col": 30,
-              "endCol": 32,
-              "raw": "18"
-            },
-            "letterSpacing": {
-              "line": 88,
-              "col": 35,
-              "endCol": 38,
-              "raw": "0.5"
-            }
-          }
-        }
-      ]
-    },
-    "DecorationPickerModal@components/calendar/decoration-picker-modal.tsx:94": {
-      "element": {
-        "file": "components/calendar/decoration-picker-modal.tsx",
-        "line": 94
-      },
-      "styles": [
-        {
-          "origin": "dynamic",
-          "resolvable": false
-        }
-      ]
-    },
-    "DecorationPickerModal@components/calendar/decoration-picker-modal.tsx:112": {
-      "element": {
-        "file": "components/calendar/decoration-picker-modal.tsx",
-        "line": 112
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "components/calendar/decoration-picker-modal.tsx",
-          "properties": {
-            "paddingTop": {
-              "line": 115,
-              "col": 28,
-              "endCol": 30,
-              "raw": "10"
-            },
-            "paddingBottom": {
-              "line": 116,
-              "col": 31,
-              "endCol": 33,
-              "raw": "12"
-            }
-          }
-        }
-      ]
-    },
-    "DecorationPickerModal@components/calendar/decoration-picker-modal.tsx:119": {
-      "element": {
-        "file": "components/calendar/decoration-picker-modal.tsx",
-        "line": 119
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "components/calendar/decoration-picker-modal.tsx",
-          "properties": {
-            "flexDirection": {
-              "line": 121,
-              "col": 33,
-              "endCol": 38,
-              "raw": "'row'"
-            },
-            "borderRadius": {
-              "line": 123,
-              "col": 32,
-              "endCol": 34,
-              "raw": "14"
-            },
-            "borderCurve": {
-              "line": 124,
-              "col": 31,
-              "endCol": 43,
-              "raw": "'continuous'"
-            },
-            "padding": {
-              "line": 125,
-              "col": 27,
-              "endCol": 28,
-              "raw": "3"
-            },
-            "alignSelf": {
-              "line": 126,
-              "col": 29,
-              "endCol": 41,
-              "raw": "'flex-start'"
-            }
-          }
-        }
-      ]
-    },
-    "DecorationPickerModal@components/calendar/decoration-picker-modal.tsx:129": {
-      "element": {
-        "file": "components/calendar/decoration-picker-modal.tsx",
-        "line": 129
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "components/calendar/decoration-picker-modal.tsx",
-          "properties": {
-            "paddingHorizontal": {
-              "line": 131,
-              "col": 39,
-              "endCol": 41,
-              "raw": "18"
-            },
-            "paddingVertical": {
-              "line": 132,
-              "col": 37,
-              "endCol": 38,
-              "raw": "7"
-            },
-            "borderRadius": {
-              "line": 134,
-              "col": 34,
-              "endCol": 36,
-              "raw": "12"
-            },
-            "borderCurve": {
-              "line": 135,
-              "col": 33,
-              "endCol": 45,
-              "raw": "'continuous'"
-            },
-            "borderWidth": {
-              "line": 136,
-              "col": 33,
-              "endCol": 36,
-              "raw": "1.5"
-            },
-            "boxShadow": {
-              "line": 138,
-              "col": 31,
-              "endCol": 65,
-              "raw": "'0 1px 4px rgba(249,168,201,0.25)'"
-            }
-          }
-        }
-      ]
-    },
-    "DecorationPickerModal@components/calendar/decoration-picker-modal.tsx:141": {
-      "element": {
-        "file": "components/calendar/decoration-picker-modal.tsx",
-        "line": 141
-      },
-      "styles": [
-        {
-          "origin": "inline",
-          "file": "components/calendar/decoration-picker-modal.tsx",
-          "properties": {
-            "fontSize": {
-              "line": 144,
-              "col": 32,
-              "endCol": 34,
-              "raw": "13"
-            },
-            "letterSpacing": {
-              "line": 146,
-              "col": 37,
-              "endCol": 40,
-              "raw": "0.5"
-            }
-          }
-        }
-      ]
-    },
-    "DecorationPickerModal@components/calendar/decoration-picker-modal.tsx:171": {
-      "element": {
-        "file": "components/calendar/decoration-picker-modal.tsx",
-        "line": 171
-      },
-      "styles": [
-        {
-          "origin": "dynamic",
-          "resolvable": false
-        }
-      ]
-    },
     "DecorationItem@components/calendar/decoration-item.tsx:115": {
       "element": {
         "file": "components/calendar/decoration-item.tsx",
@@ -10985,6 +9877,1356 @@
               "col": 25,
               "endCol": 38,
               "raw": "'transparent'"
+            }
+          }
+        }
+      ]
+    },
+    "renderStickerCell@components/calendar/decoration-picker-modal.tsx:97": {
+      "element": {
+        "file": "components/calendar/decoration-picker-modal.tsx",
+        "line": 97
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "components/calendar/decoration-picker-modal.tsx",
+          "properties": {
+            "position": {
+              "line": 97,
+              "col": 31,
+              "endCol": 41,
+              "raw": "'relative'"
+            }
+          }
+        }
+      ]
+    },
+    "renderStickerCell@components/calendar/decoration-picker-modal.tsx:98": {
+      "element": {
+        "file": "components/calendar/decoration-picker-modal.tsx",
+        "line": 98
+      },
+      "styles": [
+        {
+          "origin": "dynamic",
+          "resolvable": false
+        }
+      ]
+    },
+    "renderTabContent@components/calendar/decoration-picker-modal.tsx:185": {
+      "element": {
+        "file": "components/calendar/decoration-picker-modal.tsx",
+        "line": 185
+      },
+      "styles": [
+        {
+          "origin": "dynamic",
+          "resolvable": false
+        }
+      ]
+    },
+    "renderTabContent@components/calendar/decoration-picker-modal.tsx:203": {
+      "element": {
+        "file": "components/calendar/decoration-picker-modal.tsx",
+        "line": 203
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "components/calendar/decoration-picker-modal.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 206,
+              "col": 26,
+              "endCol": 28,
+              "raw": "10"
+            }
+          }
+        }
+      ]
+    },
+    "renderTabContent@components/calendar/decoration-picker-modal.tsx:221": {
+      "element": {
+        "file": "components/calendar/decoration-picker-modal.tsx",
+        "line": 221
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "components/calendar/decoration-picker-modal.tsx",
+          "properties": {
+            "position": {
+              "line": 221,
+              "col": 37,
+              "endCol": 47,
+              "raw": "'relative'"
+            }
+          }
+        }
+      ]
+    },
+    "renderTabContent@components/calendar/decoration-picker-modal.tsx:222": {
+      "element": {
+        "file": "components/calendar/decoration-picker-modal.tsx",
+        "line": 222
+      },
+      "styles": [
+        {
+          "origin": "dynamic",
+          "resolvable": false
+        }
+      ]
+    },
+    "renderTabContent@components/calendar/decoration-picker-modal.tsx:234": {
+      "element": {
+        "file": "components/calendar/decoration-picker-modal.tsx",
+        "line": 234
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "components/calendar/decoration-picker-modal.tsx",
+          "properties": {
+            "borderRadius": {
+              "line": 236,
+              "col": 76,
+              "endCol": 77,
+              "raw": "8"
+            }
+          }
+        }
+      ]
+    },
+    "renderTabContent@components/calendar/decoration-picker-modal.tsx:243": {
+      "element": {
+        "file": "components/calendar/decoration-picker-modal.tsx",
+        "line": 243
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "components/calendar/decoration-picker-modal.tsx",
+          "properties": {
+            "position": {
+              "line": 247,
+              "col": 28,
+              "endCol": 38,
+              "raw": "'absolute'"
+            },
+            "top": {
+              "line": 248,
+              "col": 23,
+              "endCol": 25,
+              "raw": "-6"
+            },
+            "right": {
+              "line": 249,
+              "col": 25,
+              "endCol": 27,
+              "raw": "-6"
+            },
+            "width": {
+              "line": 250,
+              "col": 25,
+              "endCol": 27,
+              "raw": "22"
+            },
+            "height": {
+              "line": 251,
+              "col": 26,
+              "endCol": 28,
+              "raw": "22"
+            },
+            "borderRadius": {
+              "line": 252,
+              "col": 32,
+              "endCol": 34,
+              "raw": "11"
+            },
+            "backgroundColor": {
+              "line": 253,
+              "col": 35,
+              "endCol": 44,
+              "raw": "'#F28B82'"
+            },
+            "alignItems": {
+              "line": 254,
+              "col": 30,
+              "endCol": 38,
+              "raw": "'center'"
+            },
+            "justifyContent": {
+              "line": 255,
+              "col": 34,
+              "endCol": 42,
+              "raw": "'center'"
+            },
+            "borderWidth": {
+              "line": 256,
+              "col": 31,
+              "endCol": 32,
+              "raw": "2"
+            },
+            "borderColor": {
+              "line": 257,
+              "col": 31,
+              "endCol": 37,
+              "raw": "'#FFF'"
+            },
+            "zIndex": {
+              "line": 258,
+              "col": 26,
+              "endCol": 28,
+              "raw": "10"
+            },
+            "boxShadow": {
+              "line": 259,
+              "col": 29,
+              "endCol": 56,
+              "raw": "'0 1px 4px rgba(0,0,0,0.2)'"
+            }
+          }
+        }
+      ]
+    },
+    "renderTabContent@components/calendar/decoration-picker-modal.tsx:269": {
+      "element": {
+        "file": "components/calendar/decoration-picker-modal.tsx",
+        "line": 269
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "components/calendar/decoration-picker-modal.tsx",
+          "properties": {
+            "flex": {
+              "line": 271,
+              "col": 20,
+              "endCol": 21,
+              "raw": "1"
+            },
+            "alignItems": {
+              "line": 272,
+              "col": 26,
+              "endCol": 34,
+              "raw": "'center'"
+            },
+            "paddingTop": {
+              "line": 273,
+              "col": 26,
+              "endCol": 28,
+              "raw": "32"
+            },
+            "gap": {
+              "line": 274,
+              "col": 19,
+              "endCol": 21,
+              "raw": "10"
+            }
+          }
+        }
+      ]
+    },
+    "renderTabContent@components/calendar/decoration-picker-modal.tsx:277": {
+      "element": {
+        "file": "components/calendar/decoration-picker-modal.tsx",
+        "line": 277
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "components/calendar/decoration-picker-modal.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 277,
+              "col": 37,
+              "endCol": 39,
+              "raw": "36"
+            }
+          }
+        }
+      ]
+    },
+    "renderTabContent@components/calendar/decoration-picker-modal.tsx:278": {
+      "element": {
+        "file": "components/calendar/decoration-picker-modal.tsx",
+        "line": 278
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "components/calendar/decoration-picker-modal.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 281,
+              "col": 26,
+              "endCol": 28,
+              "raw": "13"
+            },
+            "textAlign": {
+              "line": 283,
+              "col": 27,
+              "endCol": 35,
+              "raw": "'center'"
+            },
+            "lineHeight": {
+              "line": 284,
+              "col": 28,
+              "endCol": 30,
+              "raw": "20"
+            }
+          }
+        }
+      ]
+    },
+    "DecorationPickerModal@components/calendar/decoration-picker-modal.tsx:302": {
+      "element": {
+        "file": "components/calendar/decoration-picker-modal.tsx",
+        "line": 302
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "components/calendar/decoration-picker-modal.tsx",
+          "properties": {
+            "flex": {
+              "line": 305,
+              "col": 16,
+              "endCol": 17,
+              "raw": "1"
+            },
+            "justifyContent": {
+              "line": 306,
+              "col": 26,
+              "endCol": 36,
+              "raw": "'flex-end'"
+            },
+            "backgroundColor": {
+              "line": 307,
+              "col": 27,
+              "endCol": 52,
+              "raw": "'rgba(92, 74, 110, 0.45)'"
+            }
+          }
+        }
+      ]
+    },
+    "DecorationPickerModal@components/calendar/decoration-picker-modal.tsx:311": {
+      "element": {
+        "file": "components/calendar/decoration-picker-modal.tsx",
+        "line": 311
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "components/calendar/decoration-picker-modal.tsx",
+          "properties": {
+            "borderTopLeftRadius": {
+              "line": 315,
+              "col": 35,
+              "endCol": 37,
+              "raw": "28"
+            },
+            "borderTopRightRadius": {
+              "line": 316,
+              "col": 36,
+              "endCol": 38,
+              "raw": "28"
+            },
+            "borderCurve": {
+              "line": 317,
+              "col": 27,
+              "endCol": 39,
+              "raw": "'continuous'"
+            },
+            "maxHeight": {
+              "line": 318,
+              "col": 25,
+              "endCol": 30,
+              "raw": "'82%'"
+            },
+            "paddingBottom": {
+              "line": 319,
+              "col": 29,
+              "endCol": 31,
+              "raw": "36"
+            },
+            "boxShadow": {
+              "line": 320,
+              "col": 25,
+              "endCol": 59,
+              "raw": "'0 -4px 24px rgba(92,74,110,0.18)'"
+            }
+          }
+        }
+      ]
+    },
+    "DecorationPickerModal@components/calendar/decoration-picker-modal.tsx:324": {
+      "element": {
+        "file": "components/calendar/decoration-picker-modal.tsx",
+        "line": 324
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "components/calendar/decoration-picker-modal.tsx",
+          "properties": {
+            "width": {
+              "line": 326,
+              "col": 23,
+              "endCol": 25,
+              "raw": "36"
+            },
+            "height": {
+              "line": 327,
+              "col": 24,
+              "endCol": 25,
+              "raw": "4"
+            },
+            "borderRadius": {
+              "line": 329,
+              "col": 30,
+              "endCol": 31,
+              "raw": "2"
+            },
+            "alignSelf": {
+              "line": 330,
+              "col": 27,
+              "endCol": 35,
+              "raw": "'center'"
+            },
+            "marginTop": {
+              "line": 331,
+              "col": 27,
+              "endCol": 29,
+              "raw": "12"
+            }
+          }
+        }
+      ]
+    },
+    "DecorationPickerModal@components/calendar/decoration-picker-modal.tsx:336": {
+      "element": {
+        "file": "components/calendar/decoration-picker-modal.tsx",
+        "line": 336
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "components/calendar/decoration-picker-modal.tsx",
+          "properties": {
+            "flexDirection": {
+              "line": 338,
+              "col": 31,
+              "endCol": 36,
+              "raw": "'row'"
+            },
+            "alignItems": {
+              "line": 339,
+              "col": 28,
+              "endCol": 36,
+              "raw": "'center'"
+            },
+            "justifyContent": {
+              "line": 340,
+              "col": 32,
+              "endCol": 47,
+              "raw": "'space-between'"
+            },
+            "paddingHorizontal": {
+              "line": 341,
+              "col": 35,
+              "endCol": 37,
+              "raw": "20"
+            },
+            "paddingTop": {
+              "line": 342,
+              "col": 28,
+              "endCol": 30,
+              "raw": "14"
+            },
+            "paddingBottom": {
+              "line": 343,
+              "col": 31,
+              "endCol": 32,
+              "raw": "2"
+            }
+          }
+        }
+      ]
+    },
+    "DecorationPickerModal@components/calendar/decoration-picker-modal.tsx:346": {
+      "element": {
+        "file": "components/calendar/decoration-picker-modal.tsx",
+        "line": 346
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "components/calendar/decoration-picker-modal.tsx",
+          "properties": {
+            "flexDirection": {
+              "line": 346,
+              "col": 44,
+              "endCol": 49,
+              "raw": "'row'"
+            },
+            "alignItems": {
+              "line": 346,
+              "col": 63,
+              "endCol": 71,
+              "raw": "'center'"
+            },
+            "gap": {
+              "line": 346,
+              "col": 78,
+              "endCol": 79,
+              "raw": "8"
+            }
+          }
+        }
+      ]
+    },
+    "DecorationPickerModal@components/calendar/decoration-picker-modal.tsx:347": {
+      "element": {
+        "file": "components/calendar/decoration-picker-modal.tsx",
+        "line": 347
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "components/calendar/decoration-picker-modal.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 347,
+              "col": 41,
+              "endCol": 43,
+              "raw": "20"
+            }
+          }
+        }
+      ]
+    },
+    "DecorationPickerModal@components/calendar/decoration-picker-modal.tsx:348": {
+      "element": {
+        "file": "components/calendar/decoration-picker-modal.tsx",
+        "line": 348
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "components/calendar/decoration-picker-modal.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 351,
+              "col": 30,
+              "endCol": 32,
+              "raw": "17"
+            },
+            "letterSpacing": {
+              "line": 353,
+              "col": 35,
+              "endCol": 38,
+              "raw": "0.3"
+            }
+          }
+        }
+      ]
+    },
+    "DecorationPickerModal@components/calendar/decoration-picker-modal.tsx:359": {
+      "element": {
+        "file": "components/calendar/decoration-picker-modal.tsx",
+        "line": 359
+      },
+      "styles": [
+        {
+          "origin": "dynamic",
+          "resolvable": false
+        }
+      ]
+    },
+    "DecorationPickerModal@components/calendar/decoration-picker-modal.tsx:377": {
+      "element": {
+        "file": "components/calendar/decoration-picker-modal.tsx",
+        "line": 377
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "components/calendar/decoration-picker-modal.tsx",
+          "properties": {
+            "flexDirection": {
+              "line": 379,
+              "col": 31,
+              "endCol": 36,
+              "raw": "'row'"
+            },
+            "paddingHorizontal": {
+              "line": 380,
+              "col": 35,
+              "endCol": 37,
+              "raw": "16"
+            },
+            "paddingTop": {
+              "line": 381,
+              "col": 28,
+              "endCol": 30,
+              "raw": "12"
+            },
+            "paddingBottom": {
+              "line": 382,
+              "col": 31,
+              "endCol": 33,
+              "raw": "10"
+            },
+            "gap": {
+              "line": 383,
+              "col": 21,
+              "endCol": 22,
+              "raw": "8"
+            }
+          }
+        }
+      ]
+    },
+    "DecorationPickerModal@components/calendar/decoration-picker-modal.tsx:389": {
+      "element": {
+        "file": "components/calendar/decoration-picker-modal.tsx",
+        "line": 389
+      },
+      "styles": [
+        {
+          "origin": "dynamic",
+          "resolvable": false
+        }
+      ]
+    },
+    "DecorationPickerModal@components/calendar/decoration-picker-modal.tsx:409": {
+      "element": {
+        "file": "components/calendar/decoration-picker-modal.tsx",
+        "line": 409
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "components/calendar/decoration-picker-modal.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 409,
+              "col": 45,
+              "endCol": 47,
+              "raw": "14"
+            }
+          }
+        }
+      ]
+    },
+    "DecorationPickerModal@components/calendar/decoration-picker-modal.tsx:410": {
+      "element": {
+        "file": "components/calendar/decoration-picker-modal.tsx",
+        "line": 410
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "components/calendar/decoration-picker-modal.tsx",
+          "properties": {
+            "fontSize": {
+              "line": 413,
+              "col": 34,
+              "endCol": 36,
+              "raw": "13"
+            },
+            "letterSpacing": {
+              "line": 415,
+              "col": 39,
+              "endCol": 42,
+              "raw": "0.3"
+            }
+          }
+        }
+      ]
+    },
+    "EditorScreen@app/editor/[id].tsx:235": {
+      "element": {
+        "file": "app/editor/[id].tsx",
+        "line": 235
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/editor/[id].tsx",
+          "properties": {
+            "flex": {
+              "line": 237,
+              "col": 16,
+              "endCol": 17,
+              "raw": "1"
+            },
+            "alignItems": {
+              "line": 238,
+              "col": 22,
+              "endCol": 30,
+              "raw": "'center'"
+            },
+            "justifyContent": {
+              "line": 239,
+              "col": 26,
+              "endCol": 34,
+              "raw": "'center'"
+            }
+          }
+        }
+      ]
+    },
+    "EditorScreen@app/editor/[id].tsx:243": {
+      "element": {
+        "file": "app/editor/[id].tsx",
+        "line": 243
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/editor/[id].tsx",
+          "properties": {
+            "fontSize": {
+              "line": 243,
+              "col": 33,
+              "endCol": 35,
+              "raw": "48"
+            }
+          }
+        }
+      ]
+    },
+    "EditorScreen@app/editor/[id].tsx:244": {
+      "element": {
+        "file": "app/editor/[id].tsx",
+        "line": 244
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/editor/[id].tsx",
+          "properties": {
+            "fontSize": {
+              "line": 247,
+              "col": 22,
+              "endCol": 24,
+              "raw": "16"
+            },
+            "marginTop": {
+              "line": 249,
+              "col": 23,
+              "endCol": 25,
+              "raw": "12"
+            }
+          }
+        }
+      ]
+    },
+    "EditorScreen@app/editor/[id].tsx:254": {
+      "element": {
+        "file": "app/editor/[id].tsx",
+        "line": 254
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/editor/[id].tsx",
+          "properties": {
+            "marginTop": {
+              "line": 257,
+              "col": 23,
+              "endCol": 25,
+              "raw": "20"
+            },
+            "paddingHorizontal": {
+              "line": 258,
+              "col": 31,
+              "endCol": 33,
+              "raw": "24"
+            },
+            "paddingVertical": {
+              "line": 259,
+              "col": 29,
+              "endCol": 31,
+              "raw": "12"
+            },
+            "borderRadius": {
+              "line": 260,
+              "col": 26,
+              "endCol": 28,
+              "raw": "20"
+            }
+          }
+        }
+      ]
+    },
+    "EditorScreen@app/editor/[id].tsx:264": {
+      "element": {
+        "file": "app/editor/[id].tsx",
+        "line": 264
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/editor/[id].tsx",
+          "properties": {
+            "fontSize": {
+              "line": 264,
+              "col": 59,
+              "endCol": 61,
+              "raw": "14"
+            },
+            "color": {
+              "line": 264,
+              "col": 70,
+              "endCol": 76,
+              "raw": "'#FFF'"
+            }
+          }
+        }
+      ]
+    },
+    "EditorScreen@app/editor/[id].tsx:278": {
+      "element": {
+        "file": "app/editor/[id].tsx",
+        "line": 278
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/editor/[id].tsx",
+          "properties": {
+            "flex": {
+              "line": 278,
+              "col": 25,
+              "endCol": 26,
+              "raw": "1"
+            }
+          }
+        }
+      ]
+    },
+    "EditorScreen@app/editor/[id].tsx:280": {
+      "element": {
+        "file": "app/editor/[id].tsx",
+        "line": 280
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/editor/[id].tsx",
+          "properties": {
+            "paddingHorizontal": {
+              "line": 283,
+              "col": 29,
+              "endCol": 31,
+              "raw": "16"
+            },
+            "paddingBottom": {
+              "line": 284,
+              "col": 25,
+              "endCol": 27,
+              "raw": "10"
+            },
+            "zIndex": {
+              "line": 287,
+              "col": 18,
+              "endCol": 20,
+              "raw": "10"
+            }
+          }
+        }
+      ]
+    },
+    "EditorScreen@app/editor/[id].tsx:290": {
+      "element": {
+        "file": "app/editor/[id].tsx",
+        "line": 290
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/editor/[id].tsx",
+          "properties": {
+            "flexDirection": {
+              "line": 292,
+              "col": 27,
+              "endCol": 32,
+              "raw": "'row'"
+            },
+            "alignItems": {
+              "line": 293,
+              "col": 24,
+              "endCol": 32,
+              "raw": "'center'"
+            },
+            "justifyContent": {
+              "line": 294,
+              "col": 28,
+              "endCol": 43,
+              "raw": "'space-between'"
+            }
+          }
+        }
+      ]
+    },
+    "EditorScreen@app/editor/[id].tsx:298": {
+      "element": {
+        "file": "app/editor/[id].tsx",
+        "line": 298
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/editor/[id].tsx",
+          "properties": {
+            "width": {
+              "line": 302,
+              "col": 21,
+              "endCol": 23,
+              "raw": "36"
+            },
+            "height": {
+              "line": 303,
+              "col": 22,
+              "endCol": 24,
+              "raw": "36"
+            },
+            "borderRadius": {
+              "line": 304,
+              "col": 28,
+              "endCol": 30,
+              "raw": "18"
+            },
+            "alignItems": {
+              "line": 306,
+              "col": 26,
+              "endCol": 34,
+              "raw": "'center'"
+            },
+            "justifyContent": {
+              "line": 307,
+              "col": 30,
+              "endCol": 38,
+              "raw": "'center'"
+            }
+          }
+        }
+      ]
+    },
+    "EditorScreen@app/editor/[id].tsx:314": {
+      "element": {
+        "file": "app/editor/[id].tsx",
+        "line": 314
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/editor/[id].tsx",
+          "properties": {
+            "fontSize": {
+              "line": 317,
+              "col": 24,
+              "endCol": 26,
+              "raw": "13"
+            }
+          }
+        }
+      ]
+    },
+    "EditorScreen@app/editor/[id].tsx:325": {
+      "element": {
+        "file": "app/editor/[id].tsx",
+        "line": 325
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/editor/[id].tsx",
+          "properties": {
+            "flexDirection": {
+              "line": 325,
+              "col": 40,
+              "endCol": 45,
+              "raw": "'row'"
+            },
+            "gap": {
+              "line": 325,
+              "col": 52,
+              "endCol": 53,
+              "raw": "8"
+            }
+          }
+        }
+      ]
+    },
+    "EditorScreen@app/editor/[id].tsx:326": {
+      "element": {
+        "file": "app/editor/[id].tsx",
+        "line": 326
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/editor/[id].tsx",
+          "properties": {
+            "width": {
+              "line": 330,
+              "col": 23,
+              "endCol": 25,
+              "raw": "36"
+            },
+            "height": {
+              "line": 331,
+              "col": 24,
+              "endCol": 26,
+              "raw": "36"
+            },
+            "borderRadius": {
+              "line": 332,
+              "col": 30,
+              "endCol": 32,
+              "raw": "18"
+            },
+            "alignItems": {
+              "line": 334,
+              "col": 28,
+              "endCol": 36,
+              "raw": "'center'"
+            },
+            "justifyContent": {
+              "line": 335,
+              "col": 32,
+              "endCol": 40,
+              "raw": "'center'"
+            }
+          }
+        }
+      ]
+    },
+    "EditorScreen@app/editor/[id].tsx:341": {
+      "element": {
+        "file": "app/editor/[id].tsx",
+        "line": 341
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/editor/[id].tsx",
+          "properties": {
+            "paddingHorizontal": {
+              "line": 345,
+              "col": 35,
+              "endCol": 37,
+              "raw": "16"
+            },
+            "height": {
+              "line": 346,
+              "col": 24,
+              "endCol": 26,
+              "raw": "36"
+            },
+            "borderRadius": {
+              "line": 347,
+              "col": 30,
+              "endCol": 32,
+              "raw": "18"
+            },
+            "alignItems": {
+              "line": 349,
+              "col": 28,
+              "endCol": 36,
+              "raw": "'center'"
+            },
+            "justifyContent": {
+              "line": 350,
+              "col": 32,
+              "endCol": 40,
+              "raw": "'center'"
+            }
+          }
+        }
+      ]
+    },
+    "EditorScreen@app/editor/[id].tsx:353": {
+      "element": {
+        "file": "app/editor/[id].tsx",
+        "line": 353
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/editor/[id].tsx",
+          "properties": {
+            "fontSize": {
+              "line": 353,
+              "col": 63,
+              "endCol": 65,
+              "raw": "13"
+            },
+            "color": {
+              "line": 353,
+              "col": 74,
+              "endCol": 80,
+              "raw": "'#FFF'"
+            }
+          }
+        }
+      ]
+    },
+    "EditorScreen@app/editor/[id].tsx:362": {
+      "element": {
+        "file": "app/editor/[id].tsx",
+        "line": 362
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/editor/[id].tsx",
+          "properties": {
+            "fontSize": {
+              "line": 376,
+              "col": 24,
+              "endCol": 26,
+              "raw": "18"
+            },
+            "marginTop": {
+              "line": 378,
+              "col": 25,
+              "endCol": 26,
+              "raw": "8"
+            },
+            "padding": {
+              "line": 379,
+              "col": 23,
+              "endCol": 24,
+              "raw": "4"
+            },
+            "borderBottomWidth": {
+              "line": 380,
+              "col": 33,
+              "endCol": 36,
+              "raw": "1.5"
+            }
+          }
+        }
+      ]
+    },
+    "EditorScreen@app/editor/[id].tsx:385": {
+      "element": {
+        "file": "app/editor/[id].tsx",
+        "line": 385
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/editor/[id].tsx",
+          "properties": {
+            "marginTop": {
+              "line": 385,
+              "col": 79,
+              "endCol": 80,
+              "raw": "8"
+            }
+          }
+        }
+      ]
+    },
+    "EditorScreen@app/editor/[id].tsx:386": {
+      "element": {
+        "file": "app/editor/[id].tsx",
+        "line": 386
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/editor/[id].tsx",
+          "properties": {
+            "fontSize": {
+              "line": 389,
+              "col": 26,
+              "endCol": 28,
+              "raw": "18"
+            }
+          }
+        }
+      ]
+    },
+    "EditorScreen@app/editor/[id].tsx:400": {
+      "element": {
+        "file": "app/editor/[id].tsx",
+        "line": 400
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/editor/[id].tsx",
+          "properties": {
+            "flex": {
+              "line": 401,
+              "col": 23,
+              "endCol": 24,
+              "raw": "1"
+            }
+          }
+        }
+      ]
+    },
+    "EditorScreen@app/editor/[id].tsx:407": {
+      "element": {
+        "file": "app/editor/[id].tsx",
+        "line": 407
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/editor/[id].tsx",
+          "properties": {
+            "backgroundColor": {
+              "line": 412,
+              "col": 33,
+              "endCol": 42,
+              "raw": "'#FFFFFF'"
+            },
+            "overflow": {
+              "line": 413,
+              "col": 26,
+              "endCol": 34,
+              "raw": "'hidden'"
+            }
+          }
+        },
+        {
+          "origin": "dynamic",
+          "resolvable": false
+        }
+      ]
+    },
+    "EditorScreen@app/editor/[id].tsx:448": {
+      "element": {
+        "file": "app/editor/[id].tsx",
+        "line": 448
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/editor/[id].tsx",
+          "properties": {
+            "position": {
+              "line": 450,
+              "col": 28,
+              "endCol": 38,
+              "raw": "'absolute'"
+            },
+            "top": {
+              "line": 451,
+              "col": 23,
+              "endCol": 24,
+              "raw": "0"
+            },
+            "left": {
+              "line": 452,
+              "col": 24,
+              "endCol": 25,
+              "raw": "0"
+            },
+            "right": {
+              "line": 453,
+              "col": 25,
+              "endCol": 26,
+              "raw": "0"
+            },
+            "bottom": {
+              "line": 454,
+              "col": 26,
+              "endCol": 27,
+              "raw": "0"
+            }
+          }
+        }
+      ]
+    },
+    "EditorScreen@app/editor/[id].tsx:478": {
+      "element": {
+        "file": "app/editor/[id].tsx",
+        "line": 478
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/editor/[id].tsx",
+          "properties": {
+            "position": {
+              "line": 480,
+              "col": 28,
+              "endCol": 38,
+              "raw": "'absolute'"
+            },
+            "top": {
+              "line": 481,
+              "col": 23,
+              "endCol": 24,
+              "raw": "8"
+            },
+            "left": {
+              "line": 482,
+              "col": 24,
+              "endCol": 25,
+              "raw": "8"
+            },
+            "paddingHorizontal": {
+              "line": 486,
+              "col": 37,
+              "endCol": 39,
+              "raw": "10"
+            },
+            "paddingVertical": {
+              "line": 487,
+              "col": 35,
+              "endCol": 36,
+              "raw": "4"
+            },
+            "borderRadius": {
+              "line": 488,
+              "col": 32,
+              "endCol": 34,
+              "raw": "12"
+            },
+            "borderCurve": {
+              "line": 489,
+              "col": 31,
+              "endCol": 43,
+              "raw": "'continuous'"
+            }
+          }
+        }
+      ]
+    },
+    "EditorScreen@app/editor/[id].tsx:493": {
+      "element": {
+        "file": "app/editor/[id].tsx",
+        "line": 493
+      },
+      "styles": [
+        {
+          "origin": "inline",
+          "file": "app/editor/[id].tsx",
+          "properties": {
+            "fontSize": {
+              "line": 493,
+              "col": 67,
+              "endCol": 69,
+              "raw": "11"
+            },
+            "color": {
+              "line": 493,
+              "col": 78,
+              "endCol": 84,
+              "raw": "'#FFF'"
             }
           }
         }

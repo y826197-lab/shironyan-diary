@@ -53,6 +53,9 @@ export default function EditorScreen() {
   const [currentPoints, setCurrentPoints] = useState<{ x: number; y: number }[]>([]);
   const isDrawing = useRef(false);
 
+  // Guard against concurrent photo picks (prevents state corruption with 2+ photos)
+  const isPickingPhoto = useRef(false);
+
   // Canvas dimensions - fill available space
   const canvasWidth = screenWidth;
   const headerHeight = insets.top + 90;
@@ -71,33 +74,43 @@ export default function EditorScreen() {
   }, [page, titleText, updatePage, router]);
 
   const handlePickPhoto = useCallback(async () => {
+    // Prevent concurrent picks — second tap while first is in-progress would
+    // corrupt the element state and cause crashes with 2+ photos.
+    if (isPickingPhoto.current) return;
+    isPickingPhoto.current = true;
     try {
       const result = await ImagePicker.launchImageLibraryAsync({
         mediaTypes: ['images'],
-        quality: 0.8,
+        quality: 0.75,
         allowsEditing: true,
       });
 
       if (!result.canceled && result.assets[0] && id) {
         const asset = result.assets[0];
-        const aspectRatio = (asset.width || 200) / (asset.height || 200);
+        const aspectRatio = (asset.width && asset.height)
+          ? asset.width / asset.height
+          : 1;
         const photoWidth = 180;
-        const photoHeight = photoWidth / aspectRatio;
+        const photoHeight = Math.round(photoWidth / aspectRatio);
 
         const permanentUri = await persistImage(asset.uri);
 
         addElement(id, {
           type: 'photo',
-          x: 60 + Math.random() * 60,
-          y: 60 + Math.random() * 60,
+          // Slightly randomised placement so photos don't stack exactly
+          x: 40 + Math.random() * 80,
+          y: 40 + Math.random() * 80,
           width: photoWidth,
           height: photoHeight,
-          rotation: (Math.random() - 0.5) * 0.15,
+          rotation: (Math.random() - 0.5) * 0.18,
           content: permanentUri,
         });
       }
     } catch {
       Alert.alert('エラー', '写真の読み込みに失敗しました');
+    } finally {
+      // Always release the guard, even on error
+      isPickingPhoto.current = false;
     }
   }, [id, addElement]);
 

@@ -1,10 +1,39 @@
-import { View, Text, Modal, ScrollView, Pressable, useWindowDimensions } from 'react-native';
+import {
+  View,
+  Text,
+  Modal,
+  ScrollView,
+  Pressable,
+  TouchableOpacity,
+  Alert,
+  useWindowDimensions,
+} from 'react-native';
+import { useState, useCallback } from 'react';
+import type { ReactNode } from 'react';
 import Animated, { FadeIn, SlideInDown } from 'react-native-reanimated';
 import { Image } from 'expo-image';
+import type { ImageSource } from 'expo-image';
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { DECO_CAT_STICKERS } from '@/constants/Stickers';
+import * as ImagePicker from 'expo-image-picker';
+import { DECO_CAT_STICKERS, BINSEN_STICKERS } from '@/constants/Stickers';
 import { Fonts } from '@/constants/Typography';
 import { useTheme } from '@/components/ui/use-theme';
+import { persistImage } from '@/utils/image-storage';
+import { useCalendarCustomStickerStore } from '@/store/useCalendarCustomStickerStore';
+
+type TabId = 'neko' | 'items' | 'user';
+
+interface Tab {
+  id: TabId;
+  label: string;
+  emoji: string;
+}
+
+const TABS: Tab[] = [
+  { id: 'neko', label: 'ネコ', emoji: '🐱' },
+  { id: 'items', label: 'アイテム', emoji: '📋' },
+  { id: 'user', label: 'マイ', emoji: '＋' },
+];
 
 interface DecorationPickerModalProps {
   visible: boolean;
@@ -19,12 +48,249 @@ export function DecorationPickerModal({
 }: DecorationPickerModalProps) {
   const theme = useTheme();
   const { width } = useWindowDimensions();
+  const [activeTab, setActiveTab] = useState<TabId>('neko');
 
-  // 5 columns so more stickers are visible at once
+  const { stickers: customStickers, addSticker, removeSticker } =
+    useCalendarCustomStickerStore();
+
   const numColumns = 5;
   const hPad = 16;
   const gap = 8;
   const itemSize = Math.floor((width - hPad * 2 - gap * (numColumns - 1)) / numColumns);
+
+  const handleAddCustom = useCallback(async () => {
+    try {
+      const result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ['images'],
+        quality: 0.85,
+        allowsEditing: true,
+        aspect: [1, 1],
+      });
+      if (!result.canceled && result.assets[0]) {
+        const uri = await persistImage(result.assets[0].uri);
+        addSticker(uri);
+      }
+    } catch {
+      Alert.alert('エラー', '画像の読み込みに失敗しました');
+    }
+  }, [addSticker]);
+
+  const handleRemoveCustom = useCallback(
+    (id: string) => {
+      Alert.alert('削除しますか？', '追加したステッカーを削除します', [
+        { text: 'いいえ', style: 'cancel' },
+        { text: 'はい', style: 'destructive', onPress: () => removeSticker(id) },
+      ]);
+    },
+    [removeSticker]
+  );
+
+  // Transparent sticker cell — no background, no label
+  const renderStickerCell = (
+    key: string,
+    source: ImageSource,
+    onPress: () => void,
+    index: number,
+    _badge?: ReactNode
+  ) => (
+    <Animated.View key={key} entering={FadeIn.delay(index * 20).duration(240)}>
+      <View style={{ position: 'relative' }}>
+        <Pressable
+          onPress={onPress}
+          style={({ pressed }) => ({
+            width: itemSize,
+            height: itemSize,
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundColor: 'transparent',
+            transform: [{ scale: pressed ? 1.14 : 1 }],
+            opacity: pressed ? 0.82 : 1,
+          })}
+        >
+          <Image
+            source={source}
+            style={{ width: itemSize, height: itemSize }}
+            contentFit="contain"
+            transition={160}
+          />
+        </Pressable>
+        {_badge}
+      </View>
+    </Animated.View>
+  );
+
+  const renderTabContent = () => {
+    if (activeTab === 'neko') {
+      return (
+        <ScrollView
+          contentContainerStyle={{
+            paddingHorizontal: hPad,
+            flexDirection: 'row',
+            flexWrap: 'wrap',
+            gap: gap,
+            paddingBottom: 32,
+          }}
+          showsVerticalScrollIndicator={false}
+        >
+          {DECO_CAT_STICKERS.map((item, index) =>
+            renderStickerCell(
+              item.id,
+              item.source,
+              () => { onSelect(item.id); onClose(); },
+              index
+            )
+          )}
+        </ScrollView>
+      );
+    }
+
+    if (activeTab === 'items') {
+      return (
+        <ScrollView
+          contentContainerStyle={{
+            paddingHorizontal: hPad,
+            flexDirection: 'row',
+            flexWrap: 'wrap',
+            gap: gap,
+            paddingBottom: 32,
+          }}
+          showsVerticalScrollIndicator={false}
+        >
+          {BINSEN_STICKERS.map((item, index) =>
+            renderStickerCell(
+              item.id,
+              item.source,
+              () => { onSelect(item.id); onClose(); },
+              index
+            )
+          )}
+        </ScrollView>
+      );
+    }
+
+    // ── ユーザー追加 tab ──
+    return (
+      <ScrollView
+        contentContainerStyle={{
+          paddingHorizontal: hPad,
+          flexDirection: 'row',
+          flexWrap: 'wrap',
+          gap: gap,
+          paddingBottom: 32,
+        }}
+        showsVerticalScrollIndicator={false}
+      >
+        {/* ＋ Add button */}
+        <Animated.View entering={FadeIn.duration(260)}>
+          <Pressable
+            onPress={handleAddCustom}
+            style={({ pressed }) => ({
+              width: itemSize,
+              height: itemSize,
+              alignItems: 'center',
+              justifyContent: 'center',
+              borderRadius: 16,
+              borderCurve: 'continuous',
+              backgroundColor: pressed ? theme.primaryLight : theme.background,
+              borderWidth: 2,
+              borderColor: theme.primary,
+              borderStyle: 'dashed',
+              gap: 4,
+              opacity: pressed ? 0.7 : 1,
+            })}
+          >
+            <Ionicons name="add-circle" size={26} color={theme.primary} />
+            <Text
+              style={{
+                fontFamily: Fonts.bold,
+                fontSize: 10,
+                color: theme.primary,
+              }}
+            >
+              追加
+            </Text>
+          </Pressable>
+        </Animated.View>
+
+        {/* Custom stickers */}
+        {customStickers.map((sticker, index) => (
+          <Animated.View
+            key={sticker.id}
+            entering={FadeIn.delay(index * 22).duration(240)}
+          >
+            <View style={{ position: 'relative' }}>
+              <Pressable
+                onPress={() => { onSelect(sticker.uri); onClose(); }}
+                style={({ pressed }) => ({
+                  width: itemSize,
+                  height: itemSize,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  backgroundColor: 'transparent',
+                  transform: [{ scale: pressed ? 1.12 : 1 }],
+                  opacity: pressed ? 0.82 : 1,
+                })}
+              >
+                <Image
+                  source={{ uri: sticker.uri }}
+                  style={{ width: itemSize, height: itemSize, borderRadius: 8 }}
+                  contentFit="contain"
+                  transition={160}
+                  recyclingKey={sticker.id}
+                />
+              </Pressable>
+              {/* Delete badge */}
+              <TouchableOpacity
+                onPress={() => handleRemoveCustom(sticker.id)}
+                hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+                style={{
+                  position: 'absolute',
+                  top: -6,
+                  right: -6,
+                  width: 22,
+                  height: 22,
+                  borderRadius: 11,
+                  backgroundColor: '#F28B82',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  borderWidth: 2,
+                  borderColor: '#FFF',
+                  zIndex: 10,
+                  boxShadow: '0 1px 4px rgba(0,0,0,0.2)',
+                }}
+              >
+                <Ionicons name="close" size={11} color="#FFF" />
+              </TouchableOpacity>
+            </View>
+          </Animated.View>
+        ))}
+
+        {customStickers.length === 0 && (
+          <View
+            style={{
+              flex: 1,
+              alignItems: 'center',
+              paddingTop: 32,
+              gap: 10,
+            }}
+          >
+            <Text style={{ fontSize: 36 }}>🖼️</Text>
+            <Text
+              style={{
+                fontFamily: Fonts.regular,
+                fontSize: 13,
+                color: theme.textMuted,
+                textAlign: 'center',
+                lineHeight: 20,
+              }}
+            >
+              ＋ボタンで画像を追加できます
+            </Text>
+          </View>
+        )}
+      </ScrollView>
+    );
+  };
 
   return (
     <Modal
@@ -41,7 +307,6 @@ export function DecorationPickerModal({
           backgroundColor: 'rgba(92, 74, 110, 0.45)',
         }}
       >
-        {/* Stop backdrop tap from closing when touching the sheet itself */}
         <Pressable onPress={(e) => e.stopPropagation()}>
           <Animated.View
             entering={SlideInDown.springify().damping(22).stiffness(220)}
@@ -50,8 +315,8 @@ export function DecorationPickerModal({
               borderTopLeftRadius: 28,
               borderTopRightRadius: 28,
               borderCurve: 'continuous',
-              maxHeight: '85%',
-              paddingBottom: 40,
+              maxHeight: '82%',
+              paddingBottom: 36,
               boxShadow: '0 -4px 24px rgba(92,74,110,0.18)',
             }}
           >
@@ -67,7 +332,7 @@ export function DecorationPickerModal({
               }}
             />
 
-            {/* Header row */}
+            {/* Header */}
             <View
               style={{
                 flexDirection: 'row',
@@ -75,17 +340,17 @@ export function DecorationPickerModal({
                 justifyContent: 'space-between',
                 paddingHorizontal: 20,
                 paddingTop: 14,
-                paddingBottom: 4,
+                paddingBottom: 2,
               }}
             >
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-                <Text style={{ fontSize: 22 }}>🐱</Text>
+                <Text style={{ fontSize: 20 }}>🐱</Text>
                 <Text
                   style={{
                     fontFamily: Fonts.bold,
-                    fontSize: 18,
+                    fontSize: 17,
                     color: theme.text,
-                    letterSpacing: 0.5,
+                    letterSpacing: 0.3,
                   }}
                 >
                   デコ追加
@@ -94,9 +359,9 @@ export function DecorationPickerModal({
               <Pressable
                 onPress={onClose}
                 style={({ pressed }) => ({
-                  width: 34,
-                  height: 34,
-                  borderRadius: 17,
+                  width: 32,
+                  height: 32,
+                  borderRadius: 16,
                   backgroundColor: pressed ? theme.primaryLight : theme.background,
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -104,98 +369,61 @@ export function DecorationPickerModal({
                   borderColor: theme.borderLight,
                 })}
               >
-                <Ionicons name="close" size={18} color={theme.textSecondary} />
+                <Ionicons name="close" size={17} color={theme.textSecondary} />
               </Pressable>
             </View>
 
-            {/* アイテム tab — single active tab pill */}
+            {/* Tab bar */}
             <View
               style={{
-                paddingHorizontal: hPad,
-                paddingTop: 10,
-                paddingBottom: 12,
-              }}
-            >
-              <View
-                style={{
-                  flexDirection: 'row',
-                  backgroundColor: theme.background,
-                  borderRadius: 14,
-                  borderCurve: 'continuous',
-                  padding: 3,
-                  alignSelf: 'flex-start',
-                }}
-              >
-                <View
-                  style={{
-                    paddingHorizontal: 18,
-                    paddingVertical: 7,
-                    backgroundColor: theme.surface,
-                    borderRadius: 12,
-                    borderCurve: 'continuous',
-                    borderWidth: 1.5,
-                    borderColor: theme.primaryLight,
-                    boxShadow: '0 1px 4px rgba(249,168,201,0.25)',
-                  }}
-                >
-                  <Text
-                    style={{
-                      fontFamily: Fonts.bold,
-                      fontSize: 13,
-                      color: theme.primary,
-                      letterSpacing: 0.5,
-                    }}
-                  >
-                    アイテム
-                  </Text>
-                </View>
-              </View>
-            </View>
-
-            {/* Sticker grid — transparent bg, no labels */}
-            <ScrollView
-              contentContainerStyle={{
-                paddingHorizontal: hPad,
                 flexDirection: 'row',
-                flexWrap: 'wrap',
-                gap: gap,
-                paddingBottom: 24,
+                paddingHorizontal: 16,
+                paddingTop: 12,
+                paddingBottom: 10,
+                gap: 8,
               }}
-              showsVerticalScrollIndicator={false}
             >
-              {DECO_CAT_STICKERS.map((item, index) => (
-                <Animated.View
-                  key={item.id}
-                  entering={FadeIn.delay(index * 22).duration(260)}
-                >
+              {TABS.map((tab) => {
+                const isActive = activeTab === tab.id;
+                return (
                   <Pressable
-                    onPress={() => {
-                      onSelect(item.id);
-                      onClose();
-                    }}
+                    key={tab.id}
+                    onPress={() => setActiveTab(tab.id)}
                     style={({ pressed }) => ({
-                      width: itemSize,
-                      height: itemSize,
+                      flexDirection: 'row',
                       alignItems: 'center',
-                      justifyContent: 'center',
-                      // Transparent background — image only
-                      backgroundColor: 'transparent',
-                      // Subtle scale feedback on press; no border in normal state
-                      transform: [{ scale: pressed ? 1.15 : 1 }],
-                      opacity: pressed ? 0.85 : 1,
+                      gap: 5,
+                      paddingHorizontal: 14,
+                      paddingVertical: 8,
+                      borderRadius: 20,
+                      borderCurve: 'continuous',
+                      backgroundColor: isActive
+                        ? theme.primaryLight
+                        : pressed
+                        ? theme.background
+                        : 'transparent',
+                      borderWidth: isActive ? 1.5 : 1,
+                      borderColor: isActive ? theme.primary + '80' : theme.borderLight,
                     })}
                   >
-                    <Image
-                      source={item.source}
-                      style={{ width: itemSize, height: itemSize }}
-                      contentFit="contain"
-                      transition={180}
-                    />
+                    <Text style={{ fontSize: 14 }}>{tab.emoji}</Text>
+                    <Text
+                      style={{
+                        fontFamily: isActive ? Fonts.bold : Fonts.regular,
+                        fontSize: 13,
+                        color: isActive ? theme.primary : theme.textSecondary,
+                        letterSpacing: 0.3,
+                      }}
+                    >
+                      {tab.label}
+                    </Text>
                   </Pressable>
-                  {/* NO label text — image only */}
-                </Animated.View>
-              ))}
-            </ScrollView>
+                );
+              })}
+            </View>
+
+            {/* Tab content */}
+            {renderTabContent()}
           </Animated.View>
         </Pressable>
       </Pressable>
