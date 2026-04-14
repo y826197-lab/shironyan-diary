@@ -4,16 +4,17 @@
     "slug": "jidiary",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/app_icon.jpeg",
+    "icon": "./assets/app_icon.png",
     "scheme": "fastshot",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": false
+      "supportsTablet": false,
+      "icon": "./assets/app_icon.png"
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/app_icon.jpeg",
+        "foregroundImage": "./assets/app_icon.png",
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
@@ -27,20 +28,20 @@
     "web": {
       "bundler": "metro",
       "output": "single",
-      "favicon": "./assets/images/favicon.png"
+      "favicon": "./assets/app_icon.png"
     },
     "plugins": [
       "expo-router",
       [
         "expo-image-picker",
         {
-          "photosPermission": "\u5199\u771f\u30e9\u30a4\u30d6\u30e9\u30ea\u3078\u306e\u30a2\u30af\u30bb\u30b9\u3092\u8a31\u53ef\u3057\u3066\u304f\u3060\u3055\u3044"
+          "photosPermission": "写真ライブラリへのアクセスを許可してください"
         }
       ],
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/splash-icon.png",
+          "image": "./assets/app_icon.png",
           "imageWidth": 200,
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
