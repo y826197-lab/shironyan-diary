@@ -284,9 +284,8 @@ export function CanvasElementView({
           <View
             style={{
               padding: 8,
-              backgroundColor: 'rgba(255,255,255,0.6)',
-              borderRadius: 8,
-              borderCurve: 'continuous',
+              // Fully transparent — only the text itself is visible on the canvas
+              backgroundColor: 'transparent',
             }}
           >
             <Text

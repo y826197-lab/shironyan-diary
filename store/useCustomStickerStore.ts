@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { deletePersistedImage } from '@/utils/image-storage';
+import { getPlatformStorage } from '@/utils/web-storage';
 
 export interface CustomSticker {
   id: string;
@@ -57,7 +57,7 @@ export const useCustomStickerStore = create<CustomStickerState>()(
     }),
     {
       name: 'custom-stickers-storage',
-      storage: createJSONStorage(() => AsyncStorage),
+      storage: createJSONStorage(() => getPlatformStorage()),
     }
   )
 );

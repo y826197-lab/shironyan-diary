@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { deletePersistedImage } from '@/utils/image-storage';
+import { getPlatformStorage } from '@/utils/web-storage';
 
 export interface CustomBackground {
   id: string;
@@ -47,7 +47,7 @@ export const useCustomBackgroundStore = create<CustomBackgroundState>()(
     }),
     {
       name: 'custom-backgrounds-storage',
-      storage: createJSONStorage(() => AsyncStorage),
+      storage: createJSONStorage(() => getPlatformStorage()),
     }
   )
 );

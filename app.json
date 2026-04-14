@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "shironyan.diary",
+    "name": "Jidiary",
     "slug": "jidiary",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/app_icon.jpeg",
     "scheme": "fastshot",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
@@ -13,7 +13,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "foregroundImage": "./assets/app_icon.jpeg",
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
@@ -34,7 +34,7 @@
       [
         "expo-image-picker",
         {
-          "photosPermission": "写真ライブラリへのアクセスを許可してください"
+          "photosPermission": "\u5199\u771f\u30e9\u30a4\u30d6\u30e9\u30ea\u3078\u306e\u30a2\u30af\u30bb\u30b9\u3092\u8a31\u53ef\u3057\u3066\u304f\u3060\u3055\u3044"
         }
       ],
       [
