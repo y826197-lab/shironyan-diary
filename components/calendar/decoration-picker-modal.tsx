@@ -15,7 +15,7 @@ import { Image } from 'expo-image';
 import type { ImageSource } from 'expo-image';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import * as ImagePicker from 'expo-image-picker';
-import { DECO_CAT_STICKERS, BINSEN_STICKERS } from '@/constants/Stickers';
+import { DECO_CAT_STICKERS, ITEM_STICKERS } from '@/constants/Stickers';
 import { Fonts } from '@/constants/Typography';
 import { useTheme } from '@/components/ui/use-theme';
 import { persistImage } from '@/utils/image-storage';
@@ -156,7 +156,7 @@ export function DecorationPickerModal({
           }}
           showsVerticalScrollIndicator={false}
         >
-          {BINSEN_STICKERS.map((item, index) =>
+          {ITEM_STICKERS.map((item, index) =>
             renderStickerCell(
               item.id,
               item.source,

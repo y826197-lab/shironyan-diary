@@ -1,5 +1,9 @@
 import { View, Text, Pressable, PanResponder } from 'react-native';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
+// On web, Gesture.Pinch/Rotation set up multi-touch pointer handlers that
+// conflict when 2+ GestureDetector instances exist on the same screen,
+// causing crashes when placing a second photo/element.
+const IS_WEB = process.env.EXPO_OS === 'web';
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
@@ -84,7 +88,10 @@ export function CanvasElementView({
     });
 
   const pinch = Gesture.Pinch()
-    .enabled(!drawingMode)
+    // Disabled on web: multi-touch Pinch handlers from 2+ GestureDetectors
+    // conflict on web and crash the app when a second element is placed.
+    // Resize is handled by the scale handle (PanResponder) instead.
+    .enabled(!drawingMode && !IS_WEB)
     .onStart(() => {
       savedScale.value = scale.value;
     })
@@ -98,7 +105,9 @@ export function CanvasElementView({
     });
 
   const rotateGesture = Gesture.Rotation()
-    .enabled(!drawingMode)
+    // Disabled on web for the same reason as Pinch above.
+    // Rotation is handled by the rotate handle (PanResponder) instead.
+    .enabled(!drawingMode && !IS_WEB)
     .onStart(() => {
       savedRotation.value = rotation.value;
     })
@@ -109,7 +118,11 @@ export function CanvasElementView({
       runOnJS(stableUpdateTransform)(scale.value, rotation.value);
     });
 
-  const composed = Gesture.Simultaneous(drag, pinch, rotateGesture);
+  // On web: only drag (no pinch/rotate → no multi-touch conflict).
+  // On native: all three gestures work simultaneously.
+  const composed = IS_WEB
+    ? drag
+    : Gesture.Simultaneous(drag, pinch, rotateGesture);
 
   const animatedStyle = useAnimatedStyle(() => ({
     transform: [

@@ -268,3 +268,37 @@ export const DECO_CAT_STICKERS: DecoCatSticker[] = [
 export const DECO_CAT_STICKER_MAP = new Map<string, DecoCatSticker>(
   DECO_CAT_STICKERS.map((s) => [s.id, s])
 );
+
+// ── Item stickers (for calendar "アイテム" tab) ──
+export interface ItemSticker {
+  id: string;
+  label: string;
+  source: ImageSource;
+}
+
+export const ITEM_STICKERS: ItemSticker[] = [
+  { id: 'item_music',     label: '音符',           source: require('@/assets/item_music.png') },
+  { id: 'item_heart',     label: 'ハート',          source: require('@/assets/item_heart.png') },
+  { id: 'item_moon',      label: '月',              source: require('@/assets/item_moon.png') },
+  { id: 'item_cake',      label: 'ケーキ',          source: require('@/assets/item_cake.png') },
+  { id: 'item_gift',      label: 'プレゼント',       source: require('@/assets/item_gift.png') },
+  { id: 'item_sleep',     label: '眠り雲',          source: require('@/assets/item_sleep.png') },
+  { id: 'item_rainbow',   label: '虹',              source: require('@/assets/item_rainbow.png') },
+  { id: 'item_bouquet',   label: '花束',            source: require('@/assets/item_bouquet.png') },
+  { id: 'item_bath',      label: 'お風呂',          source: require('@/assets/item_bath.png') },
+  { id: 'item_tapioca',   label: 'タピオカ',         source: require('@/assets/item_tapioca.png') },
+  { id: 'item_beer',      label: 'ビール',          source: require('@/assets/item_beer.png') },
+  { id: 'item_car',       label: '車',              source: require('@/assets/item_car.png') },
+  { id: 'item_cooking',   label: 'お鍋',            source: require('@/assets/item_cooking.png') },
+  { id: 'item_checklist', label: 'チェックリスト',   source: require('@/assets/item_checklist.png') },
+  { id: 'item_coffee',    label: 'コーヒー',         source: require('@/assets/item_coffee.png') },
+  { id: 'item_cutlery',   label: 'カトラリー',       source: require('@/assets/item_cutlery.png') },
+  { id: 'item_notebook',  label: 'ノート',           source: require('@/assets/item_notebook.png') },
+  { id: 'item_shopping',  label: 'ショッピング',      source: require('@/assets/item_shopping.png') },
+  { id: 'item_clock',     label: '時計',            source: require('@/assets/item_clock.png') },
+  { id: 'item_phone',     label: '電話',            source: require('@/assets/item_phone.png') },
+];
+
+export const ITEM_STICKER_MAP = new Map<string, ItemSticker>(
+  ITEM_STICKERS.map((s) => [s.id, s])
+);

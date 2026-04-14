@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { Animated, PanResponder, Alert } from 'react-native';
 import { Image } from 'expo-image';
-import { DECO_CAT_STICKER_MAP, BINSEN_STICKER_MAP } from '@/constants/Stickers';
+import { DECO_CAT_STICKER_MAP, BINSEN_STICKER_MAP, ITEM_STICKER_MAP } from '@/constants/Stickers';
 import { DECORATION_SIZES, type CalendarDecoration } from '@/hooks/use-calendar-decorations';
 import type { ImageSource } from 'expo-image';
 
@@ -13,13 +13,17 @@ interface DecorationItemProps {
 }
 
 /** Resolve a stickerId to an expo-image source.
- *  - deco_cat_*  → DECO_CAT_STICKER_MAP (require'd PNG)
- *  - binsen_*    → BINSEN_STICKER_MAP   (require'd PNG)
+ *  - deco_cat_* → DECO_CAT_STICKER_MAP (require'd PNG)
+ *  - item_*     → ITEM_STICKER_MAP      (require'd PNG)
+ *  - binsen_*   → BINSEN_STICKER_MAP    (require'd PNG, legacy)
  *  - anything else → treat as a URI (user-added custom image)
  */
 function resolveStickerSource(stickerId: string): ImageSource | null {
   if (stickerId.startsWith('deco_cat_')) {
     return DECO_CAT_STICKER_MAP.get(stickerId)?.source ?? null;
+  }
+  if (stickerId.startsWith('item_')) {
+    return ITEM_STICKER_MAP.get(stickerId)?.source ?? null;
   }
   if (stickerId.startsWith('binsen_')) {
     return BINSEN_STICKER_MAP.get(stickerId)?.source ?? null;
@@ -135,6 +139,7 @@ export function DecorationItem({
 
   const isCustomUri =
     !decoration.stickerId.startsWith('deco_cat_') &&
+    !decoration.stickerId.startsWith('item_') &&
     !decoration.stickerId.startsWith('binsen_');
 
   return (
