@@ -13,7 +13,7 @@ import { Fonts } from '@/constants/Typography';
 import { CAT_STICKER_MAP, DECO_TEXT_MAP, WASHI_TAPE_MAP, SPEECH_BUBBLE_MAP, STICKY_NOTE_MAP, BINSEN_STICKER_MAP } from '@/constants/Stickers';
 import { WashiTapeView } from '@/components/editor/washi-tape';
 import type { CanvasElement } from '@/store/types';
-import { useRef, useMemo } from 'react';
+import { useRef } from 'react';
 
 interface CanvasElementProps {
   element: CanvasElement;
@@ -41,37 +41,46 @@ export function CanvasElementView({
   const savedScale = useSharedValue(1);
   const savedRotation = useSharedValue(element.rotation);
 
-  // Track element dimensions for resize handle
-  const currentWidth = useRef(element.width);
-  const currentHeight = useRef(element.height);
-  currentWidth.current = element.width;
-  currentHeight.current = element.height;
+  // ── Stable refs to avoid stale closures (updated every render) ──
+  const elementRef = useRef(element);
+  elementRef.current = element;
+  const onUpdateRef = useRef(onUpdate);
+  onUpdateRef.current = onUpdate;
+  const onSelectRef = useRef(onSelect);
+  onSelectRef.current = onSelect;
 
-  const handleUpdatePosition = (x: number, y: number) => {
-    onUpdate({ x, y });
-  };
+  // ── Stable callbacks (never recreated — read latest via refs) ──
+  const stableUpdatePosition = useRef((x: number, y: number) => {
+    onUpdateRef.current({ x, y });
+  }).current;
 
-  const handleUpdateTransform = (s: number, r: number) => {
-    onUpdate({
-      width: element.width * s,
-      height: element.height * s,
+  const stableUpdateTransform = useRef((s: number, r: number) => {
+    const el = elementRef.current;
+    onUpdateRef.current({
+      width: el.width * s,
+      height: el.height * s,
       rotation: r,
     });
-  };
+  }).current;
 
+  const stableSelect = useRef(() => {
+    onSelectRef.current();
+  }).current;
+
+  // ── Main element gestures ──
   const drag = Gesture.Pan()
     .enabled(!drawingMode)
     .onStart(() => {
       savedTranslateX.value = translateX.value;
       savedTranslateY.value = translateY.value;
-      runOnJS(onSelect)();
+      runOnJS(stableSelect)();
     })
     .onUpdate((event) => {
       translateX.value = savedTranslateX.value + event.translationX;
       translateY.value = savedTranslateY.value + event.translationY;
     })
     .onEnd(() => {
-      runOnJS(handleUpdatePosition)(translateX.value, translateY.value);
+      runOnJS(stableUpdatePosition)(translateX.value, translateY.value);
     });
 
   const pinch = Gesture.Pinch()
@@ -84,7 +93,7 @@ export function CanvasElementView({
     })
     .onEnd(() => {
       const finalScale = Math.max(0.3, Math.min(3, scale.value));
-      runOnJS(handleUpdateTransform)(finalScale, rotation.value);
+      runOnJS(stableUpdateTransform)(finalScale, rotation.value);
       scale.value = withSpring(1);
     });
 
@@ -97,7 +106,7 @@ export function CanvasElementView({
       rotation.value = savedRotation.value + event.rotation;
     })
     .onEnd(() => {
-      runOnJS(handleUpdateTransform)(scale.value, rotation.value);
+      runOnJS(stableUpdateTransform)(scale.value, rotation.value);
     });
 
   const composed = Gesture.Simultaneous(drag, pinch, rotateGesture);
@@ -111,34 +120,53 @@ export function CanvasElementView({
     ],
   }));
 
-  // PanResponder for the resize/rotate handle
-  // Vertical drag = scale, Horizontal drag = rotate
-  const handlePanResponder = useMemo(() => PanResponder.create({
-    onStartShouldSetPanResponder: () => true,
-    onMoveShouldSetPanResponder: () => true,
-    onPanResponderGrant: () => {
-      // Store initial state
-    },
-    onPanResponderMove: (_evt, gestureState) => {
-      const { dy, dx } = gestureState;
-      // Vertical drag → scale (up = shrink, down = enlarge)
-      const scaleFactor = 1 + dy / 150;
-      const clampedScale = Math.max(0.3, Math.min(3, scaleFactor));
-      const newW = currentWidth.current * clampedScale;
-      const newH = currentHeight.current * clampedScale;
-      // Horizontal drag → rotation
-      const rotationDelta = dx / 100;
-      const newRotation = element.rotation + rotationDelta;
-      onUpdate({
-        width: Math.max(30, newW),
-        height: Math.max(30, newH),
-        rotation: newRotation,
-      });
-    },
-    onPanResponderRelease: () => {
-      // Final state already applied via onPanResponderMove
-    },
-  }), [element.rotation, onUpdate]);
+  // ── Scale handle (bottom-right): vertical drag = resize ──
+  // CRITICAL: use useRef (created ONCE) instead of useMemo to prevent
+  // recreation during active gestures, which caused crash with 2+ photos.
+  const scaleStartRef = useRef({ width: element.width, height: element.height });
+
+  const scalePanResponder = useRef(
+    PanResponder.create({
+      onStartShouldSetPanResponder: () => true,
+      onMoveShouldSetPanResponder: () => true,
+      onPanResponderGrant: () => {
+        // Capture initial size at gesture start to prevent compounding
+        scaleStartRef.current = {
+          width: elementRef.current.width,
+          height: elementRef.current.height,
+        };
+      },
+      onPanResponderMove: (_evt, gs) => {
+        const scaleFactor = Math.max(0.3, Math.min(3, 1 + gs.dy / 150));
+        onUpdateRef.current({
+          width: Math.max(30, scaleStartRef.current.width * scaleFactor),
+          height: Math.max(30, scaleStartRef.current.height * scaleFactor),
+        });
+      },
+      onPanResponderRelease: () => {},
+    })
+  ).current;
+
+  // ── Rotate handle (bottom-left): horizontal drag = rotation ──
+  const rotateStartRef = useRef(element.rotation);
+
+  const rotatePanResponder = useRef(
+    PanResponder.create({
+      onStartShouldSetPanResponder: () => true,
+      onMoveShouldSetPanResponder: () => true,
+      onPanResponderGrant: () => {
+        // Capture initial rotation at gesture start
+        rotateStartRef.current = elementRef.current.rotation;
+      },
+      onPanResponderMove: (_evt, gs) => {
+        // dx: left = counter-clockwise, right = clockwise
+        onUpdateRef.current({
+          rotation: rotateStartRef.current + gs.dx / 80,
+        });
+      },
+      onPanResponderRelease: () => {},
+    })
+  ).current;
 
   const renderContent = () => {
     switch (element.type) {
@@ -157,10 +185,7 @@ export function CanvasElementView({
           >
             <Image
               source={catSource}
-              style={{
-                width: element.width,
-                height: element.height,
-              }}
+              style={{ width: element.width, height: element.height }}
               contentFit="contain"
             />
           </View>
@@ -224,10 +249,7 @@ export function CanvasElementView({
           >
             <Image
               source={{ uri: element.content }}
-              style={{
-                width: element.width,
-                height: element.height,
-              }}
+              style={{ width: element.width, height: element.height }}
               contentFit="contain"
             />
           </View>
@@ -280,11 +302,10 @@ export function CanvasElementView({
           >
             <Image
               source={{ uri: element.content }}
-              style={{
-                width: element.width,
-                height: element.height,
-              }}
+              style={{ width: element.width, height: element.height }}
               contentFit="cover"
+              // Unique recycling key prevents image cache conflicts between elements
+              recyclingKey={element.id}
             />
             {/* Photo frame border */}
             <View
@@ -304,7 +325,13 @@ export function CanvasElementView({
       case 'speech-bubble': {
         const bubbleData = SPEECH_BUBBLE_MAP.get(element.content);
         if (!bubbleData) return null;
-        return renderSpeechBubble(bubbleData.shape, element.width, element.height, bubbleData.borderColor, bubbleData.fillColor);
+        return renderSpeechBubble(
+          bubbleData.shape,
+          element.width,
+          element.height,
+          bubbleData.borderColor,
+          bubbleData.fillColor
+        );
       }
       case 'sticky-note': {
         const noteData = STICKY_NOTE_MAP.get(element.content);
@@ -354,12 +381,10 @@ export function CanvasElementView({
           onPress={() => {
             if (!drawingMode) onSelect();
           }}
-          style={{
-            width: '100%',
-            height: '100%',
-          }}
+          style={{ width: '100%', height: '100%' }}
         >
           {renderContent()}
+
           {/* Selection border + controls */}
           {isSelected && !drawingMode && (
             <View
@@ -375,7 +400,7 @@ export function CanvasElementView({
                 borderStyle: 'dashed',
               }}
             >
-              {/* Delete button */}
+              {/* ✕ Delete button — top right */}
               <Pressable
                 onPress={onRemove}
                 style={{
@@ -396,9 +421,29 @@ export function CanvasElementView({
                 <Ionicons name="close" size={14} color="#FFF" />
               </Pressable>
 
-              {/* Resize / Rotate handle — draggable via PanResponder */}
+              {/* ↻ Rotate handle — bottom left (horizontal drag) */}
               <View
-                {...handlePanResponder.panHandlers}
+                {...rotatePanResponder.panHandlers}
+                style={{
+                  position: 'absolute',
+                  bottom: -14,
+                  left: -14,
+                  width: 30,
+                  height: 30,
+                  borderRadius: 15,
+                  backgroundColor: '#C9A8F9',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  zIndex: 100,
+                  boxShadow: '0 2px 6px rgba(0,0,0,0.2)',
+                }}
+              >
+                <Ionicons name="sync-outline" size={14} color="#FFF" />
+              </View>
+
+              {/* ⤡ Scale handle — bottom right (vertical drag) */}
+              <View
+                {...scalePanResponder.panHandlers}
                 style={{
                   position: 'absolute',
                   bottom: -14,
@@ -425,9 +470,14 @@ export function CanvasElementView({
 
 // ── Speech Bubble SVG Shapes ──
 
-function renderSpeechBubble(shape: string, w: number, h: number, borderColor: string, fillColor: string) {
-  const sw = 2; // stroke width
-  // Reserve space for tail
+function renderSpeechBubble(
+  shape: string,
+  w: number,
+  h: number,
+  borderColor: string,
+  fillColor: string
+) {
+  const sw = 2;
   const bodyH = h * 0.8;
 
   switch (shape) {
@@ -446,10 +496,8 @@ function renderSpeechBubble(shape: string, w: number, h: number, borderColor: st
         </Svg>
       );
     case 'cloud': {
-      // Thought bubble with scalloped edge
       const cx = w / 2, cy = bodyH / 2;
       const rx = w / 2 - 6, ry = bodyH / 2 - 6;
-      // Build cloud path with bumps
       let d = '';
       const bumps = 12;
       for (let i = 0; i < bumps; i++) {
@@ -470,7 +518,6 @@ function renderSpeechBubble(shape: string, w: number, h: number, borderColor: st
       return (
         <Svg width={w} height={h}>
           <Path d={d} fill={fillColor} stroke={borderColor} strokeWidth={sw} />
-          {/* Thought dots */}
           <Circle cx={w * 0.35} cy={bodyH + 4} r={4} fill={fillColor} stroke={borderColor} strokeWidth={1.5} />
           <Circle cx={w * 0.28} cy={bodyH + 12} r={2.5} fill={fillColor} stroke={borderColor} strokeWidth={1} />
         </Svg>
@@ -491,7 +538,6 @@ function renderSpeechBubble(shape: string, w: number, h: number, borderColor: st
         </Svg>
       );
     case 'burst': {
-      // Star burst / explosion shape
       const cx2 = w / 2, cy2 = bodyH / 2;
       const points = 10;
       const outer = Math.min(w, bodyH) / 2 - 4;
@@ -522,7 +568,6 @@ function renderSpeechBubble(shape: string, w: number, h: number, borderColor: st
       );
     }
     case 'shout': {
-      // Jagged shout bubble
       const cx4 = w / 2, cy4 = bodyH / 2;
       const spikes = 8;
       const outerR = Math.min(w, bodyH) / 2 - 4;
@@ -544,23 +589,18 @@ function renderSpeechBubble(shape: string, w: number, h: number, borderColor: st
       );
     }
     case 'wave': {
-      // Wavy-edge bubble
       const waveH = bodyH - 8;
       const waveW = w - 8;
       let wavePath = `M 4 ${waveH * 0.3 + 4}`;
-      // Left side waves
       for (let y = waveH * 0.3; y < waveH * 0.7; y += 12) {
         wavePath += ` Q ${-2} ${y + 6 + 4} 4 ${y + 12 + 4}`;
       }
       wavePath += ` Q 4 ${waveH + 4} ${waveW * 0.3 + 4} ${waveH + 4}`;
-      // Bottom waves
       for (let x = waveW * 0.3; x < waveW * 0.9; x += 14) {
         wavePath += ` Q ${x + 7 + 4} ${waveH + 10} ${x + 14 + 4} ${waveH + 4}`;
       }
       wavePath += ` Q ${waveW + 4} ${waveH + 4} ${waveW + 4} ${waveH * 0.7 + 4}`;
-      // Right side
       wavePath += ` Q ${waveW + 10} ${waveH * 0.5 + 4} ${waveW + 4} ${waveH * 0.3 + 4}`;
-      // Top
       wavePath += ` Q ${waveW + 4} 4 ${waveW * 0.7 + 4} 4`;
       for (let x = waveW * 0.7; x > waveW * 0.1; x -= 14) {
         wavePath += ` Q ${x - 7 + 4} ${-2} ${x - 14 + 4} 4`;
@@ -630,7 +670,7 @@ function renderSpeechBubble(shape: string, w: number, h: number, borderColor: st
 function renderStickyNote(
   note: { color: string; secondaryColor: string; style: string; cornerFold: boolean },
   w: number,
-  h: number,
+  h: number
 ) {
   const { color, secondaryColor, style, cornerFold } = note;
   const foldSize = 14;
@@ -647,57 +687,22 @@ function renderStickyNote(
         boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
       }}
     >
-      {/* Top accent strip */}
-      <View
-        style={{
-          height: 3,
-          backgroundColor: secondaryColor,
-          opacity: 0.6,
-        }}
-      />
+      <View style={{ height: 3, backgroundColor: secondaryColor, opacity: 0.6 }} />
 
-      {/* Pattern overlay */}
       {style === 'lined' && (
         <Svg width={w} height={h} style={{ position: 'absolute', top: 0, left: 0 }}>
           {Array.from({ length: Math.floor(h / 16) }, (_, i) => (
-            <Line
-              key={i}
-              x1={8}
-              y1={16 + i * 16}
-              x2={w - 8}
-              y2={16 + i * 16}
-              stroke={secondaryColor}
-              strokeWidth={0.5}
-              opacity={0.4}
-            />
+            <Line key={i} x1={8} y1={16 + i * 16} x2={w - 8} y2={16 + i * 16} stroke={secondaryColor} strokeWidth={0.5} opacity={0.4} />
           ))}
         </Svg>
       )}
       {style === 'grid' && (
         <Svg width={w} height={h} style={{ position: 'absolute', top: 0, left: 0 }}>
           {Array.from({ length: Math.floor(w / 14) }, (_, i) => (
-            <Line
-              key={`v${i}`}
-              x1={14 + i * 14}
-              y1={4}
-              x2={14 + i * 14}
-              y2={h - 4}
-              stroke={secondaryColor}
-              strokeWidth={0.4}
-              opacity={0.3}
-            />
+            <Line key={`v${i}`} x1={14 + i * 14} y1={4} x2={14 + i * 14} y2={h - 4} stroke={secondaryColor} strokeWidth={0.4} opacity={0.3} />
           ))}
           {Array.from({ length: Math.floor(h / 14) }, (_, i) => (
-            <Line
-              key={`h${i}`}
-              x1={4}
-              y1={14 + i * 14}
-              x2={w - 4}
-              y2={14 + i * 14}
-              stroke={secondaryColor}
-              strokeWidth={0.4}
-              opacity={0.3}
-            />
+            <Line key={`h${i}`} x1={4} y1={14 + i * 14} x2={w - 4} y2={14 + i * 14} stroke={secondaryColor} strokeWidth={0.4} opacity={0.3} />
           ))}
         </Svg>
       )}
@@ -705,14 +710,7 @@ function renderStickyNote(
         <Svg width={w} height={h} style={{ position: 'absolute', top: 0, left: 0 }}>
           {Array.from({ length: Math.floor(w / 12) }, (_, ix) =>
             Array.from({ length: Math.floor(h / 12) }, (_, iy) => (
-              <Circle
-                key={`${ix}-${iy}`}
-                cx={10 + ix * 12}
-                cy={10 + iy * 12}
-                r={1}
-                fill={secondaryColor}
-                opacity={0.4}
-              />
+              <Circle key={`${ix}-${iy}`} cx={10 + ix * 12} cy={10 + iy * 12} r={1} fill={secondaryColor} opacity={0.4} />
             ))
           ).flat()}
         </Svg>
@@ -737,10 +735,7 @@ function renderStickyNote(
         <View
           style={{
             position: 'absolute',
-            top: 6,
-            left: 6,
-            right: 6,
-            bottom: 6,
+            top: 6, left: 6, right: 6, bottom: 6,
             borderWidth: 1,
             borderColor: secondaryColor,
             borderRadius: 3,
@@ -750,14 +745,9 @@ function renderStickyNote(
         />
       )}
 
-      {/* Corner fold */}
       {cornerFold && (
         <Svg width={foldSize} height={foldSize} style={{ position: 'absolute', bottom: 0, right: 0 }}>
-          <Path
-            d={`M ${foldSize} 0 L ${foldSize} ${foldSize} L 0 ${foldSize} Z`}
-            fill={secondaryColor}
-            opacity={0.35}
-          />
+          <Path d={`M ${foldSize} 0 L ${foldSize} ${foldSize} L 0 ${foldSize} Z`} fill={secondaryColor} opacity={0.35} />
         </Svg>
       )}
     </View>

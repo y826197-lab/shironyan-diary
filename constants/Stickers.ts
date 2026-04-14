@@ -234,3 +234,37 @@ export const BINSEN_STICKERS: BinsenSticker[] = [
 export const BINSEN_STICKER_MAP = new Map<string, BinsenSticker>(
   BINSEN_STICKERS.map((s) => [s.id, s])
 );
+
+// ── Deco Cat stickers (for calendar screen decorations) ──
+export interface DecoCatSticker {
+  id: string;
+  label: string;
+  source: ImageSource;
+}
+
+export const DECO_CAT_STICKERS: DecoCatSticker[] = [
+  { id: 'deco_cat_happy',    label: '嬉しい猫',  source: require('@/assets/deco_cat_happy.png') },
+  { id: 'deco_cat_cry',      label: '泣く猫',    source: require('@/assets/deco_cat_cry.png') },
+  { id: 'deco_cat_sleepy',   label: '眠い猫',    source: require('@/assets/deco_cat_sleepy.png') },
+  { id: 'deco_cat_normal',   label: '普通の猫',  source: require('@/assets/deco_cat_normal.png') },
+  { id: 'deco_cat_sparkle',  label: 'キラキラ猫', source: require('@/assets/deco_cat_sparkle.png') },
+  { id: 'deco_cat_surprise', label: '驚き猫',    source: require('@/assets/deco_cat_surprise.png') },
+  { id: 'deco_cat_angry',    label: '怒り猫',    source: require('@/assets/deco_cat_angry.png') },
+  { id: 'deco_cat_love',     label: 'ラブ猫',    source: require('@/assets/deco_cat_love.png') },
+  { id: 'deco_cat_sigh',     label: 'ため息猫',  source: require('@/assets/deco_cat_sigh.png') },
+  { id: 'deco_cat_sad',      label: '悲しい猫',  source: require('@/assets/deco_cat_sad.png') },
+  { id: 'deco_cat_furious',  label: '激怒猫',    source: require('@/assets/deco_cat_furious.png') },
+  { id: 'deco_cat_wind',     label: '風猫',      source: require('@/assets/deco_cat_wind.png') },
+  { id: 'deco_cat_sleep',    label: 'おやすみ猫', source: require('@/assets/deco_cat_sleep.png') },
+  { id: 'deco_cat_rainbow',  label: '虹猫',      source: require('@/assets/deco_cat_rainbow.png') },
+  { id: 'deco_cat_teary',    label: 'うるうる猫', source: require('@/assets/deco_cat_teary.png') },
+  { id: 'deco_cat_umbrella', label: '傘猫',      source: require('@/assets/deco_cat_umbrella.png') },
+  { id: 'deco_cat_sun',      label: '太陽猫',    source: require('@/assets/deco_cat_sun.png') },
+  { id: 'deco_cat_cloud',    label: '雲猫',      source: require('@/assets/deco_cat_cloud.png') },
+  { id: 'deco_cat_snow',     label: '雪猫',      source: require('@/assets/deco_cat_snow.png') },
+  { id: 'deco_cat_thunder',  label: '雷猫',      source: require('@/assets/deco_cat_thunder.png') },
+];
+
+export const DECO_CAT_STICKER_MAP = new Map<string, DecoCatSticker>(
+  DECO_CAT_STICKERS.map((s) => [s.id, s])
+);

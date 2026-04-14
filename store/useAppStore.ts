@@ -22,7 +22,7 @@ export const useAppStore = create<AppStore>()(
         themeKey: 'pink',
         fontScale: 1,
       },
-      customTitle: 'ひびのき',
+      customTitle: 'shironyan.diary',
 
       setTheme: (key: ThemeKey) =>
         set((state) => ({

@@ -537,7 +537,7 @@ export default function SettingsScreen() {
                   letterSpacing: 2,
                 }}
               >
-                HIBINOKI DIARY v1.0.0
+                shironyan.diary v1.0.0
               </Text>
               <View
                 style={{

@@ -2,7 +2,7 @@ import { View, Text, Modal, ScrollView, Pressable, useWindowDimensions } from 'r
 import Animated, { FadeIn, SlideInDown } from 'react-native-reanimated';
 import { Image } from 'expo-image';
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { BINSEN_STICKERS } from '@/constants/Stickers';
+import { DECO_CAT_STICKERS } from '@/constants/Stickers';
 import { Fonts } from '@/constants/Typography';
 import { useTheme } from '@/components/ui/use-theme';
 
@@ -23,8 +23,7 @@ export function DecorationPickerModal({
   const numColumns = 4;
   const hPad = 16;
   const gap = 10;
-  const itemWidth = Math.floor((width - hPad * 2 - gap * (numColumns - 1)) / numColumns);
-  const itemHeight = Math.round(itemWidth * 1.3);
+  const itemSize = Math.floor((width - hPad * 2 - gap * (numColumns - 1)) / numColumns);
 
   return (
     <Modal
@@ -41,7 +40,6 @@ export function DecorationPickerModal({
           backgroundColor: 'rgba(92, 74, 110, 0.45)',
         }}
       >
-        {/* Prevent backdrop tap from closing when tapping the sheet */}
         <Pressable onPress={(e) => e.stopPropagation()}>
           <Animated.View
             entering={SlideInDown.springify().damping(22).stiffness(220)}
@@ -67,7 +65,7 @@ export function DecorationPickerModal({
               }}
             />
 
-            {/* Header row */}
+            {/* Header */}
             <View
               style={{
                 flexDirection: 'row',
@@ -79,7 +77,7 @@ export function DecorationPickerModal({
               }}
             >
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-                <Text style={{ fontSize: 22 }}>✨</Text>
+                <Text style={{ fontSize: 22 }}>🐱</Text>
                 <Text
                   style={{
                     fontFamily: Fonts.bold,
@@ -146,13 +144,13 @@ export function DecorationPickerModal({
                       letterSpacing: 0.5,
                     }}
                   >
-                    🎀 アイテム
+                    🐱 アイテム
                   </Text>
                 </View>
               </View>
             </View>
 
-            {/* Sticker grid */}
+            {/* Cat sticker grid */}
             <ScrollView
               contentContainerStyle={{
                 paddingHorizontal: hPad,
@@ -163,7 +161,7 @@ export function DecorationPickerModal({
               }}
               showsVerticalScrollIndicator={false}
             >
-              {BINSEN_STICKERS.map((item, index) => (
+              {DECO_CAT_STICKERS.map((item, index) => (
                 <Animated.View
                   key={item.id}
                   entering={FadeIn.delay(index * 28).duration(280)}
@@ -174,32 +172,42 @@ export function DecorationPickerModal({
                       onClose();
                     }}
                     style={({ pressed }) => ({
-                      width: itemWidth,
-                      height: itemHeight,
+                      width: itemSize,
+                      height: itemSize,
                       alignItems: 'center',
                       justifyContent: 'center',
-                      borderRadius: 14,
+                      borderRadius: 16,
                       borderCurve: 'continuous',
                       backgroundColor: pressed ? '#FFF0F5' : '#FAFAFA',
                       borderWidth: 1.5,
                       borderColor: pressed ? '#F9A8C9' : '#F0E8EE',
-                      transform: [{ scale: pressed ? 1.06 : 1 }],
+                      transform: [{ scale: pressed ? 1.08 : 1 }],
                       overflow: 'hidden',
                       boxShadow: pressed
-                        ? '0 4px 12px rgba(249,168,201,0.30)'
+                        ? '0 4px 12px rgba(249,168,201,0.35)'
                         : '0 2px 6px rgba(0,0,0,0.06)',
                     })}
                   >
                     <Image
                       source={item.source}
-                      style={{
-                        width: itemWidth - 8,
-                        height: itemHeight - 8,
-                      }}
+                      style={{ width: itemSize - 8, height: itemSize - 8 }}
                       contentFit="contain"
                       transition={200}
                     />
                   </Pressable>
+                  {/* Label under each cat */}
+                  <Text
+                    style={{
+                      fontFamily: Fonts.regular,
+                      fontSize: 9,
+                      color: theme.textMuted,
+                      textAlign: 'center',
+                      marginTop: 3,
+                    }}
+                    numberOfLines={1}
+                  >
+                    {item.label}
+                  </Text>
                 </Animated.View>
               ))}
             </ScrollView>

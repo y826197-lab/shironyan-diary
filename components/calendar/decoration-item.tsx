@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { Animated, PanResponder, Alert } from 'react-native';
 import { Image } from 'expo-image';
-import { BINSEN_STICKER_MAP } from '@/constants/Stickers';
+import { DECO_CAT_STICKER_MAP } from '@/constants/Stickers';
 import { DECORATION_SIZES, type CalendarDecoration } from '@/hooks/use-calendar-decorations';
 
 interface DecorationItemProps {
@@ -17,7 +17,7 @@ export function DecorationItem({
   onCycleSize,
   onRemove,
 }: DecorationItemProps) {
-  const sticker = BINSEN_STICKER_MAP.get(decoration.stickerId);
+  const sticker = DECO_CAT_STICKER_MAP.get(decoration.stickerId);
   const size = DECORATION_SIZES[decoration.sizeIndex];
 
   // Animated values for smooth dragging (initialised once via useRef)
@@ -45,14 +45,12 @@ export function DecorationItem({
 
       onPanResponderGrant: () => {
         const deco = decorationRef.current;
-        // Offset = current absolute position; value starts at 0 (delta)
         panX.setOffset(deco.x);
         panX.setValue(0);
         panY.setOffset(deco.y);
         panY.setValue(0);
         hasMoved.current = false;
 
-        // Long-press → delete confirmation
         longPressTimer.current = setTimeout(() => {
           if (!hasMoved.current) {
             Alert.alert(
@@ -79,7 +77,6 @@ export function DecorationItem({
             longPressTimer.current = null;
           }
         }
-        // Drive panX/Y with gesture delta
         Animated.event([null, { dx: panX, dy: panY }], {
           useNativeDriver: false,
         })(event, gs);
@@ -90,15 +87,12 @@ export function DecorationItem({
           clearTimeout(longPressTimer.current);
           longPressTimer.current = null;
         }
-        // Merge offset + value → single absolute value
         panX.flattenOffset();
         panY.flattenOffset();
 
         if (!hasMoved.current) {
-          // Tap: cycle through sizes
           onCycleSizeRef.current(decorationRef.current.id);
         } else {
-          // Drag ended: persist final position
           const deco = decorationRef.current;
           onMoveRef.current(deco.id, deco.x + gs.dx, deco.y + gs.dy);
         }
@@ -128,8 +122,7 @@ export function DecorationItem({
         height: size,
         transform: [{ translateX: panX }, { translateY: panY }],
         zIndex: 200,
-        // Subtle drop shadow for depth
-        boxShadow: '0 3px 12px rgba(0,0,0,0.18)',
+        boxShadow: '0 3px 12px rgba(0,0,0,0.15)',
       }}
     >
       <Image

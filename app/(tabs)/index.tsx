@@ -115,7 +115,7 @@ export default function CalendarScreen() {
 
   const handleSaveTitle = useCallback(() => {
     const trimmed = titleInput.trim();
-    setCustomTitle(trimmed || 'ひびのき');
+    setCustomTitle(trimmed || 'shironyan.diary');
     setTitleModalVisible(false);
   }, [titleInput, setCustomTitle]);
 
@@ -183,7 +183,7 @@ export default function CalendarScreen() {
               marginTop: 2,
             }}
           >
-            HIBINOKI DIARY
+            shironyan.diary
           </Text>
         </Animated.View>
 
@@ -259,26 +259,38 @@ export default function CalendarScreen() {
                   <Ionicons name="chevron-forward" size={18} color={theme.text} />
                 </Pressable>
 
-                {/* デコ追加 button */}
+                {/* デコ追加 text button */}
                 <Pressable
                   onPress={() => setDecoPickerVisible(true)}
-                  hitSlop={8}
+                  hitSlop={6}
                   style={({ pressed }) => ({
-                    width: 38,
-                    height: 38,
-                    borderRadius: 19,
-                    backgroundColor: pressed ? theme.primary : theme.primaryLight,
+                    flexDirection: 'row',
                     alignItems: 'center',
-                    justifyContent: 'center',
+                    gap: 4,
+                    paddingHorizontal: 10,
+                    paddingVertical: 7,
+                    borderRadius: 16,
+                    borderCurve: 'continuous',
+                    backgroundColor: pressed ? theme.primary : theme.primaryLight,
                     borderWidth: 1.5,
-                    borderColor: pressed ? 'transparent' : theme.primary + '50',
-                    transform: [{ scale: pressed ? 0.92 : 1 }],
+                    borderColor: pressed ? 'transparent' : theme.primary + '55',
+                    transform: [{ scale: pressed ? 0.94 : 1 }],
                     boxShadow: pressed
-                      ? '0 2px 8px rgba(249,168,201,0.45)'
-                      : '0 1px 4px rgba(249,168,201,0.2)',
+                      ? '0 2px 8px rgba(249,168,201,0.5)'
+                      : '0 1px 3px rgba(249,168,201,0.25)',
                   })}
                 >
-                  <Text style={{ fontSize: 18, lineHeight: 20 }}>✨</Text>
+                  <Text style={{ fontSize: 13 }}>🐱</Text>
+                  <Text
+                    style={{
+                      fontFamily: Fonts.bold,
+                      fontSize: 12,
+                      color: theme.primary,
+                      letterSpacing: 0.3,
+                    }}
+                  >
+                    デコ追加
+                  </Text>
                 </Pressable>
               </View>
             </View>
@@ -578,7 +590,7 @@ export default function CalendarScreen() {
                 ref={titleInputRef}
                 value={titleInput}
                 onChangeText={setTitleInput}
-                placeholder="ひびのき"
+                placeholder="shironyan.diary"
                 placeholderTextColor={theme.textMuted}
                 maxLength={20}
                 selectTextOnFocus
