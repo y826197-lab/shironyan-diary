@@ -200,3 +200,37 @@ export const STICKY_NOTE_MAP = new Map<string, StickyNoteSticker>(
 );
 
 export const ALL_STICKERS = STICKER_CATEGORIES.flatMap((c) => c.stickers);
+
+// ── Binsen (便箋) letter paper image stickers ──
+export interface BinsenSticker {
+  id: string;
+  label: string;
+  source: ImageSource;
+}
+
+export const BINSEN_STICKERS: BinsenSticker[] = [
+  { id: 'binsen_hello_cat',        label: 'HELLO猫カップメモ',      source: require('@/assets/binsen_hello_cat.png') },
+  { id: 'binsen_todolist_watermelon', label: 'スイカTODOリスト',     source: require('@/assets/binsen_todolist_watermelon.png') },
+  { id: 'binsen_strawberry',       label: 'いちごフレーム',          source: require('@/assets/binsen_strawberry.png') },
+  { id: 'binsen_todo_pink',        label: 'ピンクTODO',             source: require('@/assets/binsen_todo_pink.png') },
+  { id: 'binsen_notes_pancake',    label: 'パンケーキNOTES',         source: require('@/assets/binsen_notes_pancake.png') },
+  { id: 'binsen_pink_memo',        label: 'ピンクメモ',              source: require('@/assets/binsen_pink_memo.png') },
+  { id: 'binsen_tape_memo',        label: 'テープ付きメモ',          source: require('@/assets/binsen_tape_memo.png') },
+  { id: 'binsen_cloud_note',       label: '雲型NOTE',               source: require('@/assets/binsen_cloud_note.png') },
+  { id: 'binsen_grid_bear',        label: '方眼くまメモ',            source: require('@/assets/binsen_grid_bear.png') },
+  { id: 'binsen_dot_bear',         label: 'ドットくまメモ',          source: require('@/assets/binsen_dot_bear.png') },
+  { id: 'binsen_rabbit_round',     label: '丸うさぎ',               source: require('@/assets/binsen_rabbit_round.png') },
+  { id: 'binsen_dog_corner',       label: '犬コーナーメモ',          source: require('@/assets/binsen_dog_corner.png') },
+  { id: 'binsen_rabbit_grid',      label: 'うさぎ方眼メモ',          source: require('@/assets/binsen_rabbit_grid.png') },
+  { id: 'binsen_tomato',           label: 'トマトメモ',              source: require('@/assets/binsen_tomato.png') },
+  { id: 'binsen_grid_planet',      label: '惑星方眼メモ',            source: require('@/assets/binsen_grid_planet.png') },
+  { id: 'binsen_butterfly',        label: '蝶々メモ',               source: require('@/assets/binsen_butterfly.png') },
+  { id: 'binsen_dot_todo',         label: 'ドットTODO',             source: require('@/assets/binsen_dot_todo.png') },
+  { id: 'binsen_blue_clip',        label: '青クリップメモ',          source: require('@/assets/binsen_blue_clip.png') },
+  { id: 'binsen_todolist_heart',   label: 'ハートTODOリスト',        source: require('@/assets/binsen_todolist_heart.png') },
+  { id: 'binsen_myplans_blue',     label: 'My Plans青メモ',         source: require('@/assets/binsen_myplans_blue.png') },
+];
+
+export const BINSEN_STICKER_MAP = new Map<string, BinsenSticker>(
+  BINSEN_STICKERS.map((s) => [s.id, s])
+);

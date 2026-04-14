@@ -10,7 +10,7 @@ export type PenType = 'pen' | 'marker' | 'highlighter' | 'crayon' | 'neon' | 'sh
 
 export interface CanvasElement {
   id: string;
-  type: 'photo' | 'sticker' | 'text' | 'cat-image' | 'deco-text' | 'custom-image' | 'washi-tape' | 'speech-bubble' | 'sticky-note';
+  type: 'photo' | 'sticker' | 'text' | 'cat-image' | 'deco-text' | 'custom-image' | 'washi-tape' | 'speech-bubble' | 'sticky-note' | 'binsen-image';
   x: number;
   y: number;
   width: number;

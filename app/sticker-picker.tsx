@@ -25,11 +25,13 @@ import {
   WASHI_TAPE_STICKERS,
   SPEECH_BUBBLE_STICKERS,
   STICKY_NOTE_STICKERS,
+  BINSEN_STICKERS,
   type CatSticker,
   type DecoTextSticker,
   type WashiTapeSticker,
   type SpeechBubbleSticker,
   type StickyNoteSticker,
+  type BinsenSticker,
 } from '@/constants/Stickers';
 import { WashiTapePreview } from '@/components/editor/washi-tape';
 import { useDiaryStore } from '@/store/useDiaryStore';
@@ -40,6 +42,7 @@ const DECO_TAB_ID = '__deco';
 const WASHI_TAB_ID = '__washi';
 const BUBBLE_TAB_ID = '__bubble';
 const NOTE_TAB_ID = '__note';
+const BINSEN_TAB_ID = '__binsen';
 const MY_TAB_ID = '__my';
 
 export default function StickerPickerScreen() {
@@ -77,6 +80,8 @@ export default function StickerPickerScreen() {
   const myStickerSize = Math.floor((width - 56) / 4);
   const bubbleSize = Math.floor((width - 56) / 4);
   const noteSize = Math.floor((width - 52) / 3);
+  // 2-column grid for binsen, sized to look like small notepaper thumbnails
+  const binsenColSize = Math.floor((width - 48) / 2);
 
   // ── Handlers ──
 
@@ -191,6 +196,25 @@ export default function StickerPickerScreen() {
     [pageId, addElement, router]
   );
 
+  const handleSelectBinsenSticker = useCallback(
+    (binsen: BinsenSticker) => {
+      if (pageId) {
+        // Binsen are portrait notepaper; use a 3:4 ratio on canvas
+        addElement(pageId, {
+          type: 'binsen-image',
+          x: 50 + Math.random() * 80,
+          y: 60 + Math.random() * 80,
+          width: 160,
+          height: 210,
+          rotation: (Math.random() - 0.5) * 0.08,
+          content: binsen.id,
+        });
+      }
+      router.back();
+    },
+    [pageId, addElement, router]
+  );
+
   const handleSelectCustomSticker = useCallback(
     (sticker: CustomSticker) => {
       if (pageId) {
@@ -238,6 +262,7 @@ export default function StickerPickerScreen() {
   const isWashiTab = activeCategory === WASHI_TAB_ID;
   const isBubbleTab = activeCategory === BUBBLE_TAB_ID;
   const isNoteTab = activeCategory === NOTE_TAB_ID;
+  const isBinsenTab = activeCategory === BINSEN_TAB_ID;
   const isMyTab = activeCategory === MY_TAB_ID;
 
   const renderTab = (id: string, icon: string, label: string, accentColor?: string) => {
@@ -461,6 +486,56 @@ export default function StickerPickerScreen() {
       );
     }
 
+    // ── Binsen (便箋) letter paper tab ──
+    if (isBinsenTab) {
+      return (
+        <ScrollView
+          contentContainerStyle={{
+            paddingHorizontal: 12,
+            paddingTop: 16,
+            paddingBottom: 40,
+            flexDirection: 'row',
+            flexWrap: 'wrap',
+            gap: 10,
+          }}
+          showsVerticalScrollIndicator={false}
+        >
+          {BINSEN_STICKERS.map((item, index) => (
+            <Animated.View key={item.id} entering={FadeIn.delay(index * 30).duration(300)}>
+              <Pressable
+                onPress={() => handleSelectBinsenSticker(item)}
+                style={({ pressed }) => ({
+                  width: binsenColSize,
+                  height: Math.round(binsenColSize * 1.3),
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  borderRadius: 12,
+                  borderCurve: 'continuous',
+                  backgroundColor: pressed ? '#FFF0F5' : '#FAFAFA',
+                  borderWidth: 1.5,
+                  borderColor: pressed ? '#F9A8C9' : '#F0E8EE',
+                  transform: [{ scale: pressed ? 1.04 : 1 }],
+                  overflow: 'hidden',
+                  boxShadow: '0 2px 6px rgba(0,0,0,0.06)',
+                })}
+              >
+                <Image
+                  source={item.source}
+                  style={{
+                    width: binsenColSize - 12,
+                    height: Math.round(binsenColSize * 1.3) - 12,
+                  }}
+                  contentFit="contain"
+                  transition={200}
+                />
+              </Pressable>
+            </Animated.View>
+          ))}
+          {BINSEN_STICKERS.length === 0 && <EmptyState message="便箋がありません" theme={theme} />}
+        </ScrollView>
+      );
+    }
+
     // ── My custom stickers tab ──
     if (isMyTab) {
       return (
@@ -629,6 +704,7 @@ export default function StickerPickerScreen() {
         {renderTab(WASHI_TAB_ID, '🎀', 'マステ', isWashiTab ? '#FF8A65' : undefined)}
         {renderTab(BUBBLE_TAB_ID, '💬', '吹き出し', isBubbleTab ? '#42A5F5' : undefined)}
         {renderTab(NOTE_TAB_ID, '📝', '付箋', isNoteTab ? '#66BB6A' : undefined)}
+        {renderTab(BINSEN_TAB_ID, '📄', '便箋', isBinsenTab ? '#FF8C69' : undefined)}
         {renderTab(MY_TAB_ID, '📁', 'マイ', isMyTab ? '#7C4DFF' : undefined)}
         {recentStickers.length > 0 && renderTab('__recent', '🕐', '最近')}
         {STICKER_CATEGORIES.map((category) => renderTab(category.id, category.icon, category.name))}

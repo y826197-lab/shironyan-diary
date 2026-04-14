@@ -10,7 +10,7 @@ import { Image } from 'expo-image';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import Svg, { Path, Rect, Ellipse, Polygon, Line, Circle } from 'react-native-svg';
 import { Fonts } from '@/constants/Typography';
-import { CAT_STICKER_MAP, DECO_TEXT_MAP, WASHI_TAPE_MAP, SPEECH_BUBBLE_MAP, STICKY_NOTE_MAP } from '@/constants/Stickers';
+import { CAT_STICKER_MAP, DECO_TEXT_MAP, WASHI_TAPE_MAP, SPEECH_BUBBLE_MAP, STICKY_NOTE_MAP, BINSEN_STICKER_MAP } from '@/constants/Stickers';
 import { WashiTapeView } from '@/components/editor/washi-tape';
 import type { CanvasElement } from '@/store/types';
 import { useRef, useMemo } from 'react';
@@ -310,6 +310,27 @@ export function CanvasElementView({
         const noteData = STICKY_NOTE_MAP.get(element.content);
         if (!noteData) return null;
         return renderStickyNote(noteData, element.width, element.height);
+      }
+      case 'binsen-image': {
+        const binsenData = BINSEN_STICKER_MAP.get(element.content);
+        if (!binsenData) return null;
+        return (
+          <View
+            style={{
+              width: element.width,
+              height: element.height,
+              borderRadius: 6,
+              borderCurve: 'continuous',
+              overflow: 'hidden',
+            }}
+          >
+            <Image
+              source={binsenData.source}
+              style={{ width: element.width, height: element.height }}
+              contentFit="contain"
+            />
+          </View>
+        );
       }
       default:
         return null;
