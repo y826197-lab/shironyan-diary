@@ -1,4 +1,14 @@
-import { View, Text, ScrollView, Pressable, Modal, TextInput, KeyboardAvoidingView, Platform } from 'react-native';
+import {
+  View,
+  Text,
+  ScrollView,
+  Pressable,
+  Modal,
+  TextInput,
+  KeyboardAvoidingView,
+  Platform,
+  useWindowDimensions,
+} from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
 import { useState, useCallback, useMemo, useRef } from 'react';
@@ -9,6 +19,9 @@ import { useTheme } from '@/components/ui/use-theme';
 import { GradientBackground } from '@/components/ui/gradient-background';
 import { CuteCard } from '@/components/ui/cute-card';
 import { MonthCalendar } from '@/components/calendar/month-calendar';
+import { DecorationItem } from '@/components/calendar/decoration-item';
+import { DecorationPickerModal } from '@/components/calendar/decoration-picker-modal';
+import { useCalendarDecorations } from '@/hooks/use-calendar-decorations';
 import { useDiaryStore } from '@/store/useDiaryStore';
 import { useAppStore } from '@/store/useAppStore';
 
@@ -26,6 +39,7 @@ const SEASON_EMOJI: Record<number, string> = {
 
 export default function CalendarScreen() {
   const insets = useSafeAreaInsets();
+  const { width: screenWidth } = useWindowDimensions();
   const router = useRouter();
   const theme = useTheme();
   const pages = useDiaryStore((s) => s.pages);
@@ -44,6 +58,18 @@ export default function CalendarScreen() {
   const [titleModalVisible, setTitleModalVisible] = useState(false);
   const [titleInput, setTitleInput] = useState(customTitle);
   const titleInputRef = useRef<TextInput>(null);
+
+  // Decoration picker state
+  const [decoPickerVisible, setDecoPickerVisible] = useState(false);
+
+  // Calendar decorations — persisted per month
+  const {
+    decorations,
+    addDecoration,
+    moveDecoration,
+    cycleSizeDecoration,
+    removeDecoration,
+  } = useCalendarDecorations(year, month);
 
   const datesWithEntries = useMemo(() => new Set(pages.map((p) => p.date)), [pages]);
 
@@ -84,7 +110,6 @@ export default function CalendarScreen() {
   const handleTitlePress = useCallback(() => {
     setTitleInput(customTitle);
     setTitleModalVisible(true);
-    // Focus input after modal opens
     setTimeout(() => titleInputRef.current?.focus(), 150);
   }, [customTitle]);
 
@@ -93,6 +118,16 @@ export default function CalendarScreen() {
     setCustomTitle(trimmed || 'ひびのき');
     setTitleModalVisible(false);
   }, [titleInput, setCustomTitle]);
+
+  // Place a new decoration roughly in the calendar card area when selected
+  const handleDecorationSelect = useCallback(
+    (stickerId: string) => {
+      const x = 40 + Math.random() * (screenWidth - 120);
+      const y = insets.top + 120 + Math.random() * 220;
+      addDecoration(stickerId, x, y);
+    },
+    [addDecoration, screenWidth, insets.top]
+  );
 
   const isThisMonth = year === now.getFullYear() && month === now.getMonth();
 
@@ -155,7 +190,7 @@ export default function CalendarScreen() {
         {/* Month Calendar Card */}
         <Animated.View entering={FadeInDown.delay(200).springify()}>
           <CuteCard padding={20}>
-            {/* Month navigation */}
+            {/* Month navigation row */}
             <View
               style={{
                 flexDirection: 'row',
@@ -164,6 +199,7 @@ export default function CalendarScreen() {
                 marginBottom: 16,
               }}
             >
+              {/* Left: prev month */}
               <Pressable
                 onPress={handlePrevMonth}
                 hitSlop={12}
@@ -180,6 +216,7 @@ export default function CalendarScreen() {
                 <Ionicons name="chevron-back" size={18} color={theme.text} />
               </Pressable>
 
+              {/* Center: month + year title */}
               <View style={{ alignItems: 'center' }}>
                 <Text
                   style={{
@@ -204,21 +241,46 @@ export default function CalendarScreen() {
                 )}
               </View>
 
-              <Pressable
-                onPress={handleNextMonth}
-                hitSlop={12}
-                style={({ pressed }) => ({
-                  width: 38,
-                  height: 38,
-                  borderRadius: 19,
-                  backgroundColor: theme.primaryLight,
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  opacity: pressed ? 0.7 : 1,
-                })}
-              >
-                <Ionicons name="chevron-forward" size={18} color={theme.text} />
-              </Pressable>
+              {/* Right: next month + デコ追加 button */}
+              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
+                <Pressable
+                  onPress={handleNextMonth}
+                  hitSlop={12}
+                  style={({ pressed }) => ({
+                    width: 38,
+                    height: 38,
+                    borderRadius: 19,
+                    backgroundColor: theme.primaryLight,
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    opacity: pressed ? 0.7 : 1,
+                  })}
+                >
+                  <Ionicons name="chevron-forward" size={18} color={theme.text} />
+                </Pressable>
+
+                {/* デコ追加 button */}
+                <Pressable
+                  onPress={() => setDecoPickerVisible(true)}
+                  hitSlop={8}
+                  style={({ pressed }) => ({
+                    width: 38,
+                    height: 38,
+                    borderRadius: 19,
+                    backgroundColor: pressed ? theme.primary : theme.primaryLight,
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    borderWidth: 1.5,
+                    borderColor: pressed ? 'transparent' : theme.primary + '50',
+                    transform: [{ scale: pressed ? 0.92 : 1 }],
+                    boxShadow: pressed
+                      ? '0 2px 8px rgba(249,168,201,0.45)'
+                      : '0 1px 4px rgba(249,168,201,0.2)',
+                  })}
+                >
+                  <Text style={{ fontSize: 18, lineHeight: 20 }}>✨</Text>
+                </Pressable>
+              </View>
             </View>
 
             <MonthCalendar
@@ -270,6 +332,22 @@ export default function CalendarScreen() {
                 </Text>
                 <Text style={{ fontFamily: Fonts.regular, fontSize: 10, color: theme.textMuted }}>
                   総ページ
+                </Text>
+              </View>
+              <View style={{ width: 1, height: 28, backgroundColor: theme.borderLight }} />
+              <View style={{ alignItems: 'center' }}>
+                <Text
+                  style={{
+                    fontFamily: Fonts.bold,
+                    fontSize: 18,
+                    color: theme.primary,
+                    fontVariant: ['tabular-nums'],
+                  }}
+                >
+                  {decorations.length}
+                </Text>
+                <Text style={{ fontFamily: Fonts.regular, fontSize: 10, color: theme.textMuted }}>
+                  デコ数
                 </Text>
               </View>
             </View>
@@ -345,9 +423,7 @@ export default function CalendarScreen() {
                 key={page.id}
                 entering={FadeInUp.delay(index * 80).springify()}
               >
-                <CuteCard
-                  onPress={() => router.push(`/editor/${page.id}`)}
-                >
+                <CuteCard onPress={() => router.push(`/editor/${page.id}`)}>
                   <View style={{ flexDirection: 'row', gap: 12, alignItems: 'center' }}>
                     {/* Thumbnail preview */}
                     <View
@@ -428,7 +504,30 @@ export default function CalendarScreen() {
         </Animated.View>
       </ScrollView>
 
-      {/* Title Edit Modal */}
+      {/* ── Decoration overlay (above ScrollView, passes touches to it when not on a deco) ── */}
+      <View
+        pointerEvents="box-none"
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          zIndex: 100,
+        }}
+      >
+        {decorations.map((deco) => (
+          <DecorationItem
+            key={deco.id}
+            decoration={deco}
+            onMove={moveDecoration}
+            onCycleSize={cycleSizeDecoration}
+            onRemove={removeDecoration}
+          />
+        ))}
+      </View>
+
+      {/* ── Title Edit Modal ── */}
       <Modal
         visible={titleModalVisible}
         transparent
@@ -457,7 +556,7 @@ export default function CalendarScreen() {
                 padding: 28,
                 width: 300,
                 gap: 20,
-                boxShadow: `0 8px 32px rgba(0,0,0,0.18)`,
+                boxShadow: '0 8px 32px rgba(0,0,0,0.18)',
               }}
             >
               {/* Modal header */}
@@ -569,6 +668,13 @@ export default function CalendarScreen() {
           </Pressable>
         </KeyboardAvoidingView>
       </Modal>
+
+      {/* ── Decoration Picker Modal ── */}
+      <DecorationPickerModal
+        visible={decoPickerVisible}
+        onClose={() => setDecoPickerVisible(false)}
+        onSelect={handleDecorationSelect}
+      />
     </GradientBackground>
   );
 }
