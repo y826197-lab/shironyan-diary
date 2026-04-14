@@ -16,6 +16,8 @@ interface DrawingLayerProps {
   currentStroke: StrokeLike | null;
   width: number;
   height: number;
+  eraserPosition?: { x: number; y: number } | null;
+  eraserSize?: number;
 }
 
 function pointsToSvgPath(points: { x: number; y: number }[]): string {
@@ -57,7 +59,9 @@ function getStrokeProps(penType: string, size: number) {
     case 'crayon':
       return { strokeWidth: size * 2, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const };
     case 'neon':
-    case 'sparkle': // backward compat with old saved strokes
+    case 'sparkle':
+      return { strokeWidth: size * 1.5, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const };
+    case 'shadow':
       return { strokeWidth: size * 1.2, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const };
     default:
       return { strokeWidth: size, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const };
@@ -68,77 +72,93 @@ function renderStroke(stroke: DrawingStroke | StrokeLike, key: string) {
   const { strokeWidth, strokeLinecap, strokeLinejoin } = getStrokeProps(stroke.penType, stroke.size);
   const svgPath = pointsToSvgPath(stroke.points);
 
-  // Neon pen — multi-layer glow effect (also handle legacy 'sparkle' data from storage)
+  // Skip eraser strokes from rendering (they're handled by removing other strokes)
+  if (stroke.penType === 'eraser') return null;
+
+  // Neon pen — crisp fluorescent line with subtle glow
   if (stroke.penType === 'neon' || (stroke.penType as string) === 'sparkle') {
     return (
       <G key={key}>
-        {/* Outer glow — wide, very faint */}
+        {/* Subtle outer glow — gentle ambient light */}
         <Path
           d={svgPath}
           stroke={stroke.color}
-          strokeWidth={strokeWidth * 4}
+          strokeWidth={strokeWidth * 2.2}
           strokeLinecap={strokeLinecap}
           strokeLinejoin={strokeLinejoin}
           fill="none"
-          opacity={stroke.opacity * 0.1}
+          opacity={stroke.opacity * 0.15}
         />
-        {/* Mid glow */}
+        {/* Main fluorescent line — bright and crisp */}
         <Path
           d={svgPath}
           stroke={stroke.color}
-          strokeWidth={strokeWidth * 2.5}
+          strokeWidth={strokeWidth}
           strokeLinecap={strokeLinecap}
           strokeLinejoin={strokeLinejoin}
           fill="none"
-          opacity={stroke.opacity * 0.2}
+          opacity={stroke.opacity * 0.9}
         />
-        {/* Inner glow */}
-        <Path
-          d={svgPath}
-          stroke={stroke.color}
-          strokeWidth={strokeWidth * 1.5}
-          strokeLinecap={strokeLinecap}
-          strokeLinejoin={strokeLinejoin}
-          fill="none"
-          opacity={stroke.opacity * 0.4}
-        />
-        {/* Bright core — white-tinted for the "neon tube" center */}
+        {/* Bright center highlight for neon tube effect */}
         <Path
           d={svgPath}
           stroke="#FFFFFF"
-          strokeWidth={strokeWidth * 0.5}
+          strokeWidth={strokeWidth * 0.3}
           strokeLinecap={strokeLinecap}
           strokeLinejoin={strokeLinejoin}
           fill="none"
-          opacity={stroke.opacity * 0.7}
+          opacity={stroke.opacity * 0.5}
         />
-        {/* Scattered glow dots along the path for sparkle effect */}
-        {stroke.points
-          .filter((_, i) => i % 6 === 0)
-          .map((p, i) => (
-            <Circle
-              key={`${key}-glow-${i}`}
-              cx={p.x}
-              cy={p.y}
-              r={stroke.size * 0.8}
-              fill={stroke.color}
-              opacity={stroke.opacity * 0.15}
-            />
-          ))}
+      </G>
+    );
+  }
+
+  // Shadow pen — main stroke with a soft shadow underneath
+  if (stroke.penType === 'shadow') {
+    return (
+      <G key={key}>
+        {/* Soft shadow layer — offset and wider */}
+        <Path
+          d={pointsToSvgPath(offsetPoints(stroke.points, 2.5, 3))}
+          stroke="rgba(0,0,0,0.18)"
+          strokeWidth={strokeWidth * 1.6}
+          strokeLinecap={strokeLinecap}
+          strokeLinejoin={strokeLinejoin}
+          fill="none"
+          opacity={0.5}
+        />
+        {/* Second shadow layer — slightly closer */}
+        <Path
+          d={pointsToSvgPath(offsetPoints(stroke.points, 1.2, 1.5))}
+          stroke="rgba(0,0,0,0.1)"
+          strokeWidth={strokeWidth * 1.3}
+          strokeLinecap={strokeLinecap}
+          strokeLinejoin={strokeLinejoin}
+          fill="none"
+          opacity={0.4}
+        />
+        {/* Main stroke */}
+        <Path
+          d={svgPath}
+          stroke={stroke.color}
+          strokeWidth={strokeWidth}
+          strokeLinecap={strokeLinecap}
+          strokeLinejoin={strokeLinejoin}
+          fill="none"
+          opacity={stroke.opacity}
+        />
       </G>
     );
   }
 
   // Crayon pen — rough textured multi-layer strokes
   if (stroke.penType === 'crayon') {
-    // Seeded offsets for consistent rough look
     const offsets = [
       { dx: 0, dy: 0, op: 0.7 },
       { dx: 1.2, dy: 0.6, op: 0.35 },
       { dx: -0.9, dy: 0.8, op: 0.3 },
       { dx: 0.5, dy: -1.0, op: 0.25 },
     ];
-    // Dash pattern simulates waxy, grainy crayon texture
     const crayonDash = `${stroke.size * 1.5} ${stroke.size * 0.3} ${stroke.size * 0.4} ${stroke.size * 0.2}`;
     return (
       <G key={key}>
@@ -191,7 +211,7 @@ function renderStroke(stroke: DrawingStroke | StrokeLike, key: string) {
   );
 }
 
-export function DrawingLayer({ strokes, currentStroke, width, height }: DrawingLayerProps) {
+export function DrawingLayer({ strokes, currentStroke, width, height, eraserPosition, eraserSize }: DrawingLayerProps) {
   if (width === 0 || height === 0) return null;
 
   return (
@@ -207,7 +227,19 @@ export function DrawingLayer({ strokes, currentStroke, width, height }: DrawingL
     >
       <Svg width={width} height={height}>
         {strokes.map((stroke, i) => renderStroke(stroke, `stroke-${i}`))}
-        {currentStroke && currentStroke.points.length > 0 && renderStroke(currentStroke, 'current')}
+        {currentStroke && currentStroke.points.length > 0 && currentStroke.penType !== 'eraser' && renderStroke(currentStroke, 'current')}
+        {/* Eraser cursor indicator */}
+        {eraserPosition && eraserSize && (
+          <Circle
+            cx={eraserPosition.x}
+            cy={eraserPosition.y}
+            r={eraserSize}
+            fill="rgba(255,255,255,0.5)"
+            stroke="#999999"
+            strokeWidth={1}
+            strokeDasharray="4,3"
+          />
+        )}
       </Svg>
     </View>
   );

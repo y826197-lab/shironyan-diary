@@ -13,9 +13,12 @@ const PEN_TYPES: { type: PenType; label: string; icon: string }[] = [
   { type: 'highlighter', label: '蛍光ペン', icon: '🖍️' },
   { type: 'crayon', label: 'クレヨン', icon: '🖍️' },
   { type: 'neon', label: 'ネオン', icon: '💡' },
+  { type: 'shadow', label: '影付き', icon: '🌓' },
+  { type: 'eraser', label: '消しゴム', icon: '🧹' },
 ];
 
 const BRUSH_SIZES = [2, 4, 6, 8, 12];
+const ERASER_SIZES = [8, 14, 20, 28, 40];
 
 export type ToolMode = 'select' | 'draw' | 'photo' | 'sticker' | 'text';
 
@@ -28,6 +31,8 @@ interface ToolbarProps {
   onChangeDrawSize: (size: number) => void;
   penType: PenType;
   onChangePenType: (type: PenType) => void;
+  eraserSize: number;
+  onChangeEraserSize: (size: number) => void;
   onAddPhoto: () => void;
   onAddSticker: () => void;
   onAddText: () => void;
@@ -43,6 +48,8 @@ export function Toolbar({
   onChangeDrawSize,
   penType,
   onChangePenType,
+  eraserSize,
+  onChangeEraserSize,
   onAddPhoto,
   onAddSticker,
   onAddText,
@@ -50,6 +57,8 @@ export function Toolbar({
 }: ToolbarProps) {
   const theme = useTheme();
   const [showDrawOptions, setShowDrawOptions] = useState(false);
+
+  const isEraser = penType === 'eraser';
 
   const tools: {
     mode: ToolMode;
@@ -99,9 +108,17 @@ export function Toolbar({
                       paddingVertical: 8,
                       borderRadius: 20,
                       borderCurve: 'continuous',
-                      backgroundColor: isActive ? theme.primaryLight : theme.background,
+                      backgroundColor: isActive
+                        ? pen.type === 'eraser'
+                          ? '#F5F5F5'
+                          : theme.primaryLight
+                        : theme.background,
                       borderWidth: isActive ? 1.5 : 1,
-                      borderColor: isActive ? theme.primary : theme.borderLight,
+                      borderColor: isActive
+                        ? pen.type === 'eraser'
+                          ? '#999'
+                          : theme.primary
+                        : theme.borderLight,
                       opacity: pressed ? 0.8 : 1,
                     })}
                   >
@@ -110,7 +127,11 @@ export function Toolbar({
                       style={{
                         fontFamily: isActive ? Fonts.bold : Fonts.medium,
                         fontSize: 12,
-                        color: isActive ? theme.primary : theme.textSecondary,
+                        color: isActive
+                          ? pen.type === 'eraser'
+                            ? '#666'
+                            : theme.primary
+                          : theme.textSecondary,
                       }}
                     >
                       {pen.label}
@@ -121,56 +142,110 @@ export function Toolbar({
             </View>
           </ScrollView>
 
-          {/* Brush size selector */}
-          <View
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              gap: 12,
-              justifyContent: 'center',
-            }}
-          >
-            <Text
+          {/* Eraser size selector (shown when eraser is active) */}
+          {isEraser ? (
+            <View
               style={{
-                fontFamily: Fonts.medium,
-                fontSize: 11,
-                color: theme.textSecondary,
+                flexDirection: 'row',
+                alignItems: 'center',
+                gap: 12,
+                justifyContent: 'center',
               }}
             >
-              太さ
-            </Text>
-            {BRUSH_SIZES.map((size) => {
-              const isActive = drawSize === size;
-              return (
-                <Pressable
-                  key={size}
-                  onPress={() => onChangeDrawSize(size)}
+              <Text
+                style={{
+                  fontFamily: Fonts.medium,
+                  fontSize: 11,
+                  color: theme.textSecondary,
+                }}
+              >
+                消しゴムサイズ
+              </Text>
+              {ERASER_SIZES.map((size) => {
+                const isActive = eraserSize === size;
+                return (
+                  <Pressable
+                    key={size}
+                    onPress={() => onChangeEraserSize(size)}
+                    style={{
+                      width: 36,
+                      height: 36,
+                      borderRadius: 18,
+                      backgroundColor: isActive ? '#F0F0F0' : 'transparent',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      borderWidth: isActive ? 1.5 : 0,
+                      borderColor: '#999',
+                    }}
+                  >
+                    <View
+                      style={{
+                        width: Math.min(size * 0.6, 24),
+                        height: Math.min(size * 0.6, 24),
+                        borderRadius: Math.min(size * 0.3, 12),
+                        backgroundColor: '#DDD',
+                        borderWidth: 1,
+                        borderColor: '#BBB',
+                      }}
+                    />
+                  </Pressable>
+                );
+              })}
+            </View>
+          ) : (
+            <>
+              {/* Brush size selector */}
+              <View
+                style={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  gap: 12,
+                  justifyContent: 'center',
+                }}
+              >
+                <Text
                   style={{
-                    width: 36,
-                    height: 36,
-                    borderRadius: 18,
-                    backgroundColor: isActive ? theme.primaryLight : 'transparent',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    borderWidth: isActive ? 1.5 : 0,
-                    borderColor: theme.primary,
+                    fontFamily: Fonts.medium,
+                    fontSize: 11,
+                    color: theme.textSecondary,
                   }}
                 >
-                  <View
-                    style={{
-                      width: size + 4,
-                      height: size + 4,
-                      borderRadius: (size + 4) / 2,
-                      backgroundColor: drawColor,
-                    }}
-                  />
-                </Pressable>
-              );
-            })}
-          </View>
+                  太さ
+                </Text>
+                {BRUSH_SIZES.map((size) => {
+                  const isActive = drawSize === size;
+                  return (
+                    <Pressable
+                      key={size}
+                      onPress={() => onChangeDrawSize(size)}
+                      style={{
+                        width: 36,
+                        height: 36,
+                        borderRadius: 18,
+                        backgroundColor: isActive ? theme.primaryLight : 'transparent',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        borderWidth: isActive ? 1.5 : 0,
+                        borderColor: theme.primary,
+                      }}
+                    >
+                      <View
+                        style={{
+                          width: size + 4,
+                          height: size + 4,
+                          borderRadius: (size + 4) / 2,
+                          backgroundColor: drawColor,
+                        }}
+                      />
+                    </Pressable>
+                  );
+                })}
+              </View>
 
-          {/* Color palette */}
-          <ColorPicker selectedColor={drawColor} onSelectColor={onChangeDrawColor} />
+              {/* Color palette */}
+              <ColorPicker selectedColor={drawColor} onSelectColor={onChangeDrawColor} />
+            </>
+          )}
         </Animated.View>
       )}
 
@@ -218,7 +293,13 @@ export function Toolbar({
               }
             }}
             theme={theme}
-            badge={tool.mode === 'draw' && activeMode === 'draw' ? drawColor : undefined}
+            badge={
+              tool.mode === 'draw' && activeMode === 'draw'
+                ? isEraser
+                  ? '#CCCCCC'
+                  : drawColor
+                : undefined
+            }
           />
         ))}
 

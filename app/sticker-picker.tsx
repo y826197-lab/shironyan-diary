@@ -12,6 +12,7 @@ import { useRouter, useLocalSearchParams } from 'expo-router';
 import { useState, useCallback, useMemo } from 'react';
 import Animated, { FadeIn } from 'react-native-reanimated';
 import { Image } from 'expo-image';
+import Svg, { Path, Rect, Ellipse, Circle, Polygon } from 'react-native-svg';
 import * as ImagePicker from 'expo-image-picker';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { Fonts } from '@/constants/Typography';
@@ -22,9 +23,13 @@ import {
   CAT_STICKERS,
   DECO_TEXT_STICKERS,
   WASHI_TAPE_STICKERS,
+  SPEECH_BUBBLE_STICKERS,
+  STICKY_NOTE_STICKERS,
   type CatSticker,
   type DecoTextSticker,
   type WashiTapeSticker,
+  type SpeechBubbleSticker,
+  type StickyNoteSticker,
 } from '@/constants/Stickers';
 import { WashiTapePreview } from '@/components/editor/washi-tape';
 import { useDiaryStore } from '@/store/useDiaryStore';
@@ -33,6 +38,8 @@ import { useCustomStickerStore, type CustomSticker } from '@/store/useCustomStic
 const CAT_TAB_ID = '__cats';
 const DECO_TAB_ID = '__deco';
 const WASHI_TAB_ID = '__washi';
+const BUBBLE_TAB_ID = '__bubble';
+const NOTE_TAB_ID = '__note';
 const MY_TAB_ID = '__my';
 
 export default function StickerPickerScreen() {
@@ -47,9 +54,6 @@ export default function StickerPickerScreen() {
   const removeCustomSticker = useCustomStickerStore((s) => s.removeSticker);
   const [activeCategory, setActiveCategory] = useState(CAT_TAB_ID);
 
-  // ── Delete confirmation state ──
-  // We use a custom in-app Modal instead of Alert.alert / window.confirm
-  // because both can be silently suppressed inside formSheet on web.
   const [deleteTarget, setDeleteTarget] = useState<CustomSticker | null>(null);
 
   const currentCategory = STICKER_CATEGORIES.find((c) => c.id === activeCategory) || STICKER_CATEGORIES[0];
@@ -71,6 +75,8 @@ export default function StickerPickerScreen() {
   const decoStickerWidth = Math.floor((width - 52) / 2);
   const washiTapeWidth = Math.floor(width - 64);
   const myStickerSize = Math.floor((width - 56) / 4);
+  const bubbleSize = Math.floor((width - 56) / 4);
+  const noteSize = Math.floor((width - 52) / 3);
 
   // ── Handlers ──
 
@@ -149,6 +155,42 @@ export default function StickerPickerScreen() {
     [pageId, addElement, router]
   );
 
+  const handleSelectBubble = useCallback(
+    (bubble: SpeechBubbleSticker) => {
+      if (pageId) {
+        addElement(pageId, {
+          type: 'speech-bubble',
+          x: 60 + Math.random() * 100,
+          y: 60 + Math.random() * 100,
+          width: 140,
+          height: 110,
+          rotation: 0,
+          content: bubble.id,
+        });
+      }
+      router.back();
+    },
+    [pageId, addElement, router]
+  );
+
+  const handleSelectNote = useCallback(
+    (note: StickyNoteSticker) => {
+      if (pageId) {
+        addElement(pageId, {
+          type: 'sticky-note',
+          x: 60 + Math.random() * 100,
+          y: 60 + Math.random() * 100,
+          width: 120,
+          height: 120,
+          rotation: (Math.random() - 0.5) * 0.1,
+          content: note.id,
+        });
+      }
+      router.back();
+    },
+    [pageId, addElement, router]
+  );
+
   const handleSelectCustomSticker = useCallback(
     (sticker: CustomSticker) => {
       if (pageId) {
@@ -194,9 +236,9 @@ export default function StickerPickerScreen() {
   const isCatTab = activeCategory === CAT_TAB_ID;
   const isDecoTab = activeCategory === DECO_TAB_ID;
   const isWashiTab = activeCategory === WASHI_TAB_ID;
+  const isBubbleTab = activeCategory === BUBBLE_TAB_ID;
+  const isNoteTab = activeCategory === NOTE_TAB_ID;
   const isMyTab = activeCategory === MY_TAB_ID;
-
-  // ── Tab pill ──
 
   const renderTab = (id: string, icon: string, label: string, accentColor?: string) => {
     const isActive = activeCategory === id;
@@ -308,9 +350,6 @@ export default function StickerPickerScreen() {
       );
     }
 
-    // ──────────────────────────────────
-    // Washi tape (masking tape) tab
-    // ──────────────────────────────────
     if (isWashiTab) {
       return (
         <ScrollView
@@ -338,15 +377,95 @@ export default function StickerPickerScreen() {
       );
     }
 
-    // ──────────────────────────────────
-    // My custom stickers tab
-    // ──────────────────────────────────
+    // ── Speech Bubbles tab ──
+    if (isBubbleTab) {
+      return (
+        <ScrollView
+          contentContainerStyle={{ paddingHorizontal: 16, paddingTop: 16, paddingBottom: 40, flexDirection: 'row', flexWrap: 'wrap', gap: 10 }}
+          showsVerticalScrollIndicator={false}
+        >
+          {SPEECH_BUBBLE_STICKERS.map((bubble, index) => (
+            <Animated.View key={bubble.id} entering={FadeIn.delay(index * 40).duration(300)}>
+              <Pressable
+                onPress={() => handleSelectBubble(bubble)}
+                style={({ pressed }) => ({
+                  width: bubbleSize,
+                  height: bubbleSize,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  borderRadius: 14,
+                  borderCurve: 'continuous',
+                  backgroundColor: pressed ? '#F0F0F0' : '#FAFAFA',
+                  borderWidth: 1.5,
+                  borderColor: pressed ? bubble.borderColor : '#F0E8EE',
+                  transform: [{ scale: pressed ? 1.05 : 1 }],
+                })}
+              >
+                <BubblePreview shape={bubble.shape} color={bubble.borderColor} fill={bubble.fillColor} size={bubbleSize - 20} />
+                <Text style={{ fontFamily: Fonts.medium, fontSize: 9, color: '#999', marginTop: 2 }}>
+                  {bubble.label}
+                </Text>
+              </Pressable>
+            </Animated.View>
+          ))}
+        </ScrollView>
+      );
+    }
+
+    // ── Sticky Notes tab ──
+    if (isNoteTab) {
+      return (
+        <ScrollView
+          contentContainerStyle={{ paddingHorizontal: 16, paddingTop: 16, paddingBottom: 40, flexDirection: 'row', flexWrap: 'wrap', gap: 10 }}
+          showsVerticalScrollIndicator={false}
+        >
+          {STICKY_NOTE_STICKERS.map((note, index) => (
+            <Animated.View key={note.id} entering={FadeIn.delay(index * 40).duration(300)}>
+              <Pressable
+                onPress={() => handleSelectNote(note)}
+                style={({ pressed }) => ({
+                  width: noteSize,
+                  height: noteSize,
+                  borderRadius: 10,
+                  borderCurve: 'continuous',
+                  overflow: 'hidden',
+                  backgroundColor: note.color,
+                  borderWidth: 1.5,
+                  borderColor: pressed ? note.secondaryColor : note.secondaryColor + '50',
+                  transform: [{ scale: pressed ? 1.05 : 1 }],
+                  boxShadow: '0 2px 6px rgba(0,0,0,0.08)',
+                })}
+              >
+                {/* Top accent */}
+                <View style={{ height: 3, backgroundColor: note.secondaryColor, opacity: 0.5 }} />
+                {/* Mini pattern preview */}
+                <NotePatternPreview style={note.style} color={note.secondaryColor} w={noteSize} h={noteSize} />
+                {/* Corner fold */}
+                {note.cornerFold && (
+                  <View style={{ position: 'absolute', bottom: 0, right: 0 }}>
+                    <Svg width={12} height={12}>
+                      <Path d="M 12 0 L 12 12 L 0 12 Z" fill={note.secondaryColor} opacity={0.3} />
+                    </Svg>
+                  </View>
+                )}
+                {/* Label */}
+                <View style={{ position: 'absolute', bottom: 6, left: 0, right: 0, alignItems: 'center' }}>
+                  <Text style={{ fontFamily: Fonts.medium, fontSize: 9, color: note.secondaryColor }}>
+                    {note.label}
+                  </Text>
+                </View>
+              </Pressable>
+            </Animated.View>
+          ))}
+        </ScrollView>
+      );
+    }
+
+    // ── My custom stickers tab ──
     if (isMyTab) {
       return (
         <ScrollView
           contentContainerStyle={{
-            // Extra padding so absolute-positioned × buttons (top: -8, right: -8)
-            // fall within the scrollable content area and are not clipped.
             paddingHorizontal: 24,
             paddingTop: 24,
             paddingBottom: 48,
@@ -356,7 +475,6 @@ export default function StickerPickerScreen() {
           }}
           showsVerticalScrollIndicator={false}
         >
-          {/* Add button */}
           <Pressable
             onPress={handlePickCustomSticker}
             style={({ pressed }) => ({
@@ -380,18 +498,15 @@ export default function StickerPickerScreen() {
             </Text>
           </Pressable>
 
-          {/* Custom sticker cards */}
           {customStickers.map((sticker) => (
             <View
               key={sticker.id}
               style={{
                 width: myStickerSize,
                 height: myStickerSize,
-                // overflow visible so the × button at top:-8, right:-8 is not clipped
                 overflow: 'visible',
               }}
             >
-              {/* Sticker image — tap to select */}
               <Pressable
                 onPress={() => handleSelectCustomSticker(sticker)}
                 style={({ pressed }) => ({
@@ -416,10 +531,6 @@ export default function StickerPickerScreen() {
                 />
               </Pressable>
 
-              {/* ×  Delete button — TouchableOpacity, absolute positioned OUTSIDE the card.
-                  Uses react-native TouchableOpacity (not gesture-handler) to guarantee
-                  touch events are not intercepted by GestureHandlerRootView.
-                  zIndex 9999 ensures it's above everything. */}
               <TouchableOpacity
                 activeOpacity={0.6}
                 onPress={() => setDeleteTarget(sticker)}
@@ -516,6 +627,8 @@ export default function StickerPickerScreen() {
         {renderTab(CAT_TAB_ID, '🐱', 'ネコ', isCatTab ? '#FF8FAB' : undefined)}
         {renderTab(DECO_TAB_ID, '🔤', 'デコ文字', isDecoTab ? '#E91E63' : undefined)}
         {renderTab(WASHI_TAB_ID, '🎀', 'マステ', isWashiTab ? '#FF8A65' : undefined)}
+        {renderTab(BUBBLE_TAB_ID, '💬', '吹き出し', isBubbleTab ? '#42A5F5' : undefined)}
+        {renderTab(NOTE_TAB_ID, '📝', '付箋', isNoteTab ? '#66BB6A' : undefined)}
         {renderTab(MY_TAB_ID, '📁', 'マイ', isMyTab ? '#7C4DFF' : undefined)}
         {recentStickers.length > 0 && renderTab('__recent', '🕐', '最近')}
         {STICKER_CATEGORIES.map((category) => renderTab(category.id, category.icon, category.name))}
@@ -524,13 +637,7 @@ export default function StickerPickerScreen() {
       {/* Content grid */}
       {renderGrid()}
 
-      {/* ──────────────────────────────────────────────────
-          Custom in-app delete confirmation dialog.
-          Rendered as a React Native <Modal> at the root of
-          this component — completely independent of the
-          formSheet, ScrollView, and GestureHandler hierarchy.
-          This is guaranteed to receive touch events.
-          ────────────────────────────────────────────────── */}
+      {/* Delete confirmation dialog */}
       <Modal
         visible={deleteTarget !== null}
         transparent
@@ -547,9 +654,7 @@ export default function StickerPickerScreen() {
           }}
         >
           <Pressable
-            onPress={() => {
-              /* stop propagation — tapping inside dialog shouldn't dismiss */
-            }}
+            onPress={() => {}}
             style={{
               backgroundColor: '#FFFFFF',
               borderRadius: 24,
@@ -562,7 +667,6 @@ export default function StickerPickerScreen() {
               boxShadow: '0 8px 32px rgba(0,0,0,0.18)',
             }}
           >
-            {/* Icon */}
             <View
               style={{
                 width: 56,
@@ -575,8 +679,6 @@ export default function StickerPickerScreen() {
             >
               <Ionicons name="trash-outline" size={28} color="#E57373" />
             </View>
-
-            {/* Message */}
             <Text
               style={{
                 fontFamily: Fonts.bold,
@@ -587,10 +689,7 @@ export default function StickerPickerScreen() {
             >
               このステッカーを削除しますか？
             </Text>
-
-            {/* Buttons */}
             <View style={{ flexDirection: 'row', gap: 12, width: '100%' }}>
-              {/* いいえ */}
               <TouchableOpacity
                 activeOpacity={0.7}
                 onPress={() => setDeleteTarget(null)}
@@ -607,8 +706,6 @@ export default function StickerPickerScreen() {
                   いいえ
                 </Text>
               </TouchableOpacity>
-
-              {/* はい */}
               <TouchableOpacity
                 activeOpacity={0.7}
                 onPress={handleConfirmDelete}
@@ -631,6 +728,214 @@ export default function StickerPickerScreen() {
       </Modal>
     </View>
   );
+}
+
+// ── Mini Speech Bubble Preview for picker grid ──
+function BubblePreview({ shape, color, fill, size }: { shape: string; color: string; fill: string; size: number }) {
+  const s = size;
+  const sw = 1.5;
+  const bodyH = s * 0.8;
+
+  switch (shape) {
+    case 'round':
+      return (
+        <Svg width={s} height={s}>
+          <Ellipse cx={s / 2} cy={bodyH / 2} rx={s / 2 - sw} ry={bodyH / 2 - sw} fill={fill} stroke={color} strokeWidth={sw} />
+          <Path d={`M ${s * 0.35} ${bodyH - sw} L ${s * 0.25} ${s - 1} L ${s * 0.5} ${bodyH - sw * 2}`} fill={fill} stroke={color} strokeWidth={sw} strokeLinejoin="round" />
+        </Svg>
+      );
+    case 'oval':
+      return (
+        <Svg width={s} height={s}>
+          <Ellipse cx={s / 2} cy={bodyH / 2} rx={s / 2 - sw} ry={bodyH / 2 - sw} fill={fill} stroke={color} strokeWidth={sw} />
+          <Path d={`M ${s * 0.4} ${bodyH - sw * 2} L ${s * 0.3} ${s - 1} L ${s * 0.55} ${bodyH - sw * 3}`} fill={fill} stroke={color} strokeWidth={sw} strokeLinejoin="round" />
+        </Svg>
+      );
+    case 'cloud': {
+      const cx = s / 2, cy = bodyH / 2;
+      const rx = s / 2 - 4, ry = bodyH / 2 - 4;
+      let d = '';
+      const bumps = 8;
+      for (let i = 0; i < bumps; i++) {
+        const a1 = (i / bumps) * Math.PI * 2;
+        const a2 = ((i + 1) / bumps) * Math.PI * 2;
+        const x1 = cx + Math.cos(a1) * rx;
+        const y1 = cy + Math.sin(a1) * ry;
+        const x2 = cx + Math.cos(a2) * rx;
+        const y2 = cy + Math.sin(a2) * ry;
+        const midA = (a1 + a2) / 2;
+        const cpx = cx + Math.cos(midA) * (rx + 4);
+        const cpy = cy + Math.sin(midA) * (ry + 4);
+        if (i === 0) d += `M ${x1} ${y1} `;
+        d += `Q ${cpx} ${cpy} ${x2} ${y2} `;
+      }
+      d += 'Z';
+      return (
+        <Svg width={s} height={s}>
+          <Path d={d} fill={fill} stroke={color} strokeWidth={sw} />
+          <Circle cx={s * 0.35} cy={bodyH + 2} r={2.5} fill={fill} stroke={color} strokeWidth={1} />
+          <Circle cx={s * 0.28} cy={bodyH + 6} r={1.5} fill={fill} stroke={color} strokeWidth={0.8} />
+        </Svg>
+      );
+    }
+    case 'square':
+      return (
+        <Svg width={s} height={s}>
+          <Rect x={sw} y={sw} width={s - sw * 2} height={bodyH - sw * 2} fill={fill} stroke={color} strokeWidth={sw} />
+          <Path d={`M ${s * 0.3} ${bodyH - sw} L ${s * 0.2} ${s - 1} L ${s * 0.45} ${bodyH - sw}`} fill={fill} stroke={color} strokeWidth={sw} strokeLinejoin="round" />
+        </Svg>
+      );
+    case 'rounded-rect':
+      return (
+        <Svg width={s} height={s}>
+          <Rect x={sw} y={sw} width={s - sw * 2} height={bodyH - sw * 2} rx={6} fill={fill} stroke={color} strokeWidth={sw} />
+          <Path d={`M ${s * 0.35} ${bodyH - sw * 2} L ${s * 0.25} ${s - 1} L ${s * 0.5} ${bodyH - sw * 3}`} fill={fill} stroke={color} strokeWidth={sw} strokeLinejoin="round" />
+        </Svg>
+      );
+    case 'burst': {
+      const cx2 = s / 2, cy2 = bodyH / 2;
+      const outer = Math.min(s, bodyH) / 2 - 3;
+      const inner = outer * 0.65;
+      const points = 8;
+      let burstPath = '';
+      for (let i = 0; i < points * 2; i++) {
+        const angle = (i / (points * 2)) * Math.PI * 2 - Math.PI / 2;
+        const r = i % 2 === 0 ? outer : inner;
+        const px = cx2 + Math.cos(angle) * r;
+        const py = cy2 + Math.sin(angle) * r;
+        burstPath += i === 0 ? `M ${px} ${py} ` : `L ${px} ${py} `;
+      }
+      burstPath += 'Z';
+      return (
+        <Svg width={s} height={s}>
+          <Path d={burstPath} fill={fill} stroke={color} strokeWidth={sw} strokeLinejoin="round" />
+        </Svg>
+      );
+    }
+    case 'heart': {
+      const hs = s * 0.35;
+      const hc = s / 2;
+      const hcy = bodyH / 2;
+      return (
+        <Svg width={s} height={s}>
+          <Path d={`M ${hc} ${hcy + hs * 0.35} C ${hc - hs * 0.5} ${hcy - hs * 0.4}, ${hc - hs * 1.1} ${hcy + hs * 0.05}, ${hc} ${hcy + hs * 0.9} C ${hc + hs * 1.1} ${hcy + hs * 0.05}, ${hc + hs * 0.5} ${hcy - hs * 0.4}, ${hc} ${hcy + hs * 0.35} Z`} fill={fill} stroke={color} strokeWidth={sw} />
+        </Svg>
+      );
+    }
+    case 'shout': {
+      const cx3 = s / 2, cy3 = bodyH / 2;
+      const outerR = Math.min(s, bodyH) / 2 - 3;
+      const innerR = outerR * 0.75;
+      const spikes = 6;
+      let shoutPath = '';
+      for (let i = 0; i < spikes * 2; i++) {
+        const angle = (i / (spikes * 2)) * Math.PI * 2 - Math.PI / 2;
+        const r = i % 2 === 0 ? outerR : innerR;
+        const px = cx3 + Math.cos(angle) * r;
+        const py = cy3 + Math.sin(angle) * r;
+        shoutPath += i === 0 ? `M ${px} ${py} ` : `L ${px} ${py} `;
+      }
+      shoutPath += 'Z';
+      return (
+        <Svg width={s} height={s}>
+          <Path d={shoutPath} fill={fill} stroke={color} strokeWidth={sw} strokeLinejoin="round" />
+        </Svg>
+      );
+    }
+    case 'wave':
+      return (
+        <Svg width={s} height={s}>
+          <Rect x={3} y={3} width={s - 6} height={bodyH - 6} rx={8} fill={fill} stroke={color} strokeWidth={sw} />
+          <Path d={`M ${s * 0.35} ${bodyH - 4} L ${s * 0.28} ${s - 1} L ${s * 0.48} ${bodyH - 5}`} fill={fill} stroke={color} strokeWidth={sw} strokeLinejoin="round" />
+        </Svg>
+      );
+    case 'diamond': {
+      const pts = `${s / 2},${sw} ${s - sw},${bodyH / 2} ${s / 2},${bodyH - sw} ${sw},${bodyH / 2}`;
+      return (
+        <Svg width={s} height={s}>
+          <Polygon points={pts} fill={fill} stroke={color} strokeWidth={sw} strokeLinejoin="round" />
+        </Svg>
+      );
+    }
+    case 'hexagon': {
+      const hxc = s / 2, hyc = bodyH / 2;
+      const hexR = Math.min(s, bodyH) / 2 - 3;
+      let hexPoints = '';
+      for (let i = 0; i < 6; i++) {
+        const angle = (i / 6) * Math.PI * 2 - Math.PI / 6;
+        const px = hxc + Math.cos(angle) * hexR;
+        const py = hyc + Math.sin(angle) * hexR;
+        hexPoints += `${px},${py} `;
+      }
+      return (
+        <Svg width={s} height={s}>
+          <Polygon points={hexPoints.trim()} fill={fill} stroke={color} strokeWidth={sw} strokeLinejoin="round" />
+        </Svg>
+      );
+    }
+    case 'star': {
+      const stc = s / 2, sty = bodyH / 2;
+      const starOuter = Math.min(s, bodyH) / 2 - 3;
+      const starInner = starOuter * 0.45;
+      let starPath = '';
+      for (let i = 0; i < 10; i++) {
+        const angle = (i / 10) * Math.PI * 2 - Math.PI / 2;
+        const r = i % 2 === 0 ? starOuter : starInner;
+        const px = stc + Math.cos(angle) * r;
+        const py = sty + Math.sin(angle) * r;
+        starPath += i === 0 ? `M ${px} ${py} ` : `L ${px} ${py} `;
+      }
+      starPath += 'Z';
+      return (
+        <Svg width={s} height={s}>
+          <Path d={starPath} fill={fill} stroke={color} strokeWidth={sw} strokeLinejoin="round" />
+        </Svg>
+      );
+    }
+    default:
+      return (
+        <Svg width={s} height={s}>
+          <Ellipse cx={s / 2} cy={bodyH / 2} rx={s / 2 - sw} ry={bodyH / 2 - sw} fill={fill} stroke={color} strokeWidth={sw} />
+        </Svg>
+      );
+  }
+}
+
+// ── Sticky Note pattern preview ──
+function NotePatternPreview({ style, color, w, h }: { style: string; color: string; w: number; h: number }) {
+  if (style === 'lined') {
+    return (
+      <Svg width={w} height={h} style={{ position: 'absolute', top: 0, left: 0 }}>
+        {Array.from({ length: Math.floor(h / 12) }, (_, i) => (
+          <Path key={i} d={`M 6 ${14 + i * 12} L ${w - 6} ${14 + i * 12}`} stroke={color} strokeWidth={0.4} opacity={0.3} />
+        ))}
+      </Svg>
+    );
+  }
+  if (style === 'grid') {
+    return (
+      <Svg width={w} height={h} style={{ position: 'absolute', top: 0, left: 0 }}>
+        {Array.from({ length: Math.floor(w / 10) }, (_, i) => (
+          <Path key={`v${i}`} d={`M ${10 + i * 10} 6 L ${10 + i * 10} ${h - 6}`} stroke={color} strokeWidth={0.3} opacity={0.2} />
+        ))}
+        {Array.from({ length: Math.floor(h / 10) }, (_, i) => (
+          <Path key={`h${i}`} d={`M 6 ${10 + i * 10} L ${w - 6} ${10 + i * 10}`} stroke={color} strokeWidth={0.3} opacity={0.2} />
+        ))}
+      </Svg>
+    );
+  }
+  if (style === 'dotted') {
+    return (
+      <Svg width={w} height={h} style={{ position: 'absolute', top: 0, left: 0 }}>
+        {Array.from({ length: Math.floor(w / 10) }, (_, ix) =>
+          Array.from({ length: Math.floor(h / 10) }, (_, iy) => (
+            <Circle key={`${ix}-${iy}`} cx={8 + ix * 10} cy={8 + iy * 10} r={0.8} fill={color} opacity={0.3} />
+          ))
+        ).flat()}
+      </Svg>
+    );
+  }
+  return null;
 }
 
 function EmptyState({

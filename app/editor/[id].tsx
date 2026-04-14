@@ -31,6 +31,7 @@ export default function EditorScreen() {
   const removeElement = useDiaryStore((s) => s.removeElement);
   const addStroke = useDiaryStore((s) => s.addStroke);
   const removeLastStroke = useDiaryStore((s) => s.removeLastStroke);
+  const removeStroke = useDiaryStore((s) => s.removeStroke);
 
   const page = useMemo(() => pages.find((p) => p.id === id), [pages, id]);
 
@@ -39,9 +40,13 @@ export default function EditorScreen() {
   const [drawColor, setDrawColor] = useState('#5C4A6E');
   const [drawSize, setDrawSize] = useState(4);
   const [penType, setPenType] = useState<PenType>('pen');
+  const [eraserSize, setEraserSize] = useState(20);
   const [showTextEditor, setShowTextEditor] = useState(false);
   const [editingTitle, setEditingTitle] = useState(false);
   const [titleText, setTitleText] = useState(page?.title || '');
+
+  // Eraser position for visual indicator
+  const [eraserPos, setEraserPos] = useState<{ x: number; y: number } | null>(null);
 
   // Use refs for drawing state to avoid stale closures in gesture handlers
   const pointsRef = useRef<{ x: number; y: number }[]>([]);
@@ -79,7 +84,6 @@ export default function EditorScreen() {
         const photoWidth = 180;
         const photoHeight = photoWidth / aspectRatio;
 
-        // Copy image to persistent storage so it survives app restarts
         const permanentUri = await persistImage(asset.uri);
 
         addElement(id, {
@@ -133,12 +137,29 @@ export default function EditorScreen() {
       case 'highlighter': return 0.35;
       case 'marker': return 0.7;
       case 'neon': return 0.9;
+      case 'shadow': return 1;
       default: return 1;
     }
   }, []);
 
+  // Eraser logic — check if any stroke is near the given point
+  const eraseAtPoint = useCallback((x: number, y: number) => {
+    if (!page || !id) return;
+    const radius = eraserSize;
+    for (const stroke of page.strokes) {
+      for (const pt of stroke.points) {
+        const dx = pt.x - x;
+        const dy = pt.y - y;
+        if (dx * dx + dy * dy < radius * radius) {
+          removeStroke(id, stroke.id);
+          break;
+        }
+      }
+    }
+  }, [page, id, eraserSize, removeStroke]);
+
   const finishStroke = useCallback((pts: { x: number; y: number }[]) => {
-    if (id && pts.length > 1) {
+    if (id && pts.length > 1 && penType !== 'eraser') {
       addStroke(id, {
         penType,
         color: drawColor,
@@ -149,6 +170,7 @@ export default function EditorScreen() {
     }
     pointsRef.current = [];
     setCurrentPoints([]);
+    setEraserPos(null);
   }, [id, penType, drawColor, drawSize, addStroke, getOpacityForPen]);
 
   // Drawing gesture using ref to avoid stale closure
@@ -157,15 +179,25 @@ export default function EditorScreen() {
     .minDistance(1)
     .onStart((event) => {
       isDrawing.current = true;
-      const newPoints = [{ x: event.x, y: event.y }];
-      pointsRef.current = newPoints;
-      runOnJS(setCurrentPoints)(newPoints);
+      if (penType === 'eraser') {
+        runOnJS(eraseAtPoint)(event.x, event.y);
+        runOnJS(setEraserPos)({ x: event.x, y: event.y });
+      } else {
+        const newPoints = [{ x: event.x, y: event.y }];
+        pointsRef.current = newPoints;
+        runOnJS(setCurrentPoints)(newPoints);
+      }
     })
     .onUpdate((event) => {
       if (isDrawing.current) {
-        const newPoint = { x: event.x, y: event.y };
-        pointsRef.current = [...pointsRef.current, newPoint];
-        runOnJS(setCurrentPoints)([...pointsRef.current]);
+        if (penType === 'eraser') {
+          runOnJS(eraseAtPoint)(event.x, event.y);
+          runOnJS(setEraserPos)({ x: event.x, y: event.y });
+        } else {
+          const newPoint = { x: event.x, y: event.y };
+          pointsRef.current = [...pointsRef.current, newPoint];
+          runOnJS(setCurrentPoints)([...pointsRef.current]);
+        }
       }
     })
     .onEnd(() => {
@@ -371,7 +403,12 @@ export default function EditorScreen() {
             ]}
           >
             {/* Background pattern */}
-            <CanvasBackground type={page.background} width={canvasWidth} height={canvasHeight} />
+            <CanvasBackground
+              type={page.background}
+              width={canvasWidth}
+              height={canvasHeight}
+              backgroundImage={page.backgroundImage}
+            />
 
             {/* Drawing layer */}
             <DrawingLayer
@@ -389,6 +426,8 @@ export default function EditorScreen() {
               }
               width={canvasWidth}
               height={canvasHeight}
+              eraserPosition={penType === 'eraser' ? eraserPos : null}
+              eraserSize={eraserSize}
             />
 
             {/* Tap empty space to deselect */}
@@ -428,7 +467,9 @@ export default function EditorScreen() {
                   position: 'absolute',
                   top: 8,
                   left: 8,
-                  backgroundColor: 'rgba(249,168,201,0.85)',
+                  backgroundColor: penType === 'eraser'
+                    ? 'rgba(150,150,150,0.85)'
+                    : 'rgba(249,168,201,0.85)',
                   paddingHorizontal: 10,
                   paddingVertical: 4,
                   borderRadius: 12,
@@ -437,7 +478,7 @@ export default function EditorScreen() {
                 pointerEvents="none"
               >
                 <Text style={{ fontFamily: Fonts.medium, fontSize: 11, color: '#FFF' }}>
-                  ✏️ 描画モード
+                  {penType === 'eraser' ? '🧹 消しゴムモード' : '✏️ 描画モード'}
                 </Text>
               </View>
             )}
@@ -456,6 +497,8 @@ export default function EditorScreen() {
           onChangeDrawSize={setDrawSize}
           penType={penType}
           onChangePenType={setPenType}
+          eraserSize={eraserSize}
+          onChangeEraserSize={setEraserSize}
           onAddPhoto={handlePickPhoto}
           onAddSticker={handleAddSticker}
           onAddText={handleAddText}

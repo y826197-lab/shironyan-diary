@@ -3,12 +3,14 @@ import type { ThemeKey } from '@/constants/Colors';
 export type BackgroundType =
   | 'plain' | 'lined' | 'grid' | 'dots' | 'floral'
   | 'frame-simple' | 'frame-floral' | 'frame-ribbon' | 'frame-dots'
-  | 'frame-double' | 'frame-rounded' | 'frame-hearts' | 'frame-lace';
-export type PenType = 'pen' | 'marker' | 'highlighter' | 'crayon' | 'neon';
+  | 'frame-double' | 'frame-rounded' | 'frame-hearts' | 'frame-lace'
+  | 'custom';
+
+export type PenType = 'pen' | 'marker' | 'highlighter' | 'crayon' | 'neon' | 'shadow' | 'eraser';
 
 export interface CanvasElement {
   id: string;
-  type: 'photo' | 'sticker' | 'text' | 'cat-image' | 'deco-text' | 'custom-image' | 'washi-tape';
+  type: 'photo' | 'sticker' | 'text' | 'cat-image' | 'deco-text' | 'custom-image' | 'washi-tape' | 'speech-bubble' | 'sticky-note';
   x: number;
   y: number;
   width: number;
@@ -36,6 +38,7 @@ export interface DiaryPage {
   date: string;
   type: 'calendar' | 'free';
   background: BackgroundType;
+  backgroundImage?: string;
   elements: CanvasElement[];
   strokes: DrawingStroke[];
   createdAt: string;

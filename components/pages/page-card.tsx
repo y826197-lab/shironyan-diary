@@ -20,6 +20,7 @@ const BG_COLORS: Record<BackgroundType, string> = {
   'frame-rounded': '#FFF9FC',
   'frame-hearts': '#FFF0F5',
   'frame-lace': '#FFF5F9',
+  custom: '#F0F0F0',
 };
 
 interface PageCardProps {

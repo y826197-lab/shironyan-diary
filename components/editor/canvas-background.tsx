@@ -1,15 +1,30 @@
 import { View } from 'react-native';
 import Svg, { Line, Circle, Path, Rect } from 'react-native-svg';
+import { Image } from 'expo-image';
 import type { BackgroundType } from '@/store/types';
 
 interface CanvasBackgroundProps {
   type: BackgroundType;
   width: number;
   height: number;
+  backgroundImage?: string;
 }
 
-export function CanvasBackground({ type, width, height }: CanvasBackgroundProps) {
+export function CanvasBackground({ type, width, height, backgroundImage }: CanvasBackgroundProps) {
   if (width === 0 || height === 0) return null;
+
+  // Custom background image
+  if (type === 'custom' && backgroundImage) {
+    return (
+      <View style={{ position: 'absolute', top: 0, left: 0, width, height }} pointerEvents="none">
+        <Image
+          source={{ uri: backgroundImage }}
+          style={{ width, height }}
+          contentFit="cover"
+        />
+      </View>
+    );
+  }
 
   switch (type) {
     case 'lined':

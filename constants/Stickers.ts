@@ -70,6 +70,7 @@ export const WASHI_TAPE_MAP = new Map<string, WashiTapeSticker>(
   WASHI_TAPE_STICKERS.map((s) => [s.id, s])
 );
 
+// Removed 'animals' and 'emotions' categories per requirements
 export const STICKER_CATEGORIES: StickerCategory[] = [
   {
     id: 'hearts',
@@ -90,15 +91,6 @@ export const STICKER_CATEGORIES: StickerCategory[] = [
     ],
   },
   {
-    id: 'animals',
-    name: '動物',
-    icon: '🐱',
-    stickers: [
-      '🐱', '🐶', '🐰', '🐻', '🦊', '🐼', '🐨', '🦋',
-      '🐝', '🐞', '🦄', '🐣', '🐥', '🦢', '🐠', '🐙',
-    ],
-  },
-  {
     id: 'food',
     name: '食べ物',
     icon: '🍰',
@@ -114,15 +106,6 @@ export const STICKER_CATEGORIES: StickerCategory[] = [
     stickers: [
       '🎋', '🎍', '🎎', '🎏', '🎐', '🎑', '🧧', '🎃',
       '🎄', '🎅', '⛄', '🎊', '🎉', '🎀', '🎁', '🏮',
-    ],
-  },
-  {
-    id: 'emotions',
-    name: '感情',
-    icon: '😊',
-    stickers: [
-      '😊', '🥰', '😍', '🤗', '😌', '🥺', '😢', '😤',
-      '🤔', '😴', '🤩', '😎', '🥳', '😋', '🙈', '💤',
     ],
   },
 ];
@@ -157,6 +140,63 @@ export const DECO_TEXT_STICKERS: DecoTextSticker[] = [
 // Map for resolving deco sticker IDs to their data at render time
 export const DECO_TEXT_MAP = new Map<string, DecoTextSticker>(
   DECO_TEXT_STICKERS.map((s) => [s.id, s])
+);
+
+// ── Speech Bubble Stickers (empty shapes, no text) ──
+export interface SpeechBubbleSticker {
+  id: string;
+  label: string;
+  shape: string;
+  borderColor: string;
+  fillColor: string;
+}
+
+export const SPEECH_BUBBLE_STICKERS: SpeechBubbleSticker[] = [
+  { id: 'sb_round', label: '丸', shape: 'round', borderColor: '#5C4A6E', fillColor: '#FFFFFF' },
+  { id: 'sb_oval', label: '楕円', shape: 'oval', borderColor: '#F9A8C9', fillColor: '#FFF5F9' },
+  { id: 'sb_cloud', label: 'もくもく', shape: 'cloud', borderColor: '#90CAF9', fillColor: '#F0F7FF' },
+  { id: 'sb_square', label: '四角', shape: 'square', borderColor: '#5C4A6E', fillColor: '#FFFFFF' },
+  { id: 'sb_rounded_rect', label: '角丸', shape: 'rounded-rect', borderColor: '#C9A8F9', fillColor: '#F8F0FF' },
+  { id: 'sb_burst', label: 'ギザギザ', shape: 'burst', borderColor: '#FF6B6B', fillColor: '#FFF0F0' },
+  { id: 'sb_heart', label: 'ハート', shape: 'heart', borderColor: '#FF4081', fillColor: '#FFE0EC' },
+  { id: 'sb_shout', label: '叫び', shape: 'shout', borderColor: '#FF9800', fillColor: '#FFF8E1' },
+  { id: 'sb_wave', label: '波型', shape: 'wave', borderColor: '#4CAF50', fillColor: '#F0FFF0' },
+  { id: 'sb_diamond', label: 'ひし形', shape: 'diamond', borderColor: '#9C27B0', fillColor: '#F3E5F5' },
+  { id: 'sb_hexagon', label: '六角形', shape: 'hexagon', borderColor: '#00BCD4', fillColor: '#E0F7FA' },
+  { id: 'sb_star', label: '星形', shape: 'star', borderColor: '#FFC107', fillColor: '#FFFDE7' },
+];
+
+export const SPEECH_BUBBLE_MAP = new Map<string, SpeechBubbleSticker>(
+  SPEECH_BUBBLE_STICKERS.map((s) => [s.id, s])
+);
+
+// ── Sticky Note Stickers (cute memo/card designs) ──
+export interface StickyNoteSticker {
+  id: string;
+  label: string;
+  color: string;
+  secondaryColor: string;
+  style: 'plain' | 'lined' | 'grid' | 'dotted' | 'torn' | 'tag' | 'card';
+  cornerFold: boolean;
+}
+
+export const STICKY_NOTE_STICKERS: StickyNoteSticker[] = [
+  { id: 'sn_yellow', label: 'イエロー付箋', color: '#FFF9C4', secondaryColor: '#F9E04B', style: 'plain', cornerFold: true },
+  { id: 'sn_pink', label: 'ピンク付箋', color: '#FCE4EC', secondaryColor: '#F48FB1', style: 'plain', cornerFold: true },
+  { id: 'sn_blue', label: 'ブルー付箋', color: '#E3F2FD', secondaryColor: '#64B5F6', style: 'plain', cornerFold: true },
+  { id: 'sn_green', label: 'グリーン付箋', color: '#E8F5E9', secondaryColor: '#81C784', style: 'plain', cornerFold: true },
+  { id: 'sn_purple', label: 'ラベンダー付箋', color: '#EDE7F6', secondaryColor: '#B39DDB', style: 'plain', cornerFold: true },
+  { id: 'sn_orange', label: 'オレンジ付箋', color: '#FFF3E0', secondaryColor: '#FFB74D', style: 'plain', cornerFold: true },
+  { id: 'sn_lined', label: '罫線メモ', color: '#FFFFFF', secondaryColor: '#BDBDBD', style: 'lined', cornerFold: false },
+  { id: 'sn_grid', label: '方眼メモ', color: '#FFFFFF', secondaryColor: '#E0E0E0', style: 'grid', cornerFold: false },
+  { id: 'sn_dotted', label: 'ドットメモ', color: '#FFF8E1', secondaryColor: '#FFD54F', style: 'dotted', cornerFold: false },
+  { id: 'sn_torn', label: 'ちぎりメモ', color: '#FFFFFF', secondaryColor: '#E0E0E0', style: 'torn', cornerFold: false },
+  { id: 'sn_tag', label: 'タグ', color: '#EFEBE9', secondaryColor: '#A1887F', style: 'tag', cornerFold: false },
+  { id: 'sn_card_pink', label: 'ピンクカード', color: '#FCE4EC', secondaryColor: '#F48FB1', style: 'card', cornerFold: false },
+];
+
+export const STICKY_NOTE_MAP = new Map<string, StickyNoteSticker>(
+  STICKY_NOTE_STICKERS.map((s) => [s.id, s])
 );
 
 export const ALL_STICKERS = STICKER_CATEGORIES.flatMap((c) => c.stickers);

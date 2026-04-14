@@ -1,4 +1,4 @@
-import { View, Text, Pressable } from 'react-native';
+import { View, Text, Pressable, PanResponder } from 'react-native';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import Animated, {
   useAnimatedStyle,
@@ -8,10 +8,12 @@ import Animated, {
 } from 'react-native-reanimated';
 import { Image } from 'expo-image';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import Svg, { Path, Rect, Ellipse, Polygon, Line, Circle } from 'react-native-svg';
 import { Fonts } from '@/constants/Typography';
-import { CAT_STICKER_MAP, DECO_TEXT_MAP, WASHI_TAPE_MAP } from '@/constants/Stickers';
+import { CAT_STICKER_MAP, DECO_TEXT_MAP, WASHI_TAPE_MAP, SPEECH_BUBBLE_MAP, STICKY_NOTE_MAP } from '@/constants/Stickers';
 import { WashiTapeView } from '@/components/editor/washi-tape';
 import type { CanvasElement } from '@/store/types';
+import { useRef, useMemo } from 'react';
 
 interface CanvasElementProps {
   element: CanvasElement;
@@ -38,6 +40,12 @@ export function CanvasElementView({
   const savedTranslateY = useSharedValue(element.y);
   const savedScale = useSharedValue(1);
   const savedRotation = useSharedValue(element.rotation);
+
+  // Track element dimensions for resize handle
+  const currentWidth = useRef(element.width);
+  const currentHeight = useRef(element.height);
+  currentWidth.current = element.width;
+  currentHeight.current = element.height;
 
   const handleUpdatePosition = (x: number, y: number) => {
     onUpdate({ x, y });
@@ -102,6 +110,35 @@ export function CanvasElementView({
       { rotate: `${rotation.value}rad` },
     ],
   }));
+
+  // PanResponder for the resize/rotate handle
+  // Vertical drag = scale, Horizontal drag = rotate
+  const handlePanResponder = useMemo(() => PanResponder.create({
+    onStartShouldSetPanResponder: () => true,
+    onMoveShouldSetPanResponder: () => true,
+    onPanResponderGrant: () => {
+      // Store initial state
+    },
+    onPanResponderMove: (_evt, gestureState) => {
+      const { dy, dx } = gestureState;
+      // Vertical drag → scale (up = shrink, down = enlarge)
+      const scaleFactor = 1 + dy / 150;
+      const clampedScale = Math.max(0.3, Math.min(3, scaleFactor));
+      const newW = currentWidth.current * clampedScale;
+      const newH = currentHeight.current * clampedScale;
+      // Horizontal drag → rotation
+      const rotationDelta = dx / 100;
+      const newRotation = element.rotation + rotationDelta;
+      onUpdate({
+        width: Math.max(30, newW),
+        height: Math.max(30, newH),
+        rotation: newRotation,
+      });
+    },
+    onPanResponderRelease: () => {
+      // Final state already applied via onPanResponderMove
+    },
+  }), [element.rotation, onUpdate]);
 
   const renderContent = () => {
     switch (element.type) {
@@ -264,6 +301,16 @@ export function CanvasElementView({
             />
           </View>
         );
+      case 'speech-bubble': {
+        const bubbleData = SPEECH_BUBBLE_MAP.get(element.content);
+        if (!bubbleData) return null;
+        return renderSpeechBubble(bubbleData.shape, element.width, element.height, bubbleData.borderColor, bubbleData.fillColor);
+      }
+      case 'sticky-note': {
+        const noteData = STICKY_NOTE_MAP.get(element.content);
+        if (!noteData) return null;
+        return renderStickyNote(noteData, element.width, element.height);
+      }
       default:
         return null;
     }
@@ -328,20 +375,21 @@ export function CanvasElementView({
                 <Ionicons name="close" size={14} color="#FFF" />
               </Pressable>
 
-              {/* Resize / Rotate handle */}
+              {/* Resize / Rotate handle — draggable via PanResponder */}
               <View
+                {...handlePanResponder.panHandlers}
                 style={{
                   position: 'absolute',
-                  bottom: -12,
-                  right: -12,
-                  width: 26,
-                  height: 26,
-                  borderRadius: 13,
+                  bottom: -14,
+                  right: -14,
+                  width: 30,
+                  height: 30,
+                  borderRadius: 15,
                   backgroundColor: '#F9A8C9',
                   alignItems: 'center',
                   justifyContent: 'center',
                   zIndex: 100,
-                  boxShadow: '0 2px 4px rgba(0,0,0,0.15)',
+                  boxShadow: '0 2px 6px rgba(0,0,0,0.2)',
                 }}
               >
                 <Ionicons name="resize-outline" size={14} color="#FFF" />
@@ -351,5 +399,346 @@ export function CanvasElementView({
         </Pressable>
       </Animated.View>
     </GestureDetector>
+  );
+}
+
+// ── Speech Bubble SVG Shapes ──
+
+function renderSpeechBubble(shape: string, w: number, h: number, borderColor: string, fillColor: string) {
+  const sw = 2; // stroke width
+  // Reserve space for tail
+  const bodyH = h * 0.8;
+
+  switch (shape) {
+    case 'round':
+      return (
+        <Svg width={w} height={h}>
+          <Ellipse cx={w / 2} cy={bodyH / 2} rx={w / 2 - sw} ry={bodyH / 2 - sw} fill={fillColor} stroke={borderColor} strokeWidth={sw} />
+          <Path d={`M ${w * 0.35} ${bodyH - sw} L ${w * 0.25} ${h - 2} L ${w * 0.5} ${bodyH - sw * 2}`} fill={fillColor} stroke={borderColor} strokeWidth={sw} strokeLinejoin="round" />
+        </Svg>
+      );
+    case 'oval':
+      return (
+        <Svg width={w} height={h}>
+          <Ellipse cx={w / 2} cy={bodyH / 2} rx={w / 2 - sw} ry={bodyH / 2 - sw} fill={fillColor} stroke={borderColor} strokeWidth={sw} />
+          <Path d={`M ${w * 0.4} ${bodyH - sw * 2} L ${w * 0.3} ${h - 2} L ${w * 0.55} ${bodyH - sw * 3}`} fill={fillColor} stroke={borderColor} strokeWidth={sw} strokeLinejoin="round" />
+        </Svg>
+      );
+    case 'cloud': {
+      // Thought bubble with scalloped edge
+      const cx = w / 2, cy = bodyH / 2;
+      const rx = w / 2 - 6, ry = bodyH / 2 - 6;
+      // Build cloud path with bumps
+      let d = '';
+      const bumps = 12;
+      for (let i = 0; i < bumps; i++) {
+        const a1 = (i / bumps) * Math.PI * 2;
+        const a2 = ((i + 1) / bumps) * Math.PI * 2;
+        const x1 = cx + Math.cos(a1) * rx;
+        const y1 = cy + Math.sin(a1) * ry;
+        const x2 = cx + Math.cos(a2) * rx;
+        const y2 = cy + Math.sin(a2) * ry;
+        const midA = (a1 + a2) / 2;
+        const bumpR = 8;
+        const cpx = cx + Math.cos(midA) * (rx + bumpR);
+        const cpy = cy + Math.sin(midA) * (ry + bumpR);
+        if (i === 0) d += `M ${x1} ${y1} `;
+        d += `Q ${cpx} ${cpy} ${x2} ${y2} `;
+      }
+      d += 'Z';
+      return (
+        <Svg width={w} height={h}>
+          <Path d={d} fill={fillColor} stroke={borderColor} strokeWidth={sw} />
+          {/* Thought dots */}
+          <Circle cx={w * 0.35} cy={bodyH + 4} r={4} fill={fillColor} stroke={borderColor} strokeWidth={1.5} />
+          <Circle cx={w * 0.28} cy={bodyH + 12} r={2.5} fill={fillColor} stroke={borderColor} strokeWidth={1} />
+        </Svg>
+      );
+    }
+    case 'square':
+      return (
+        <Svg width={w} height={h}>
+          <Rect x={sw} y={sw} width={w - sw * 2} height={bodyH - sw * 2} fill={fillColor} stroke={borderColor} strokeWidth={sw} />
+          <Path d={`M ${w * 0.3} ${bodyH - sw} L ${w * 0.2} ${h - 2} L ${w * 0.45} ${bodyH - sw}`} fill={fillColor} stroke={borderColor} strokeWidth={sw} strokeLinejoin="round" />
+        </Svg>
+      );
+    case 'rounded-rect':
+      return (
+        <Svg width={w} height={h}>
+          <Rect x={sw} y={sw} width={w - sw * 2} height={bodyH - sw * 2} rx={12} fill={fillColor} stroke={borderColor} strokeWidth={sw} />
+          <Path d={`M ${w * 0.35} ${bodyH - sw * 2} L ${w * 0.25} ${h - 2} L ${w * 0.5} ${bodyH - sw * 3}`} fill={fillColor} stroke={borderColor} strokeWidth={sw} strokeLinejoin="round" />
+        </Svg>
+      );
+    case 'burst': {
+      // Star burst / explosion shape
+      const cx2 = w / 2, cy2 = bodyH / 2;
+      const points = 10;
+      const outer = Math.min(w, bodyH) / 2 - 4;
+      const inner = outer * 0.65;
+      let burstPath = '';
+      for (let i = 0; i < points * 2; i++) {
+        const angle = (i / (points * 2)) * Math.PI * 2 - Math.PI / 2;
+        const r = i % 2 === 0 ? outer : inner;
+        const px = cx2 + Math.cos(angle) * r;
+        const py = cy2 + Math.sin(angle) * r;
+        burstPath += i === 0 ? `M ${px} ${py} ` : `L ${px} ${py} `;
+      }
+      burstPath += 'Z';
+      return (
+        <Svg width={w} height={h}>
+          <Path d={burstPath} fill={fillColor} stroke={borderColor} strokeWidth={sw} strokeLinejoin="round" />
+        </Svg>
+      );
+    }
+    case 'heart': {
+      const s = Math.min(w, bodyH) * 0.45;
+      const cx3 = w / 2, cy3 = bodyH / 2;
+      const heartD = `M ${cx3} ${cy3 + s * 0.35} C ${cx3 - s * 0.5} ${cy3 - s * 0.4}, ${cx3 - s * 1.1} ${cy3 + s * 0.05}, ${cx3} ${cy3 + s * 0.9} C ${cx3 + s * 1.1} ${cy3 + s * 0.05}, ${cx3 + s * 0.5} ${cy3 - s * 0.4}, ${cx3} ${cy3 + s * 0.35} Z`;
+      return (
+        <Svg width={w} height={h}>
+          <Path d={heartD} fill={fillColor} stroke={borderColor} strokeWidth={sw} />
+        </Svg>
+      );
+    }
+    case 'shout': {
+      // Jagged shout bubble
+      const cx4 = w / 2, cy4 = bodyH / 2;
+      const spikes = 8;
+      const outerR = Math.min(w, bodyH) / 2 - 4;
+      const innerR = outerR * 0.75;
+      let shoutPath = '';
+      for (let i = 0; i < spikes * 2; i++) {
+        const angle = (i / (spikes * 2)) * Math.PI * 2 - Math.PI / 2;
+        const r = i % 2 === 0 ? outerR : innerR;
+        const px = cx4 + Math.cos(angle) * r;
+        const py = cy4 + Math.sin(angle) * r;
+        shoutPath += i === 0 ? `M ${px} ${py} ` : `L ${px} ${py} `;
+      }
+      shoutPath += 'Z';
+      return (
+        <Svg width={w} height={h}>
+          <Path d={shoutPath} fill={fillColor} stroke={borderColor} strokeWidth={sw} strokeLinejoin="round" />
+          <Path d={`M ${w * 0.3} ${bodyH * 0.85} L ${w * 0.15} ${h - 2} L ${w * 0.45} ${bodyH * 0.8}`} fill={fillColor} stroke={borderColor} strokeWidth={sw} strokeLinejoin="round" />
+        </Svg>
+      );
+    }
+    case 'wave': {
+      // Wavy-edge bubble
+      const waveH = bodyH - 8;
+      const waveW = w - 8;
+      let wavePath = `M 4 ${waveH * 0.3 + 4}`;
+      // Left side waves
+      for (let y = waveH * 0.3; y < waveH * 0.7; y += 12) {
+        wavePath += ` Q ${-2} ${y + 6 + 4} 4 ${y + 12 + 4}`;
+      }
+      wavePath += ` Q 4 ${waveH + 4} ${waveW * 0.3 + 4} ${waveH + 4}`;
+      // Bottom waves
+      for (let x = waveW * 0.3; x < waveW * 0.9; x += 14) {
+        wavePath += ` Q ${x + 7 + 4} ${waveH + 10} ${x + 14 + 4} ${waveH + 4}`;
+      }
+      wavePath += ` Q ${waveW + 4} ${waveH + 4} ${waveW + 4} ${waveH * 0.7 + 4}`;
+      // Right side
+      wavePath += ` Q ${waveW + 10} ${waveH * 0.5 + 4} ${waveW + 4} ${waveH * 0.3 + 4}`;
+      // Top
+      wavePath += ` Q ${waveW + 4} 4 ${waveW * 0.7 + 4} 4`;
+      for (let x = waveW * 0.7; x > waveW * 0.1; x -= 14) {
+        wavePath += ` Q ${x - 7 + 4} ${-2} ${x - 14 + 4} 4`;
+      }
+      wavePath += ` Q 4 4 4 ${waveH * 0.3 + 4} Z`;
+      return (
+        <Svg width={w} height={h}>
+          <Path d={wavePath} fill={fillColor} stroke={borderColor} strokeWidth={sw} />
+          <Path d={`M ${w * 0.35} ${bodyH - 4} L ${w * 0.28} ${h - 2} L ${w * 0.48} ${bodyH - 6}`} fill={fillColor} stroke={borderColor} strokeWidth={sw} strokeLinejoin="round" />
+        </Svg>
+      );
+    }
+    case 'diamond': {
+      const pts = `${w / 2},${sw} ${w - sw},${bodyH / 2} ${w / 2},${bodyH - sw} ${sw},${bodyH / 2}`;
+      return (
+        <Svg width={w} height={h}>
+          <Polygon points={pts} fill={fillColor} stroke={borderColor} strokeWidth={sw} strokeLinejoin="round" />
+        </Svg>
+      );
+    }
+    case 'hexagon': {
+      const cx5 = w / 2, cy5 = bodyH / 2;
+      const hexR = Math.min(w, bodyH) / 2 - 4;
+      let hexPoints = '';
+      for (let i = 0; i < 6; i++) {
+        const angle = (i / 6) * Math.PI * 2 - Math.PI / 6;
+        const px = cx5 + Math.cos(angle) * hexR;
+        const py = cy5 + Math.sin(angle) * hexR;
+        hexPoints += `${px},${py} `;
+      }
+      return (
+        <Svg width={w} height={h}>
+          <Polygon points={hexPoints.trim()} fill={fillColor} stroke={borderColor} strokeWidth={sw} strokeLinejoin="round" />
+        </Svg>
+      );
+    }
+    case 'star': {
+      const cx6 = w / 2, cy6 = bodyH / 2;
+      const starOuter = Math.min(w, bodyH) / 2 - 4;
+      const starInner = starOuter * 0.45;
+      let starPath = '';
+      for (let i = 0; i < 10; i++) {
+        const angle = (i / 10) * Math.PI * 2 - Math.PI / 2;
+        const r = i % 2 === 0 ? starOuter : starInner;
+        const px = cx6 + Math.cos(angle) * r;
+        const py = cy6 + Math.sin(angle) * r;
+        starPath += i === 0 ? `M ${px} ${py} ` : `L ${px} ${py} `;
+      }
+      starPath += 'Z';
+      return (
+        <Svg width={w} height={h}>
+          <Path d={starPath} fill={fillColor} stroke={borderColor} strokeWidth={sw} strokeLinejoin="round" />
+        </Svg>
+      );
+    }
+    default:
+      return (
+        <Svg width={w} height={h}>
+          <Ellipse cx={w / 2} cy={bodyH / 2} rx={w / 2 - sw} ry={bodyH / 2 - sw} fill={fillColor} stroke={borderColor} strokeWidth={sw} />
+        </Svg>
+      );
+  }
+}
+
+// ── Sticky Note Rendering ──
+
+function renderStickyNote(
+  note: { color: string; secondaryColor: string; style: string; cornerFold: boolean },
+  w: number,
+  h: number,
+) {
+  const { color, secondaryColor, style, cornerFold } = note;
+  const foldSize = 14;
+
+  return (
+    <View
+      style={{
+        width: w,
+        height: h,
+        backgroundColor: color,
+        borderRadius: 4,
+        borderCurve: 'continuous',
+        overflow: 'hidden',
+        boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+      }}
+    >
+      {/* Top accent strip */}
+      <View
+        style={{
+          height: 3,
+          backgroundColor: secondaryColor,
+          opacity: 0.6,
+        }}
+      />
+
+      {/* Pattern overlay */}
+      {style === 'lined' && (
+        <Svg width={w} height={h} style={{ position: 'absolute', top: 0, left: 0 }}>
+          {Array.from({ length: Math.floor(h / 16) }, (_, i) => (
+            <Line
+              key={i}
+              x1={8}
+              y1={16 + i * 16}
+              x2={w - 8}
+              y2={16 + i * 16}
+              stroke={secondaryColor}
+              strokeWidth={0.5}
+              opacity={0.4}
+            />
+          ))}
+        </Svg>
+      )}
+      {style === 'grid' && (
+        <Svg width={w} height={h} style={{ position: 'absolute', top: 0, left: 0 }}>
+          {Array.from({ length: Math.floor(w / 14) }, (_, i) => (
+            <Line
+              key={`v${i}`}
+              x1={14 + i * 14}
+              y1={4}
+              x2={14 + i * 14}
+              y2={h - 4}
+              stroke={secondaryColor}
+              strokeWidth={0.4}
+              opacity={0.3}
+            />
+          ))}
+          {Array.from({ length: Math.floor(h / 14) }, (_, i) => (
+            <Line
+              key={`h${i}`}
+              x1={4}
+              y1={14 + i * 14}
+              x2={w - 4}
+              y2={14 + i * 14}
+              stroke={secondaryColor}
+              strokeWidth={0.4}
+              opacity={0.3}
+            />
+          ))}
+        </Svg>
+      )}
+      {style === 'dotted' && (
+        <Svg width={w} height={h} style={{ position: 'absolute', top: 0, left: 0 }}>
+          {Array.from({ length: Math.floor(w / 12) }, (_, ix) =>
+            Array.from({ length: Math.floor(h / 12) }, (_, iy) => (
+              <Circle
+                key={`${ix}-${iy}`}
+                cx={10 + ix * 12}
+                cy={10 + iy * 12}
+                r={1}
+                fill={secondaryColor}
+                opacity={0.4}
+              />
+            ))
+          ).flat()}
+        </Svg>
+      )}
+      {style === 'torn' && (
+        <Svg width={w} height={4} style={{ position: 'absolute', top: 0, left: 0 }}>
+          <Path
+            d={Array.from({ length: Math.ceil(w / 6) }, (_, i) =>
+              `${i === 0 ? 'M' : 'L'} ${i * 6} ${i % 2 === 0 ? 0 : 3}`
+            ).join(' ')}
+            stroke={secondaryColor}
+            strokeWidth={1}
+            fill="none"
+            opacity={0.5}
+          />
+        </Svg>
+      )}
+      {style === 'tag' && (
+        <View style={{ position: 'absolute', top: 6, left: w / 2 - 4, width: 8, height: 8, borderRadius: 4, borderWidth: 1.5, borderColor: secondaryColor, opacity: 0.5 }} />
+      )}
+      {style === 'card' && (
+        <View
+          style={{
+            position: 'absolute',
+            top: 6,
+            left: 6,
+            right: 6,
+            bottom: 6,
+            borderWidth: 1,
+            borderColor: secondaryColor,
+            borderRadius: 3,
+            borderStyle: 'dashed',
+            opacity: 0.3,
+          }}
+        />
+      )}
+
+      {/* Corner fold */}
+      {cornerFold && (
+        <Svg width={foldSize} height={foldSize} style={{ position: 'absolute', bottom: 0, right: 0 }}>
+          <Path
+            d={`M ${foldSize} 0 L ${foldSize} ${foldSize} L 0 ${foldSize} Z`}
+            fill={secondaryColor}
+            opacity={0.35}
+          />
+        </Svg>
+      )}
+    </View>
   );
 }

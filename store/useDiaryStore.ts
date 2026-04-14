@@ -17,7 +17,8 @@ interface DiaryState {
   // Actions
   createPage: (title?: string, date?: string) => string;
   deletePage: (id: string) => void;
-  updatePage: (id: string, updates: Partial<Pick<DiaryPage, 'title' | 'date' | 'background'>>) => void;
+  updatePage: (id: string, updates: Partial<Pick<DiaryPage, 'title' | 'date' | 'background' | 'backgroundImage'>>) => void;
+  removeStroke: (pageId: string, strokeId: string) => void;
   addElement: (pageId: string, element: Omit<CanvasElement, 'id' | 'zIndex'>) => void;
   updateElement: (pageId: string, elementId: string, updates: Partial<CanvasElement>) => void;
   removeElement: (pageId: string, elementId: string) => void;
@@ -128,6 +129,19 @@ export const useDiaryStore = create<DiaryState>()(
             return {
               ...p,
               strokes: [...p.strokes, { ...stroke, id: strokeId }],
+              updatedAt: new Date().toISOString(),
+            };
+          }),
+        }));
+      },
+
+      removeStroke: (pageId, strokeId) => {
+        set((state) => ({
+          pages: state.pages.map((p) => {
+            if (p.id !== pageId) return p;
+            return {
+              ...p,
+              strokes: p.strokes.filter((s) => s.id !== strokeId),
               updatedAt: new Date().toISOString(),
             };
           }),
