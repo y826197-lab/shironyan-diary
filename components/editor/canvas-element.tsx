@@ -1,4 +1,4 @@
-import { View, Text, Pressable, PanResponder } from 'react-native';
+import { View, Text, Pressable } from 'react-native';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 // On web, Gesture.Pinch/Rotation set up multi-touch pointer handlers that
 // conflict when 2+ GestureDetector instances exist on the same screen,
@@ -44,6 +44,8 @@ export function CanvasElementView({
   const savedTranslateY = useSharedValue(element.y);
   const savedScale = useSharedValue(1);
   const savedRotation = useSharedValue(element.rotation);
+  // Captures rotation at the start of a handle-drag gesture
+  const rotateHandleStart = useSharedValue(element.rotation);
 
   // ── Stable refs to avoid stale closures (updated every render) ──
   const elementRef = useRef(element);
@@ -71,9 +73,64 @@ export function CanvasElementView({
     onSelectRef.current();
   }).current;
 
+  // Stable callback for writing final rotation to store (called from UI thread via runOnJS)
+  const stableRotateSave = useRef((r: number) => {
+    onUpdateRef.current({ rotation: r });
+  }).current;
+
+  // Stable callback for writing scale updates to store (called on JS thread)
+  const stableScaleSave = useRef((w: number, h: number) => {
+    onUpdateRef.current({ width: w, height: h });
+  }).current;
+
+  // Ref to capture element dimensions at the start of a scale-handle drag
+  const scaleHandleStartRef = useRef({ width: element.width, height: element.height });
+
+  // ── Rotate handle gesture (bottom-left): horizontal drag → rotation ──
+  // Runs as worklet on UI thread for smooth 60fps visual update.
+  // Saves to store only on gesture end to avoid flooding the state manager.
+  const rotateHandleGesture = Gesture.Pan()
+    .enabled(isSelected && !drawingMode)
+    .minDistance(0)
+    .onStart(() => {
+      rotateHandleStart.value = rotation.value;
+    })
+    .onUpdate((event) => {
+      // Left drag → counter-clockwise (negative), right drag → clockwise (positive)
+      rotation.value = rotateHandleStart.value + event.translationX / 80;
+    })
+    .onEnd(() => {
+      runOnJS(stableRotateSave)(rotation.value);
+    });
+
+  // ── Scale handle gesture (bottom-right): vertical drag → resize ──
+  // Uses runOnJS because element dimensions are read from React state (not shared values).
+  const scaleHandleGesture = Gesture.Pan()
+    .enabled(isSelected && !drawingMode)
+    .minDistance(0)
+    .runOnJS(true)
+    .onStart(() => {
+      scaleHandleStartRef.current = {
+        width: elementRef.current.width,
+        height: elementRef.current.height,
+      };
+    })
+    .onUpdate((event) => {
+      const scaleFactor = Math.max(0.3, Math.min(3, 1 + event.translationY / 150));
+      stableScaleSave(
+        Math.max(30, scaleHandleStartRef.current.width * scaleFactor),
+        Math.max(30, scaleHandleStartRef.current.height * scaleFactor),
+      );
+    });
+
   // ── Main element gestures ──
+  // requireExternalGestureToFail: drag waits for handle gestures to fail before
+  // activating. When touch starts on a handle, the handle gesture wins and drag
+  // never activates. When touch starts on the element body, handle gestures fail
+  // immediately (not in their hit area) and drag activates without delay.
   const drag = Gesture.Pan()
     .enabled(!drawingMode)
+    .requireExternalGestureToFail(rotateHandleGesture, scaleHandleGesture)
     .onStart(() => {
       savedTranslateX.value = translateX.value;
       savedTranslateY.value = translateY.value;
@@ -132,54 +189,6 @@ export function CanvasElementView({
       { rotate: `${rotation.value}rad` },
     ],
   }));
-
-  // ── Scale handle (bottom-right): vertical drag = resize ──
-  // CRITICAL: use useRef (created ONCE) instead of useMemo to prevent
-  // recreation during active gestures, which caused crash with 2+ photos.
-  const scaleStartRef = useRef({ width: element.width, height: element.height });
-
-  const scalePanResponder = useRef(
-    PanResponder.create({
-      onStartShouldSetPanResponder: () => true,
-      onMoveShouldSetPanResponder: () => true,
-      onPanResponderGrant: () => {
-        // Capture initial size at gesture start to prevent compounding
-        scaleStartRef.current = {
-          width: elementRef.current.width,
-          height: elementRef.current.height,
-        };
-      },
-      onPanResponderMove: (_evt, gs) => {
-        const scaleFactor = Math.max(0.3, Math.min(3, 1 + gs.dy / 150));
-        onUpdateRef.current({
-          width: Math.max(30, scaleStartRef.current.width * scaleFactor),
-          height: Math.max(30, scaleStartRef.current.height * scaleFactor),
-        });
-      },
-      onPanResponderRelease: () => {},
-    })
-  ).current;
-
-  // ── Rotate handle (bottom-left): horizontal drag = rotation ──
-  const rotateStartRef = useRef(element.rotation);
-
-  const rotatePanResponder = useRef(
-    PanResponder.create({
-      onStartShouldSetPanResponder: () => true,
-      onMoveShouldSetPanResponder: () => true,
-      onPanResponderGrant: () => {
-        // Capture initial rotation at gesture start
-        rotateStartRef.current = elementRef.current.rotation;
-      },
-      onPanResponderMove: (_evt, gs) => {
-        // dx: left = counter-clockwise, right = clockwise
-        onUpdateRef.current({
-          rotation: rotateStartRef.current + gs.dx / 80,
-        });
-      },
-      onPanResponderRelease: () => {},
-    })
-  ).current;
 
   const renderContent = () => {
     switch (element.type) {
@@ -434,44 +443,46 @@ export function CanvasElementView({
               </Pressable>
 
               {/* ↻ Rotate handle — bottom left (horizontal drag) */}
-              <View
-                {...rotatePanResponder.panHandlers}
-                style={{
-                  position: 'absolute',
-                  bottom: -14,
-                  left: -14,
-                  width: 30,
-                  height: 30,
-                  borderRadius: 15,
-                  backgroundColor: '#C9A8F9',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  zIndex: 100,
-                  boxShadow: '0 2px 6px rgba(0,0,0,0.2)',
-                }}
-              >
-                <Ionicons name="sync-outline" size={14} color="#FFF" />
-              </View>
+              <GestureDetector gesture={rotateHandleGesture}>
+                <View
+                  style={{
+                    position: 'absolute',
+                    bottom: -14,
+                    left: -14,
+                    width: 30,
+                    height: 30,
+                    borderRadius: 15,
+                    backgroundColor: '#C9A8F9',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    zIndex: 100,
+                    boxShadow: '0 2px 6px rgba(0,0,0,0.2)',
+                  }}
+                >
+                  <Ionicons name="sync-outline" size={14} color="#FFF" />
+                </View>
+              </GestureDetector>
 
               {/* ⤡ Scale handle — bottom right (vertical drag) */}
-              <View
-                {...scalePanResponder.panHandlers}
-                style={{
-                  position: 'absolute',
-                  bottom: -14,
-                  right: -14,
-                  width: 30,
-                  height: 30,
-                  borderRadius: 15,
-                  backgroundColor: '#F9A8C9',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  zIndex: 100,
-                  boxShadow: '0 2px 6px rgba(0,0,0,0.2)',
-                }}
-              >
-                <Ionicons name="resize-outline" size={14} color="#FFF" />
-              </View>
+              <GestureDetector gesture={scaleHandleGesture}>
+                <View
+                  style={{
+                    position: 'absolute',
+                    bottom: -14,
+                    right: -14,
+                    width: 30,
+                    height: 30,
+                    borderRadius: 15,
+                    backgroundColor: '#F9A8C9',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    zIndex: 100,
+                    boxShadow: '0 2px 6px rgba(0,0,0,0.2)',
+                  }}
+                >
+                  <Ionicons name="resize-outline" size={14} color="#FFF" />
+                </View>
+              </GestureDetector>
             </View>
           )}
         </Pressable>

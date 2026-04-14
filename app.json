@@ -35,7 +35,7 @@
       [
         "expo-image-picker",
         {
-          "photosPermission": "写真ライブラリへのアクセスを許可してください"
+          "photosPermission": "\u5199\u771f\u30e9\u30a4\u30d6\u30e9\u30ea\u3078\u306e\u30a2\u30af\u30bb\u30b9\u3092\u8a31\u53ef\u3057\u3066\u304f\u3060\u3055\u3044"
         }
       ],
       [
